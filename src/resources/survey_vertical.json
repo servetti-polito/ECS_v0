@@ -1,6 +1,12 @@
 {
-  "title": "Environmental comfort survey",
-  "description": "A survey about environmental comfort",
+  "title": {
+    "default": "Environmental comfort survey",
+    "it": "Sondaggio sul comfort ambientale"
+  },
+  "description": {
+    "default": "A survey about environmental comfort",
+    "it": "Un sondaggio sul comfort ambientale"
+  },
   "logoPosition": "right",
   "pages": [
     {
@@ -9,40 +15,70 @@
         {
           "type": "radiogroup",
           "name": "Are you satisfied?",
+          "title": {
+            "it": "Sei soddisfatto? (soddisfatto/a? soddisfatt*?)"
+          },
           "choices": [
-            "Yes",
-            "No"
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            {
+              "value": "No",
+              "text": {
+                "it": "No"
+              }
+            }
           ]
         },
         {
           "type": "imagepicker",
           "name": "What is your level of discomfort?",
           "visibleIf": "{Are you satisfied?} = 'No'",
+          "title": {
+            "it": "Qual è il suo livello di disagio?"
+          },
           "isRequired": true,
           "choices": [
             {
               "value": "Very uncomfortable",
+              "text": {
+                "it": "Molto a disagio"
+              },
               "imageLink": "https://i.imgur.com/TpLK8IY.png"
             },
             {
               "value": "Slightly uncomfortable",
+              "text": {
+                "it": "Lievemente a disagio"
+              },
               "imageLink": "https://i.imgur.com/tqiDZXb.png"
             },
             {
               "value": "Slightly comfortable",
+              "text": {
+                "it": "Lievemente a mio agio"
+              },
               "imageLink": "https://i.imgur.com/XVwjWsZ.png"
             },
             {
               "value": "Very comfortable",
+              "text": {
+                "it": "Molto a mio agio"
+              },
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
-          "colCount": 2,
+          "colCount": 1,
           "showLabel": true
         }
       ],
-      "title": "Page zero",
-      "description": "Sarebbe meglio fare una pagina javascript in cui mettere i due tasti. Il sì porta all'inizio del questionario, Il no alla fine. Questa stessa domanda potrebbe essere integrata in quella pagina."
+      "title": {
+        "default": "Introduction",
+        "it": "Introduzione"
+      }
     },
     {
       "name": "Page one",
@@ -50,31 +86,50 @@
         {
           "type": "imagepicker",
           "name": "Your answer was negative. In which domain was your discomfort?",
+          "title": {
+            "it": "La sua risposta è stata negativa. In quale ambito era il suo disagio?"
+          },
+          "isRequired": true,
           "choices": [
             {
               "value": "Thermal Comfort",
+              "text": {
+                "it": "Comfort Termico"
+              },
               "imageLink": "https://i.imgur.com/H6IW7ds.png"
             },
             {
               "value": "Visual Comfort",
+              "text": {
+                "it": "Comfort Visivo"
+              },
               "imageLink": "https://i.imgur.com/b96zwpc.png"
             },
             {
               "value": "Acoustic Comfort",
+              "text": {
+                "it": "Comfort Acustico"
+              },
               "imageLink": "https://i.imgur.com/WEJiRRm.png"
             },
             {
               "value": "Air Quality",
+              "text": {
+                "it": "Qualità dell'aria"
+              },
               "imageLink": "https://i.imgur.com/oPw3hP5.png"
             }
           ],
-          "isRequired": true,
+          "colCount": 1,
           "showLabel": true,
           "multiSelect": true
         }
       ],
       "visibleIf": "{What is your level of discomfort?} = 'Very uncomfortable' or {What is your level of discomfort?} = 'Slightly uncomfortable'",
-      "title": "Page one"
+      "title": {
+        "default": "Discomfort Analysis",
+        "it": "Analisi sul disagio"
+      }
     },
     {
       "name": "Thermal Comfort",
@@ -82,24 +137,68 @@
         {
           "type": "radiogroup",
           "name": "How would you describe the temperature?",
+          "title": {
+            "it": "Come descriverebbe la temperatura?"
+          },
           "isRequired": true,
           "choices": [
-            "Hot",
-            "Warm",
-            "Slightly warm",
-            "Neutral",
-            "Slightly cool",
-            "Cool",
-            "Cold"
+            {
+              "value": "Hot",
+              "text": {
+                "it": "Molto alta"
+              }
+            },
+            {
+              "value": "Warm",
+              "text": {
+                "it": "Alta"
+              }
+            },
+            {
+              "value": "Slightly warm",
+              "text": {
+                "it": "Lievemente alta"
+              }
+            },
+            {
+              "value": "Neutral",
+              "text": {
+                "it": "Neutrale"
+              }
+            },
+            {
+              "value": "Slightly cool",
+              "text": {
+                "it": "Lievemente fredda"
+              }
+            },
+            {
+              "value": "Cool",
+              "text": {
+                "it": "Fredda"
+              }
+            },
+            {
+              "value": "Cold",
+              "text": {
+                "it": "Molto fredda"
+              }
+            }
           ]
         },
         {
           "type": "text",
-          "name": "More questions about thermal comfort..."
+          "name": "More questions about thermal comfort...",
+          "title": {
+            "it": "Altre domande sul comfort termico..."
+          }
         }
       ],
       "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Thermal Comfort']",
-      "title": "Thermal Comfort"
+      "title": {
+        "default": "Thermal Comfort",
+        "it": "Comfort Termico"
+      }
     },
     {
       "name": "Visual Comfort",
@@ -107,33 +206,55 @@
         {
           "type": "imagepicker",
           "name": "How are you unhappy?",
+          "title": {
+            "it": "Quanto è insoddisfatto?"
+          },
           "choices": [
             {
               "value": "Very uncomfortable",
+              "text": {
+                "it": "Molto a disagio"
+              },
               "imageLink": "https://i.imgur.com/TpLK8IY.png"
             },
             {
               "value": "Slightly uncomfortable",
+              "text": {
+                "it": "Lievemente a disagio"
+              },
               "imageLink": "https://i.imgur.com/tqiDZXb.png"
             },
             {
               "value": "Slightly comfortable",
+              "text": {
+                "it": "Lievemente a mio agio"
+              },
               "imageLink": "https://i.imgur.com/XVwjWsZ.png"
             },
             {
               "value": "Very comfortable",
+              "text": {
+                "it": "Molto a mio agio"
+              },
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
+          "colCount": 1,
           "showLabel": true
         },
         {
           "type": "text",
-          "name": "More questions about light and visual comfort ..."
+          "name": "More questions about light and visual comfort ...",
+          "title": {
+            "it": "Altre domande sul comfort visivo..."
+          }
         }
       ],
       "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Visual Comfort']",
-      "title": "Visual Comfort"
+      "title": {
+        "default": "Visual Comfort",
+        "it": "Comfort visivo"
+      }
     },
     {
       "name": "Acoustic Comfort",
@@ -141,34 +262,56 @@
         {
           "type": "imagepicker",
           "name": "question5",
-          "title": "How are you unhappy?",
+          "title": {
+            "default": "How are you unhappy?",
+            "it": "Quanto è insoddisfatto?"
+          },
           "choices": [
             {
               "value": "Very uncomfortable",
+              "text": {
+                "it": "Molto a disagio"
+              },
               "imageLink": "https://i.imgur.com/TpLK8IY.png"
             },
             {
               "value": "Slightly uncomfortable",
+              "text": {
+                "it": "Lievemente a disagio"
+              },
               "imageLink": "https://i.imgur.com/tqiDZXb.png"
             },
             {
               "value": "Slightly comfortable",
+              "text": {
+                "it": "Lievemente a mio agio"
+              },
               "imageLink": "https://i.imgur.com/XVwjWsZ.png"
             },
             {
               "value": "Very comfortable",
+              "text": {
+                "it": "Molto a mio agio"
+              },
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
+          "colCount": 1,
           "showLabel": true
         },
         {
           "type": "text",
-          "name": "More questions about acoustic comfort ..."
+          "name": "More questions about acoustic comfort ...",
+          "title": {
+            "it": "Altre domande sul comfort acustico..."
+          }
         }
       ],
       "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Acoustic Comfort']",
-      "title": "Acoustic Comfort"
+      "title": {
+        "default": "Acoustic Comfort",
+        "it": "Comfort acustico"
+      }
     },
     {
       "name": "Air Quality",
@@ -176,34 +319,56 @@
         {
           "type": "imagepicker",
           "name": "question7",
-          "title": "How are you unhappy?",
+          "title": {
+            "default": "How are you unhappy?",
+            "it": "Quanto è insoddisfatto?"
+          },
           "choices": [
             {
               "value": "Very uncomfortable",
+              "text": {
+                "it": "Molto a disagio"
+              },
               "imageLink": "https://i.imgur.com/TpLK8IY.png"
             },
             {
               "value": "Slightly uncomfortable",
+              "text": {
+                "it": "Lievemente a disagio"
+              },
               "imageLink": "https://i.imgur.com/tqiDZXb.png"
             },
             {
               "value": "Slightly comfortable",
+              "text": {
+                "it": "Lievemente a mio agio"
+              },
               "imageLink": "https://i.imgur.com/XVwjWsZ.png"
             },
             {
               "value": "Very comfortable",
+              "text": {
+                "it": "Molto a mio agio"
+              },
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
+          "colCount": 1,
           "showLabel": true
         },
         {
           "type": "text",
-          "name": "More questions about air quality ..."
+          "name": "More questions about air quality ...",
+          "title": {
+            "it": "Altre domande sulla qualità dell'aria..."
+          }
         }
       ],
       "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Air Quality']",
-      "title": "Air Quality"
+      "title": {
+        "default": "Air Quality",
+        "it": "Qualità dell'aria"
+      }
     }
   ]
 }
