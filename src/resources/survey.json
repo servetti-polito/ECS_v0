@@ -1,0 +1,209 @@
+{
+  "title": "Environmental comfort survey",
+  "description": "A survey about environmental comfort",
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "Page Zero",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Are you satisfied?",
+          "choices": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "type": "imagepicker",
+          "name": "What is your level of discomfort?",
+          "visibleIf": "{Are you satisfied?} = 'No'",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Very uncomfortable",
+              "imageLink": "https://i.imgur.com/TpLK8IY.png"
+            },
+            {
+              "value": "Slightly uncomfortable",
+              "imageLink": "https://i.imgur.com/tqiDZXb.png"
+            },
+            {
+              "value": "Slightly comfortable",
+              "imageLink": "https://i.imgur.com/XVwjWsZ.png"
+            },
+            {
+              "value": "Very comfortable",
+              "imageLink": "https://i.imgur.com/daJsUQb.png"
+            }
+          ],
+          "colCount": 2,
+          "showLabel": true
+        }
+      ],
+      "title": "Page zero",
+      "description": "Sarebbe meglio fare una pagina javascript in cui mettere i due tasti. Il sì porta all'inizio del questionario, Il no alla fine. Questa stessa domanda potrebbe essere integrata in quella pagina."
+    },
+    {
+      "name": "Page one",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "Your answer was negative. In which domain was your discomfort?",
+          "choices": [
+            {
+              "value": "Thermal Comfort",
+              "imageLink": "https://i.imgur.com/H6IW7ds.png"
+            },
+            {
+              "value": "Visual Comfort",
+              "imageLink": "https://i.imgur.com/b96zwpc.png"
+            },
+            {
+              "value": "Acoustic Comfort",
+              "imageLink": "https://i.imgur.com/WEJiRRm.png"
+            },
+            {
+              "value": "Air Quality",
+              "imageLink": "https://i.imgur.com/oPw3hP5.png"
+            }
+          ],
+          "isRequired": true,
+          "showLabel": true,
+          "multiSelect": true
+        }
+      ],
+      "visibleIf": "{What is your level of discomfort?} = 'Very uncomfortable' or {What is your level of discomfort?} = 'Slightly uncomfortable'",
+      "title": "Page one"
+    },
+    {
+      "name": "Thermal Comfort",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "How would you describe the temperature?",
+          "isRequired": true,
+          "choices": [
+            "Hot",
+            "Warm",
+            "Slightly warm",
+            "Neutral",
+            "Slightly cool",
+            "Cool",
+            "Cold"
+          ]
+        },
+        {
+          "type": "text",
+          "name": "More questions about thermal comfort..."
+        }
+      ],
+      "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Thermal Comfort']",
+      "title": "Thermal Comfort"
+    },
+    {
+      "name": "Visual Comfort",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "How are you unhappy?",
+          "choices": [
+            {
+              "value": "Very uncomfortable",
+              "imageLink": "https://i.imgur.com/TpLK8IY.png"
+            },
+            {
+              "value": "Slightly uncomfortable",
+              "imageLink": "https://i.imgur.com/tqiDZXb.png"
+            },
+            {
+              "value": "Slightly comfortable",
+              "imageLink": "https://i.imgur.com/XVwjWsZ.png"
+            },
+            {
+              "value": "Very comfortable",
+              "imageLink": "https://i.imgur.com/daJsUQb.png"
+            }
+          ],
+          "showLabel": true
+        },
+        {
+          "type": "text",
+          "name": "More questions about light and visual comfort ..."
+        }
+      ],
+      "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Visual Comfort']",
+      "title": "Visual Comfort"
+    },
+    {
+      "name": "Acoustic Comfort",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "question5",
+          "title": "How are you unhappy?",
+          "choices": [
+            {
+              "value": "Very uncomfortable",
+              "imageLink": "https://i.imgur.com/TpLK8IY.png"
+            },
+            {
+              "value": "Slightly uncomfortable",
+              "imageLink": "https://i.imgur.com/tqiDZXb.png"
+            },
+            {
+              "value": "Slightly comfortable",
+              "imageLink": "https://i.imgur.com/XVwjWsZ.png"
+            },
+            {
+              "value": "Very comfortable",
+              "imageLink": "https://i.imgur.com/daJsUQb.png"
+            }
+          ],
+          "showLabel": true
+        },
+        {
+          "type": "text",
+          "name": "More questions about acoustic comfort ..."
+        }
+      ],
+      "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Acoustic Comfort']",
+      "title": "Acoustic Comfort"
+    },
+    {
+      "name": "Air Quality",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "question7",
+          "title": "How are you unhappy?",
+          "choices": [
+            {
+              "value": "Very uncomfortable",
+              "imageLink": "https://i.imgur.com/TpLK8IY.png"
+            },
+            {
+              "value": "Slightly uncomfortable",
+              "imageLink": "https://i.imgur.com/tqiDZXb.png"
+            },
+            {
+              "value": "Slightly comfortable",
+              "imageLink": "https://i.imgur.com/XVwjWsZ.png"
+            },
+            {
+              "value": "Very comfortable",
+              "imageLink": "https://i.imgur.com/daJsUQb.png"
+            }
+          ],
+          "showLabel": true
+        },
+        {
+          "type": "text",
+          "name": "More questions about air quality ..."
+        }
+      ],
+      "visibleIf": "{Your answer was negative. In which domain was your discomfort?} anyof ['Air Quality']",
+      "title": "Air Quality"
+    }
+  ]
+}
