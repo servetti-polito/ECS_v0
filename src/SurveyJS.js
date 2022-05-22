@@ -44,7 +44,7 @@ function SurveyJS() {
       doAnimantion = true;
     }, 500);
     if(V_HORIZONTAL) {
-      $(document.getElementById("survey")).animate({"left": offset}, "fast");
+      $(document.getElementById("survey")).animate({"right": offset}, "fast");
     }
     else {
       $(document.getElementById("survey")).slideUp();
@@ -53,7 +53,7 @@ function SurveyJS() {
   survey.onCurrentPageChanged.add(function (sender) {
     if(V_HORIZONTAL)
     {
-      $(document.getElementById("survey")).css({left: counteroffset}).animate({ "left": offset }, "fast" );
+      $(document.getElementById("survey")).css({right: counteroffset}).animate({ "right": offset }, "fast" );
     }
     else
     {
@@ -69,9 +69,9 @@ function SurveyJS() {
       doAnimantion = true;
     }, 500);
     if(V_HORIZONTAL){
-      //$(document.getElementById("survey")).animate({ "left": offset }, "fast" ).animate({ "left": counteroffset }, "fast" );
+      //$(document.getElementById("survey")).animate({ "right": offset }, "fast" ).animate({ "right": counteroffset }, "fast" );
       //wait(1000)
-      //$(document.getElementById("survey")).animate({ "left": counteroffset }, "fast" );
+      //$(document.getElementById("survey")).animate({ "right": counteroffset }, "fast" );
     }
     else
     {
