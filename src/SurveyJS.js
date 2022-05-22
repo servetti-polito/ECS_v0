@@ -8,6 +8,8 @@ import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 
 const V_HORIZONTAL = true;
+const offset = "+=2000px"
+const counteroffset = "-=4000px"
 
 StylesManager.applyTheme("modern");
 
@@ -40,10 +42,22 @@ function SurveyJS() {
       sender.currentPage = options.newCurrentPage;
       doAnimantion = true;
     }, 500);
-    $(document.getElementById("survey")).slideUp();
+    if(V_HORIZONTAL) {
+      $(document.getElementById("survey")).animate({"left": offset}, "fast");
+    }
+    else {
+      $(document.getElementById("survey")).slideUp();
+    }
   });
   survey.onCurrentPageChanged.add(function (sender) {
-    $(document.getElementById("survey")).hide().slideDown();
+    if(V_HORIZONTAL)
+    {
+      $(document.getElementById("survey")).css({left: counteroffset}).animate({ "left": offset }, "fast" );
+    }
+    else
+    {
+      $(document.getElementById("survey")).hide().slideDown();
+    }
   });
   survey.onCompleting.add(function (sender, options) {
     if (!doAnimantion) return;
@@ -53,11 +67,19 @@ function SurveyJS() {
       sender.doComplete();
       doAnimantion = true;
     }, 500);
+    if(V_HORIZONTAL){
+      //$(document.getElementById("survey")).animate({ "left": offset }, "fast" ).animate({ "left": counteroffset }, "fast" );
+      //wait(1000)
+      //$(document.getElementById("survey")).animate({ "left": counteroffset }, "fast" );
+    }
+    else
+    {
     $(document.getElementById("survey")).slideUp()
     wait(1000)
     $(document.getElementById("survey")).slideDown()
+    }
   });
 
-  return <Survey id = 'survey' model = {survey} onComplete={sendDataToServer} />
+  return <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
 }
   export default SurveyJS;
