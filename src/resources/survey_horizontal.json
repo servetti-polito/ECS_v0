@@ -381,5 +381,7 @@
    }
   }
  ],
+ "goNextPageAutomatic": true,
+ "questionsOnPageMode": "questionPerPage",
  "widthMode": "responsive"
 }

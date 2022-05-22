@@ -18,6 +18,7 @@
           "title": {
             "it": "Sei soddisfatto? (soddisfatto/a? soddisfatt*?)"
           },
+          "titleLocation": "left",
           "choices": [
             {
               "value": "Yes",
@@ -31,7 +32,8 @@
                 "it": "No"
               }
             }
-          ]
+          ],
+          "colCount": 2
         },
         {
           "type": "imagepicker",
@@ -40,6 +42,7 @@
           "title": {
             "it": "Qual è il suo livello di disagio?"
           },
+          "titleLocation": "left",
           "isRequired": true,
           "choices": [
             {
@@ -71,7 +74,7 @@
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
-          "colCount": 1,
+          "colCount": 4,
           "showLabel": true
         }
       ],
@@ -89,6 +92,7 @@
           "title": {
             "it": "La sua risposta è stata negativa. In quale ambito era il suo disagio?"
           },
+          "titleLocation": "left",
           "isRequired": true,
           "choices": [
             {
@@ -120,7 +124,7 @@
               "imageLink": "https://i.imgur.com/oPw3hP5.png"
             }
           ],
-          "colCount": 1,
+          "colCount": 4,
           "showLabel": true,
           "multiSelect": true
         }
@@ -140,6 +144,7 @@
           "title": {
             "it": "Come descriverebbe la temperatura?"
           },
+          "titleLocation": "left",
           "isRequired": true,
           "choices": [
             {
@@ -149,15 +154,19 @@
               }
             },
             {
-              "value": "Warm",
+              "value": ".",
+              "enableIf": "false"
+            },
+            {
+              "value": "Slightly cool",
               "text": {
-                "it": "Alta"
+                "it": "Lievemente fredda"
               }
             },
             {
-              "value": "Slightly warm",
+              "value": "Warm",
               "text": {
-                "it": "Lievemente alta"
+                "it": "Alta"
               }
             },
             {
@@ -167,16 +176,20 @@
               }
             },
             {
-              "value": "Slightly cool",
-              "text": {
-                "it": "Lievemente fredda"
-              }
-            },
-            {
               "value": "Cool",
               "text": {
                 "it": "Fredda"
               }
+            },
+            {
+              "value": "Slightly warm",
+              "text": {
+                "it": "Lievemente alta"
+              }
+            },
+            {
+              "value": ".",
+              "enableIf": "false\n"
             },
             {
               "value": "Cold",
@@ -184,7 +197,8 @@
                 "it": "Molto fredda"
               }
             }
-          ]
+          ],
+          "colCount": 3
         },
         {
           "type": "text",
@@ -209,6 +223,7 @@
           "title": {
             "it": "Quanto è insoddisfatto?"
           },
+          "titleLocation": "left",
           "choices": [
             {
               "value": "Very uncomfortable",
@@ -239,7 +254,7 @@
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
-          "colCount": 1,
+          "colCount": 4,
           "showLabel": true
         },
         {
@@ -266,6 +281,7 @@
             "default": "How are you unhappy?",
             "it": "Quanto è insoddisfatto?"
           },
+          "titleLocation": "left",
           "choices": [
             {
               "value": "Very uncomfortable",
@@ -296,7 +312,7 @@
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
-          "colCount": 1,
+          "colCount": 4,
           "showLabel": true
         },
         {
@@ -323,6 +339,7 @@
             "default": "How are you unhappy?",
             "it": "Quanto è insoddisfatto?"
           },
+          "titleLocation": "left",
           "choices": [
             {
               "value": "Very uncomfortable",
@@ -353,7 +370,7 @@
               "imageLink": "https://i.imgur.com/daJsUQb.png"
             }
           ],
-          "colCount": 1,
+          "colCount": 4,
           "showLabel": true
         },
         {

@@ -4,7 +4,8 @@ import { StylesManager } from 'survey-core';
 import "./App.css";
 import $ from 'jquery';
 import * as surveyJSONVertical from './resources/survey_vertical.json';
-import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
+//import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
+import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 
 const V_HORIZONTAL = true;
