@@ -1,20 +1,19 @@
 import 'survey-core/modern.min.css';
 import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
-import "./App.css";
+import "./Hello.css";
 import $ from 'jquery';
 import * as surveyJSONVertical from './resources/survey_vertical.json';
-import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
-//import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
+//import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
+import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 
-const V_HORIZONTAL = true;
+const V_HORIZONTAL = false;
 const ITA = false;
 const offset = "+=2000px"
 const counteroffset = "-=4000px"
 
 StylesManager.applyTheme("modern");
-
 
 //on completion callback
 function sendDataToServer(survey) {
