@@ -7,6 +7,9 @@ import * as surveyJSONVertical from './resources/survey_vertical.json';
 //import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
 import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
 import {wait} from "@testing-library/user-event/dist/utils";
+import { useNavigate } from "react-router-dom";
+import autoRedirect from "./autoRedirect";
+import {Alert} from "react-bootstrap";
 
 const V_HORIZONTAL = false;
 const ITA = false;
@@ -15,28 +18,29 @@ const counteroffset = "-=4000px"
 
 StylesManager.applyTheme("modern");
 
-//on completion callback
-function sendDataToServer(survey) {
-  alert("The results are: " + JSON.stringify(survey.data));
-}
-
-function SurveyJS() {
-
+function SurveyJS(props) {
+  let navigate = useNavigate();
+  let redirect = autoRedirect(300); //5 minutes
+  if(redirect === 0)
+      navigate("/")
+  //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
+  function sendDataToServer(sur) {
+    alert("The results are: " + JSON.stringify(sur.data));
+    if (props.logged==="")
+      navigate("/login")
+    else
+      navigate("/thanks")
+  }
+  //LAYOUT E LINGUA////////////////////////////////////////////////////////////////////////////////////
   let surveyJSON;
   if(V_HORIZONTAL)
-  {
     surveyJSON = surveyJSONHorizontal;
-  }
   else
-  {
     surveyJSON = surveyJSONVertical;
-  }
-
   const survey = new Model(surveyJSON);
-
   if(ITA)
     survey.locale='it'
-
+  //ANIMAZIONI//////////////////////////////////////////////////////////////////////////////////////////
   var doAnimantion = true;
   survey.onCurrentPageChanging.add(function (sender, options) {
     if (!doAnimantion) return;
@@ -53,7 +57,7 @@ function SurveyJS() {
       $(document.getElementById("survey")).slideUp();
     }
   });
-  survey.onCurrentPageChanged.add(function (sender) {
+  survey.onCurrentPageChanged.add(function () {
     if(V_HORIZONTAL)
     {
       $(document.getElementById("survey")).css({right: counteroffset}).animate({ "right": offset }, "fast" );
@@ -84,6 +88,11 @@ function SurveyJS() {
     }
   });
 
-  return <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
+  return <>
+    { redirect < 60 ?
+        <Alert><h1>Are you still there?</h1><h3>You will be redirected in {redirect} seconds</h3></Alert> : null
+    }
+    <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
+  </>
 }
   export default SurveyJS;
