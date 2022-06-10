@@ -57,7 +57,7 @@ function SurveyJS(props) {
       $(document.getElementById("survey")).slideUp();
     }
   });
-  survey.onCurrentPageChanged.add(function () {
+  survey.onCurrentPageChanged.add(function (/*sender*/) {
     if(V_HORIZONTAL)
     {
       $(document.getElementById("survey")).css({right: counteroffset}).animate({ "right": offset }, "fast" );
