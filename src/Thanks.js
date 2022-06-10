@@ -17,7 +17,7 @@ export default function Thanks(props){
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button className="btn btn-lg btn-primary" type="button" onClick={routeHome}>Go Back Home</button>
+                        <button className="btn btn-lg btn-primary" type="button" onClick={routeHome}>Go Back Home and log out</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>

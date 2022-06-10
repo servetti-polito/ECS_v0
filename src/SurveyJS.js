@@ -8,7 +8,7 @@ import * as surveyJSONVertical from './resources/survey_vertical.json';
 import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
-import autoRedirect from "./autoRedirect";
+import autoRedirect from "./AutoRedirect";
 import {Alert} from "react-bootstrap";
 
 const V_HORIZONTAL = false;
@@ -20,14 +20,16 @@ StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-  let redirect = autoRedirect(300); //5 minutes
-  if(redirect === 0)
-      navigate("/")
+  let redirect = autoRedirect(500); //5 minutes
+  if(redirect === 0) {
+    props.doLogout();
+    navigate("/")
+  }
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     alert("The results are: " + JSON.stringify(sur.data));
     if (props.logged==="")
-      navigate("/login")
+      navigate("/furtherQuestions")
     else
       navigate("/thanks")
   }
@@ -90,7 +92,7 @@ function SurveyJS(props) {
 
   return <>
     { redirect < 60 ?
-        <Alert><h1>Are you still there?</h1><h3>You will be redirected in {redirect} seconds</h3></Alert> : null
+        <Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {redirect} seconds</h3></Alert> : null
     }
     <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
   </>
