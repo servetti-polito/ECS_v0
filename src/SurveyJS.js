@@ -15,11 +15,11 @@ StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-/*  let redirect = autoRedirect(500); //5 minutes
-  if(redirect === 0) {
-    props.doLogout();
-    navigate("/")
-  }*/
+    /*let redirect = autoRedirect(500); //5 minutes
+    if(redirect === 0) {
+      props.doLogout();
+      navigate("/")
+    }*/
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     alert("The results are: " + JSON.stringify(sur.data));
@@ -45,7 +45,7 @@ function SurveyJS(props) {
     $(document.getElementById("survey")).slideUp();
   });
   survey.onCurrentPageChanged.add(function (/*sender*/) {
-      $(document.getElementById("survey")).hide().slideDown();
+    $(document.getElementById("survey")).hide().slideDown();
   });
   survey.onCompleting.add(function (sender, options) {
     if (!doAnimantion) return;
@@ -68,4 +68,4 @@ function SurveyJS(props) {
     <Survey id = 'survey' model = {survey} onComplete={sendDataToServer} />
   </>
 }
-  export default SurveyJS;
+export default SurveyJS;
