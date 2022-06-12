@@ -4,7 +4,7 @@ export default function AutoRedirect (startTime)
 {
     const [timer, setTimer] = useState(startTime);
     useEffect(() => {
-        const myInterval = setInterval(() => {
+        const myInterval = window.setInterval(() => {
             if (timer > 0) {
                 setTimer(timer - 1);
             }
@@ -12,14 +12,7 @@ export default function AutoRedirect (startTime)
         const resetTimeout = () => {
             setTimer(startTime);
         };
-        const events = [
-            "load",
-            "mousemove",
-            "mousedown",
-            "click",
-            "scroll",
-            "keypress"
-        ];
+        const events = ["load", "mousemove", "mousedown", "click", "scroll", "keypress"];
         for (let i in events) {
             window.addEventListener(events[i], resetTimeout);
         }

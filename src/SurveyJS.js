@@ -3,28 +3,23 @@ import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
 import "./Hello.css";
 import $ from 'jquery';
-import * as surveyJSONVertical from './resources/survey_vertical.json';
-//import * as surveyJSONHorizontal from './resources/survey_horizontal.json';
-import * as surveyJSONHorizontal from './resources/survey_fullyHorizontal.json';
+import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
-import autoRedirect from "./AutoRedirect";
-import {Alert} from "react-bootstrap";
+//import autoRedirect from "./AutoRedirect";
+//import {Alert} from "react-bootstrap";
 
-const V_HORIZONTAL = false;
 const ITA = false;
-const offset = "+=2000px"
-const counteroffset = "-=4000px"
 
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-  let redirect = autoRedirect(500); //5 minutes
+/*  let redirect = autoRedirect(500); //5 minutes
   if(redirect === 0) {
     props.doLogout();
     navigate("/")
-  }
+  }*/
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     alert("The results are: " + JSON.stringify(sur.data));
@@ -34,11 +29,6 @@ function SurveyJS(props) {
       navigate("/thanks")
   }
   //LAYOUT E LINGUA////////////////////////////////////////////////////////////////////////////////////
-  let surveyJSON;
-  if(V_HORIZONTAL)
-    surveyJSON = surveyJSONHorizontal;
-  else
-    surveyJSON = surveyJSONVertical;
   const survey = new Model(surveyJSON);
   if(ITA)
     survey.locale='it'
@@ -52,22 +42,10 @@ function SurveyJS(props) {
       sender.currentPage = options.newCurrentPage;
       doAnimantion = true;
     }, 500);
-    if(V_HORIZONTAL) {
-      $(document.getElementById("survey")).animate({"right": offset}, "fast");
-    }
-    else {
-      $(document.getElementById("survey")).slideUp();
-    }
+    $(document.getElementById("survey")).slideUp();
   });
   survey.onCurrentPageChanged.add(function (/*sender*/) {
-    if(V_HORIZONTAL)
-    {
-      $(document.getElementById("survey")).css({right: counteroffset}).animate({ "right": offset }, "fast" );
-    }
-    else
-    {
       $(document.getElementById("survey")).hide().slideDown();
-    }
   });
   survey.onCompleting.add(function (sender, options) {
     if (!doAnimantion) return;
@@ -77,24 +55,17 @@ function SurveyJS(props) {
       sender.doComplete();
       doAnimantion = true;
     }, 500);
-    if(V_HORIZONTAL){
-      //$(document.getElementById("survey")).animate({ "right": offset }, "fast" ).animate({ "right": counteroffset }, "fast" );
-      //wait(1000)
-      //$(document.getElementById("survey")).animate({ "right": counteroffset }, "fast" );
-    }
-    else
-    {
     $(document.getElementById("survey")).slideUp()
     wait(1000)
     $(document.getElementById("survey")).slideDown()
-    }
   });
 
   return <>
-    { redirect < 60 ?
-        <Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {redirect} seconds</h3></Alert> : null
+    { /*redirect < 60 ?
+        <Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {redirect} seconds</h3></Alert> :
+        null*/
     }
-    <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
+    <Survey id = 'survey' model = {survey} onComplete={sendDataToServer} />
   </>
 }
   export default SurveyJS;
