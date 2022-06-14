@@ -1,0 +1,735 @@
+{
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q1",
+          "title": {
+            "default": "Gender",
+            "it": "Genere"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Male",
+              "text": {
+                "it": "Uomo"
+              }
+            },
+            {
+              "value": "Female",
+              "text": {
+                "it": "Donna"
+              }
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "dropdown",
+          "name": "Q2",
+          "title": {
+            "default": "Age",
+            "it": "Età"
+          },
+          "titleLocation": "left",
+          "choices": [
+            "18-25",
+            "26-35",
+            "36-50",
+            "51-65",
+            "65+"
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "Q3",
+          "title": {
+            "default": "Country",
+            "it": "Nazione"
+          },
+          "titleLocation": "left",
+          "choicesByUrl": {
+            "url": "https://surveyjs.io/api/CountriesExample"
+          }
+        },
+        {
+          "type": "dropdown",
+          "name": "Q4",
+          "title": {
+            "default": "Educational qualification",
+            "it": "Titolo di studio"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Ph.D",
+              "text": {
+                "default": "Ph.D",
+                "it": "Dottorato"
+              }
+            },
+            {
+              "value": "Master's Degree",
+              "text": {
+                "it": "Laurea magistrale"
+              }
+            },
+            {
+              "value": "Bachelor's degree",
+              "text": {
+                "it": "Laurea triennale"
+              }
+            },
+            {
+              "value": "High School",
+              "text": {
+                "it": "Diploma di scuola superiore"
+              }
+            },
+            {
+              "value": "None",
+              "text": {
+                "it": "Nessuno"
+              }
+            }
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "Q5",
+          "title": {
+            "default": "Intended use of the building",
+            "it": "Scopo dell'edificio"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Office",
+              "text": {
+                "it": "Ufficio"
+              }
+            },
+            {
+              "value": "School",
+              "text": {
+                "it": "Scuola"
+              }
+            },
+            {
+              "value": "Museum",
+              "text": {
+                "it": "Museo"
+              }
+            },
+            {
+              "value": "Hotel",
+              "text": {
+                "it": "Hotel"
+              }
+            },
+            {
+              "value": "Hospital",
+              "text": {
+                "it": "Ospedale"
+              }
+            },
+            {
+              "value": "House",
+              "text": {
+                "it": "Abitazione"
+              }
+            }
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "Q6",
+          "title": {
+            "default": "Professional role",
+            "it": "Ruolo professionale"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Engineering",
+              "text": {
+                "it": "Ingegneria"
+              },
+              "visibleIf": "{Q5} = 'Office'"
+            },
+            {
+              "value": "Management",
+              "text": {
+                "it": "Management"
+              },
+              "visibleIf": "{Q5} anyof ['Office', 'Museum', 'Hotel', 'Hospital']"
+            },
+            {
+              "value": "Administration",
+              "text": {
+                "it": "Amministrazione"
+              },
+              "visibleIf": "{Q5} anyof ['Office', 'School', 'Museum', 'Hotel', 'Hospital']"
+            },
+            {
+              "value": "Creative, design and architecture",
+              "text": {
+                "it": "Creatività, design e architettura"
+              },
+              "visibleIf": "{Q5} = 'Office'"
+            },
+            {
+              "value": "Sales and public affairs",
+              "text": {
+                "it": "Vendita e relazioni col pubblico"
+              },
+              "visibleIf": "{Q5} = 'Office'"
+            },
+            {
+              "value": "Teaching and research",
+              "text": {
+                "it": "Insegnamento e ricerca"
+              },
+              "visibleIf": "{Q5} = 'Office'"
+            },
+            {
+              "value": "Services",
+              "text": {
+                "it": "Servizi"
+              },
+              "visibleIf": "{Q5} = 'Office' or {Q5} = 'School'"
+            },
+            {
+              "value": "Head teacher",
+              "text": {
+                "it": "Preside"
+              },
+              "visibleIf": "{Q5} = 'School'"
+            },
+            {
+              "value": "Teacher",
+              "text": {
+                "it": "Insegnante"
+              },
+              "visibleIf": "{Q5} = 'School'"
+            },
+            {
+              "value": "Administration",
+              "visibleIf": "{Q5} = 'School'"
+            },
+            {
+              "value": "Student",
+              "text": {
+                "it": "Studente"
+              },
+              "visibleIf": "{Q5} = 'School'"
+            },
+            {
+              "value": "Tour Guide",
+              "text": {
+                "it": "Guida turistica"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Tourist",
+              "text": {
+                "it": "Turist"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Staff",
+              "text": {
+                "it": "Staff"
+              },
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Customer",
+              "text": {
+                "it": "Cliente"
+              },
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Doctor",
+              "text": {
+                "it": "Dottore"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
+              "value": "Nurse",
+              "text": {
+                "it": "Infermiere"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
+              "value": "OSS",
+              "text": {
+                "it": "OSS"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
+              "value": "Patient",
+              "text": {
+                "it": "Paziente"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
+              "value": "Inhabitant",
+              "text": {
+                "it": "Inquilino"
+              },
+              "visibleIf": "{Q5} = 'House'"
+            },
+            {
+              "value": "Guest",
+              "text": {
+                "it": "Ospite"
+              },
+              "visibleIf": "{Q5} = 'House'"
+            },
+            {
+              "value": "Housekeeper",
+              "text": {
+                "it": "Governante"
+              },
+              "visibleIf": "{Q5} = 'House'"
+            }
+          ],
+          "hasOther": true,
+          "otherText": {
+            "default": "Other",
+            "it": "Altro"
+          }
+        },
+        {
+          "type": "dropdown",
+          "name": "Q7",
+          "title": {
+            "default": "Number of people in the environment",
+            "it": "Numero di persone nell'ambiente"
+          },
+          "titleLocation": "left",
+          "choices": [
+            "1",
+            {
+              "value": "2 to 5",
+              "text": {
+                "it": "da 2 a 5"
+              }
+            },
+            {
+              "value": "6 to 10",
+              "text": {
+                "it": "da 6 a 10"
+              }
+            },
+            {
+              "value": "10+",
+              "text": {
+                "it": "più di 10"
+              }
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q8",
+          "title": {
+            "default": "Visual impariments",
+            "it": "Deficit visivi"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            "No"
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q9",
+          "title": {
+            "default": "Hearing impariments",
+            "it": "Deficit uditivi"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            "No"
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q10",
+          "title": {
+            "default": "Do you smoke?",
+            "it": "Fumi?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            "No"
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q11",
+          "title": {
+            "default": "Do you conduct a healty lifestyle?",
+            "it": "Conduci uno stile di vita sano?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            "No"
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q12",
+          "title": {
+            "default": "Does  unsatisfacotry Indoor Environmental Quality  significantly reduce your work productivity?",
+            "it": "Un'insoddisfacente qualità dell'ambiente riduce significativamente la tua produttività?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": {
+                "it": "Si"
+              }
+            },
+            "No"
+          ],
+          "colCount": 2
+        }
+      ],
+      "title": {
+        "default": "Provide information about yourself",
+        "it": "Fornisci informazioni su di te"
+      }
+    },
+    {
+      "name": "page2",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Q13",
+          "title": {
+            "default": "Do you have control to open or close the windows in your environment?",
+            "it": "Hai la possibilità di aprire o chiudere le finestre nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q14",
+          "title": {
+            "default": "Do you think it is important to have control to open or close the windows?",
+            "it": "Pensi sia importante avere la possibilità di aprire o chiudere le finestre?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q15",
+          "title": {
+            "default": "Do you have control to open or close the solar shading in your environment?",
+            "it": "Hai la possibilità di alzare o abbassare le serrande nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q16",
+          "title": {
+            "default": "Do you think it is important to have control to open or close the solar shading?",
+            "it": "Pensi sia importante avere la possibilità di alzare o abbassare le serrande?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q17",
+          "title": {
+            "default": "Do you have control to switch on-off the electric light in your environment?",
+            "it": "Hai la possibilità di accendere o spegnere le luci nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q18",
+          "title": {
+            "default": "Do you think it is important to have control to switch on-off the electric light?",
+            "it": "Pensi sia importante avere la possibilità di accendere o spegnere le luci?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q19",
+          "title": {
+            "default": "Do you have control to switch on-off the heating system in your environment?",
+            "it": "Hai la possibilità di accendere o spegnere il riscaldamento nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q20",
+          "title": {
+            "default": "Do you think it is important to have control to switch on-off the heating system?",
+            "it": "Pensi sia importante avere la possibilità di accendere o spegnere il riscaldamento?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q21",
+          "title": {
+            "default": "Do you have control to switch on-off the cooling system in your environment?",
+            "it": "Hai la possibilità di accendere o spegnere l'aria condizionata nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q22",
+          "title": {
+            "default": "Do you think it is important to have control to switch on-off the cooling system?",
+            "it": "Pensi sia importante avere la possibilità di accendere o spegnere l'aria condizionata?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q23",
+          "title": {
+            "default": "Do you have the possibility to acoustically isolate yourself from the surrounding environment?",
+            "it": "Hai la possibilità di isolarti acusticamente nel tuo ambiente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        },
+        {
+          "type": "radiogroup",
+          "name": "Q24",
+          "title": {
+            "default": "Do you think it is important to have the possibility to acoustically isolate yourself?",
+            "it": "Pensi sia importante avere la possibilità di isolarti acusticamente?"
+          },
+          "titleLocation": "left",
+          "choices": [
+            {
+              "value": "item1",
+              "text": {
+                "default": "Yes",
+                "it": "Si"
+              }
+            },
+            {
+              "value": "item2",
+              "text": "No"
+            }
+          ],
+          "colCount": 2
+        }
+      ],
+      "title": {
+        "default": "Provide information about your behaviour in the environment",
+        "it": "Fornisci informazioni sul tuo comportamento nell'ambiente"
+      }
+    }
+  ],
+  "showTitle": false,
+  "progressBarType": "questions",
+  "goNextPageAutomatic": true
+}

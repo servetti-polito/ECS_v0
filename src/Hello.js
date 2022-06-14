@@ -28,7 +28,7 @@ export default function Hello(props){
                 </div>
             </div>
             <div style={{ "position": "fixed", "bottom": 50, "left": 50}}>
-                <img src = {props.ita ? "https://i.imgur.com/AxG0Rjf.png" : "https://i.imgur.com/4oRTtkc.png"} width="200" height="100" onClick={()=>{
+                <img alt={props.ita? "Language:english" : "Lingua:italiano" } src = {props.ita ? "https://i.imgur.com/AxG0Rjf.png" : "https://i.imgur.com/4oRTtkc.png"} width="200" height="100" onClick={()=>{
                     if(props.ita)
                         props.setIta(false)
                     else

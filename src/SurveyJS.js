@@ -6,10 +6,6 @@ import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
-import autoRedirect from "./AutoRedirect";
-import {Alert} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {setIn} from "formik";
 
 StylesManager.applyTheme("modern");
 
@@ -33,7 +29,7 @@ function SurveyJS(props) {
   window.onmousemove = resetTimeout*/
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
-    alert("The results are: " + JSON.stringify(sur.data));
+    //alert("The results are: " + JSON.stringify(sur.data));
     if (props.logged==="")
       navigate("/furtherQuestions")
     else

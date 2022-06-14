@@ -5,6 +5,9 @@ import Login from "./Login"
 import Page404 from "./Page404";
 import Thanks from "./Thanks";
 import FurtherQuestions from "./FurtherQuestions";
+import CreateAccount from "./CreateAccount";
+import Personal from "./Personal";
+import ThanksEmail from "./ThanksEmail";
 import "./App.css"
 import {useState} from "react";
 
@@ -33,8 +36,11 @@ function App() {
             <Route path='/' element={<Hello ita={ita} setIta={setIta} useNavigate={useNavigate}/>} />
             <Route path='/login' element={<Login doLogin={doLogin} ita={ita}/>} />
             <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />
-            <Route path='/thanks' element={<Thanks ita={ita} doLogout={doLogout}/>} />
+            <Route path='/thanks' element={<Thanks ita={ita} logged={logged} doLogout={doLogout}/>} />
+            <Route path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
             <Route path='/furtherQuestions' element={<FurtherQuestions ita={ita}/>}/>
+            <Route path='/createAccount' element={<CreateAccount doLogin={doLogin} ita={ita}/>}/>
+            <Route path='/personal' element={<Personal ita={ita}/>}/>
         </Routes>
             {
                 location.pathname!=="/" &&

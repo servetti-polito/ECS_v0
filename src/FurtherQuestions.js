@@ -3,8 +3,11 @@ import {useNavigate} from "react-router-dom";
 
 export default function FurtherQuestions(props){
     let navigate = useNavigate();
-    const routeHome = () => {
-        navigate("/")
+    const routePersonal = () => {
+        navigate("/personal")
+    }
+    const routeCreate = () => {
+        navigate("/createAccount")
     }
 
     return (
@@ -16,8 +19,8 @@ export default function FurtherQuestions(props){
                 </div>
                 <div className="row gap-2">
                     <div style={{"text-align": "center"}} className="row align-items-center">
-                        <div className="col-6 justify-content-center"><button onClick={routeHome} className="btn btn-lg btn-secondary">{props.ita ? "Non ora" : "Not now"}</button></div>
-                        <div className="col-6 justify-content-center"><button disabled className="btn btn-lg btn-primary">{props.ita ? "Crea un account" : "Create an account"}</button></div>
+                        <div className="col-6 justify-content-center"><button onClick={routePersonal} className="btn btn-lg btn-secondary">{props.ita ? "Non ora" : "Not now"}</button></div>
+                        <div className="col-6 justify-content-center"><button onClick={routeCreate} className="btn btn-lg btn-primary">{props.ita ? "Crea un account" : "Create an account"}</button></div>
                     </div>
                 </div>
             </div>
