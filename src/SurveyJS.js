@@ -6,20 +6,31 @@ import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
-//import autoRedirect from "./AutoRedirect";
-//import {Alert} from "react-bootstrap";
-
-const ITA = false;
+import autoRedirect from "./AutoRedirect";
+import {Alert} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {setIn} from "formik";
 
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-    /*let redirect = autoRedirect(500); //5 minutes
-    if(redirect === 0) {
-      props.doLogout();
+  /*const timeout=10*1000;
+  let timeLeft = 10;
+  let startTime
+  let inactivityTimeout = false
+  resetTimeout()
+  function onUserInactivity() {
+      clearTimeout(inactivityTimeout)
       navigate("/")
-    }*/
+  }
+  function resetTimeout() {
+    clearTimeout(inactivityTimeout)
+    inactivityTimeout = setTimeout(onUserInactivity, timeout)
+    startTime = (new Date()).getTime();
+    timeLeft=10;
+  }
+  window.onmousemove = resetTimeout*/
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     alert("The results are: " + JSON.stringify(sur.data));
@@ -30,7 +41,7 @@ function SurveyJS(props) {
   }
   //LAYOUT E LINGUA////////////////////////////////////////////////////////////////////////////////////
   const survey = new Model(surveyJSON);
-  if(ITA)
+  if(props.ita)
     survey.locale='it'
   //ANIMAZIONI//////////////////////////////////////////////////////////////////////////////////////////
   var doAnimantion = true;
@@ -61,11 +72,11 @@ function SurveyJS(props) {
   });
 
   return <>
-    { /*redirect < 60 ?
-        <Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {redirect} seconds</h3></Alert> :
-        null*/
+    {   //timeLeft < 10 ?
+        //<Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {timeLeft} seconds</h3></Alert>
+        //:null
     }
-    <Survey id = 'survey' model = {survey} onComplete={sendDataToServer} />
+    <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
   </>
 }
 export default SurveyJS;

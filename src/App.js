@@ -10,6 +10,7 @@ import {useState} from "react";
 
 function App() {
     const [logged, setLogged] = useState("");
+    const [ita, setIta] = useState(false);
 
     const location = useLocation();
     let navigate = useNavigate();
@@ -28,12 +29,12 @@ function App() {
                     : null
             }
         <Routes>
-            <Route path='*' element={<Page404/>} />
-            <Route path='/' element={<Hello useNavigate={useNavigate}/>} />
-            <Route path='/login' element={<Login doLogin={doLogin}/>} />
-            <Route path='/survey' element={<SurveyJS logged={logged} doLogout={doLogout}/>} />
-            <Route path='/thanks' element={<Thanks doLogout={doLogout}/>} />
-            <Route path='/furtherQuestions' element={<FurtherQuestions/>}/>
+            <Route path='*' element={<Page404 ita={ita}/>} />
+            <Route path='/' element={<Hello ita={ita} setIta={setIta} useNavigate={useNavigate}/>} />
+            <Route path='/login' element={<Login doLogin={doLogin} ita={ita}/>} />
+            <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />
+            <Route path='/thanks' element={<Thanks ita={ita} doLogout={doLogout}/>} />
+            <Route path='/furtherQuestions' element={<FurtherQuestions ita={ita}/>}/>
         </Routes>
             {
                 location.pathname!=="/" &&

@@ -18,9 +18,9 @@ function Login(props) {
                         validate={values => {
                             const errors = {};
                             if (!values.email)
-                            {errors.email = 'Required';}
+                            {props.ita ? errors.email = "Campo richiesto" : errors.email = 'Required'}
                             else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
-                            {errors.email = 'Invalid email address';}
+                            {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
@@ -66,7 +66,7 @@ function Login(props) {
                                 </div>
                                 <div style={{"text-align": "center"}} className="row align-items-center">
                                     <div className="col-6 justify-content-center"><button onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                    <div className="col-6 justify-content-center"><button type="submit" className="btn btn-primary">Submit</button></div>
+                                    <div className="col-6 justify-content-center"><button type="submit" className="btn btn-primary">{props.ita ? "Accedi" : "Submit"}</button></div>
                                 </div>
                             </form>
                         )}
