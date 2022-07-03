@@ -1,4 +1,4 @@
-import './Hello.css';
+import './CSS/Hello.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Hello(props){

@@ -1,19 +1,19 @@
 import 'survey-core/modern.min.css';
 import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
-import "./Hello.css";
+//import "./CSS/Hello.css";
 import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
-import "./SurveyJS.css"
+import * as css from "./CSS/SurveyJS.css";
 
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
 
   let navigate = useNavigate();
-  /*const timeout=1000*60*5; //5 minuti
+  const timeout=1000*60*5; //5 minuti
   let inactivityTimeout = false
   resetTimeout()
   function onUserInactivity() {
@@ -26,7 +26,8 @@ function SurveyJS(props) {
     clearTimeout(inactivityTimeout)
     inactivityTimeout = setTimeout(onUserInactivity, timeout)
   }
-  window.onmousemove = resetTimeout;*/
+  window.onmousemove = resetTimeout;
+
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     //alert("The results are: " + JSON.stringify(sur.data));
@@ -95,7 +96,8 @@ function SurveyJS(props) {
   return(
   <div className="container">
     <div className='row h-100 align-items-center'>
-      <div className='col-12'><Survey id = 'survey' model = {survey} onComplete={sendDataToServer} /></div>
+      <div className='col-12'>
+        <Survey id = 'survey' css={css} model = {survey} onComplete={sendDataToServer} /></div>
     </div>
   </div>);
 
