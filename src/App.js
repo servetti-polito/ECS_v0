@@ -47,7 +47,7 @@ function App() {
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
                 location.pathname!=="/furtherQuestions" ?
-                <button className="btn btn-md btn-secondary" type="button" style={{ "position": "fixed", "bottom": 50, "right": 50}} onClick={routeHome}>Home</button> :
+                <a style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline"}} onClick={routeHome} >Home</a> :
                 null
             }
         </>

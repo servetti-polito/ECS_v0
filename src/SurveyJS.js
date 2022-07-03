@@ -6,27 +6,27 @@ import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
+import "./SurveyJS.css"
 
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
+
   let navigate = useNavigate();
-  /*const timeout=10*1000;
-  let timeLeft = 10;
-  let startTime
+  /*const timeout=1000*60*5; //5 minuti
   let inactivityTimeout = false
   resetTimeout()
   function onUserInactivity() {
       clearTimeout(inactivityTimeout)
+      if(props.logged)
+        props.doLogout();
       navigate("/")
   }
   function resetTimeout() {
     clearTimeout(inactivityTimeout)
     inactivityTimeout = setTimeout(onUserInactivity, timeout)
-    startTime = (new Date()).getTime();
-    timeLeft=10;
   }
-  window.onmousemove = resetTimeout*/
+  window.onmousemove = resetTimeout;*/
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     //alert("The results are: " + JSON.stringify(sur.data));
@@ -36,11 +36,11 @@ function SurveyJS(props) {
       navigate("/thanks")
   }
   //LAYOUT E LINGUA////////////////////////////////////////////////////////////////////////////////////
-  const survey = new Model(surveyJSON);
+  let survey = new Model(surveyJSON);
   if(props.ita)
     survey.locale='it'
   //ANIMAZIONI//////////////////////////////////////////////////////////////////////////////////////////
-  var doAnimantion = true;
+  let doAnimantion = true;
   survey.onCurrentPageChanging.add(function (sender, options) {
     if (!doAnimantion) return;
     options.allowChanging = false;
@@ -66,13 +66,38 @@ function SurveyJS(props) {
     wait(1000)
     $(document.getElementById("survey")).slideDown()
   });
+//CSS/////////////////////////////////////////////////////////////////////////////////
+  survey.onUpdateQuestionCssClasses.add((sur, options) => {
+    let classes = options.cssClasses
+    if(options.question.name==="Q4"||options.question.name==="Q3")
+      classes.title += " thermal noBorder"
+    else if(options.question.name==="Q5"||options.question.name==="Q6")
+      classes.title += " acoustic noBorder"
+    else if(options.question.name==="Q7"||options.question.name==="Q8"||options.question.name==="Q9")
+      classes.title += " visual noBorder"
+    else if(options.question.name==="Q10"||options.question.name==="Q11")
+      classes.title += " air noBorder"
+  })
+  // vvv doesn't work
+  survey.onUpdatePanelCssClasses.add(function(sur, options) {
+    let classes = options.cssClasses
+    console.log("Classes: "+JSON.stringify(classes))
+    if (options.panel.name === "P3" || options.panel.name === "P2")
+      classes.title += " thermal noBorder"
+    else if (options.panel.name === "P4" || options.panel.name === "P5")
+      classes.title += " acoustic noBorder"
+    else if (options.panel.name === "P6" || options.panel.name === "P7" || options.panel.name === "P8")
+      classes.title += " visual noBorder"
+    else if (options.panel.name === "P9" || options.panel.name === "P10")
+      classes.title += " air noBorder"
+  });
+  /////////////////////////////////////////////////////////////////////////////////
+  return(
+  <div className="container">
+    <div className='row h-100 align-items-center'>
+      <div className='col-12'><Survey id = 'survey' model = {survey} onComplete={sendDataToServer} /></div>
+    </div>
+  </div>);
 
-  return <>
-    {   //timeLeft < 10 ?
-        //<Alert><h1>Are you still there?</h1><h3>You will be redirected {props.logged ? "and logged out" : null} in {timeLeft} seconds</h3></Alert>
-        //:null
-    }
-    <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
-  </>
 }
 export default SurveyJS;

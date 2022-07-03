@@ -9,8 +9,8 @@
           "type": "radiogroup",
           "name": "Q0",
           "title": {
-            "it": "Sei soddisfatto del tuo ambiente di lavoro?",
-            "default": "Are you satisfied with your environment at work?"
+            "it": "Sei soddisfatto del tuo ambiente di lavoro?*",
+            "default": "Are you satisfied with your environment at work?*"
           },
           "isRequired": true,
           "choices": [
@@ -85,7 +85,12 @@
               "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             }
           ],
-          "colCount": 4
+          "colCount": 4,
+          "imageHeight": 200,
+          "imageWidth": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200
         }
       ]
     },
@@ -96,8 +101,8 @@
           "type": "imagepicker",
           "name": "Q2",
           "title": {
-            "it": "La tua risposta è stata negativa. Quali aspetti ambientali non ti soddisfano?",
-            "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?"
+            "it": "La tua risposta è stata negativa. Quali aspetti ambientali non ti soddisfano?*",
+            "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?*"
           },
           "isRequired": true,
           "choices": [
@@ -107,7 +112,7 @@
                 "it": "COMFORT TERMICO",
                 "default": "THERMAL  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/LmfxrC1.png"
+              "imageLink": "https://i.imgur.com/aC9LHo5.png"
             },
             {
               "value": "ACOUSTIC  COMFORT",
@@ -115,7 +120,7 @@
                 "it": "COMFORT ACUSTICO",
                 "default": "ACOUSTIC  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/Dkg8kHZ.png"
+              "imageLink": "https://i.imgur.com/R2jQU45.png"
             },
             {
               "value": "VISUAL  COMFORT",
@@ -123,7 +128,7 @@
                 "it": "COMFORT VISIVO",
                 "default": "VISUAL  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/155e3U0.png"
+              "imageLink": "https://i.imgur.com/o0Fi4Ci.png"
             },
             {
               "value": "INDOOR AIR  QUALITY",
@@ -131,10 +136,15 @@
                 "it": "QUALITA' DELL'ARIA",
                 "default": "INDOOR AIR  QUALITY"
               },
-              "imageLink": "https://i.imgur.com/A7iMUlM.png"
+              "imageLink": "https://i.imgur.com/Q1JXqKF.png"
             }
           ],
           "colCount": 4,
+          "imageHeight": 200,
+          "imageWidth": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200,
           "showLabel": true,
           "multiSelect": true
         }
@@ -148,8 +158,8 @@
           "type": "radiogroup",
           "name": "Q3",
           "title": {
-            "it": "Indica nella seguente scala come ti senti ora.",
-            "default": "Please indicate on the following scale how YOU feel NOW."
+            "it": "Indica nella seguente scala come ti senti ora.*",
+            "default": "Please indicate on the following scale how YOU feel NOW.*"
           },
           "isRequired": true,
           "choices": [
@@ -218,8 +228,8 @@
           "type": "imagepicker",
           "name": "Q4",
           "title": {
-            "default": "Please indicate on the following scale how YOU find the \nAIR VELOCITY in your environment NOW.",
-            "it": "Indica nella seguente scala la velocità dell'aria presente ora nell'ambiente"
+            "default": "Please indicate on the following scale how YOU find the AIR VELOCITY in your environment NOW.*",
+            "it": "Indica nella seguente scala la velocità dell'aria presente ora nell'ambiente*"
           },
           "isRequired": true,
           "choices": [
@@ -256,6 +266,10 @@
               "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             }
           ],
+          "imageHeight": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200,
           "showLabel": true
         }
       ],
@@ -273,8 +287,8 @@
           "type": "imagepicker",
           "name": "Q5",
           "title": {
-            "it": "Indica nella seguente scala il rumore presente ora nell'ambiente",
-            "default": "Please indicate on the following scale how YOU find the \nNOISE in your environment NOW."
+            "it": "Indica nella seguente scala il rumore presente ora nell'ambiente*",
+            "default": "Please indicate on the following scale how YOU find the NOISE in your environment NOW.*"
           },
           "isRequired": true,
           "choices": [
@@ -312,6 +326,11 @@
             }
           ],
           "colCount": 4,
+          "imageHeight": 200,
+          "imageWidth": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200,
           "showLabel": true
         }
       ],
@@ -328,8 +347,8 @@
           "type": "radiogroup",
           "name": "Q6",
           "title": {
-            "default": "Please indicate any sources of noise YOU can hear\nin your environment NOW. ",
-            "it": "Indica quali fonti di rumore si sentono ora nell'ambiente"
+            "default": "Please indicate any sources of noise YOU can hear in your environment NOW.*",
+            "it": "Indica quali fonti di rumore si sentono ora nell'ambiente*"
           },
           "isRequired": true,
           "choices": [
@@ -389,8 +408,8 @@
           "type": "imagepicker",
           "name": "Q7",
           "title": {
-            "default": "Please indicate on the following scale how YOU find your \nVISUAL environment NOW.",
-            "it": "Indica nella seguente scala il tuo comfort visivo attuale."
+            "default": "Please indicate on the following scale how YOU find your VISUAL environment NOW.*",
+            "it": "Indica nella seguente scala il tuo comfort visivo attuale.*"
           },
           "isRequired": true,
           "choices": [
@@ -428,6 +447,11 @@
             }
           ],
           "colCount": 4,
+          "imageHeight": 200,
+          "imageWidth": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200,
           "showLabel": true
         }
       ],
@@ -444,8 +468,8 @@
           "type": "radiogroup",
           "name": "Q8",
           "title": {
-            "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.",
-            "it": "Indica quali fonti di abbagliamento può vedere nell'ambiente."
+            "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.*",
+            "it": "Indica quali fonti di abbagliamento può vedere nell'ambiente.*"
           },
           "isRequired": true,
           "choices": [
@@ -505,8 +529,8 @@
           "type": "radiogroup",
           "name": "Q9",
           "title": {
-            "default": "Please rate on the following scale how YOU would like your visual environment to be NOW.",
-            "it": "Indica nella seguente scala come preferiresti che il tuo ambiente fosse."
+            "default": "Please rate on the following scale how YOU would like your visual environment to be NOW.*",
+            "it": "Indica nella seguente scala come preferiresti che il tuo ambiente fosse.*"
           },
           "isRequired": true,
           "choices": [
@@ -576,8 +600,8 @@
           "type": "imagepicker",
           "name": "Q10",
           "title": {
-            "default": "Please indicate on the following scale how YOU find the AIR QUALITY in your environment NOW.",
-            "it": "Indica nella seguente scala come ritieni la qualità dell'aria."
+            "default": "Please indicate on the following scale how YOU find the AIR QUALITY in your environment NOW.*",
+            "it": "Indica nella seguente scala come ritieni la qualità dell'aria.*"
           },
           "isRequired": true,
           "choices": [
@@ -615,6 +639,11 @@
             }
           ],
           "colCount": 4,
+          "imageHeight": 200,
+          "imageWidth": 200,
+          "minImageHeight": 200,
+          "maxImageWidth": 200,
+          "maxImageHeight": 200,
           "showLabel": true
         }
       ],
@@ -631,8 +660,8 @@
           "type": "radiogroup",
           "name": "Q11",
           "title": {
-            "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.",
-            "it": "Indica quali fonti di inquinamento influenzano la qualità dell'aria in questo momento."
+            "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.*",
+            "it": "Indica quali fonti di inquinamento influenzano la qualità dell'aria in questo momento.*"
           },
           "isRequired": true,
           "choices": [
@@ -688,5 +717,6 @@
   "showTitle": false,
   "showCompletedPage": false,
   "goNextPageAutomatic": true,
+  "questionTitlePattern": "numTitle",
   "widthMode": "responsive"
 }

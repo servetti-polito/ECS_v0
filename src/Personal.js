@@ -18,8 +18,8 @@ function Personal(props) {
     const survey = new Model(surveyJSON);
     if(props.ita)
         survey.locale='it'
-    return <>
+    return <div className='container-fluid'>
         <Survey id = 'survey' css='position: relative' model = {survey} onComplete={sendDataToServer} />
-    </>
+    </div>
 }
 export default Personal;

@@ -2,7 +2,6 @@ html, body {
   height: 100vh;
 }
 
-/* CSS only for examples not required for centering */
 .container {
   height: 100vh;
 }
@@ -16,4 +15,19 @@ html, body {
   background: #eee;
   max-width: 360px;
   border: 1px dotted #bbb;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #FF9724 !important;
+  border-color: #FF9724 !important;
+}
+
+.btn-primary:focus,.btn-primary:active {
+  outline: none !important;
+  box-shadow: 0px 0px 10px 1px #FF9724 !important;
+}
+
+.btn-secondary:focus,.btn-secondary:active {
+  outline: none !important;
+  box-shadow: 0px 0px 10px 1px grey !important;
 }

@@ -1,0 +1,102 @@
+.thermal {
+    background-color: rgba(167,101,102,1);
+}
+.acoustic {
+    background-color: rgba(132, 151, 131,1);
+}
+.visual {
+    background-color: rgba(236, 203, 123,1);
+}
+.air {
+    background-color: rgba(196, 211, 224,1);
+}
+
+.thermal_title{
+    border-bottom: 1px solid  rgba(167,101,102,1) !important;
+}
+.acoustic_title{
+    border-bottom: 1px solid  rgba(132, 151, 131,1) !important;
+}
+.visual_title{
+    border-bottom: 1px solid  rgba(236, 203, 123,1) !important;
+}
+.air_title{
+    border-bottom: 1px solid  rgba(196, 211, 224,1) !important;
+}
+
+.noBorder
+{
+    border-bottom: 0px !important;
+}
+
+.sv-footer__prev-btn, .sv-footer__next-btn, .sv-footer__complete-btn {
+    background-color:#FF9724 !important;
+}
+
+.sv-container-modern {
+    margin: 0 auto;
+}
+.sv-imagepicker {
+    text-align: center;
+    margin: 0 auto !important;
+}
+
+.sv-title {
+    text-align: center;
+    padding: 50px;
+    border-bottom: 1px solid #FF9724;
+    padding-bottom: 25px;
+    font-size: 175%
+}
+
+.sv_qstn .sv-q-column-2, .sv-question .sv-q-column-2 {
+    width: 50%;
+    padding-right: 1em;
+    box-sizing: border-box;
+    word-break: break-word;
+    padding-top: 25px;
+    font-size: 175%;
+    text-align: center;
+    margin: auto;
+}
+
+.sv-selectbase__label {
+    position: relative;
+    cursor: inherit;
+    display: inline-block !important;
+    margin-left: 41px;
+    min-height: 30px;
+    border: 1px;
+    border-color: #FF9724;
+}
+
+.sv-item__svg {
+    position: relative !important;
+}
+
+.sv-question__title--answer {
+    background-color: transparent !important;
+}
+
+.sv-item__control{
+    display: none;
+}
+
+.sv-imagepicker__control{
+    background-color: #FF9724 !important;
+}
+
+.sv-root-modern .sv-imagepicker__item--checked .sv-imagepicker__image {
+    background-color: #FF9724 !important;
+    border-color: #FF9724 !important;
+    border-radius: 50%;
+}
+
+.sv-comment {
+    border-color: #FF9724 !important;
+}
+
+.sv-text
+{
+    border-color: lightgrey !important;
+}
