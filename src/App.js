@@ -8,7 +8,6 @@ import FurtherQuestions from "./FurtherQuestions";
 import CreateAccount from "./CreateAccount";
 import Personal from "./Personal";
 import ThanksEmail from "./ThanksEmail";
-import "./App.css"
 import {useState} from "react";
 
 function App() {

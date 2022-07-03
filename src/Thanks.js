@@ -11,7 +11,8 @@ export default function Thanks(props){
 
     return (
             <div className="container">
-            <div className="row h-75 align-items-center">
+                <div className="row h-25" />
+            <div className="row h-50 align-items-center">
                 <div className="col-12">
                     <h1 className="display-1 text-center">{props.ita ? "Grazie per aver completato il sondaggio" : "Thanks for completing the survey"}</h1>
                 </div>

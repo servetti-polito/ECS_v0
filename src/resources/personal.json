@@ -7,7 +7,6 @@
         {
           "type": "radiogroup",
           "name": "Q1",
-          "maxWidth": "inherit",
           "title": {
             "default": "Gender",
             "it": "Genere"
@@ -423,11 +422,8 @@
         {
           "type": "radiogroup",
           "name": "Q12",
-          "width": "1160px",
-          "minWidth": "1160px",
-          "maxWidth": "1160px",
           "title": {
-            "default": "Does  unsatisfacotry Indoor Environmental Quality  significantly reduce your work productivity?",
+            "default": "Does an unsatisfacotry Indoor Environmental Quality significantly reduce your work productivity?",
             "it": "Un'insoddisfacente qualità dell'ambiente riduce significativamente la tua produttività?"
           },
           "titleLocation": "left",
@@ -467,10 +463,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -490,10 +483,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -513,10 +503,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -536,10 +523,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -559,10 +543,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -582,10 +563,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -605,10 +583,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -628,10 +603,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -651,10 +623,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -674,10 +643,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -697,10 +663,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         },
@@ -720,10 +683,7 @@
                 "it": "Si"
               }
             },
-            {
-              "value": "No",
-              "text": "No"
-            }
+            "No"
           ],
           "colCount": 2
         }

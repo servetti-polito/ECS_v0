@@ -2,6 +2,7 @@ import 'survey-core/modern.min.css';
 import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
 import "./Hello.css";
+import "./Personal.css";
 import * as surveyJSON from './resources/personal.json';
 import { useNavigate } from "react-router-dom";
 

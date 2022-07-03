@@ -9,8 +9,9 @@ function Login(props) {
 
     return (
         <div className="container">
+            <div style={{"padding":"50px"}} />
             <div className="row h-75 align-items-center">
-                <div className="col-12">
+                <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">Login</h1>
                 </div>
                     <Formik
@@ -41,7 +42,7 @@ function Login(props) {
                           }) => (
                             <form onSubmit={handleSubmit}>
                                 <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                    <div style={{"text-align": "right"}} className="col-3">
+                                    <div className="col-3">
                                         <label htmlFor="email"><h3>Email</h3></label>
                                     </div>
                                     <div className="col-9">
@@ -53,7 +54,7 @@ function Login(props) {
                                     </div>
                                 </div>
                                 <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                    <div style={{"text-align": "right"}} className="col-3">
+                                    <div className="col-3">
                                         <label htmlFor="password"><h3>Password</h3></label>
                                     </div>
                                     <div className="col-9">
@@ -64,9 +65,9 @@ function Login(props) {
                                         }
                                     </div>
                                 </div>
-                                <div style={{"text-align": "center"}} className="row align-items-center">
-                                    <div className="col-6 justify-content-center"><button onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                    <div className="col-6 justify-content-center"><button type="submit" className="btn btn-primary">{props.ita ? "Accedi" : "Submit"}</button></div>
+                                <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">
+                                    <div className="col-6 justify-content-center"><button style={{"width":"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
+                                    <div className="col-6 justify-content-center"><button style={{"width":"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Accedi" : "Submit"}</button></div>
                                 </div>
                             </form>
                         )}

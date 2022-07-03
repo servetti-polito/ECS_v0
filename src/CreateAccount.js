@@ -9,8 +9,9 @@ function CreateAccount(props) {
 
     return (
         <div className="container">
-            <div className="row h-75 align-items-center">
-                <div className="col-12">
+
+            <div className="row h-25 align-items-center">
+                <div className="col-12" style={{"padding":"100px"}}>
                     <h1 className="display-1 text-center">{props.ita ? "Registrati":"Sign in"}</h1>
                 </div>
                 <Formik
@@ -99,9 +100,9 @@ function CreateAccount(props) {
                                     }
                                 </div>
                             </div>
-                            <div style={{"text-align": "center"}} className="row align-items-center">
-                                <div className="col-6 justify-content-center"><button onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                <div className="col-6 justify-content-center"><button type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Sign in"}</button></div>
+                            <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
+                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
+                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Sign in"}</button></div>
                             </div>
                         </form>
                     )}
