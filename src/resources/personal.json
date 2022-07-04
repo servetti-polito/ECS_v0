@@ -448,13 +448,28 @@
       "name": "page2",
       "elements": [
         {
+          "type": "html",
+          "name": "T1",
+          "title": {
+            "default": "Do you have control on...?",
+            "it": "Hai la possibilità di ... ?"
+          },
+          "hideNumber": true,
+          "html": {
+            "default": "<h3> Do you have control on…?</h3>",
+            "it": "<h3>Hai la possibilità di ... ?</h3>"
+          }
+        },
+        {
           "type": "radiogroup",
           "name": "Q13",
+          "indent": 2,
           "title": {
-            "default": "Do you have control to open or close the windows in your environment?",
-            "it": "Hai la possibilità di aprire o chiudere le finestre nel tuo ambiente?"
+            "default": "windows opening  and closing",
+            "it": "aprire e chiudere le finestre"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "item1",
@@ -470,11 +485,13 @@
         {
           "type": "radiogroup",
           "name": "Q14",
+          "indent": 2,
           "title": {
-            "default": "Do you think it is important to have control to open or close the windows?",
-            "it": "Pensi sia importante avere la possibilità di aprire o chiudere le finestre?"
+            "default": "solar shading",
+            "it": "proteggerti dal sole"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "item1",
@@ -490,11 +507,13 @@
         {
           "type": "radiogroup",
           "name": "Q15",
+          "indent": 2,
           "title": {
-            "default": "Do you have control to open or close the solar shading in your environment?",
-            "it": "Hai la possibilità di alzare o abbassare le serrande nel tuo ambiente?"
+            "default": "electric lightings",
+            "it": "illuminazione elettrica"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "item1",
@@ -510,11 +529,13 @@
         {
           "type": "radiogroup",
           "name": "Q16",
+          "indent": 2,
           "title": {
-            "default": "Do you think it is important to have control to open or close the solar shading?",
-            "it": "Pensi sia importante avere la possibilità di alzare o abbassare le serrande?"
+            "default": "heating system",
+            "it": "riscaldamento"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -530,11 +551,13 @@
         {
           "type": "radiogroup",
           "name": "Q17",
+          "indent": 2,
           "title": {
-            "default": "Do you have control to switch on-off the electric light in your environment?",
-            "it": "Hai la possibilità di accendere o spegnere le luci nel tuo ambiente?"
+            "default": "cooling system",
+            "it": "climatizzatore"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -550,11 +573,13 @@
         {
           "type": "radiogroup",
           "name": "Q18",
+          "indent": 2,
           "title": {
-            "default": "Do you think it is important to have control to switch on-off the electric light?",
-            "it": "Pensi sia importante avere la possibilità di accendere o spegnere le luci?"
+            "default": "reducing annoyance from noise",
+            "it": "isolarsi dal rumore"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -568,13 +593,28 @@
           "colCount": 2
         },
         {
+          "type": "html",
+          "name": "T2",
+          "title": {
+            "default": "Do you think it is important to have control on…?",
+            "it": "Pensi sia importante avere il controllo su...?"
+          },
+          "hideNumber": true,
+          "html": {
+            "default": "<h3>Do you think it is important to have control on…?</h3>",
+            "it": "<h3>Pensi sia importante avere il controllo su...?</h3>"
+          }
+        },
+        {
           "type": "radiogroup",
           "name": "Q19",
+          "indent": 2,
           "title": {
-            "default": "Do you have control to switch on-off the heating system in your environment?",
-            "it": "Hai la possibilità di accendere o spegnere il riscaldamento nel tuo ambiente?"
+            "default": "windows opening and closing",
+            "it": "aprire e chiudere le finestre"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -590,11 +630,13 @@
         {
           "type": "radiogroup",
           "name": "Q20",
+          "indent": 2,
           "title": {
-            "default": "Do you think it is important to have control to switch on-off the heating system?",
-            "it": "Pensi sia importante avere la possibilità di accendere o spegnere il riscaldamento?"
+            "default": "solar shading",
+            "it": "proteggersi dal sole"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -610,11 +652,13 @@
         {
           "type": "radiogroup",
           "name": "Q21",
+          "indent": 2,
           "title": {
-            "default": "Do you have control to switch on-off the cooling system in your environment?",
-            "it": "Hai la possibilità di accendere o spegnere l'aria condizionata nel tuo ambiente?"
+            "default": "electric lightings",
+            "it": "illuminazione elettrica"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -630,11 +674,13 @@
         {
           "type": "radiogroup",
           "name": "Q22",
+          "indent": 2,
           "title": {
-            "default": "Do you think it is important to have control to switch on-off the cooling system?",
-            "it": "Pensi sia importante avere la possibilità di accendere o spegnere l'aria condizionata?"
+            "default": "heating system",
+            "it": "riscaldamento"
           },
           "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -650,31 +696,13 @@
         {
           "type": "radiogroup",
           "name": "Q23",
+          "indent": 2,
           "title": {
-            "default": "Do you have the possibility to acoustically isolate yourself from the surrounding environment?",
-            "it": "Hai la possibilità di isolarti acusticamente nel tuo ambiente?"
+            "default": "cooling system",
+            "it": "condizionatore"
           },
           "titleLocation": "left",
-          "choices": [
-            {
-              "value": "Yes",
-              "text": {
-                "default": "Yes",
-                "it": "Si"
-              }
-            },
-            "No"
-          ],
-          "colCount": 2
-        },
-        {
-          "type": "radiogroup",
-          "name": "Q24",
-          "title": {
-            "default": "Do you think it is important to have the possibility to acoustically isolate yourself?",
-            "it": "Pensi sia importante avere la possibilità di isolarti acusticamente?"
-          },
-          "titleLocation": "left",
+          "hideNumber": true,
           "choices": [
             {
               "value": "Yes",
@@ -695,7 +723,6 @@
     }
   ],
   "showTitle": false,
-  "progressBarType": "questions",
   "goNextPageAutomatic": true,
   "widthMode": "responsive"
 }
