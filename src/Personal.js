@@ -10,7 +10,8 @@ StylesManager.applyTheme("modern");
 function Personal(props) {
     let navigate = useNavigate();
     //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
-    function sendDataToServer(sur) {
+    //function sendDataToServer(sur) {
+    function sendDataToServer() {
         //alert("The results are: " + JSON.stringify(sur.data));
         navigate("/thanks")
     }
@@ -19,7 +20,7 @@ function Personal(props) {
     if(props.ita)
         survey.locale='it'
     return <div className='container-fluid'>
-        <Survey id = 'survey' css={css} model = {survey} onComplete={sendDataToServer} />
+        <Survey id = 'personal' css={css} model = {survey} onComplete={sendDataToServer} />
     </div>
 }
 export default Personal;

@@ -11,7 +11,7 @@ function CreateAccount(props) {
         <div className="container">
 
             <div className="row h-25 align-items-center">
-                <div className="col-12" style={{"padding":"100px"}}>
+                <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">{props.ita ? "Registrati":"Sign in"}</h1>
                 </div>
                 <Formik

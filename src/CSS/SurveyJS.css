@@ -26,22 +26,23 @@
 
 .noBorder
 {
-    border-bottom: 0px !important;
+    border-bottom: 0 !important;
 }
 
-.sv-footer__prev-btn, .sv-footer__next-btn, .sv-footer__complete-btn {
-    background-color:#FF9724 !important;
+#surveyjs .sv-footer__prev-btn, #surveyjs .sv-footer__next-btn, #surveyjs .sv-footer__complete-btn {
+    background-color: #FF9724 !important;
 }
 
-.sv-container-modern {
+#surveyjs .sv-container-modern {
     margin: 0 auto;
 }
-.sv-imagepicker {
+
+#surveyjs .sv-imagepicker {
     text-align: center;
     margin: 0 auto !important;
 }
 
-.sv-title {
+#surveyjs .sv-title {
     text-align: center;
     padding: 50px;
     border-bottom: 1px solid #FF9724;
@@ -49,7 +50,7 @@
     font-size: 175%
 }
 
-.sv_qstn .sv-q-column-2, .sv-question .sv-q-column-2 {
+#surveyjs .sv_qstn .sv-q-column-2, #surveyjs .sv-question .sv-q-column-2 {
     width: 50%;
     padding-right: 1em;
     box-sizing: border-box;
@@ -60,7 +61,7 @@
     margin: auto;
 }
 
-.sv-selectbase__label {
+#surveyjs .sv-selectbase__label {
     position: relative;
     cursor: inherit;
     display: inline-block !important;
@@ -70,19 +71,19 @@
     border-color: #FF9724;
 }
 
-.sv-item__svg {
+#surveyjs .sv-item__svg {
     position: relative !important;
 }
 
-.sv-question__title--answer {
+#surveyjs .sv-question__title--answer {
     background-color: transparent !important;
 }
 
-.sv-item__control{
+.sv-item__control {
     display: none;
 }
 
-.sv-imagepicker__control{
+.sv-imagepicker__control {
     background-color: #FF9724 !important;
 }
 
@@ -92,11 +93,10 @@
     border-radius: 50%;
 }
 
-.sv-comment {
+#surveyjs .sv-comment {
     border-color: #FF9724 !important;
 }
 
-.sv-text
-{
+#surveyjs .sv-text {
     border-color: lightgrey !important;
 }

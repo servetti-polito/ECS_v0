@@ -23,13 +23,15 @@ function SurveyJS(props) {
       navigate("/")
   }
   function resetTimeout() {
+    console.log("timer reset")
     clearTimeout(inactivityTimeout)
     inactivityTimeout = setTimeout(onUserInactivity, timeout)
   }
-  window.onmousemove = resetTimeout;
+  document.onmousemove = resetTimeout;
 
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
-  function sendDataToServer(sur) {
+  //function sendDataToServer(sur) {
+  function sendDataToServer() {
     //alert("The results are: " + JSON.stringify(sur.data));
     if (props.logged==="")
       navigate("/furtherQuestions")
@@ -70,6 +72,7 @@ function SurveyJS(props) {
 //CSS/////////////////////////////////////////////////////////////////////////////////
   survey.onUpdateQuestionCssClasses.add((sur, options) => {
     let classes = options.cssClasses
+    console.log(JSON.stringify(classes));
     if(options.question.name==="Q4"||options.question.name==="Q3")
       classes.title += " thermal noBorder"
     else if(options.question.name==="Q5"||options.question.name==="Q6")
@@ -79,25 +82,12 @@ function SurveyJS(props) {
     else if(options.question.name==="Q10"||options.question.name==="Q11")
       classes.title += " air noBorder"
   })
-  // vvv doesn't work
-  survey.onUpdatePanelCssClasses.add(function(sur, options) {
-    let classes = options.cssClasses
-    console.log("Classes: "+JSON.stringify(classes))
-    if (options.panel.name === "P3" || options.panel.name === "P2")
-      classes.title += " thermal noBorder"
-    else if (options.panel.name === "P4" || options.panel.name === "P5")
-      classes.title += " acoustic noBorder"
-    else if (options.panel.name === "P6" || options.panel.name === "P7" || options.panel.name === "P8")
-      classes.title += " visual noBorder"
-    else if (options.panel.name === "P9" || options.panel.name === "P10")
-      classes.title += " air noBorder"
-  });
   /////////////////////////////////////////////////////////////////////////////////
   return(
   <div className="container">
     <div className='row h-100 align-items-center'>
       <div className='col-12'>
-        <Survey id = 'survey' css={css} model = {survey} onComplete={sendDataToServer} /></div>
+        <Survey id = 'surveyjs' css={css} model = {survey} onComplete={sendDataToServer} /></div>
     </div>
   </div>);
 
