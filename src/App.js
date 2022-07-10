@@ -27,7 +27,7 @@ function App() {
         <>
             {
                 logged!=="" ?
-                    <h3 style={{ "position": "fixed", "top": 50, "right": 50}} > Hello, {logged} </h3>
+                    <h3 style={{ "position": "fixed", "top": 50, "left": 50}} > Hello, {logged} </h3>
                     : null
             }
         <Routes>
@@ -46,7 +46,7 @@ function App() {
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
                 location.pathname!=="/furtherQuestions" ?
-                <a style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline"}} onClick={routeHome} >Home</a> :
+                <p style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline"}} onClick={routeHome} >Home</p> :
                 null
             }
         </>

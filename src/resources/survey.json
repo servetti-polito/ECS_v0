@@ -52,13 +52,13 @@
               "value": "2_grey",
               "visibleIf": "{Q0} = 'No'",
               "enableIf": "false",
-              "imageLink": "https://i.imgur.com/kXVvLzp.png"
+              "imageLink": "https://i.imgur.com/TI1YRPc.png"
             },
             {
               "value": "2",
               "visibleIf": "{Q0} = 'Yes'",
               "enableIf": "{Q0} = 'Yes'",
-              "imageLink": "https://i.imgur.com/8KohzaB.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
               "value": "3_grey",
@@ -247,7 +247,7 @@
                 "default": "Slightly  draughty",
                 "it": "Lievi correnti d'aria"
               },
-              "imageLink": "https://i.imgur.com/8KohzaB.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
               "value": "3",
@@ -306,7 +306,7 @@
                 "it": "Lievemente fastidioso",
                 "default": "Slightly  annoying"
               },
-              "imageLink": "https://i.imgur.com/8KohzaB.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
               "value": "3",
@@ -344,7 +344,7 @@
       "name": "P5",
       "elements": [
         {
-          "type": "radiogroup",
+          "type": "checkbox",
           "name": "Q6",
           "title": {
             "default": "Please indicate any sources of noise YOU can hear in your environment NOW.*",
@@ -386,13 +386,14 @@
                 "default": "Other noises from the outside",
                 "it": "Altri rumori dall'esterno"
               }
-            }
+            },
+            "Other"
           ],
-          "hasOther": true,
           "otherText": {
             "default": "Other",
             "it": "Altro"
-          }
+          },
+          "maxSelectedChoices": 6
         }
       ],
       "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']",
@@ -435,7 +436,7 @@
                 "it": "Lievemente fastidioso",
                 "default": "Slightly uncomfortable"
               },
-              "imageLink": "https://i.imgur.com/8KohzaB.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
               "value": "1",
@@ -465,7 +466,7 @@
       "name": "P7",
       "elements": [
         {
-          "type": "radiogroup",
+          "type": "checkbox",
           "name": "Q8",
           "title": {
             "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.*",
@@ -507,13 +508,14 @@
                 "default": "Reflective surfaces",
                 "it": "Superfici riflettenti"
               }
-            }
+            },
+            "Other"
           ],
-          "hasOther": true,
           "otherText": {
             "default": "Other",
             "it": "Altro"
-          }
+          },
+          "maxSelectedChoices": 6
         }
       ],
       "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
@@ -619,7 +621,7 @@
                 "it": "Lievemente maleodorante",
                 "default": "Slightly smelly"
               },
-              "imageLink": "https://i.imgur.com/8KohzaB.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
               "value": "3",
@@ -657,7 +659,7 @@
       "name": "P10",
       "elements": [
         {
-          "type": "radiogroup",
+          "type": "checkbox",
           "name": "Q11",
           "title": {
             "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.*",
@@ -685,13 +687,14 @@
                 "default": "Chemical odours",
                 "it": "Odori chimici"
               }
-            }
+            },
+            "Other"
           ],
-          "hasOther": true,
           "otherText": {
             "default": "Other",
             "it": "Altro"
-          }
+          },
+          "maxSelectedChoices": 4
         }
       ],
       "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']",
@@ -714,6 +717,7 @@
       ]
     }
   ],
+  "showPrevButton": false,
   "showTitle": false,
   "showCompletedPage": false,
   "goNextPageAutomatic": true,

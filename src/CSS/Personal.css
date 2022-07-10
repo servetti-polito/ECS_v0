@@ -7,8 +7,8 @@
 }
 
 #personal .sv-title {
-    text-align: left ;
-    padding: 50px;
+    text-align: left;
+    /* padding: 50px; */
     font-size: 125%;
     border-bottom: 0;
     width: 250%;
@@ -19,8 +19,8 @@
     padding-right: 1em;
     box-sizing: border-box;
     word-break: break-word;
-    padding-top: 25px;
-    font-size: 175%;
+    /* padding-top: 25px; */
+    font-size: 125%;
     text-align: center;
     margin: auto;
     border-bottom: 0;
@@ -28,17 +28,26 @@
     float: right;
 }
 
-#personal .sv-dropdown{
-    margin-top:50px;
+#personal .sv-dropdown {
+    /* margin-top: 50px; */
     width: 70%;
     display: inline-block;
     float: right;
 }
 
+#T2 .h3
+{
+    padding-top: 20px !important;
+}
+
 #personal .sv-row__question:first-child:last-child {
     flex: none !important;
     border-bottom: 1px solid #FF9724;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
+}
+
+#personal .sv-row:not(:last-child) {
+    padding-bottom: 0 !important;
 }
 
 #personal .sv-selectbase__label {

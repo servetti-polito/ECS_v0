@@ -8,10 +8,10 @@ import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import * as css from "./CSS/SurveyJS.css";
 
+
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
-
   let navigate = useNavigate();
   const timeout=1000*60*5; //5 minuti
   let inactivityTimeout = false
@@ -72,15 +72,27 @@ function SurveyJS(props) {
 //CSS/////////////////////////////////////////////////////////////////////////////////
   survey.onUpdateQuestionCssClasses.add((sur, options) => {
     let classes = options.cssClasses
-    console.log(JSON.stringify(classes));
-    if(options.question.name==="Q4"||options.question.name==="Q3")
+    console.log(JSON.stringify(classes))
+    if(options.question.name==="Q4"||options.question.name==="Q3") {
       classes.title += " thermal noBorder"
-    else if(options.question.name==="Q5"||options.question.name==="Q6")
+      classes.titleOnAnswer = "";
+    }
+    else if(options.question.name==="Q5"||options.question.name==="Q6") {
       classes.title += " acoustic noBorder"
-    else if(options.question.name==="Q7"||options.question.name==="Q8"||options.question.name==="Q9")
+      classes.titleOnAnswer = "";
+    }
+    else if(options.question.name==="Q7"||options.question.name==="Q8"||options.question.name==="Q9") {
       classes.title += " visual noBorder"
-    else if(options.question.name==="Q10"||options.question.name==="Q11")
+      classes.titleOnAnswer = "";
+    }
+    else if(options.question.name==="Q10"||options.question.name==="Q11") {
       classes.title += " air noBorder"
+      classes.titleOnAnswer = "";
+    }
+    /*if(options.question.name!=="Q2" && options.question.name!=="Q6" && options.question.name!=="Q8" && options.question.name!=="Q11")
+      setShowButtons(false);
+    else
+      setShowButtons(true);*/
   })
   /////////////////////////////////////////////////////////////////////////////////
   return(

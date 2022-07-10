@@ -1,27 +1,27 @@
 .thermal {
-    background-color: rgba(167,101,102,1);
+    background-color: rgba(167,101,102,0.6) !important;
 }
 .acoustic {
-    background-color: rgba(132, 151, 131,1);
+    background-color: rgba(132, 151, 131,0.6) !important;
 }
 .visual {
-    background-color: rgba(236, 203, 123,1);
+    background-color: rgba(236, 203, 123,0.6) !important;
 }
 .air {
-    background-color: rgba(196, 211, 224,1);
+    background-color: rgba(196, 211, 224,0.6) !important;
 }
 
 .thermal_title{
-    border-bottom: 1px solid  rgba(167,101,102,1) !important;
+    border-bottom: 1px solid  rgba(167,101,102,0.6) !important;
 }
 .acoustic_title{
-    border-bottom: 1px solid  rgba(132, 151, 131,1) !important;
+    border-bottom: 1px solid  rgba(132, 151, 131,0.6) !important;
 }
 .visual_title{
-    border-bottom: 1px solid  rgba(236, 203, 123,1) !important;
+    border-bottom: 1px solid  rgba(236, 203, 123,0.6) !important;
 }
 .air_title{
-    border-bottom: 1px solid  rgba(196, 211, 224,1) !important;
+    border-bottom: 1px solid  rgba(196, 211, 224,0.6) !important;
 }
 
 .noBorder
@@ -44,9 +44,9 @@
 
 #surveyjs .sv-title {
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     border-bottom: 1px solid #FF9724;
-    padding-bottom: 25px;
+    /*padding-bottom: 20px;*/
     font-size: 175%
 }
 
@@ -83,6 +83,12 @@
     display: none;
 }
 
+.sv-root-modern .sv-checkbox--checked .sv-checkbox__svg
+{
+    background-color: #FF9724 !important;
+    fill: rgb(255, 255, 255);
+}
+
 .sv-imagepicker__control {
     background-color: #FF9724 !important;
 }
@@ -99,4 +105,8 @@
 
 #surveyjs .sv-text {
     border-color: lightgrey !important;
+}
+
+#surveyjs .sv-imagepicker__item--inline:not(:last-child) {
+    margin-right: 0;
 }
