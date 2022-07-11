@@ -14,20 +14,17 @@ function Login(props) {
                 <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">Login</h1>
                 </div>
-                //TODO: sostituire username e password con token = cognome da nubile di tua madre + data di nascita (yyyymmdd)
                     <Formik
-                        initialValues={{ email: '', password: '' }}
+                        initialValues={{ token: '' }}
                         validate={values => {
                             const errors = {};
-                            if (!values.email)
-                            {props.ita ? errors.email = "Campo richiesto" : errors.email = 'Required'}
-                            else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
-                            {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
+                            if (!values.token)
+                            {props.ita ? errors.token = "Campo richiesto" : errors.token = 'Required'}
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
                             setTimeout(() => {
-                                props.doLogin(values.email);
+                                props.doLogin(values.token);
                                 navigate("/survey");
                                 setSubmitting(false);
                             }, 400);
@@ -44,25 +41,14 @@ function Login(props) {
                             <form onSubmit={handleSubmit}>
                                 <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                     <div className="col-3">
-                                        <label htmlFor="email"><h3>Email</h3></label>
+                                        <label htmlFor="token"><h3>Token</h3></label>
                                     </div>
                                     <div className="col-9">
-                                        <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} className="form-control" id="email" placeholder="Enter email"/>
+                                        <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                        <small>{props.ita ? "Il cognome da nubile di tua madre + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname + your date of birth (yyyymmdd)"}</small><br/>
                                         {
-                                            errors.email && touched.email && errors.email ?
-                                            <small style={{"color": "red"}}>{errors.email && touched.email && errors.email}</small> : null
-                                        }
-                                    </div>
-                                </div>
-                                <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                    <div className="col-3">
-                                        <label htmlFor="password"><h3>Password</h3></label>
-                                    </div>
-                                    <div className="col-9">
-                                        <input type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} className="form-control" id="password" placeholder="Password"/>
-                                        {
-                                            errors.password && touched.password && errors.password ?
-                                                <small style={{"color": "red"}}>{errors.password && touched.password && errors.password}</small> : null
+                                            errors.token && touched.token && errors.token ?
+                                            <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
                                         }
                                     </div>
                                 </div>

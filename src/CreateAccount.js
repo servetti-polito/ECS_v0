@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
+import UserPool from "./UserPool";
 
 function CreateAccount(props) {
 
@@ -9,32 +10,31 @@ function CreateAccount(props) {
 
     return (
         <div className="container">
-
-            <div className="row h-25 align-items-center">
+            <div className="row h-25" />
+            <div className="row h-50 align-items-center">
                 <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">{props.ita ? "Registrati":"Sign in"}</h1>
                 </div>
                 <Formik
-                    initialValues={{ name:'', surname:'', email: '', password: '', confirmPassword: ''}}
+                    initialValues={{ email: '', token: ''}}
                     validate={values => {
                         const errors = {};
                         if (!values.email)
                         {props.ita ? errors.email = "Campo richiesto" : errors.email = 'Required'}
                         else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
                         {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
-                        if(!values.password)
-                        {props.ita ? errors.password = "Campo richiesto" : errors.password = 'Required'}
-                        else if (!values.password.match("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"))
-                        {props.ita ? errors.password = "La password deve avere una lettera maiuscola, una lettera minuscola, una cifra, un carattere speciale ed essere almeno di 8 caratteri" : errors.password = 'Your password needs to have at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least eight characters long'}
-                        if(!values.confirmPassword)
-                        {props.ita ? errors.confirmPassword = "Campo richiesto" : errors.confirmPassword = 'Required'}
-                        if(values.confirmPassword !== values.password)
-                        {props.ita ? errors.confirmPassword = "La conferma non coincide con la password" : errors.confirmPassword = "The confirmation doesn't match the password"}
+                        if(!values.token)
+                        {props.ita ? errors.token = "Campo richiesto" : errors.token = 'Required'}
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
-                            navigate("/thanksEmail");
+                            UserPool.signUp(values.email, values.token, [], null,
+                                (err, data )=>{
+                                    if(err)
+                                        console.log(err);
+                                    console.log(data);
+                                })
                             setSubmitting(false);
                         }, 400);
                     }}
@@ -50,22 +50,6 @@ function CreateAccount(props) {
                         <form onSubmit={handleSubmit}>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                 <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="name"><h3>{props.ita ? "Nome" : "Name"}</h3></label>
-                                </div>
-                                <div className="col-9">
-                                    <input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name} className="form-control" id="name" placeholder={props.ita ? "Nome" :"Name"}/>
-                                </div>
-                            </div>
-                            <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="name"><h3>{props.ita ? "Cognome" : "Surname"}</h3></label>
-                                </div>
-                                <div className="col-9">
-                                    <input type="text" name="surname" onChange={handleChange} onBlur={handleBlur} value={values.surname} className="form-control" id="surname" placeholder={props.ita ? "Cognome" : "Surname"}/>
-                                </div>
-                            </div>
-                            <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                <div style={{"text-align": "right"}} className="col-3">
                                     <label htmlFor="email"><h3>Email*</h3></label>
                                 </div>
                                 <div className="col-9">
@@ -78,25 +62,14 @@ function CreateAccount(props) {
                             </div>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                 <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="password"><h3>Password*</h3></label>
+                                    <label htmlFor="token"><h3>Personal Token*</h3></label>
                                 </div>
                                 <div className="col-9">
-                                    <input type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} className="form-control" id="password" placeholder="Password"/>
+                                    <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                    <small>{props.ita ? "Il cognome da nubile di tua madre + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname + your date of birth (yyyymmdd)"}</small><br/>
                                     {
-                                        errors.password && touched.password && errors.password ?
-                                            <small style={{"color": "red"}}>{errors.password && touched.password && errors.password}</small> : null
-                                    }
-                                </div>
-                            </div>
-                            <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="confirmPassword"><h3>{props.ita ? "Conferma password" : "Confirm password"}*</h3></label>
-                                </div>
-                                <div className="col-9">
-                                    <input type="password" name="confirmPassword" onChange={handleChange} onBlur={handleBlur} value={values.confirmPassword} className="form-control" id="confirmPassword" placeholder={props.ita? "Conferma password": "Confirm password"}/>
-                                    {
-                                        errors.confirmPassword && touched.confirmPassword && errors.confirmPassword ?
-                                            <small style={{"color": "red"}}>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</small> : null
+                                        errors.token && touched.token && errors.token ?
+                                            <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
                             </div>
