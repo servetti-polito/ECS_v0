@@ -14,6 +14,7 @@ function Login(props) {
                 <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">Login</h1>
                 </div>
+                //TODO: sostituire username e password con token = cognome da nubile di tua madre + data di nascita (yyyymmdd)
                     <Formik
                         initialValues={{ email: '', password: '' }}
                         validate={values => {

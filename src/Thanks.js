@@ -23,6 +23,9 @@ export default function Thanks(props){
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>
+                //TODO: aggiungere immagini dato oggettivo
+                Visit /*shortlink*/ (or scan /*qr*/) to get full objective and subjective data
+                //TODO: ogni volta che una persona manda il questionario riceve la mail con il link per la visualizzazione dei dati
             </div>
         </div>
     );

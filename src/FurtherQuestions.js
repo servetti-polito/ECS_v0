@@ -26,6 +26,7 @@ export default function FurtherQuestions(props){
                     </div>
                 </div>
             </div>
+            //TODO: aggiungere immagini dati
         </div>
     );
 }
