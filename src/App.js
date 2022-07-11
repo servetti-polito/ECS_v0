@@ -9,7 +9,6 @@ import CreateAccount from "./CreateAccount";
 import Personal from "./Personal";
 import ThanksEmail from "./ThanksEmail";
 import {useState} from "react";
-import UserPool from "./UserPool";
 
 function App() {
     const [logged, setLogged] = useState("");

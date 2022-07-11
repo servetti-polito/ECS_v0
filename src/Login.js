@@ -45,7 +45,7 @@ function Login(props) {
                                     </div>
                                     <div className="col-9">
                                         <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
-                                        <small>{props.ita ? "Il cognome da nubile di tua madre + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname + your date of birth (yyyymmdd)"}</small><br/>
+
                                         {
                                             errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null

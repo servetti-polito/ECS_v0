@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
-import UserPool from "./UserPool";
 
 function CreateAccount(props) {
 
@@ -29,12 +28,7 @@ function CreateAccount(props) {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
-                            UserPool.signUp(values.email, values.token, [], null,
-                                (err, data )=>{
-                                    if(err)
-                                        console.log(err);
-                                    console.log(data);
-                                })
+
                             setSubmitting(false);
                         }, 400);
                     }}
