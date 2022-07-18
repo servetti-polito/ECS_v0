@@ -50,6 +50,7 @@ function App() {
         getSession().then(session=>{
             setAdminLogged(true);
             localStorage.setItem("appJwt", session.getAccessToken().getJwtToken())
+            console.log(localStorage.getItem("appJwt"))
         }).catch(setAdminLogged(false))
     }, [window.location.href])
 
