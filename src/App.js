@@ -8,12 +8,13 @@ import FurtherQuestions from "./FurtherQuestions";
 import CreateAccount from "./CreateAccount";
 import Personal from "./Personal";
 import ThanksEmail from "./ThanksEmail";
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import {AccountContext} from "./Account";
 import Page401 from "./Page401";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+    const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState("");
     const [ita, setIta] = useState(false);
     const {authenticate} = useContext(AccountContext);
@@ -30,18 +31,27 @@ function App() {
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    if(urlParams.get("multi")!=null && localStorage.getItem("sessionStatus")!=="true") //http://localhost:3000/?user=admin&pass=admin2022&multi=5
+    if(urlParams.get("multi")!=null) //http://localhost:3000/?user=admin&pass=admin2022&multi=5
     {
         localStorage.setItem("loading", true);
         localStorage.setItem("multi", urlParams.get("multi"));
         //if user or password are missing, the auth will fail by itself
         authenticate(urlParams.get("user"), urlParams.get("pass")).then(()=>{
             console.log("Logged in");
-            localStorage.setItem("sessionStatus", "true");
+            setAdminLogged(true);
             routeHome()
             localStorage.setItem("loading", false);
         }).catch((err)=>console.log(err))
     }
+
+    const {getSession} = useContext(AccountContext);
+    useEffect(()=>{
+        console.log("GET SESSION WAS INVOKED")
+        getSession().then(session=>{
+            setAdminLogged(true);
+            localStorage.setItem("appJwt", session.getAccessToken().getJwtToken())
+        }).catch(setAdminLogged(false))
+    }, [window.location.href])
 
     return (
         <>
@@ -53,28 +63,28 @@ function App() {
             <Routes>
                 <Route path='*' element={<Page404 ita={ita}/>} />
                 <Route exact path="/page401" element={<Page401/>}/>
-                <Route exact path='/' element={<ProtectedRoute/>}>
+                <Route exact path='/' element={<ProtectedRoute logged={adminLogged} />}>
                     <Route exact path='/' element={<Hello ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 </Route>
-                <Route exact path='/login' element={<ProtectedRoute/>}>
+                <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/login' element={<Login doLogin={doLogin} ita={ita}/>} />
                 </Route>
-                <Route exact path='/survey' element={<ProtectedRoute/>}>
+                <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
-                <Route exact path='/thanks' element={<ProtectedRoute/>}>
+                <Route exact path='/thanks' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/thanks' element={<Thanks ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
-                <Route exact path='/thanksEmail' element={<ProtectedRoute/>}>
+                <Route exact path='/thanksEmail' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
-                <Route exact path='/furtherQuestions' element={<ProtectedRoute/>}>
+                <Route exact path='/furtherQuestions' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/furtherQuestions' element={<FurtherQuestions ita={ita}/>}/>
                 </Route>
-                <Route exact path='/createAccount' element={<ProtectedRoute/>}>
+                <Route exact path='/createAccount' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/createAccount' element={<CreateAccount doLogin={doLogin} ita={ita}/>} />
                 </Route>
-                <Route exact path='/personal' element={<ProtectedRoute/>}>
+                <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/personal' element={<Personal ita={ita}/>} />
                 </Route>
             </Routes>

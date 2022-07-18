@@ -8,7 +8,6 @@ import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import * as css from "./CSS/SurveyJS.css";
 
-
 StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
@@ -23,7 +22,6 @@ function SurveyJS(props) {
       navigate("/")
   }
   function resetTimeout() {
-    console.log("timer reset")
     clearTimeout(inactivityTimeout)
     inactivityTimeout = setTimeout(onUserInactivity, timeout)
   }
@@ -72,7 +70,6 @@ function SurveyJS(props) {
 //CSS/////////////////////////////////////////////////////////////////////////////////
   survey.onUpdateQuestionCssClasses.add((sur, options) => {
     let classes = options.cssClasses
-    console.log(JSON.stringify(classes))
     if(options.question.name==="Q4"||options.question.name==="Q3") {
       classes.title += " thermal noBorder"
       classes.titleOnAnswer = "";

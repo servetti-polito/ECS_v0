@@ -10,11 +10,11 @@ const Account = (props) =>{
             if(user)
             {
                 user.getSession((err, session)=>{
-                    if(err) { localStorage.setItem("sessionStatus", "false"); reject(err);}
-                    else { localStorage.setItem("sessionStatus", "true"); resolve(session);}
+                    if(err) { reject(err);}
+                    else { resolve(session);}
                 })
             }
-            else {localStorage.setItem("sessionStatus", "false"); reject();}
+            else {reject();}
         })
     }
 
