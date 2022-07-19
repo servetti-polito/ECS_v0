@@ -13,9 +13,9 @@ import {AccountContext} from "./Account";
 import Page401 from "./Page401";
 import ProtectedRoute from "./ProtectedRoute";
 import Amplify from "aws-amplify";
-import awsmobile from "./aws-exports";
+import config from "aws-exports";
 
-Amplify.configure(awsmobile);
+Amplify.configure(config);
 
 function App() {
     const [adminLogged, setAdminLogged] = useState(false);
