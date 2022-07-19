@@ -1,3 +1,9 @@
+@font-face {font-family: "Tw Cen MT"; src: url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.eot"); src: url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.woff") format("woff"), url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/9b62dc86f936227b3f7b367bd0b6c05e.svg#Tw Cen MT") format("svg"); }
+
+*{
+  font-family: "Tw Cen MT";
+}
+
 html, body {
   height: 100vh;
 }
@@ -20,14 +26,35 @@ html, body {
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: #FF9724 !important;
   border-color: #FF9724 !important;
+  border-top-left-radius: 50px 50px !important;
+  border-bottom-left-radius: 50px 50px !important;
+  border-top-right-radius: 50px 50px !important;
+  border-bottom-right-radius: 50px 50px !important;
 }
 
 .btn-primary:focus,.btn-primary:active {
   outline: none !important;
-  box-shadow: 0px 0px 10px 1px #FF9724 !important;
+  box-shadow: 0 0 10px 1px #FF9724 !important;
 }
 
 .btn-secondary:focus,.btn-secondary:active {
   outline: none !important;
-  box-shadow: 0px 0px 10px 1px grey !important;
+  box-shadow: 0 0 10px 1px grey !important;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+  border-top-left-radius: 50px 50px !important;
+  border-bottom-left-radius: 50px 50px !important;
+  border-top-right-radius: 50px 50px !important;
+  border-bottom-right-radius: 50px 50px !important;
+}
+
+.btn {
+  font-size: 180% !important;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
 }

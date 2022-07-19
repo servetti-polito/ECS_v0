@@ -10,7 +10,7 @@
           "name": "Q0",
           "title": {
             "it": "Sei soddisfatto del tuo ambiente di lavoro?*",
-            "default": "Are you satisfied with your environment at work?*"
+            "default": "Are you satisfied with your environment at work?"
           },
           "isRequired": true,
           "choices": [
@@ -102,7 +102,7 @@
           "name": "Q2",
           "title": {
             "it": "La tua risposta è stata negativa. Quali aspetti ambientali non ti soddisfano?*",
-            "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?*"
+            "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?"
           },
           "isRequired": true,
           "choices": [
@@ -155,11 +155,33 @@
       "name": "P2",
       "elements": [
         {
+          "type": "html",
+          "name": "question3",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/aC9LHo5.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question4",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with thermal comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question19",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "radiogroup",
           "name": "Q3",
           "title": {
             "it": "Indica nella seguente scala come ti senti ora.*",
-            "default": "Please indicate on the following scale how YOU feel NOW.*"
+            "default": "Please indicate on the following scale how YOU feel NOW."
           },
           "isRequired": true,
           "choices": [
@@ -217,18 +239,39 @@
       ],
       "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']",
       "title": {
-        "it": "Non sei soddisfatto del comfort termico. Perchè?",
-        "default": "You are dissatisfied with thermal comfort, \ncan you explain why?"
+        "it": "Non sei soddisfatto del comfort termico. Perchè?"
       }
     },
     {
       "name": "P3",
       "elements": [
         {
+          "type": "html",
+          "name": "question1",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/aC9LHo5.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question2",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with thermal comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question21",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "imagepicker",
           "name": "Q4",
           "title": {
-            "default": "Please indicate on the following scale how YOU find the AIR VELOCITY in your environment NOW.*",
+            "default": "Please indicate on the following scale how YOU find the AIR VELOCITY in your environment NOW.",
             "it": "Indica nella seguente scala la velocità dell'aria presente ora nell'ambiente*"
           },
           "isRequired": true,
@@ -276,19 +319,40 @@
       "visible": false,
       "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']",
       "title": {
-        "it": "Non sei soddisfatto del comfort termico. Perchè?",
-        "default": "You are dissatisfied with thermal comfort, \ncan you explain why?"
+        "it": "Non sei soddisfatto del comfort termico. Perchè?"
       }
     },
     {
       "name": "P4",
       "elements": [
         {
+          "type": "html",
+          "name": "question5",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/R2jQU45.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question6",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with acoustic comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question20",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "imagepicker",
           "name": "Q5",
           "title": {
             "it": "Indica nella seguente scala il rumore presente ora nell'ambiente*",
-            "default": "Please indicate on the following scale how YOU find the NOISE in your environment NOW.*"
+            "default": "Please indicate on the following scale how YOU find the NOISE in your environment NOW."
           },
           "isRequired": true,
           "choices": [
@@ -336,7 +400,6 @@
       ],
       "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']",
       "title": {
-        "default": "You are dissatisfied with acoustic comfort, \ncan you explain why?",
         "it": "Non sei soddisfatto del comfort acustico. Perchè?"
       }
     },
@@ -344,10 +407,32 @@
       "name": "P5",
       "elements": [
         {
+          "type": "html",
+          "name": "question7",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/R2jQU45.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question8",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with acoustic comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question22",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "checkbox",
           "name": "Q6",
           "title": {
-            "default": "Please indicate any sources of noise YOU can hear in your environment NOW.*",
+            "default": "Please indicate any sources of noise YOU can hear in your environment NOW.",
             "it": "Indica quali fonti di rumore si sentono ora nell'ambiente*"
           },
           "isRequired": true,
@@ -398,7 +483,6 @@
       ],
       "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']",
       "title": {
-        "default": "You are dissatisfied with acoustic comfort, \ncan you explain why?",
         "it": "Non sei soddisfatto del comfort acustico. Perchè?"
       }
     },
@@ -406,10 +490,32 @@
       "name": "P6",
       "elements": [
         {
+          "type": "html",
+          "name": "question11",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question10",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with visual comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question23",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "imagepicker",
           "name": "Q7",
           "title": {
-            "default": "Please indicate on the following scale how YOU find your VISUAL environment NOW.*",
+            "default": "Please indicate on the following scale how YOU find your VISUAL environment NOW.",
             "it": "Indica nella seguente scala il tuo comfort visivo attuale.*"
           },
           "isRequired": true,
@@ -458,18 +564,39 @@
       ],
       "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
       "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?",
-        "default": "You are dissatisfied with visual comfort, \ncan you explain why?"
+        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
       }
     },
     {
       "name": "P7",
       "elements": [
         {
+          "type": "html",
+          "name": "question13",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question12",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with visual comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question24",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "checkbox",
           "name": "Q8",
           "title": {
-            "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.*",
+            "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.",
             "it": "Indica quali fonti di abbagliamento può vedere nell'ambiente.*"
           },
           "isRequired": true,
@@ -520,18 +647,39 @@
       ],
       "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
       "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?",
-        "default": "You are dissatisfied with visual comfort, \ncan you explain why?"
+        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
       }
     },
     {
       "name": "P8",
       "elements": [
         {
+          "type": "html",
+          "name": "question15",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question14",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with visual comfort, can you explain why?</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question25",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "radiogroup",
           "name": "Q9",
           "title": {
-            "default": "Please rate on the following scale how YOU would like your visual environment to be NOW.*",
+            "default": "Please rate on the following scale how YOU would like your visual environment to be NOW.",
             "it": "Indica nella seguente scala come preferiresti che il tuo ambiente fosse.*"
           },
           "isRequired": true,
@@ -591,18 +739,39 @@
       ],
       "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
       "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?",
-        "default": "You are dissatisfied with visual comfort, \ncan you explain why?"
+        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
       }
     },
     {
       "name": "P9",
       "elements": [
         {
+          "type": "html",
+          "name": "question17",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/Q1JXqKF.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question16",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with indoor air quality, can you explain why?\n</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question26",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "imagepicker",
           "name": "Q10",
           "title": {
-            "default": "Please indicate on the following scale how YOU find the AIR QUALITY in your environment NOW.*",
+            "default": "Please indicate on the following scale how YOU find the AIR QUALITY in your environment NOW.",
             "it": "Indica nella seguente scala come ritieni la qualità dell'aria.*"
           },
           "isRequired": true,
@@ -651,18 +820,39 @@
       ],
       "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']",
       "title": {
-        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?",
-        "default": "You are dissatisfied with indoor air quality, \ncan you explain why?"
+        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?"
       }
     },
     {
       "name": "P10",
       "elements": [
         {
+          "type": "html",
+          "name": "question9",
+          "width": "120",
+          "minWidth": "120",
+          "maxWidth": "120",
+          "html": "<img src=\"https://i.imgur.com/Q1JXqKF.png\" style=\"width: 120px; height: 120px;\"/>"
+        },
+        {
+          "type": "html",
+          "name": "question18",
+          "width": "700",
+          "minWidth": "700",
+          "maxWidth": "700",
+          "startWithNewLine": false,
+          "html": "<h1>You are dissatisfied with indoor air quality, can you explain why?\n</h1>"
+        },
+        {
+          "type": "html",
+          "name": "question27",
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+        },
+        {
           "type": "checkbox",
           "name": "Q11",
           "title": {
-            "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.*",
+            "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.",
             "it": "Indica quali fonti di inquinamento influenzano la qualità dell'aria in questo momento.*"
           },
           "isRequired": true,
@@ -699,8 +889,7 @@
       ],
       "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']",
       "title": {
-        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?",
-        "default": "You are dissatisfied with indoor air quality, \ncan you explain why?"
+        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?"
       }
     },
     {

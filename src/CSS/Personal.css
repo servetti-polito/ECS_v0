@@ -1,5 +1,6 @@
 #personal .sv-footer__prev-btn, #personal .sv-footer__next-btn, #personal .sv-footer__complete-btn {
     background-color:#FF9724 !important;
+    font-size: 110%;
 }
 
 #personal .sv-container-modern {

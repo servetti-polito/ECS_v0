@@ -31,6 +31,7 @@
 
 #surveyjs .sv-footer__prev-btn, #surveyjs .sv-footer__next-btn, #surveyjs .sv-footer__complete-btn {
     background-color: #FF9724 !important;
+    font-size: 125%;
 }
 
 #surveyjs .sv-container-modern {
@@ -69,6 +70,12 @@
     min-height: 30px;
     border: 1px;
     border-color: #FF9724;
+    font-size: 150%;
+}
+
+.sv-imagepicker__text {
+    font-size: 150%;
+    padding-left: 0.24em;
 }
 
 #surveyjs .sv-item__svg {
@@ -109,4 +116,8 @@
 
 #surveyjs .sv-imagepicker__item--inline:not(:last-child) {
     margin-right: 0;
+}
+
+#surveyjs .sv-row:not(:last-child) {
+    padding-bottom: 0;
 }

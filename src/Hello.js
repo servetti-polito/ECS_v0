@@ -21,14 +21,14 @@ export default function Hello(props){
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button className="btn glow-button btn-lg btn-primary" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
+                        <button  style={{"font-size": "175%"}} className="btn glow-button btn-lg btn-primary" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button className="btn btn-lg btn-primary" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
+                        <button style={{"font-size": "175%"}} className="btn btn-lg btn-primary" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>

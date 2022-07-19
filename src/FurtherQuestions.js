@@ -22,7 +22,7 @@ export default function FurtherQuestions(props){
                 <div className="row gap-2">
                     <div style={{"text-align": "center"}} className="row align-items-center">
                         <div className="col-6 justify-content-center"><button onClick={routePersonal} className="btn btn-lg btn-secondary" style={{width: "50%"}}>{props.ita ? "Non ora" : "Not now"}</button></div>
-                        <div className="col-6 justify-content-center"><button onClick={routeCreate} className="btn btn-lg btn-primary" style={{width: "50%"}}>{props.ita ? "Crea un account" : "Create an account"}</button></div>
+                        <div className="col-6 justify-content-center"><button onClick={routeCreate} className="btn btn-lg btn-primary" style={{width: "75%"}}>{props.ita ? "Crea un account" : "Create an account"}</button></div>
                     </div>
                 </div>
             </div>
