@@ -1,11 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
+import {API} from "aws-amplify";
+import {useEffect} from "react";
 
 function CreateAccount(props) {
 
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
+
+    useEffect(()=>{
+        API.get("userTokenAPI", "/token/email").then(e => console.log("emails",e)).catch(err=>console.log(err))
+    }, [])
 
     return (
         <div className="container">
@@ -27,10 +33,21 @@ function CreateAccount(props) {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-
-                            setSubmitting(false);
-                        }, 400);
+                        API.get("userTokenAPI", "/token/object/"+values.email).then(
+                            emails=>{
+                                console.log("query emails: ", emails)
+                                if(emails.email !== undefined)
+                                    console.log("User already exists")
+                                else
+                                {
+                                    API.post("userTokenAPI", "/token", {
+                                        body: {
+                                            email: values.email,
+                                            token: values.token
+                                        }
+                                    }).then(data=>console.log("post ok: "+JSON.stringify(data))).catch(err=>console.log("post failed: "+err))
+                                }
+                            })
                     }}
                 >
                     {({

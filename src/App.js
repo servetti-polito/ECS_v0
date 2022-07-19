@@ -12,13 +12,16 @@ import {useState, useContext, useEffect} from "react";
 import {AccountContext} from "./Account";
 import Page401 from "./Page401";
 import ProtectedRoute from "./ProtectedRoute";
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
+
+Amplify.configure(config);
 
 function App() {
     const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState("");
     const [ita, setIta] = useState(false);
     const {authenticate} = useContext(AccountContext);
-
 
     const location = useLocation();
     let navigate = useNavigate();
@@ -31,7 +34,7 @@ function App() {
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    if(urlParams.get("multi")!=null) //http://localhost:3000/?user=admin&pass=admin2022&multi=5
+    if(urlParams.get("multi")!=null) //?user=admin&pass=admin2022&multi=5
     {
         localStorage.setItem("loading", true);
         localStorage.setItem("multi", urlParams.get("multi"));
