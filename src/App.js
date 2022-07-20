@@ -20,6 +20,7 @@ Amplify.configure(config);
 function App() {
     const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState("");
+    const [userJwt, setUserJwt] = useState(null);
     const [ita, setIta] = useState(false);
     const {authenticate} = useContext(AccountContext);
 
@@ -57,6 +58,11 @@ function App() {
         }).catch(setAdminLogged(false))
     }, [window.location.href])
 
+    setInterval(()=>{
+        if(userJwt!==null && userJwt.exp < Date.now()/1000)
+            setUserJwt(null)
+    }, 1000)
+
     return (
         <>
             {
@@ -73,7 +79,7 @@ function App() {
                     <Route exact path='/' element={<Hello logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 </Route>
                 <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/login' element={<Login doLogin={doLogin} ita={ita}/>} />
+                    <Route path='/login' element={<Login setUserJwt={setUserJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />

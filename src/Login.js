@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {API} from "aws-amplify";
 import {useState} from "react";
 import {Alert} from "react-bootstrap";
+import jwtGenerator from "./jwtGenerator";
 
 function Login(props) {
 
@@ -40,6 +41,7 @@ function Login(props) {
                                     else {
                                         console.log("user email: " + user[0].email)
                                         props.doLogin(user[0].email)
+                                        props.setUserJwt(jwtGenerator(user[0].token));
                                         routeHome()
                                     }
                             }).catch(err=>console.log("get fail:",err))
