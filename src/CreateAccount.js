@@ -45,7 +45,7 @@ function CreateAccount(props) {
                                             email: values.email,
                                             token: values.token
                                         }
-                                    }).then(data=>console.log("post ok: "+JSON.stringify(data))).catch(err=>console.log("post failed: "+err))
+                                    }).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false);}).catch(err=>console.log("post failed: "+err))
                                 }
                             })
                     }}

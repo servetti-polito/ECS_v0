@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
+import {API} from "aws-amplify";
 
 function Login(props) {
 
@@ -23,11 +24,13 @@ function Login(props) {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                                props.doLogin(values.token);
-                                navigate("/survey");
-                                setSubmitting(false);
-                            }, 400);
+                            API.get("userTokenAPI", "/token/email", {
+                                TableName: "userToken",
+                                KeyConditionExpression: "token = :t",
+                                ExpressionAttributeValues: {
+                                    ":t": values.token
+                                }
+                            }).then(data=>console.log("get ok: ", data)).catch(err=>console.log("get fail:",err))
                         }}
                     >
                         {({
