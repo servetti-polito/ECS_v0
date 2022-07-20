@@ -1,1 +1,11 @@
-{}
+{
+  "auth": {
+    "ecsv044bf4765": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

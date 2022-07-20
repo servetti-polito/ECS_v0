@@ -10,6 +10,16 @@
       "StackName": "amplify-ecsv0-dev-110955",
       "StackId": "arn:aws:cloudformation:us-east-1:572882000650:stack/amplify-ecsv0-dev-110955/ba991350-080b-11ed-b430-0a01e0cac573",
       "AmplifyAppId": "dp7820s0pwus2"
+    },
+    "categories": {
+      "auth": {
+        "ecsv044bf4765": {
+          "userPoolId": "us-east-1_EDjVEAFzD",
+          "userPoolName": "SurveyAdmin",
+          "webClientId": "2aosd0oa4hkfv01b84c6tfah3p",
+          "nativeClientId": "2aosd0oa4hkfv01b84c6tfah3p"
+        }
+      }
     }
   }
 }
