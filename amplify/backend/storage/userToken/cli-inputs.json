@@ -1,0 +1,10 @@
+{
+  "resourceName": "userToken",
+  "tableName": "userToken",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

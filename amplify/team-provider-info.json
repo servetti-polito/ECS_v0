@@ -19,6 +19,12 @@
           "webClientId": "2aosd0oa4hkfv01b84c6tfah3p",
           "nativeClientId": "2aosd0oa4hkfv01b84c6tfah3p"
         }
+      },
+      "function": {
+        "userTokenLambda": {
+          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
+          "s3Key": "amplify-builds/userTokenLambda-365a6c752f62586b3537-build.zip"
+        }
       }
     }
   }
