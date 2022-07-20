@@ -1,0 +1,13 @@
+{
+  "authSelections": "userPoolOnly",
+  "resourceName": "ecsv044bf4765",
+  "serviceType": "imported",
+  "region": "us-east-1",
+  "requiredAttributes": [],
+  "passwordPolicyMinLength": 8,
+  "passwordPolicyCharacters": [
+    "Requires Lowercase"
+  ],
+  "mfaConfiguration": "OFF",
+  "mfaTypes": []
+}
