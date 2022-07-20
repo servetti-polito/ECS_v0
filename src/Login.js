@@ -9,7 +9,7 @@ function Login(props) {
     const routeHome = () => navigate("/");
 
     return (
-        <div className="container">
+        <div className="container" style={{"padding":"50px"}} >
             <div style={{"padding":"50px"}} />
             <div className="row h-75 align-items-center">
                 <div className="col-12" style={{"padding":"50px"}}>

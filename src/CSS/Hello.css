@@ -23,6 +23,10 @@ html, body {
   border: 1px dotted #bbb;
 }
 
+.container, .container-lg, .container-md, .container-sm {
+  max-width: 100% !important;
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: #FF9724 !important;
   border-color: #FF9724 !important;
@@ -35,6 +39,20 @@ html, body {
 .btn-primary:focus,.btn-primary:active {
   outline: none !important;
   box-shadow: 0 0 10px 1px #FF9724 !important;
+}
+
+.btn-white, .btn-white:hover, .btn-white:active, .btn-white:visited {
+  background-color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  border-top-left-radius: 50px 50px !important;
+  border-bottom-left-radius: 50px 50px !important;
+  border-top-right-radius: 50px 50px !important;
+  border-bottom-right-radius: 50px 50px !important;
+}
+
+.btn-white:focus, .btn-white:active {
+  outline: none !important;
+  box-shadow: 0 0 10px 1px #FFFFFF !important;
 }
 
 .btn-secondary:focus,.btn-secondary:active {

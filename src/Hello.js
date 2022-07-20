@@ -12,7 +12,7 @@ export default function Hello(props){
     }
 
     return (
-        <div className="container">
+        <div className="container" style={{backgroundColor: '#FF9724', margin: 0, padding: 0}}>
             <div className="row h-25"/>
             <div className="row h-25 align-items-center">
                 <div className="col-12" style={{padding: 50}}>
@@ -21,14 +21,14 @@ export default function Hello(props){
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button  style={{"font-size": "175%"}} className="btn glow-button btn-lg btn-primary" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
+                        <button  style={{"font-size": "175%"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button style={{"font-size": "175%"}} className="btn btn-lg btn-primary" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
+                        <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>
