@@ -28,7 +28,14 @@ export default function Hello(props){
                 <div className="row gap-2">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
+                        {
+                            props.logged !== "" ?
+                                <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button"
+                                        onClick={routeLogin} disabled>{props.ita ? "Profilo" : "Profile"}</button>
+                                :
+                                <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button"
+                                    onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
+                        }
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>

@@ -2,19 +2,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {API} from "aws-amplify";
+import {useState} from "react";
+import {Alert} from "react-bootstrap";
 
 function Login(props) {
 
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
+    const [error, setError] = useState("");
 
     return (
         <div className="container" style={{"padding":"50px"}} >
-            <div style={{"padding":"50px"}} />
+            <div style={{"padding":"20px"}} />
             <div className="row h-75 align-items-center">
                 <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">Login</h1>
                 </div>
+                {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                     <Formik
                         initialValues={{ token: '' }}
                         validate={values => {
@@ -24,13 +28,21 @@ function Login(props) {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
-                            API.get("userTokenAPI", "/token/email", {
-                                TableName: "userToken",
-                                KeyConditionExpression: "token = :t",
-                                ExpressionAttributeValues: {
-                                    ":t": values.token
-                                }
-                            }).then(data=>console.log("get ok: ", data)).catch(err=>console.log("get fail:",err))
+                            setError("");
+                            API.get("userTokenAPI", "/token/email")
+                                .then(data=>{
+                                    console.log("get ok: ", data)
+                                    let user = data.filter(a=>a.token===values.token);
+                                    if(user.length<1)
+                                        setError(props.ita ? "Nessun utente corrsiponde a questo token" : "No user has this token");
+                                    else if (user.length>1)
+                                        setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
+                                    else {
+                                        console.log("user email: " + user[0].email)
+                                        props.doLogin(user[0].email)
+                                        routeHome()
+                                    }
+                            }).catch(err=>console.log("get fail:",err))
                         }}
                     >
                         {({

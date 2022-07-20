@@ -61,14 +61,16 @@ function App() {
         <>
             {
                 logged!=="" ?
-                    <h3 style={{ "position": "fixed", "top": 50, "left": 50}} > Hello, {logged} </h3>
+                    <div className="container" style={{ "position": "fixed", "top": 50, "left": 50}}>
+                        <h3 style={{display: "inline-block", padding: "10px"}}>Hello, {logged}</h3><h5 onClick={doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log out</h5>
+                    </div>
                     : null
             }
             <Routes>
                 <Route path='*' element={<Page404 ita={ita}/>} />
                 <Route exact path="/page401" element={<Page401/>}/>
                 <Route exact path='/' element={<ProtectedRoute logged={adminLogged} />}>
-                    <Route exact path='/' element={<Hello ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
+                    <Route exact path='/' element={<Hello logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 </Route>
                 <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/login' element={<Login doLogin={doLogin} ita={ita}/>} />

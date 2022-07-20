@@ -1,13 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
+import {useState, useEffect} from "react";
 import {API} from "aws-amplify";
-import {useEffect} from "react";
+import {Alert} from "react-bootstrap";
 
 function CreateAccount(props) {
 
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
+    const routeThanks = () => navigate("/thanksEmail")
+    const [error, setError] = useState("");
 
     useEffect(()=>{
         API.get("userTokenAPI", "/token/email").then(e => console.log("emails",e)).catch(err=>console.log(err))
@@ -15,11 +18,12 @@ function CreateAccount(props) {
 
     return (
         <div className="container" style={{"padding":"50px"}}>
-            <div className="row h-25" />
+            <div style={{padding: "10px"}}/>
             <div className="row h-50 align-items-center">
                 <div className="col-12" style={{"padding":"50px"}}>
                     <h1 className="display-1 text-center">{props.ita ? "Registrati":"Sign in"}</h1>
                 </div>
+                {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                 <Formik
                     initialValues={{ email: '', token: ''}}
                     validate={values => {
@@ -33,11 +37,12 @@ function CreateAccount(props) {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        setError("");
                         API.get("userTokenAPI", "/token/object/"+values.email).then(
                             emails=>{
                                 console.log("query emails: ", emails)
                                 if(emails.email !== undefined)
-                                    console.log("User already exists")
+                                    setError(props.ita ? "Esiste già un utente con questa mail" : "A user with this email already exists")
                                 else
                                 {
                                     API.post("userTokenAPI", "/token", {
@@ -45,7 +50,7 @@ function CreateAccount(props) {
                                             email: values.email,
                                             token: values.token
                                         }
-                                    }).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false);}).catch(err=>console.log("post failed: "+err))
+                                    }).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false); routeThanks()}).catch(err=>setError("post failed: "+err))
                                 }
                             })
                     }}
@@ -61,7 +66,7 @@ function CreateAccount(props) {
                         <form onSubmit={handleSubmit}>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                 <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="email"><h3>Email*</h3></label>
+                                    <label htmlFor="email"><h3>Email</h3></label>
                                 </div>
                                 <div className="col-9">
                                     <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} className="form-control" id="email" placeholder="Email"/>
@@ -73,7 +78,7 @@ function CreateAccount(props) {
                             </div>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                 <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="token"><h3>Personal Token*</h3></label>
+                                    <label htmlFor="token"><h3>Personal Token</h3></label>
                                 </div>
                                 <div className="col-9">
                                     <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
