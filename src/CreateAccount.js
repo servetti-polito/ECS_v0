@@ -1,20 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {API} from "aws-amplify";
 import {Alert} from "react-bootstrap";
 
 function CreateAccount(props) {
-
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const routeThanks = () => navigate("/thanksEmail")
     const [error, setError] = useState("");
-
-    useEffect(()=>{
-        API.get("userTokenAPI", "/token/email").then(e => console.log("emails",e)).catch(err=>console.log(err))
-    }, [])
 
     return (
         <div className="container" style={{"padding":"50px"}}>
@@ -38,19 +33,22 @@ function CreateAccount(props) {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setError("");
-                        API.get("userTokenAPI", "/token/object/"+values.email).then(
+                        API.get("userTokenAPI", "/token/object/"+values.email, {headers: {authorization : props.deviceJwt}}).then(
                             emails=>{
                                 console.log("query emails: ", emails)
                                 if(emails.email !== undefined)
                                     setError(props.ita ? "Esiste già un utente con questa mail" : "A user with this email already exists")
                                 else
                                 {
-                                    API.post("userTokenAPI", "/token", {
-                                        body: {
+                                    let init = {
+                                    body: {
                                             email: values.email,
                                             token: values.token
-                                        }
-                                    }).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false); routeThanks()}).catch(err=>setError("post failed: "+err))
+                                        },
+                                        headers: {authorization : props.deviceJwt}
+                                    }
+                                    console.log(JSON.stringify(init))
+                                    API.post("userTokenAPI", "/token", init).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false); routeThanks()}).catch(err=>setError("post failed: "+JSON.stringify(err.response)))
                                 }
                             })
                     }}

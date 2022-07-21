@@ -13,7 +13,17 @@ export default function Hello(props){
 
     return (
         <div className="container" style={{backgroundColor: '#FF9724', margin: 0, padding: 0}}>
-            <div className="row h-25"/>
+            <div className="row h-25">
+                {props.logged !== "" ?
+                    <div className="row h-25">
+                        <div className="col-6" style={{padding:"50px"}}>
+                            <h5 style={{display: "inline-block", padding: "10px"}}>Hello, {props.logged}</h5>
+                            <p onClick={props.doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log
+                                out</p>
+                        </div>
+                    </div> : <div className="row h-25"/>
+                }
+            </div>
             <div className="row h-25 align-items-center">
                 <div className="col-12" style={{padding: 50}}>
                     <h1 className="display-1 text-center">{props.ita ? "Ciao!" : "Hello!"}</h1>

@@ -21,6 +21,7 @@ function App() {
     const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState("");
     const [userJwt, setUserJwt] = useState(null);
+    const [deviceJwt, setDeviceJwt] = useState(null);
     const [ita, setIta] = useState(false);
     const {authenticate} = useContext(AccountContext);
 
@@ -50,11 +51,11 @@ function App() {
 
     const {getSession} = useContext(AccountContext);
     useEffect(()=>{
-        console.log("GET SESSION WAS INVOKED")
         getSession().then(session=>{
             setAdminLogged(true);
-            localStorage.setItem("appJwt", session.getAccessToken().getJwtToken())
-            console.log(localStorage.getItem("appJwt"))
+            //localStorage.setItem("appJwt", session.getAccessToken().getJwtToken())
+            localStorage.setItem("appJwt", session.getIdToken().getJwtToken())
+            setDeviceJwt(localStorage.getItem("appJwt"))
         }).catch(setAdminLogged(false))
     }, [window.location.href])
 
@@ -66,20 +67,25 @@ function App() {
     return (
         <>
             {
-                logged!=="" ?
-                    <div className="container" style={{ "position": "fixed", "top": 50, "left": 50}}>
-                        <h3 style={{display: "inline-block", padding: "10px"}}>Hello, {logged}</h3><h5 onClick={doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log out</h5>
+                /*logged!=="" ?
+                    <div className="row">
+                        <div className="col-10">
+                            <h5 style={{display: "inline-block", padding: "10px"}}>Hello, {logged}</h5>
+                        </div>
+                        <div className="col-2">
+                            <p onClick={doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log out</p>
+                        </div>
                     </div>
-                    : null
+                    : null*/
             }
             <Routes>
                 <Route path='*' element={<Page404 ita={ita}/>} />
                 <Route exact path="/page401" element={<Page401/>}/>
                 <Route exact path='/' element={<ProtectedRoute logged={adminLogged} />}>
-                    <Route exact path='/' element={<Hello logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
+                    <Route exact path='/' element={<Hello doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 </Route>
                 <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/login' element={<Login setUserJwt={setUserJwt} doLogin={doLogin} ita={ita}/>} />
+                    <Route path='/login' element={<Login deviceJwt={deviceJwt} setUserJwt={setUserJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />
@@ -94,7 +100,7 @@ function App() {
                     <Route path='/furtherQuestions' element={<FurtherQuestions ita={ita}/>}/>
                 </Route>
                 <Route exact path='/createAccount' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/createAccount' element={<CreateAccount doLogin={doLogin} ita={ita}/>} />
+                    <Route path='/createAccount' element={<CreateAccount deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/personal' element={<Personal ita={ita}/>} />

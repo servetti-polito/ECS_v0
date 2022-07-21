@@ -11,6 +11,9 @@ function Login(props) {
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const [error, setError] = useState("");
+    const headers = {
+        headers: {"Authorization" : props.deviceJwt}
+    };
 
     return (
         <div className="container" style={{"padding":"50px"}} >
@@ -30,7 +33,7 @@ function Login(props) {
                         }}
                         onSubmit={(values, { setSubmitting }) => {
                             setError("");
-                            API.get("userTokenAPI", "/token/email")
+                            API.get("userTokenAPI", "/token/email" , headers)
                                 .then(data=>{
                                     console.log("get ok: ", data)
                                     let user = data.filter(a=>a.token===values.token);
@@ -42,7 +45,8 @@ function Login(props) {
                                         console.log("user email: " + user[0].email)
                                         props.doLogin(user[0].email)
                                         props.setUserJwt(jwtGenerator(user[0].token));
-                                        routeHome()
+                                        setSubmitting(false);
+                                        navigate("/");
                                     }
                             }).catch(err=>console.log("get fail:",err))
                         }}
