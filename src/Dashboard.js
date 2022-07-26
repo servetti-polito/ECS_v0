@@ -8,7 +8,9 @@ export default function Dashboard(props){
     let [time, setTime] = useState("")
     let [referenceValue, setReferenceValue] = useState("80%")
     let [RTValue, setRTValue] = useState("60%")
-    let [showCompliances, setShowCompliances] = useState(true)
+    let [showCompliances, setShowCompliances] = useState(false)
+    let [showGraph, setShowGraph] = useState(false)
+    let [timeWindow, setTimeWindow] = useState("RT")
 
     setInterval(()=>{
         let dateTime = new Date();
@@ -22,6 +24,9 @@ export default function Dashboard(props){
     const routeLogin =()=>{navigate("/login")}
     const toggleCompliance = () => {
         setShowCompliances(!showCompliances);
+    }
+    const toggleGraph = () => {
+        setShowGraph(!showGraph);
     }
 
 
@@ -74,21 +79,21 @@ export default function Dashboard(props){
                             <h2 style={{textAlign:"center"}}>{showCompliances ? "Mean Value: 60%\nStandard Deviation: 3%\n10th Percentile: 60%\n90th Percentile: 5%\n" : "Real-time value: "+RTValue}</h2>
                         </div>
                         <div className="row justify-content-center" >
-                            <button style={{"font-size": "175%", "width":"75%", "color":"#FF9724"}} className="btn btn-white" type="button">Show the graph</button>
+                            <button style={{"font-size": "175%", "width":"75%", "color":"#FF9724"}} className="btn btn-white" type="button" onClick={toggleGraph}>{showGraph ? "Hide the graph":"Show the graph"}</button>
                         </div>
                     </div>
                     <div className="col-8">
                         <div style={{margin:"40px"}}/>
                         <div className="row" style={{width:"80%"}}>
-                            <div className="col"><button  className="btn btn-primary">RT</button></div>
-                            <div className="col"><button  className="btn btn-primary">3H</button></div>
-                            <div className="col"><button  className="btn btn-primary">12H</button></div>
-                            <div className="col"><button  className="btn btn-primary">24H</button></div>
-                            <div className="col"><button  className="btn btn-primary">3D</button></div>
-                            <div className="col"><button  className="btn btn-primary">1W</button></div>
-                            <div className="col"><button  className="btn btn-primary">1M</button></div>
+                            <div className="col"><button className={timeWindow==="RT" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("RT")}}>RT</button></div>
+                            <div className="col"><button className={timeWindow==="3H" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("3H")}}>3H</button></div>
+                            <div className="col"><button className={timeWindow==="12H" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("12H")}}>12H</button></div>
+                            <div className="col"><button className={timeWindow==="24H" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("24H")}}>24H</button></div>
+                            <div className="col"><button className={timeWindow==="3D" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("3D")}}>3D</button></div>
+                            <div className="col"><button className={timeWindow==="1W" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("1W")}}>1W</button></div>
+                            <div className="col"><button className={timeWindow==="1M" ? "btn btn-primary" : "btn btn-white-border"} onClick={()=>{setTimeWindow("1M")}}>1M</button></div>
                         </div>
-                        <div style={{height:"75%", border:"2px solid red", marginTop:"15px", marginBottom:"20px"}}> iframe </div>
+                        <div style={{height:"75%", border:"2px solid red", marginTop:"15px", marginBottom:"20px"}}>{showGraph ? "graph ":"iframe "}{timeWindow}</div>
                         <div className="row">
                             <div style={{width:"68%"}}/>
                             <button style={{"width":"30%"}} className="btn btn-white-border" type="button" onClick={toggleCompliance}>{showCompliances ? "Hide compliance":"Show compliance"}</button>
