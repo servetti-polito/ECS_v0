@@ -55,6 +55,22 @@ html, body {
   box-shadow: 0 0 10px 1px #FFFFFF !important;
 }
 
+.btn-white-border, .btn-white-border:hover, .btn-white-border:active, .btn-white-border:visited {
+  background-color: #FFFFFF !important;
+  border: 2px solid #FF9724 !important;
+  outline: none !important;
+  color: #FF9724 !important;
+  border-top-left-radius: 50px 50px !important;
+  border-bottom-left-radius: 50px 50px !important;
+  border-top-right-radius: 50px 50px !important;
+  border-bottom-right-radius: 50px 50px !important;
+}
+
+.btn-white-border:focus, .btn-white-border:active {
+  outline: none !important;
+  box-shadow: 0 0 10px 1px #FF9724 !important;
+}
+
 .btn-secondary:focus,.btn-secondary:active {
   outline: none !important;
   box-shadow: 0 0 10px 1px grey !important;

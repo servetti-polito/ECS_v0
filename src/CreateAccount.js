@@ -33,7 +33,7 @@ function CreateAccount(props) {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setError("");
-                        API.get("userTokenAPI", "/token/object/"+values.email, {headers: {authorization : props.deviceJwt}}).then(
+                        /*API.get("userTokenAPI", "/token/object/"+values.email, {headers: {authorization : props.deviceJwt}}).then(
                             emails=>{
                                 console.log("query emails: ", emails)
                                 if(emails.email !== undefined)
@@ -42,6 +42,23 @@ function CreateAccount(props) {
                                 {
                                     let init = {
                                     body: {
+                                            email: values.email,
+                                            token: values.token
+                                        },
+                                        headers: {authorization : props.deviceJwt}
+                                    }
+                                    console.log(JSON.stringify(init))
+                                    API.post("userTokenAPI", "/token", init).then(data=>{console.log("post ok: "+JSON.stringify(data)); setSubmitting(false); routeThanks()}).catch(err=>setError("post failed: "+JSON.stringify(err.response)))
+                                }
+                            })*/
+                        API.get("userTokenAPI", "/token/object", {headers: {authorization : props.deviceJwt}}).then(
+                            emails=>{
+                                if(emails.filter(e=>e.email===values.email).length!==0 || emails.filter(e=>e.token===values.token).length!==0 )
+                                    setError(props.ita ? "Esiste già un utente con questa mail o questo token" : "A user with this email or this token already exists")
+                                else
+                                {
+                                    let init = {
+                                        body: {
                                             email: values.email,
                                             token: values.token
                                         },

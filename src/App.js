@@ -14,6 +14,7 @@ import Page401 from "./Page401";
 import ProtectedRoute from "./ProtectedRoute";
 import Amplify from "aws-amplify";
 import config from "./aws-exports";
+import Dashboard from "./Dashboard";
 
 Amplify.configure(config);
 
@@ -105,13 +106,16 @@ function App() {
                 <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/personal' element={<Personal ita={ita}/>} />
                 </Route>
+                <Route exact path='/dashboard' element={<ProtectedRoute logged={adminLogged}/>}>
+                    <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
+                </Route>
             </Routes>
             {
                 location.pathname!=="/" &&
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
                 location.pathname!=="/furtherQuestions" ?
-                <p style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline"}} onClick={routeHome} >Home</p> :
+                <p style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p> :
                 null
             }
         </>

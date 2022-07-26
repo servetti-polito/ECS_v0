@@ -10,18 +10,32 @@
 #personal .sv-title {
     text-align: left;
     /* padding: 50px; */
-    font-size: 125%;
+    font-size: 130%;
     border-bottom: 0;
-    width: 250%;
+    width: 280%;
+}
+
+#personal .sv-page__title {
+    margin: 0;
+    margin-bottom: 10px;
+    padding-left: 0.293em;
+    font-size: 200%;
+}
+
+#personal .sv-question {
+    overflow:hidden;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
 #personal .sv_qstn .sv-q-column-2, #personal .sv-question .sv-q-column-2 {
-    width: 30%;
-    padding-right: 1em;
+    /*width: 30%;*/
+    width: 17%;
+    padding-right: 0 !important;
     box-sizing: border-box;
     word-break: break-word;
     /* padding-top: 25px; */
-    font-size: 125%;
+    font-size: 120%;
     text-align: center;
     margin: auto;
     border-bottom: 0;
@@ -71,4 +85,11 @@
 
 #personal .sv-item__control{
     display: none;
+}
+
+#personal .sv-footer.sv-action-bar {
+    display: block;
+    min-height: 2em;
+    padding:0;
+    margin-left: auto;
 }

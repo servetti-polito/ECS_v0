@@ -469,17 +469,13 @@
       "name": "page2",
       "elements": [
         {
-          "type": "html",
-          "name": "T1",
-          "title": {
-            "default": "Do you have control on...?",
-            "it": "Hai la possibilità di ... ?"
-          },
-          "hideNumber": true,
-          "html": {
-            "default": "<h3 > Do you have control on…?</h3>",
-            "it": "<h3>Hai la possibilità di ... ?</h3>"
-          }
+          "type": "expression",
+          "name": "question1",
+          "width": "800",
+          "minWidth": "800",
+          "maxWidth": "800",
+          "title": "Do you have control on...?",
+          "hideNumber": true
         },
         {
           "type": "radiogroup",
@@ -614,17 +610,13 @@
           "colCount": 2
         },
         {
-          "type": "html",
-          "name": "T2",
-          "title": {
-            "default": "Do you think it is important to have control on…?",
-            "it": "Pensi sia importante avere il controllo su...?"
-          },
-          "hideNumber": true,
-          "html": {
-            "default": "<h3>Do you think it is important to have control on…?</h3>",
-            "it": "<h3>Pensi sia importante avere il controllo su...?</h3>"
-          }
+          "type": "expression",
+          "name": "question3",
+          "width": "800",
+          "minWidth": "800",
+          "maxWidth": "800",
+          "title": "Do you think it's important to have control on...?",
+          "hideNumber": true
         },
         {
           "type": "radiogroup",

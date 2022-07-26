@@ -6,6 +6,7 @@ export default function Hello(props){
     let navigate = props.useNavigate();
     const routeSurvey = () => {navigate("/survey");}
     const routeLogin = () => {navigate("/login");}
+    const routeDashboard = () => {navigate("/dashboard");}
     const toggleLanguage = () => {
         let curr = props.ita;
         props.setIta(!curr);
@@ -29,25 +30,26 @@ export default function Hello(props){
                     <h1 className="display-1 text-center">{props.ita ? "Ciao!" : "Hello!"}</h1>
                 </div>
                 <div className="row gap-2">
-                    <div className="col-lg-3 col-1"/>
-                    <div className="d-grid col-lg-6 col-10">
+                    <div className="col-lg-2 col-1"/>
+                    <div className="d-grid col-lg-8 col-10">
                         <button  style={{"font-size": "175%"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
                     </div>
-                    <div className="col-lg-3 col-1"/>
+                    <div className="col-lg-2 col-1"/>
                 </div>
+                <div style={{margin:"20px"}}/>
                 <div className="row gap-2">
-                    <div className="col-lg-3 col-1"/>
-                    <div className="d-grid col-lg-6 col-10">
+                    <div className="col-lg-2 col-1"/>
+                    <div className="d-grid col-lg-8 col-10">
                         {
                             props.logged !== "" ?
                                 <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button"
-                                        onClick={routeLogin} disabled>{props.ita ? "Profilo" : "Profile"}</button>
+                                        onClick={routeDashboard}>{props.ita ? "Profilo" : "Profile"}</button>
                                 :
                                 <button style={{"font-size": "175%"}} className="btn btn-lg btn-white" type="button"
                                     onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>
                         }
                     </div>
-                    <div className="col-lg-3 col-1"/>
+                    <div className="col-lg-2 col-1"/>
                 </div>
             </div>
             <div className="row h-25"/>
