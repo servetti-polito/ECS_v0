@@ -4,8 +4,6 @@ import {useNavigate} from "react-router-dom";
 export default function ThanksEmail(props){
     let navigate = useNavigate();
     const routeHome = () => {
-        if(props.logged)
-            props.doLogout();
         navigate("/")
     }
 

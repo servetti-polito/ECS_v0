@@ -1,0 +1,10 @@
+{
+  "resourceName": "surveyResult",
+  "tableName": "surveyResult",
+  "partitionKey": {
+    "fieldName": "resultID",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -1,9 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
+import {API} from "aws-amplify";
+import {useState} from "react";
+import {Alert} from "react-bootstrap";
 
 export default function FurtherQuestions(props){
     let navigate = useNavigate();
-    const routePersonal = () => {
+    const [error, setError] = useState(null);
+
+    const notNow = () => {
+        let init = {
+            body: props.answers,
+            headers: {authorization : props.deviceJwt}
+        }
+        API.post("userTokenAPI", "/survey", init).then(data=>{
+            console.log("post ok: "+JSON.stringify(data));
+            props.setAnswers(null);
+            routePersonal()
+        }).catch(err=>setError("post failed: "+JSON.stringify(err.response)))
+    }
+    const routePersonal=()=>{
         navigate("/personal")
     }
     const routeCreate = () => {
@@ -14,6 +30,7 @@ export default function FurtherQuestions(props){
         <div className="container">
             <div className="row h-25"/>
             <div className="row h-25 align-items-center">
+                {error=== null ? <></> : <Alert variant="danger">{error}</Alert>}
                 <div className="col-12">
                     <h1 className="display-1 text-center">{props.ita ? "Grazie per aver risposto al sondaggio!" : "Thank you for your answers!"}</h1>
                     <h3 className="text-center">{props.ita ? "Vuoi creare un account per essere sempre aggiornato sulle condizioni ambientali nel tuo ufficio?" : "Would you like to create an account to be updated on the environmental conditions of your office?"}</h3>
@@ -21,7 +38,7 @@ export default function FurtherQuestions(props){
                 <div className="row h-25"/>
                 <div className="row gap-2">
                     <div style={{"text-align": "center"}} className="row align-items-center">
-                        <div className="col-6 justify-content-center"><button onClick={routePersonal} className="btn btn-lg btn-secondary" style={{width: "50%"}}>{props.ita ? "Non ora" : "Not now"}</button></div>
+                        <div className="col-6 justify-content-center"><button onClick={notNow} className="btn btn-lg btn-secondary" style={{width: "50%"}}>{props.ita ? "Non ora" : "Not now"}</button></div>
                         <div className="col-6 justify-content-center"><button onClick={routeCreate} className="btn btn-lg btn-primary" style={{width: "75%"}}>{props.ita ? "Crea un account" : "Create an account"}</button></div>
                     </div>
                 </div>

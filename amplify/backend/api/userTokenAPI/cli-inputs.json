@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/survey": {
+      "name": "/survey",
+      "lambdaFunction": "surveyLambda",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

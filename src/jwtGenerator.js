@@ -21,10 +21,11 @@ export default function jwtGenerator(username){
     let token = encodedHeader + "." + encodedData;
     let signature = CryptoJS.HmacSHA256(token, secret);
     signature = base64url(signature);
-    return {
+    /*return {
         jwt: token + "." + signature,
         exp: iat+duration
-    };
+    };*/
+    return token+"."+signature;
 }
 
 function base64url(source) {

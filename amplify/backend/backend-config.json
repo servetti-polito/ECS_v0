@@ -12,6 +12,10 @@
     "userToken": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "surveyResult": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -33,6 +37,25 @@
           }
         }
       ]
+    },
+    "surveyLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "surveyResult",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
     }
   },
   "api": {
@@ -43,6 +66,14 @@
         {
           "category": "function",
           "resourceName": "userTokenLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "surveyLambda",
           "attributes": [
             "Name",
             "Arn"

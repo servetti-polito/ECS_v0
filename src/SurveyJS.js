@@ -1,12 +1,13 @@
 import 'survey-core/modern.min.css';
 import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
-//import "./CSS/Hello.css";
 import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
 import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import * as css from "./CSS/SurveyJS.css";
+
+import {v4 as uuid} from "uuid";
 
 StylesManager.applyTheme("modern");
 
@@ -28,13 +29,22 @@ function SurveyJS(props) {
   document.onmousemove = resetTimeout;
 
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
-  //function sendDataToServer(sur) {
-  function sendDataToServer() {
-    //alert("The results are: " + JSON.stringify(sur.data));
-    if (props.logged==="")
+  function sendDataToServer(sur) {
+    let data = sur.data
+    data.resultID= uuid()
+    data.timestamp= new Date().getTime()
+    if (props.logged==="") {
+      data.user = generateAnonId()
+      props.setAnon(data.user)
+      props.setAnswers(data)
       navigate("/furtherQuestions")
-    else
+    }
+    else {
+      data.user = props.logged
+      props.setAnswers(data)
+      props.setAnswers(data)
       navigate("/thanks")
+    }
   }
   //LAYOUT E LINGUA////////////////////////////////////////////////////////////////////////////////////
   let survey = new Model(surveyJSON);
@@ -101,4 +111,10 @@ function SurveyJS(props) {
   </div>);
 
 }
+
+function generateAnonId()
+{
+  return "anon"+Math.floor(10000000 + Math.random() * 90000000).toString()
+}
+
 export default SurveyJS;

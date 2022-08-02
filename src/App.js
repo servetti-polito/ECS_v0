@@ -15,6 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Amplify from "aws-amplify";
 import config from "./aws-exports";
 import Dashboard from "./Dashboard";
+import jwtGenerator from "./jwtGenerator";
 
 Amplify.configure(config);
 
@@ -24,12 +25,23 @@ function App() {
     const [userJwt, setUserJwt] = useState(null);
     const [deviceJwt, setDeviceJwt] = useState(null);
     const [ita, setIta] = useState(false);
+    const [answers, setAnswers] = useState(null);
+    const [anon, setAnon] = useState(null);
+
     const {authenticate} = useContext(AccountContext);
 
     const location = useLocation();
     let navigate = useNavigate();
-    const doLogin = (email) => {setLogged(email);}
-    const doLogout = () => {setLogged("");}
+    const doLogin = (email, token) => {
+        console.log("DO LOGIN: "+email+" "+token)
+        setUserJwt(jwtGenerator(token));
+        setLogged(email);
+    }
+    const doLogout = () => {
+        setLogged("");
+        setUserJwt(null);
+        setAnswers(null);
+    }
     const routeHome = () => {
         doLogout();
         navigate("/");
@@ -89,22 +101,22 @@ function App() {
                     <Route path='/login' element={<Login deviceJwt={deviceJwt} setUserJwt={setUserJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/survey' element={<SurveyJS ita={ita} logged={logged} doLogout={doLogout}/>} />
+                    <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
                 <Route exact path='/thanks' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/thanks' element={<Thanks ita={ita} logged={logged} doLogout={doLogout}/>} />
+                    <Route path='/thanks' element={<Thanks answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
                 </Route>
                 <Route exact path='/thanksEmail' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
                 <Route exact path='/furtherQuestions' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/furtherQuestions' element={<FurtherQuestions ita={ita}/>}/>
+                    <Route path='/furtherQuestions' element={<FurtherQuestions deviceJwt={deviceJwt} answers={answers} ita={ita} setAnswers={setAnswers}/>}/>
                 </Route>
                 <Route exact path='/createAccount' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/createAccount' element={<CreateAccount deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
+                    <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/personal' element={<Personal ita={ita}/>} />
+                    <Route path='/personal' element={<Personal logged={logged} anon={anon} ita={ita}/>} />
                 </Route>
                 <Route exact path='/dashboard' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />

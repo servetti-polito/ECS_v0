@@ -11,6 +11,7 @@ function Login(props) {
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const [error, setError] = useState("");
+    //TODO: make this actually working again
     const headers = {
         headers: {"Authorization" : props.deviceJwt}
     };
@@ -43,8 +44,9 @@ function Login(props) {
                                         setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
                                     else {
                                         console.log("user email: " + user[0].email)
-                                        props.doLogin(user[0].email)
-                                        props.setUserJwt(jwtGenerator(user[0].token));
+                                        //props.doLogin(user[0].email)
+                                        //props.setUserJwt(jwtGenerator(user[0].token));
+                                        props.doLogin(user[0].email, user[0].token);
                                         setSubmitting(false);
                                         navigate("/");
                                     }
