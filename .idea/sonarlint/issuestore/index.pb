@@ -50,16 +50,6 @@ A
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
-I
-src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
-K
-src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
-D
-src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
-D
-src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
-<
-src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 A
 src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
 @

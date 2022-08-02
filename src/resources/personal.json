@@ -461,7 +461,7 @@
         }
       ],
       "title": {
-        "default": "Provide information about yourself",
+        "default": "Would you provide information about yourself?",
         "it": "Fornisci informazioni su di te"
       }
     },
@@ -752,7 +752,7 @@
         }
       ],
       "title": {
-        "default": "Provide information about your behaviour in the environment",
+        "default": "Would you provide information about your behaviour?",
         "it": "Fornisci informazioni sul tuo comportamento nell'ambiente"
       }
     }

@@ -13,11 +13,12 @@ function CreateAccount(props) {
 
     return (
         <div className="container" style={{"padding":"50px"}}>
-            <div style={{padding: "10px"}}/>
+            <div style={{padding: 50}}/>
             <div className="row h-50 align-items-center">
-                <div className="col-12" style={{"padding":"50px"}}>
-                    <h1 className="display-1 text-center">{props.ita ? "Registrati":"Sign in"}</h1>
+                <div className="col-12" style={{"border-bottom":"2px solid #ff9724"}}>
+                    <h1 className="text-center">{props.ita ? "Crea il tuo account":"Create your account"}</h1>
                 </div>
+                <div style={{padding: 50}}/>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                 <Formik
                     initialValues={{ email: '', token: ''}}
@@ -79,10 +80,10 @@ function CreateAccount(props) {
                           handleBlur,
                           handleSubmit
                       }) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} style={{ paddingLeft:50, paddingRight:50}}>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                <div style={{"text-align": "right"}} className="col-3">
-                                    <label htmlFor="email"><h3>Email</h3></label>
+                                <div style={{"text-align": "left"}} className="col-3">
+                                    <label htmlFor="email"><h3>E-mail</h3></label>
                                 </div>
                                 <div className="col-9">
                                     <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} className="form-control" id="email" placeholder="Email"/>
@@ -93,7 +94,7 @@ function CreateAccount(props) {
                                 </div>
                             </div>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
-                                <div style={{"text-align": "right"}} className="col-3">
+                                <div style={{"text-align": "left"}} className="col-3">
                                     <label htmlFor="token"><h3>Personal Token</h3></label>
                                 </div>
                                 <div className="col-9">
@@ -106,8 +107,7 @@ function CreateAccount(props) {
                                 </div>
                             </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
-                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Sign in"}</button></div>
+                                <div className="col-12 justify-content-center"><button style={{width:"25%", position:"absolute", right:20, bottom:20}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Create"}</button></div>
                             </div>
                         </form>
                     )}
@@ -116,5 +116,9 @@ function CreateAccount(props) {
         </div>
     );
 }
+ /*
+ * <div className="col-6 justify-content-center"><button style={{width:"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
+                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Create"}</button></div>
+ * */
 
 export default CreateAccount

@@ -127,8 +127,13 @@ function App() {
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
                 location.pathname!=="/furtherQuestions" ?
-                <p style={{ "position": "fixed", "top": 50, "right": 50, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p> :
+                <p style={{ "position": "fixed", "top": 25, "right": 25, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p> :
                 null
+            }
+            {
+                <div style={{"position":"absolute", "bottom":10, "width":"100%", "text-align":"center", "pointer-events":"none"}}>
+                    <p style={{"font-size":"200%", "color":"#ff9724"}}>PROMET&O</p>
+                </div>
             }
         </>
     );

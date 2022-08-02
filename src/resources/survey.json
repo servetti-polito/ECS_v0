@@ -174,7 +174,7 @@
         {
           "type": "html",
           "name": "question19",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #a7656699; margin-bottom:20px\"/>"
         },
         {
           "type": "radiogroup",
@@ -265,7 +265,7 @@
         {
           "type": "html",
           "name": "question21",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #a7656699; margin-bottom:20px\"/>"
         },
         {
           "type": "imagepicker",
@@ -345,7 +345,7 @@
         {
           "type": "html",
           "name": "question20",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #84978399; margin-bottom:20px\"/>"
         },
         {
           "type": "imagepicker",
@@ -426,7 +426,7 @@
         {
           "type": "html",
           "name": "question22",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #84978399; margin-bottom:20px\"/>"
         },
         {
           "type": "checkbox",
@@ -509,7 +509,7 @@
         {
           "type": "html",
           "name": "question23",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #eccb7b99; margin-bottom:20px\"/>"
         },
         {
           "type": "imagepicker",
@@ -590,7 +590,7 @@
         {
           "type": "html",
           "name": "question24",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #eccb7b99; margin-bottom:20px\"/>"
         },
         {
           "type": "checkbox",
@@ -673,7 +673,7 @@
         {
           "type": "html",
           "name": "question25",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #eccb7b99; margin-bottom:20px\"/>"
         },
         {
           "type": "radiogroup",
@@ -765,7 +765,7 @@
         {
           "type": "html",
           "name": "question26",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #c4d3e099; margin-bottom:20px\"/>"
         },
         {
           "type": "imagepicker",
@@ -846,7 +846,7 @@
         {
           "type": "html",
           "name": "question27",
-          "html": "<div style=\"width:100%; border-bottom: 1px solid #FF9724; margin-bottom:20px\"/>"
+          "html": "<div style=\"width:100%; border-bottom: 1px solid #c4d3e099; margin-bottom:20px\"/>"
         },
         {
           "type": "checkbox",
