@@ -55,7 +55,7 @@ export default function Dashboard(props){
                 <div className="row h-100">
                     <div className="col-4" style={{backgroundColor: "#FF9724", borderRadius: "50px"}}>
                         <div className="row">
-                            <h1 style={{textAlign:"center", fontSize:"300%", marginTop:"20px"}}>PROMET&O</h1>
+                            <h1 style={{textAlign:"center", fontSize:"300%", marginTop:"20px", "font-family":'Ink Free'}}>PROMET&O</h1>
                         </div>
                         <div className="row">
                             <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginRight:"2.5%", marginLeft:"5%"}}>

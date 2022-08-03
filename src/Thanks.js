@@ -41,8 +41,11 @@ export default function Thanks(props){
                 }
             </div>
 
-            <button style={{position:"absolute", right:20, bottom:20}} className="btn btn-lg btn-primary" type="button" onClick={routeHome}>{props.ita ? "Torna alla home" : "Go back home"}</button>
-        </div>
+            {   localStorage.getItem("noNavigation")==="true" ? null :
+                <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary"
+                     type="button" onClick={routeHome}>{props.ita ? "Torna alla home" : "Go back home"}</button>
+            }
+            </div>
     /*        <div className="container">
                 <div className="row h-25">
                 {error=== null ? <></> : <Alert variant="danger">{error}</Alert>}

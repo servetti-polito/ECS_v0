@@ -50,9 +50,15 @@ A
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
-A
-src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
-@
-src/Dashboard.js,f\f\ffdc31ed626203891aea2df6fdbf4019ec0c3d3e
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
+B
+src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
+<
+src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
+<
+src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
+D
+src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10

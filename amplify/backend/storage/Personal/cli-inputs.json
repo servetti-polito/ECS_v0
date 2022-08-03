@@ -1,0 +1,10 @@
+{
+  "resourceName": "Personal",
+  "tableName": "Personal",
+  "partitionKey": {
+    "fieldName": "personalID",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

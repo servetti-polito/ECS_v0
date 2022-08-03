@@ -57,7 +57,14 @@ function App() {
         authenticate(urlParams.get("user"), urlParams.get("pass")).then(()=>{
             console.log("Logged in");
             setAdminLogged(true);
-            routeHome()
+            if(urlParams.get("personal")!=null&&urlParams.get("username")!=null) //localhost:3000/personal?user=admin&pass=admin2022&multi=personal&personal=true&username=
+            {
+                localStorage.setItem("personalUsername",urlParams.get("username"))
+                localStorage.setItem("noNavigation","true");
+                navigate("/personal")
+            }
+            else
+                routeHome()
             localStorage.setItem("loading", false);
         }).catch((err)=>console.log(err))
     }
@@ -66,7 +73,6 @@ function App() {
     useEffect(()=>{
         getSession().then(session=>{
             setAdminLogged(true);
-            //localStorage.setItem("appJwt", session.getAccessToken().getJwtToken())
             localStorage.setItem("appJwt", session.getIdToken().getJwtToken())
             setDeviceJwt(localStorage.getItem("appJwt"))
         }).catch(setAdminLogged(false))
@@ -79,18 +85,6 @@ function App() {
 
     return (
         <>
-            {
-                /*logged!=="" ?
-                    <div className="row">
-                        <div className="col-10">
-                            <h5 style={{display: "inline-block", padding: "10px"}}>Hello, {logged}</h5>
-                        </div>
-                        <div className="col-2">
-                            <p onClick={doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log out</p>
-                        </div>
-                    </div>
-                    : null*/
-            }
             <Routes>
                 <Route path='*' element={<Page404 ita={ita}/>} />
                 <Route exact path="/page401" element={<Page401/>}/>
@@ -116,7 +110,7 @@ function App() {
                     <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/personal' element={<Personal logged={logged} anon={anon} ita={ita}/>} />
+                    <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
                 </Route>
                 <Route exact path='/dashboard' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
@@ -131,13 +125,32 @@ function App() {
                 null
             }
             {
+                location.pathname!=="/dashboard" ?
                 <div style={{"position":"absolute", "bottom":10, "width":"100%", "text-align":"center", "pointer-events":"none"}}>
-                    <p style={{"font-size":"200%", "color":"#ff9724"}}>PROMET&O</p>
-                </div>
+                    <p style={{"font-size":"200%", "color":"#ff9724", "font-family":'Ink Free'}}>PROMET&O</p>
+                </div> : null
             }
         </>
     );
 }
 
+function removeParam(sourceURL) {
+    let url = sourceURL.split("?")
+    let path = url[0]
+    let keyValPairs = url[1].split("&")
+    let finalUrl=path
+    let nKV = 0
+    for(let kv in keyValPairs)
+    {
+        let kvs = keyValPairs[kv]
+        let kva=kvs.split("=")
+        if(kva[0]!=="user"&&kva[0]!=="pass"&&kva[0]!=="multi")
+        {
+            finalUrl=nKV===0 ? finalUrl+"?"+kvs : finalUrl+"&"+kvs
+            nKV++;
+        }
+    }
+    return finalUrl
+}
 
 export default App

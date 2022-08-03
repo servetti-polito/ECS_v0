@@ -29,11 +29,11 @@ export default function FurtherQuestions(props){
     return (
         <div className="container">
             <div className="row h-25"/>
-            <div className="row h-25 align-items-center">
+            <div className="row h-25 align-items-center" style={{margin:50}}>
                 {error=== null ? <></> : <Alert variant="danger">{error}</Alert>}
                 <div className="col-12">
-                    <h1 className="display-1 text-center">{props.ita ? "Grazie per aver risposto al sondaggio!" : "Thank you for your answers!"}</h1>
-                    <h3 className="text-center">{props.ita ? "Vuoi creare un account per essere sempre aggiornato sulle condizioni ambientali nel tuo ufficio?" : "Would you like to create an account to be updated on the environmental conditions of your office?"}</h3>
+                    <h1 className="text-center" style={{borderBottom:"2px solid #ff9724", marginBottom: 50}}>{props.ita ? "Grazie per aver risposto al sondaggio!" : "Thank you for your answers!"}</h1>
+                    <h3 className="text-center">{props.ita ? "Vuoi creare un account per essere sempre aggiornato sulle condizioni ambientali nel tuo ufficio?" : "Would you like to create an account to be updated on the environmental conditions of your office? "}</h3>
                 </div>
                 <div className="row h-25"/>
                 <div className="row gap-2">
@@ -43,7 +43,6 @@ export default function FurtherQuestions(props){
                     </div>
                 </div>
             </div>
-            //TODO: aggiungere immagini dati
         </div>
     );
 }

@@ -1,0 +1,7 @@
+
+Vjavascript:S1481
+":Remove the declaration of the unused 'routeHome' variable.(ÌÑÉ¥
+Sjavascript:S1854
+"7Remove this useless assignment to variable "routeHome".(ÌÑÉ¥
+Jjavascript:S1117:".'init' is already declared in the upper scope.(ó¨Ûµ
+Jjavascript:S1117>".'data' is already declared in the upper scope.(Üº÷È

@@ -759,5 +759,6 @@
   ],
   "showTitle": false,
   "goNextPageAutomatic": true,
-  "widthMode": "responsive"
+  "widthMode": "responsive",
+  "showCompletedPage": false
 }

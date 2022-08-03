@@ -16,6 +16,10 @@
     "surveyResult": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "Personal": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -56,6 +60,25 @@
           }
         }
       ]
+    },
+    "personalLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "Personal",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
     }
   },
   "api": {
@@ -74,6 +97,14 @@
         {
           "category": "function",
           "resourceName": "surveyLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "personalLambda",
           "attributes": [
             "Name",
             "Arn"

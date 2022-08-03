@@ -33,6 +33,7 @@ function SurveyJS(props) {
     let data = sur.data
     data.resultID= uuid()
     data.timestamp= new Date().getTime()
+    data.multisensor = localStorage.getItem("multi")
     if (props.logged==="") {
       data.user = generateAnonId()
       props.setAnon(data.user)
@@ -96,10 +97,6 @@ function SurveyJS(props) {
       classes.title += " air noBorder"
       classes.titleOnAnswer = "";
     }
-    /*if(options.question.name!=="Q2" && options.question.name!=="Q6" && options.question.name!=="Q8" && options.question.name!=="Q11")
-      setShowButtons(false);
-    else
-      setShowButtons(true);*/
   })
   /////////////////////////////////////////////////////////////////////////////////
   return(
