@@ -98,7 +98,7 @@ function App() {
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
                 <Route exact path='/thanks' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/thanks' element={<Thanks answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
+                    <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
                 </Route>
                 <Route exact path='/thanksEmail' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />

@@ -11,7 +11,6 @@ function Login(props) {
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const [error, setError] = useState("");
-    //TODO: make this actually working again
     const headers = {
         headers: {"Authorization" : props.deviceJwt}
     };

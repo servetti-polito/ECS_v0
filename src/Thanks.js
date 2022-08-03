@@ -13,8 +13,9 @@ export default function Thanks(props){
         {
             let init = {
                 body: props.answers,
-                headers: {authorization : props.deviceJwt}
+                headers: {Authorization : props.deviceJwt}
             }
+            console.log(JSON.stringify(init))
             API.post("userTokenAPI", "/survey", init).then(data=>{
                 console.log("post ok: "+JSON.stringify(data));
                 props.setAnswers(null);

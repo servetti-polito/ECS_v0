@@ -34,7 +34,8 @@ function CreateAccount(props) {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setError("");
-                        API.get("userTokenAPI", "/token/object", {headers: {authorization : props.deviceJwt}}).then(
+                        let headers = {headers: {"Authorization" : props.deviceJwt}};
+                        API.get("userTokenAPI", "/token/object", headers).then(
                             emails=>{
                                 if(emails.filter(e=>e.email===values.email).length!==0 || emails.filter(e=>e.token===values.token).length!==0 )
                                     setError(props.ita ? "Esiste già un utente con questa mail o questo token" : "A user with this email or this token already exists")
@@ -45,31 +46,30 @@ function CreateAccount(props) {
                                             email: values.email,
                                             token: values.token
                                         },
-                                        headers: {authorization : props.deviceJwt}
+                                        headers: {Authorization: `Bearer ${props.deviceJwt}`}
                                     }
-                                    console.log(JSON.stringify(init))
                                     API.post("userTokenAPI", "/token", init).then(data=>{
                                         console.log("post ok: "+JSON.stringify(data));
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
-                                        if(props.answers!==null)
-                                        {
-                                            props.answers.user=values.email
+                                        if(props.answers!==null) {
+                                            props.answers.user = values.email
                                             let init = {
                                                 body: props.answers,
-                                                headers: {authorization : props.deviceJwt}
+                                                headers: {"Authorization": props.deviceJwt}
                                             }
-                                            API.post("userTokenAPI", "/survey", init).then(data=>{
-                                                console.log("post ok: "+JSON.stringify(data));
+                                            console.log(JSON.stringify(init))
+                                            API.post("userTokenAPI", "/survey", init).then(data => {
+                                                console.log("post ok: " + JSON.stringify(data));
                                                 props.setAnswers(null)
                                                 navigate("/thanksEmail")
-                                            }).catch(err=>setError("post SURVEY failed: "+JSON.stringify(err)))
+                                            }).catch(err => console.log("post SURVEY failed: " + JSON.stringify(err)))
                                         }
                                         else
                                             routeThanks()
-                                    }).catch(err=>setError("post failed: "+JSON.stringify(err.response)))
+                                    }).catch(err=>console.log("post failed: "+JSON.stringify(err)))
                                 }
-                            })
+                            }).catch(err=>console.log("get failed: "+JSON.stringify(err)))
                     }}
                 >
                     {({
