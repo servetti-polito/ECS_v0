@@ -83,6 +83,9 @@ function App() {
             setUserJwt(null)
     }, 1000)
 
+    if(localStorage.getItem("noNavigation")==="true"&&(window.location.pathname!=="/personal"&&window.location.pathname!==("/thanks")))
+        return <Page404 noNavigation={true}/>
+
     return (
         <>
             <Routes>
@@ -117,6 +120,7 @@ function App() {
                 </Route>
             </Routes>
             {
+                localStorage.getItem("noNavigation")!=="true"&&
                 location.pathname!=="/" &&
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&

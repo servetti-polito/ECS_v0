@@ -4,12 +4,23 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {API} from "aws-amplify";
 import {Alert} from "react-bootstrap";
+import {AWS} from "aws-sdk";
 
 function CreateAccount(props) {
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const routeThanks = () => navigate("/thanksEmail")
     const [error, setError] = useState("");
+
+    let params = {
+        Destination: {ToAddresses: ['s285326@studenti.polito.it']},
+        Message: {
+            Body: {Html: {Charset: "UTF-8", Data: "HTML_FORMAT_BODY"},
+            Text: {Charset: "UTF-8", Data: "TEXT_FORMAT_BODY"}},
+            Subject: {Charset: 'UTF-8', Data: 'Test email'}
+        },
+        Source: 'no-reply@prometeo.click'
+    };
 
     return (
         <div className="container" style={{"padding":"50px"}}>
@@ -33,6 +44,7 @@ function CreateAccount(props) {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        let createdSuccessfully = false;
                         setError("");
                         let headers = {headers: {"Authorization" : props.deviceJwt}};
                         API.get("userTokenAPI", "/token/object", headers).then(
@@ -52,21 +64,36 @@ function CreateAccount(props) {
                                         console.log("post ok: "+JSON.stringify(data));
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
-                                        if(props.answers!==null) {
-                                            props.answers.user = values.email
-                                            let init = {
-                                                body: props.answers,
-                                                headers: {"Authorization": props.deviceJwt}
-                                            }
-                                            console.log(JSON.stringify(init))
-                                            API.post("userTokenAPI", "/survey", init).then(data => {
-                                                console.log("post ok: " + JSON.stringify(data));
-                                                props.setAnswers(null)
-                                                navigate("/thanksEmail")
-                                            }).catch(err => console.log("post SURVEY failed: " + JSON.stringify(err)))
+                                        let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
+                                        //let message = "https://survey.prometeo.click/?user=admin&pass=admin2022&multi=personal&personal=true&username="+values.token
+                                        let message = "http://localhost:3000/?user=admin&pass=admin2022&multi=personal&personal=true&username="+values.token
+                                        let init = {
+                                            mode:"no-cors",
+                                            method:"POST",
+                                            headers: {
+                                                Accept: "application/json",
+                                                "Content-Type":"application/json"
+                                            },
+                                            body: JSON.stringify({"email":values.email, "object": object, "message":message})
                                         }
-                                        else
-                                            routeThanks()
+                                        console.log("init",init)
+                                        fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                                            if(props.answers!==null) {
+                                                props.answers.user = values.email
+                                                let init = {
+                                                    body: props.answers,
+                                                    headers: {"Authorization": props.deviceJwt}
+                                                }
+                                                console.log(JSON.stringify(init))
+                                                API.post("userTokenAPI", "/survey", init).then(data => {
+                                                    console.log("post ok: " + JSON.stringify(data));
+                                                    props.setAnswers(null)
+                                                    navigate("/thanksEmail")
+                                                }).catch(err => console.log("post SURVEY failed: " + JSON.stringify(err)))
+                                            }
+                                            else
+                                                navigate("/thanksEmail")
+                                        }).catch(err=>console.log("MAIL FAILED",err))
                                     }).catch(err=>console.log("post failed: "+JSON.stringify(err)))
                                 }
                             }).catch(err=>console.log("get failed: "+JSON.stringify(err)))

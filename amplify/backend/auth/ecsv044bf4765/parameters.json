@@ -3,6 +3,7 @@
   "resourceName": "ecsv044bf4765",
   "serviceType": "imported",
   "region": "us-east-1",
+  "authProvidersUserPool": [],
   "requiredAttributes": [],
   "passwordPolicyMinLength": 8,
   "passwordPolicyCharacters": [

@@ -23,15 +23,15 @@
       "function": {
         "userTokenLambda": {
           "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/userTokenLambda-365a6c752f62586b3537-build.zip"
+          "s3Key": "amplify-builds/userTokenLambda-4e6f3037475756733565-build.zip"
         },
         "surveyLambda": {
           "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/surveyLambda-70676258696875432f57-build.zip"
+          "s3Key": "amplify-builds/surveyLambda-7666667669686f656b55-build.zip"
         },
         "personalLambda": {
           "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/personalLambda-4544652f6c64514a364f-build.zip"
+          "s3Key": "amplify-builds/personalLambda-684554794237685a5141-build.zip"
         }
       }
     }
