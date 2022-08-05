@@ -8,19 +8,7 @@ import {AWS} from "aws-sdk";
 
 function CreateAccount(props) {
     const navigate = useNavigate();
-    const routeHome = () => navigate("/");
-    const routeThanks = () => navigate("/thanksEmail")
     const [error, setError] = useState("");
-
-    let params = {
-        Destination: {ToAddresses: ['s285326@studenti.polito.it']},
-        Message: {
-            Body: {Html: {Charset: "UTF-8", Data: "HTML_FORMAT_BODY"},
-            Text: {Charset: "UTF-8", Data: "TEXT_FORMAT_BODY"}},
-            Subject: {Charset: 'UTF-8', Data: 'Test email'}
-        },
-        Source: 'no-reply@prometeo.click'
-    };
 
     return (
         <div className="container" style={{"padding":"50px"}}>
@@ -72,7 +60,8 @@ function CreateAccount(props) {
                                             method:"POST",
                                             headers: {
                                                 Accept: "application/json",
-                                                "Content-Type":"application/json"
+                                                "Content-Type":"application/json",
+                                                Authorization: `Bearer ${props.deviceJwt}`
                                             },
                                             body: JSON.stringify({"email":values.email, "object": object, "message":message})
                                         }
