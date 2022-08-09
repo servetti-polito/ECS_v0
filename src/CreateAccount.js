@@ -53,8 +53,7 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        //let message = "https://survey.prometeo.click/?user=admin&pass=admin2022&multi=personal&personal=true&username="+values.token
-                                        let message = "http://localhost:3000/?user=admin&pass=admin2022&multi=personal&personal=true&username="+values.token
+                                        let message = "https://survey.dev.prometeo.click/?user=admin&pass=admin2022&multi=1&personal=true&username="+values.token
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
