@@ -9,15 +9,15 @@ export default async function jwtGenerator(username, deviceJwt){
 
     let init = {
         body: {user: username},
-        /*headers: {
+        headers: {
             Authorization: `Bearer ${deviceJwt}`
-        }*/
+        }
     }
     let res = await API.get("jwt", "/jwt", init)
         .then(data=> {
             return {
                 jwt:data.jwt,
-                exp:Date.now()/1000
+                exp:(Date.now()/1000)+3600
             }
         })
         .catch(err=>{console.log(err); return null})
