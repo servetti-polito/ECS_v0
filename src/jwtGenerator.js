@@ -8,13 +8,17 @@ const duration = 3600 //in secondi
 export default async function jwtGenerator(username, deviceJwt){
 
     let init = {
-        body: {user: username},
+        body: {
+            "user": username
+        },
         headers: {
             Authorization: `Bearer ${deviceJwt}`
         }
     }
-    let res = await API.get("jwt", "/jwt", init)
+    console.log(JSON.stringify(init))
+    let res = await API.post("jwt", "/jwt", init)
         .then(data=> {
+            console.log("DATA: "+JSON.stringify(data))
             return {
                 jwt:data.jwt,
                 exp:(Date.now()/1000)+3600
