@@ -6,7 +6,8 @@ const duration = 3600 //in secondi
 
 
 export default function jwtGenerator(username, deviceJwt){
-/*    let init = {
+    console.log("in jwtGenerator")
+    let init = {
         body: {user: username},
         headers: {
             Authorization: `Bearer ${deviceJwt}`
@@ -27,8 +28,8 @@ export default function jwtGenerator(username, deviceJwt){
                 exp: (Date.now()/1000)-1000
             }
         })
-}*/
-    let header = {
+}
+ /*   let header = {
         "alg": "RS256",
         "kid":'this-is-a-test-kid',
     };
@@ -60,4 +61,4 @@ function base64url(source) {
     encodedSource = encodedSource.replace(/\+/g, '-');
     encodedSource = encodedSource.replace(/\//g, '_');
     return encodedSource;
-}
+}*/
