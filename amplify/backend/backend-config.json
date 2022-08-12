@@ -79,6 +79,11 @@
           }
         }
       ]
+    },
+    "jwtSign": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -105,6 +110,20 @@
         {
           "category": "function",
           "resourceName": "personalLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "jwt": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "jwtSign",
           "attributes": [
             "Name",
             "Arn"

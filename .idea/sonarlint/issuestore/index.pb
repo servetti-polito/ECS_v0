@@ -24,20 +24,14 @@ g
 7amplify/backend/function/userTokenLambda/src/event.json,d\6\d6b81e47fef31db59e487545c30583fbe6d03d3a
 a
 1amplify/backend/storage/userToken/cli-inputs.json,7\9\79c4a2bae4a4a4d8d984719187185e1d1acfd569
-S
-#amplify/backend/backend-config.json,9\4\947ed310829b54f4451f87fc5f31ae441d4abb2a
 f
 6amplify/backend/function/userTokenLambda/amplify.state,2\0\206a73e7d02b54913280a36331e0ecc6ce8ebb14
 …
 Uamplify/backend/function/userTokenLambda/userTokenLambda-cloudformation-template.json,1\6\16bc5e6f04657dac9877788ce71a146cedf59948
 m
 =amplify/backend/function/userTokenLambda/custom-policies.json,3\b\3bc518a29c6d1ba4cc60a1ca6d21f1534605f0cf
-O
-amplify/team-provider-info.json,2\a\2a936681202283da3416fae7099b0d9b111fceb3
 q
 Aamplify/backend/function/userTokenLambda/function-parameters.json,5\9\596a98c83fe174eea6c609bb5e27f65c32162f35
-j
-:amplify/backend/types/amplify-dependent-resources-ref.d.ts,0\b\0b5be8c4f70d436d0a05d0ecd4eb6da8a8af9e9b
 e
 5amplify/backend/function/userTokenLambda/src/index.js,d\2\d29a75c6c47cfb861d9d9835a38c8ac8afb357d1
 S
@@ -58,8 +52,6 @@ D
 src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 D
 src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
-C
-src/jwtGenerator.js,4\f\4f57b65e354214581c0f2ee2da8134eae3278296
 ?
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 >

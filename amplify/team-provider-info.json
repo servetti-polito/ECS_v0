@@ -32,6 +32,10 @@
         "personalLambda": {
           "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
           "s3Key": "amplify-builds/personalLambda-684554794237685a5141-build.zip"
+        },
+        "jwtSign": {
+          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
+          "s3Key": "amplify-builds/jwtSign-514b6f464c4e79747375-build.zip"
         }
       }
     }

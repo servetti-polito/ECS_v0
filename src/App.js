@@ -34,7 +34,7 @@ function App() {
     let navigate = useNavigate();
     const doLogin = (email, token) => {
         console.log("DO LOGIN: "+email+" "+token)
-        setUserJwt(jwtGenerator(token));
+        setUserJwt(jwtGenerator(token, deviceJwt));
         setLogged(email);
     }
     const doLogout = () => {
