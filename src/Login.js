@@ -45,7 +45,7 @@ function Login(props) {
                                         console.log("user email: " + user[0].email)
                                         //props.doLogin(user[0].email)
                                         //props.setUserJwt(jwtGenerator(user[0].token));
-                                        props.doLogin(user[0].email, user[0].token);
+                                        props.doLogin(user[0].email, user[0].token)
                                         setSubmitting(false);
                                         navigate("/");
                                     }

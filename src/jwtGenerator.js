@@ -5,29 +5,23 @@ const secret = "V1v1mo_In_Un_M0nd0_Crepuscolare.";
 const duration = 3600 //in secondi
 
 
-export default function jwtGenerator(username, deviceJwt){
-    console.log("in jwtGenerator")
+export default async function jwtGenerator(username, deviceJwt){
+
     let init = {
         body: {user: username},
-        headers: {
+        /*headers: {
             Authorization: `Bearer ${deviceJwt}`
-        }
+        }*/
     }
-    API.get("jwt", "/jwt", init)
+    let res = await API.get("jwt", "/jwt", init)
         .then(data=> {
-            console.log(JSON.stringify(data))
             return {
-                jwt: data.jwt,
-                exp: (Date.now()/1000)+3600
-            };
-        })
-        .catch(err=>{
-            console.log(JSON.stringify(err))
-            return {
-                jwt: null,
-                exp: (Date.now()/1000)-1000
+                jwt:data.jwt,
+                exp:Date.now()/1000
             }
         })
+        .catch(err=>{console.log(err); return null})
+    return res
 }
  /*   let header = {
         "alg": "RS256",

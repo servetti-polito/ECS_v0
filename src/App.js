@@ -32,9 +32,9 @@ function App() {
 
     const location = useLocation();
     let navigate = useNavigate();
-    const doLogin = (email, token) => {
-        console.log("DO LOGIN: "+email+" "+token)
-        setUserJwt(jwtGenerator(token, deviceJwt));
+    const doLogin = async (email, token) => {
+        let jwt = await jwtGenerator(token, deviceJwt)
+        setUserJwt(jwt);
         setLogged(email);
     }
     const doLogout = () => {
