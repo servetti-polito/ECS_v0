@@ -42,6 +42,8 @@ function App() {
     const doLogout = () => {
         setLogged("");
         setUserJwt(null);
+        if(document.cookie.split(';').filter(s=>s.startsWith("jwt=")).length!==0)
+            document.cookie = "jwt="+userJwt.jwt+"; expires="+new Date(1970,1,1,0,0,0,0)
         setAnswers(null);
     }
     const routeHome = () => {
