@@ -1,10 +1,12 @@
-//import CryptoJS from "crypto-js";
-//const secret = "V1v1mo_In_Un_M0nd0_Crepuscolare.";
-//const duration = 3600 //in secondi
+import CryptoJS from "crypto-js";
 import {API} from "aws-amplify"
 
+const secret = "V1v1mo_In_Un_M0nd0_Crepuscolare.";
+const duration = 3600 //in secondi
+
+
 export default function jwtGenerator(username, deviceJwt){
-    let init = {
+/*    let init = {
         body: {user: username},
         headers: {
             Authorization: `Bearer ${deviceJwt}`
@@ -25,8 +27,8 @@ export default function jwtGenerator(username, deviceJwt){
                 exp: (Date.now()/1000)-1000
             }
         })
-}
-    /*let header = {
+}*/
+    let header = {
         "alg": "RS256",
         "kid":'this-is-a-test-kid',
     };
@@ -35,7 +37,6 @@ export default function jwtGenerator(username, deviceJwt){
         "iat": iat,
         "exp": iat+duration,
         "sub": username,
-        "roles":roles
     };
     let stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
     let encodedHeader = base64url(stringifiedHeader);
@@ -59,4 +60,4 @@ function base64url(source) {
     encodedSource = encodedSource.replace(/\+/g, '-');
     encodedSource = encodedSource.replace(/\//g, '_');
     return encodedSource;
-}*/
+}

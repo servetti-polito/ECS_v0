@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/jwt": {
+      "name": "/jwt",
+      "lambdaFunction": "jwtSign",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
