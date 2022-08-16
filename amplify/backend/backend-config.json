@@ -20,10 +20,6 @@
     "Personal": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
-    },
-    "pubkey": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -88,25 +84,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "getPubkey": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "pubkey",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
     }
   },
   "api": {
@@ -147,14 +124,6 @@
         {
           "category": "function",
           "resourceName": "jwtSign",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "getPubkey",
           "attributes": [
             "Name",
             "Arn"

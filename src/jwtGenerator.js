@@ -15,10 +15,10 @@ export default async function jwtGenerator(username, deviceJwt){
             Authorization: `Bearer ${deviceJwt}`
         }
     }
-    console.log(JSON.stringify(init))
+    //console.log(JSON.stringify(init))
     let res = await API.post("jwt", "/jwt", init)
         .then(data=> {
-            console.log("DATA: "+JSON.stringify(data))
+            //console.log("DATA: "+JSON.stringify(data))
             return {
                 jwt:data.jwt,
                 exp:(Date.now()/1000)+3600

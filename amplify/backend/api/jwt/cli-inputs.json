@@ -7,13 +7,6 @@
       "permissions": {
         "setting": "open"
       }
-    },
-    "/pubkey": {
-      "name": "/pubkey",
-      "lambdaFunction": "getPubkey",
-      "permissions": {
-        "setting": "open"
-      }
     }
   }
 }
