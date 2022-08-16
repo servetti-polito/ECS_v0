@@ -15,7 +15,7 @@ export default function Hello(props){
     return (
         <div className="container" style={{backgroundColor: '#FF9724', margin: 0, padding: 0}}>
             <div className="row" style={{height: "20%"}}>
-                {props.logged !== "" ?
+                {props.logged !== "" && props.logged !== null ?
                     <div className="row h-25">
                         <div className="col-6" style={{padding:"50px"}}>
                             <h5 style={{display: "inline-block", padding: "10px"}}>Hello, {props.logged}</h5>
@@ -43,7 +43,7 @@ export default function Hello(props){
                     <div className="col-lg-2 col-1"/>
                     <div className="d-grid col-lg-8 col-10">
                         {
-                            props.logged !== "" ?
+                            props.logged !== null && props.logged !== "" ?
                                 <button style={{"font-size": "175%",  "color":"#ff9724"}} className="btn btn-lg btn-white" type="button"
                                         onClick={routeDashboard}>{props.ita ? "Profilo" : "Profile"}</button>
                                 :

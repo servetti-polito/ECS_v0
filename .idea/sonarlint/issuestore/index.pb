@@ -44,10 +44,6 @@ A
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
-B
-src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
-<
-src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 D
 src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 D
@@ -60,19 +56,15 @@ D
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
-?
-src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 A
 src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
-@
-src/Dashboard.js,f\f\ffdc31ed626203891aea2df6fdbf4019ec0c3d3e
-=
-src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
 G
 src/FurtherQuestions.js,8\d\8de45bc010705354eb900f4cc5ade3dc9a110f00
-?
-src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
+>
+src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581

@@ -21,14 +21,18 @@ Amplify.configure(config);
 
 function App() {
     const [adminLogged, setAdminLogged] = useState(false);
-    const [logged, setLogged] = useState("");
-    const [userJwt, setUserJwt] = useState(null);
+    //const [logged, setLogged] = useState("");
+    //const [userJwt, setUserJwt] = useState(null);
+    const [logged, setLogged] = useState(localStorage.getItem("logged"))
+    const [userJwt, setUserJwt] = useState(localStorage.getItem("userJwt"))
     const [deviceJwt, setDeviceJwt] = useState(null);
     const [ita, setIta] = useState(false);
     const [answers, setAnswers] = useState(null);
     const [anon, setAnon] = useState(null);
 
     const {authenticate} = useContext(AccountContext);
+
+    console.log("CHECKPOINT: "+logged+" "+userJwt)
 
     const location = useLocation();
     let navigate = useNavigate();
@@ -38,16 +42,20 @@ function App() {
         document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
         setUserJwt(jwt);
         setLogged(email);
+        localStorage.setItem("userJwt",jwt)
+        localStorage.setItem("logged",email)
     }
     const doLogout = () => {
-        setLogged("");
+        setLogged(null);
         setUserJwt(null);
+        localStorage.removeItem("logged")
+        localStorage.removeItem("userJwt")
         if(document.cookie.split(';').filter(s=>s.startsWith("jwt=")).length!==0)
             document.cookie = "jwt="+userJwt.jwt+"; expires="+new Date(1970,1,1,0,0,0,0)
         setAnswers(null);
     }
     const routeHome = () => {
-        doLogout();
+        //doLogout();
         navigate("/");
     }
 
@@ -59,7 +67,6 @@ function App() {
         localStorage.setItem("multi", urlParams.get("multi"));
         //if user or password are missing, the auth will fail by itself
         authenticate(urlParams.get("user"), urlParams.get("pass")).then(()=>{
-            console.log("Logged in");
             setAdminLogged(true);
             if(urlParams.get("personal")!=null&&urlParams.get("username")!=null) //localhost:3000/personal?user=admin&pass=admin2022&multi=personal&personal=true&username=
             {
@@ -99,7 +106,7 @@ function App() {
                     <Route exact path='/' element={<Hello doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 </Route>
                 <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/login' element={<Login deviceJwt={deviceJwt} setUserJwt={setUserJwt} doLogin={doLogin} ita={ita}/>} />
+                    <Route path='/login' element={<Login deviceJwt={deviceJwt} /*setUserJwt={setUserJwt}*/ doLogin={doLogin} ita={ita}/>} />
                 </Route>
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />

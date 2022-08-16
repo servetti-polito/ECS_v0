@@ -34,7 +34,7 @@ function SurveyJS(props) {
     data.resultID= uuid()
     data.timestamp= new Date().getTime()
     data.multisensor = localStorage.getItem("multi")
-    if (props.logged==="") {
+    if (props.logged===""||props.logged===null) {
       data.user = generateAnonId()
       props.setAnon(data.user)
       props.setAnswers(data)
