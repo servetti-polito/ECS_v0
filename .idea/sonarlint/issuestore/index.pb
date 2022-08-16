@@ -52,8 +52,6 @@ D
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 >
 src/Account.js,7\6\76e8440647f6201e04477c9fce831d701656f6c5
-<
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
 K
@@ -62,9 +60,5 @@ I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 A
 src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
-G
-src/FurtherQuestions.js,8\d\8de45bc010705354eb900f4cc5ade3dc9a110f00
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581

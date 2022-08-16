@@ -3,13 +3,12 @@ import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {API} from "aws-amplify";
-import {Alert} from "react-bootstrap";
-import {AWS} from "aws-sdk";
+import {Alert, Spinner} from "react-bootstrap";
 
 function CreateAccount(props) {
     const navigate = useNavigate();
     const [error, setError] = useState("");
-
+    const [loading, setLoading] = useState(false)
     return (
         <div className="container" style={{"padding":"50px"}}>
             <div style={{padding: 50}}/>
@@ -32,6 +31,7 @@ function CreateAccount(props) {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        setLoading(true)
                         let createdSuccessfully = false;
                         setError("");
                         let headers = {headers: {"Authorization" : props.deviceJwt}};
@@ -81,10 +81,10 @@ function CreateAccount(props) {
                                             }
                                             else
                                                 navigate("/thanksEmail")
-                                        }).catch(err=>console.log("MAIL FAILED",err))
-                                    }).catch(err=>console.log("post failed: "+JSON.stringify(err)))
+                                        }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
+                                    }).catch(err=>{setLoading(false); console.log("post failed: "+JSON.stringify(err))})
                                 }
-                            }).catch(err=>console.log("get failed: "+JSON.stringify(err)))
+                            }).catch(err=>{setLoading(false); console.log("get failed: "+JSON.stringify(err))})
                     }}
                 >
                     {({
@@ -122,7 +122,11 @@ function CreateAccount(props) {
                                 </div>
                             </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
-                                <div className="col-12 justify-content-center"><button style={{width:"25%", position:"absolute", right:20, bottom:20}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Create"}</button></div>
+                                <div className="col-12 justify-content-center">
+                                    <button style={{width:"25%", position:"absolute", right:50, bottom:50}} type="submit" className="btn btn-primary" disabled={loading}>
+                                        {loading ? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Registrati" : "Create"}
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     )}
@@ -131,9 +135,4 @@ function CreateAccount(props) {
         </div>
     );
 }
- /*
- * <div className="col-6 justify-content-center"><button style={{width:"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                <div className="col-6 justify-content-center"><button style={{width:"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Registrati" : "Create"}</button></div>
- * */
-
 export default CreateAccount

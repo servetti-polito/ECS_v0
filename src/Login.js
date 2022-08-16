@@ -3,14 +3,14 @@ import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {API} from "aws-amplify";
 import {useState} from "react";
-import {Alert} from "react-bootstrap";
-import jwtGenerator from "./jwtGenerator";
+import {Alert, Spinner} from "react-bootstrap";
 
 function Login(props) {
 
     const navigate = useNavigate();
     const routeHome = () => navigate("/");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false)
     const headers = {
         headers: {"Authorization" : props.deviceJwt}
     };
@@ -32,6 +32,7 @@ function Login(props) {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
+                            setLoading(true)
                             setError("");
                             API.get("userTokenAPI", "/token/email" , headers)
                                 .then(data=>{
@@ -43,10 +44,9 @@ function Login(props) {
                                         setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
                                     else {
                                         console.log("user email: " + user[0].email)
-                                        //props.doLogin(user[0].email)
-                                        //props.setUserJwt(jwtGenerator(user[0].token));
                                         props.doLogin(user[0].email, user[0].token)
                                         setSubmitting(false);
+                                        setLoading(false)
                                         navigate("/");
                                     }
                             }).catch(err=>console.log("get fail:",err))
@@ -75,8 +75,16 @@ function Login(props) {
                                     </div>
                                 </div>
                                 <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">
-                                    <div className="col-6 justify-content-center"><button style={{"width":"50%"}} onClick={routeHome} className="btn btn-secondary">Home</button></div>
-                                    <div className="col-6 justify-content-center"><button style={{"width":"50%"}} type="submit" className="btn btn-primary">{props.ita ? "Accedi" : "Submit"}</button></div>
+                                    <div className="col-6 justify-content-center">
+                                        <button style={{"width":"50%"}} onClick={routeHome} className="btn btn-secondary" disabled={loading}>
+                                            Home
+                                        </button>
+                                    </div>
+                                    <div className="col-6 justify-content-center">
+                                        <button style={{"width":"50%"}} type="submit" className="btn btn-primary" disabled={loading}>
+                                            {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Accedi" : "Submit"}
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         )}

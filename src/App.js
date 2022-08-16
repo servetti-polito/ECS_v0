@@ -21,8 +21,6 @@ Amplify.configure(config);
 
 function App() {
     const [adminLogged, setAdminLogged] = useState(false);
-    //const [logged, setLogged] = useState("");
-    //const [userJwt, setUserJwt] = useState(null);
     const [logged, setLogged] = useState(localStorage.getItem("logged"))
     const [userJwt, setUserJwt] = useState(localStorage.getItem("userJwt"))
     const [deviceJwt, setDeviceJwt] = useState(null);
@@ -36,7 +34,6 @@ function App() {
     let navigate = useNavigate();
     const doLogin = async (email, token) => {
         let jwt = await jwtGenerator(token, deviceJwt)
-        //console.log("CHECK "+"jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000))
         document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
         console.log("CHECK: "+document.cookie)
         setUserJwt(jwt);
@@ -54,7 +51,6 @@ function App() {
         setAnswers(null);
     }
     const routeHome = () => {
-        //doLogout();
         navigate("/");
     }
 

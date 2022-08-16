@@ -1,15 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
-import {Alert} from "react-bootstrap";
+import {Alert, Spinner} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useState} from "react";
 
 export default function Thanks(props){
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     let navigate = useNavigate();
     const routeHome = () => {
-        if(props.logged)
+        setLoading(true)
+        if(props.logged && error===null)
         {
             let init = {
                 body: props.answers,
@@ -20,7 +22,7 @@ export default function Thanks(props){
                 console.log("post ok: "+JSON.stringify(data));
                 props.setAnswers(null);
                 navigate("/")
-            }).catch(err=>setError("post failed: "+JSON.stringify(err.response)))
+            }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})
         }
         else
             navigate("/")
@@ -43,8 +45,9 @@ export default function Thanks(props){
             </div>
 
             {   localStorage.getItem("noNavigation")==="true" ? null :
-                <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary"
-                     type="button" onClick={routeHome}>{props.ita ? "Torna alla home" : "Go back home"}</button>
+                <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary" type="button" onClick={routeHome} disabled={loading}>
+                    {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back home"}
+                </button>
             }
             </div>
     );
