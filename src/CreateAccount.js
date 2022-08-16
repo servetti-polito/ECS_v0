@@ -28,6 +28,8 @@ function CreateAccount(props) {
                         {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
                         if(!values.token)
                         {props.ita ? errors.token = "Campo richiesto" : errors.token = 'Required'}
+                        else if (! /^[a-zA-Z]{1,20}[0-9]{8}/.test(values.token))
+                        {props.ita ? errors.token = "Formato non valido" : errors.token = "Invalid format"}
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
