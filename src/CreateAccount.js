@@ -4,11 +4,20 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {API} from "aws-amplify";
 import {Alert, Spinner} from "react-bootstrap";
+const hide = "https://i.imgur.com/pTAKMYx.png"
+const show = "https://i.imgur.com/ZONBZN0.png"
 
 function CreateAccount(props) {
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+
+    const togglePassword = () => {
+        let curShowPW = showPassword
+        setShowPassword(!curShowPW)
+    }
+
     return (
         <div className="container" style={{"padding":"50px"}}>
             <div style={{padding: 50}}/>
@@ -34,7 +43,6 @@ function CreateAccount(props) {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setLoading(true)
-                        let createdSuccessfully = false;
                         setError("");
                         let headers = {headers: {"Authorization" : props.deviceJwt}};
                         API.get("userTokenAPI", "/token/object", headers).then(
@@ -114,14 +122,19 @@ function CreateAccount(props) {
                                 <div style={{"text-align": "left"}} className="col-3">
                                     <label htmlFor="token"><h3>Personal Token</h3></label>
                                 </div>
-                                <div className="col-9">
-                                    <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                <div className="col-8">
+                                    <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                </div>
+                                <div className="col-1"><img onClick={togglePassword} style={{width:30, height:30}} src={showPassword ? hide : show}/></div>
+                                <div className="col-3"/>
+                                <div className="col-6">
                                     <small>{props.ita ? "Il cognome da nubile di tua madre + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname + your date of birth (yyyymmdd)"}</small><br/>
                                     {
                                         errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
+                                <div className="col-3"/>
                             </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
                                 <div className="col-12 justify-content-center">

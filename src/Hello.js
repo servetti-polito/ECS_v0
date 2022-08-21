@@ -6,7 +6,7 @@ export default function Hello(props){
     let navigate = props.useNavigate();
     const routeSurvey = () => {navigate("/survey");}
     const routeLogin = () => {navigate("/login");}
-    const routeDashboard = () => {navigate("/dashboard");}
+    const routeProfile = () => {navigate("/profile");}
     const toggleLanguage = () => {
         let curr = props.ita;
         props.setIta(!curr);
@@ -45,7 +45,7 @@ export default function Hello(props){
                         {
                             props.logged !== null && props.logged !== "" ?
                                 <button style={{"font-size": "175%",  "color":"#ff9724"}} className="btn btn-lg btn-white" type="button"
-                                        onClick={routeDashboard}>{props.ita ? "Profilo" : "Profile"}</button>
+                                        onClick={routeProfile}>{props.ita ? "Profilo" : "Profile"}</button>
                                 :
                                 <button style={{"font-size": "175%",  "color":"#ff9724"}} className="btn btn-lg btn-white" type="button"
                                     onClick={routeLogin}>{props.ita ? "Accedi" : "Login"}</button>

@@ -16,6 +16,7 @@ import Amplify from "aws-amplify";
 import config from "./aws-exports";
 import Dashboard from "./Dashboard";
 import jwtGenerator from "./jwtGenerator";
+import Profile from "./Profile";
 
 Amplify.configure(config);
 
@@ -123,6 +124,9 @@ function App() {
                 </Route>
                 <Route exact path='/dashboard' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
+                </Route>
+                <Route exact path='/profile' element={<ProtectedRoute logged={adminLogged}/>}>
+                    <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita}/>}/>
                 </Route>
             </Routes>
             {

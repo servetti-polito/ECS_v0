@@ -81,7 +81,7 @@ app.get(path + hashKeyPath, function(req, res) {
     KeyConditions: condition
   }
 
-  dynamodb.query(queryParams, (err, data) => {
+  dynamodb.scan(queryParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err});

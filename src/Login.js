@@ -4,6 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {API} from "aws-amplify";
 import {useState} from "react";
 import {Alert, Spinner} from "react-bootstrap";
+const hide = "https://i.imgur.com/pTAKMYx.png"
+const show = "https://i.imgur.com/ZONBZN0.png"
 
 function Login(props) {
 
@@ -11,9 +13,15 @@ function Login(props) {
     const routeHome = () => navigate("/");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     const headers = {
         headers: {"Authorization" : props.deviceJwt}
     };
+
+    const togglePassword = () => {
+        let curShowPW = showPassword
+        setShowPassword(!curShowPW)
+    }
 
     return (
         <div className="container" style={{"padding":"50px"}} >
@@ -34,14 +42,18 @@ function Login(props) {
                         onSubmit={(values, { setSubmitting }) => {
                             setLoading(true)
                             setError("");
-                            API.get("userTokenAPI", "/token/email" , headers)
-                                .then(data=>{
-                                    console.log("get ok: ", data)
-                                    let user = data.filter(a=>a.token===values.token);
+                            API.get("userTokenAPI", "/token/email?token="+values.token, headers).then(user=>{
+                                console.log(JSON.stringify(user))
                                     if(user.length<1)
+                                    {
                                         setError(props.ita ? "Nessun utente corrsiponde a questo token" : "No user has this token");
+                                        setLoading(false)
+                                    }
                                     else if (user.length>1)
+                                    {
                                         setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
+                                        setLoading(false)
+                                    }
                                     else {
                                         console.log("user email: " + user[0].email)
                                         props.doLogin(user[0].email, user[0].token)
@@ -65,14 +77,15 @@ function Login(props) {
                                     <div className="col-3">
                                         <label htmlFor="token"><h3>Token</h3></label>
                                     </div>
-                                    <div className="col-9">
-                                        <input type="text" name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                    <div className="col-6">
+                                        <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
 
                                         {
                                             errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
                                         }
                                     </div>
+                                    <div className="col-3"><img onClick={togglePassword} style={{width:30, height:30}} src={showPassword ? hide : show}/></div>
                                 </div>
                                 <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">
                                     <div className="col-6 justify-content-center">

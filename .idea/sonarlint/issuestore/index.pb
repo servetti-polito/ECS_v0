@@ -42,18 +42,12 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-`
-0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 D
 src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 D
 src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
 ?
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
->
-src/Account.js,7\6\76e8440647f6201e04477c9fce831d701656f6c5
-E
-src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 I
@@ -62,3 +56,5 @@ A
 src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
+>
+src/Page401.js,8\1\81b94293c92948775cdff180dead86fdb132d20c

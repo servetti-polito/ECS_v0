@@ -35,7 +35,7 @@
         },
         "jwtSign": {
           "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/jwtSign-514b6f464c4e79747375-build.zip"
+          "s3Key": "amplify-builds/jwtSign-59566e4279574e676856-build.zip"
         }
       }
     }
