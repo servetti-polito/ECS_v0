@@ -14,9 +14,10 @@ function Login(props) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    const headers = {
+
+    /*const headers = {
         headers: {"Authorization" : props.deviceJwt}
-    };
+    };*/
 
     const togglePassword = () => {
         let curShowPW = showPassword
@@ -42,7 +43,7 @@ function Login(props) {
                         onSubmit={(values, { setSubmitting }) => {
                             setLoading(true)
                             setError("");
-                            API.get("userTokenAPI", "/token/email?token="+values.token, headers).then(user=>{
+                            API.get("userTokenAPI", "/token/email?token="+values.token/*, headers*/, {}).then(user=>{
                                 console.log(JSON.stringify(user))
                                     if(user.length<1)
                                     {

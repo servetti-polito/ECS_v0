@@ -2,16 +2,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
 import {Alert, Spinner} from "react-bootstrap";
 import {API} from "aws-amplify";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    useEffect(()=>{
+        if((props.logged===null||props.logged==="")&&props.deviceJwt===null)
+            navigate("/")
+        if(props.answers===null&&localStorage.getItem("previousPersonal")===null)
+            navigate("/")
+    }, [])
+
     let navigate = useNavigate();
     const routeHome = () => {
+        localStorage.removeItem("previousPersonal")
         setLoading(true)
-        if(props.logged && error===null)
+        if(props.logged && error===null && props.answers!==null)
         {
             let init = {
                 body: props.answers,
@@ -44,7 +52,7 @@ export default function Thanks(props){
                 }
             </div>
 
-            {   localStorage.getItem("noNavigation")==="true" ? null :
+            {   /*localStorage.getItem("noNavigation")==="true" ? null :*/
                 <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary" type="button" onClick={routeHome} disabled={loading}>
                     {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back home"}
                 </button>

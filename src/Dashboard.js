@@ -32,23 +32,7 @@ export default function Dashboard(props){
 
     console.log("userJWT",props.userJwt)
     if(props.userJwt === null)
-        return (
-            <div className="container">
-                <div className="row h-25" />
-                <div className="row h-50 align-items-center">
-                    <div className="col-12">
-                        <h1 className="display-1 text-center">{props.ita ? "401:Utente non autorizzato" : "401: Unauthorized user"}</h1>
-                    </div>
-                    <div className="row gap-2">
-                        <div className="col-lg-3 col-1"/>
-                        <div className="d-grid col-lg-6 col-10">
-                            <button className="btn btn-lg btn-primary" type="button" onClick={routeLogin}>{props.ita ? "Accedi" : "Log in"}</button>
-                        </div>
-                        <div className="col-lg-3 col-1"/>
-                    </div>
-                </div>
-            </div>
-        );
+        navigate("/login")
     else
         return (
             <div className="container">

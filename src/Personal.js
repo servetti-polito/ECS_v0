@@ -5,13 +5,21 @@ import * as surveyJSON from './resources/personal.json';
 import { useNavigate } from "react-router-dom";
 import * as css from "./CSS/Personal.css";
 import {API} from "aws-amplify";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 StylesManager.applyTheme("modern");
 
 function Personal(props) {
     let navigate = useNavigate();
     let user = localStorage.getItem("personalUsername")
+
+    useEffect(()=>{
+        console.log("USER: "+user)
+        console.log("DEVICE: "+props.deviceJwt)
+        if((user===null || user === undefined)&&props.deviceJwt===null)
+            navigate("/login")
+    }, [])
+
     //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
     function sendDataToServer(sur) {
         console.log("user: "+user);
@@ -20,8 +28,10 @@ function Personal(props) {
             console.log("No user assigned")
             return
         }
-        if(Object.keys(sur.data).length === 0)
+        if(Object.keys(sur.data).length === 0) {
+            localStorage.setItem("previousPersonal", true)
             navigate("/thanks")
+        }
         else
         {
             let data = sur.data;
@@ -34,6 +44,7 @@ function Personal(props) {
             console.log("Sending: ", JSON.stringify(init))
             API.post("userTokenAPI", "/personal", init).then(resp=>{
                 console.log("post ok: "+JSON.stringify(resp));
+                localStorage.setItem("previousPersonal", true)
                 navigate("/thanks")
             }).catch(err=>console.log("post failed: "+JSON.stringify(err.response)))
         }

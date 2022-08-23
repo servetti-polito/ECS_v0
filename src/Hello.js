@@ -31,14 +31,15 @@ export default function Hello(props){
                 <div className="col-12" style={{padding: 50}}>
                     <h1 className="display-1 text-center" style={{"color":"white"}}>{props.ita ? "Ciao!" : "Hello!"}</h1>
                 </div>
-                <div className="row gap-2">
+                {   props.deviceJwt === null ? null : <>
+                    <div className="row gap-2">
                     <div className="col-lg-2 col-1"/>
                     <div className="d-grid col-lg-8 col-10">
                         <button  style={{"font-size": "175%", "color":"#ff9724"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
                     </div>
                     <div className="col-lg-2 col-1"/>
                 </div>
-                <div style={{margin:"20px"}}/>
+                <div style={{margin:"20px"}}/></> }
                 <div className="row gap-2">
                     <div className="col-lg-2 col-1"/>
                     <div className="d-grid col-lg-8 col-10">
