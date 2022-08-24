@@ -47,8 +47,10 @@ function CreateAccount(props) {
                         let headers = {headers: {"Authorization" : props.deviceJwt}};
                         API.get("userTokenAPI", "/token/object", headers).then(
                             emails=>{
-                                if(emails.filter(e=>e.email===values.email).length!==0 || emails.filter(e=>e.token===values.token).length!==0 )
+                                if(emails.filter(e=>e.email===values.email).length!==0 || emails.filter(e=>e.token===values.token).length!==0 ) {
                                     setError(props.ita ? "Esiste già un utente con questa mail o questo token" : "A user with this email or this token already exists")
+                                    setLoading(false)
+                                }
                                 else
                                 {
                                     let init = {
@@ -63,7 +65,7 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = "https://survey.dev.prometeo.click/"+values.token
+                                        let message = "Hello, +"+values.token+"\nVisit: https://survey.dev.prometeo.click/"
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
