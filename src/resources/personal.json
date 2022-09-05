@@ -758,7 +758,6 @@
     }
   ],
   "showTitle": false,
-  "goNextPageAutomatic": true,
   "widthMode": "responsive",
   "showCompletedPage": false
 }

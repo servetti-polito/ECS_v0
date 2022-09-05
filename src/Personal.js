@@ -12,14 +12,31 @@ StylesManager.applyTheme("modern");
 function Personal(props) {
     let navigate = useNavigate();
     let user = localStorage.getItem("personalUsername")
+    let oldValues = null
 
     useEffect(()=>{
         console.log("USER: "+user)
         console.log("DEVICE: "+props.deviceJwt)
         if((user===null || user === undefined)&&props.deviceJwt===null)
             navigate("/login")
+        if(user!==null) {
+            API.get("userTokenAPI", "/personal/personalID?personalID=" + user, null).then(resp => {
+                console.log("get ok: " + JSON.stringify(resp));
+                oldValues=resp[0]
+                if(oldValues!==null)
+                    fillOldValues()
+            }).catch(err => console.log("get failed: " + JSON.stringify(err.response)))
+        }
     }, [])
-
+    //FILL OLD VALUES///////////////////////////////////////////////////////////////////////////////////
+    function fillOldValues()
+    {
+        for(let ov in oldValues)
+        {
+            if(ov!=="personalID")
+                survey.setValue(ov,oldValues[ov]);
+        }
+    }
     //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
     function sendDataToServer(sur) {
         console.log("user: "+user);
@@ -35,8 +52,9 @@ function Personal(props) {
         else
         {
             let data = sur.data;
-            data.personalID = generateResponseId()
-            data.user = user===null ? props.anon : user
+            //data.personalID = generateResponseId()
+            //data.user = user===null ? props.anon : user
+            data.personalID = user===null ? props.anon : user
             let init = {
                 body: data,
                 headers: {Authorization : props.deviceJwt}
