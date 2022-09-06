@@ -1,0 +1,7 @@
+#Dashboard .btn-dash {
+    border-top-left-radius: 15px 15px !important;
+    border-bottom-left-radius: 15px 15px !important;
+    border-top-right-radius: 15px 15px !important;
+    border-bottom-right-radius: 15px 15px !important;
+    width:100%
+}

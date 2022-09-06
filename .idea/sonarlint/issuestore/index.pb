@@ -40,20 +40,12 @@ c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-D
-src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 D
 src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
 ?
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
-K
-src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
-A
-src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 >
@@ -76,5 +68,9 @@ B
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
 <
 src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
-<
-src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
+=
+src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
+>
+src/Profile.js,2\f\2fe10b6a7ec7966cc963870560b8f06ad7be7527
