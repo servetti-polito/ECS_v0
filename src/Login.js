@@ -79,7 +79,7 @@ function Login(props) {
                                         <label htmlFor="token"><h3>Token</h3></label>
                                     </div>
                                     <div className="col-6">
-                                        <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                        <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
 
                                         {
                                             errors.token && touched.token && errors.token ?

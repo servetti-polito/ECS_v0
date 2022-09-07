@@ -13,20 +13,28 @@ StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-  const timeout=1000*60*5; //5 minuti
+  //TIMEOUT/////////////////////////////////////////////////////////////////////
+  //const timeout=1000*60*5; //5 minuti
+  const timeout=1000*10; //5 minuti
   let inactivityTimeout = false
   resetTimeout()
   function onUserInactivity() {
-      clearTimeout(inactivityTimeout)
-      if(props.logged)
-        props.doLogout();
-      navigate("/")
+    stopTimeout()
+    if (props.logged)
+      props.doLogout();
+    navigate("/")
   }
   function resetTimeout() {
+    console.log("reset")
     clearTimeout(inactivityTimeout)
     inactivityTimeout = setTimeout(onUserInactivity, timeout)
   }
+  function stopTimeout(){
+    clearTimeout(inactivityTimeout)
+    document.onmousemove=null;
+  }
   document.onmousemove = resetTimeout;
+  /////////////////////////////////////////////////////////////////////////////////
 
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
@@ -38,12 +46,16 @@ function SurveyJS(props) {
       data.user = generateAnonId()
       props.setAnon(data.user)
       props.setAnswers(data)
+      //deactivate timeout
+      stopTimeout()
       navigate("/furtherQuestions")
     }
     else {
       data.user = props.logged
       props.setAnswers(data)
       props.setAnswers(data)
+      //deactivate timeout
+      stopTimeout()
       navigate("/thanks")
     }
   }
@@ -99,8 +111,13 @@ function SurveyJS(props) {
     }
   })
   /////////////////////////////////////////////////////////////////////////////////
+  function routeHome(){
+    stopTimeout()
+    navigate("/")
+  }
   return(
   <div className="container">
+    <p style={{ "position": "fixed", "top": 25, "right": 25, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p>
     <div className='row h-100 align-items-center'>
       <div className='col-12'>
         <Survey id = 'surveyjs' css={css} model = {survey} onComplete={sendDataToServer} /></div>

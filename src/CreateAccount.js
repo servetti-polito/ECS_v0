@@ -37,7 +37,7 @@ function CreateAccount(props) {
                         {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
                         if(!values.token)
                         {props.ita ? errors.token = "Campo richiesto" : errors.token = 'Required'}
-                        else if (! /^[a-zA-Z]{1,20}[0-9]{8}/.test(values.token))
+                        else if (! /^[a-z]{1,20}[0-9]{8}/.test(values.token))
                         {props.ita ? errors.token = "Formato non valido" : errors.token = "Invalid format"}
                         return errors;
                     }}
@@ -65,7 +65,7 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = "Hello, "+values.token+"\n\nVisit: https://survey.dev.prometeo.click/"
+                                        let message = props.ita ? "Ciao, "+values.token+"\n\nVisita: https://dev.prometeo.click/" : "Hello, "+values.token+"\n\nVisit: https://dev.prometeo.click/"
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
@@ -125,12 +125,12 @@ function CreateAccount(props) {
                                     <label htmlFor="token"><h3>Personal Token</h3></label>
                                 </div>
                                 <div className="col-8">
-                                    <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="Smith19701231"/>
+                                    <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
                                 </div>
                                 <div className="col-1"><img onClick={togglePassword} style={{width:30, height:30}} src={showPassword ? hide : show}/></div>
                                 <div className="col-3"/>
                                 <div className="col-6">
-                                    <small>{props.ita ? "Il cognome da nubile di tua madre + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname + your date of birth (yyyymmdd)"}</small><br/>
+                                    <small>{props.ita ? "Il cognome da nubile di tua madre in lettere minuscole + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname in lowercase letters + your date of birth (yyyymmdd)"}</small><br/>
                                     {
                                         errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null

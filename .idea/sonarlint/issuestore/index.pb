@@ -48,10 +48,6 @@ D
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
-?
-src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
-B
-src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 A
 src/CSS/index.css,f\5\f5e0b60d8f0309dc7e8cace29b4e179a6dc87c79
 A

@@ -142,6 +142,7 @@ function App() {
                 location.pathname!=="/" &&
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
+                location.pathname!=="/survey" &&
                 location.pathname!=="/furtherQuestions" ?
                 <p style={{ "position": "fixed", "top": 25, "right": 25, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p> :
                 null
