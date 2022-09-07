@@ -16,14 +16,13 @@
             {
               "value": "Male",
               "text": {
-                "it": "Uomo",
-                "default": "Male"
+                "it": "Maschio"
               }
             },
             {
               "value": "Female",
               "text": {
-                "it": "Donna"
+                "it": "Femmina"
               }
             }
           ],
@@ -50,7 +49,7 @@
           "name": "Q3",
           "title": {
             "default": "Country of birth",
-            "it": "Nazione"
+            "it": "Paese di nascita"
           },
           "titleLocation": "left",
           "choicesByUrl": {
@@ -62,7 +61,7 @@
           "name": "Q4",
           "title": {
             "default": "Educational qualification",
-            "it": "Titolo di studio"
+            "it": "Qualifica professionale"
           },
           "titleLocation": "left",
           "choices": [
@@ -70,7 +69,7 @@
               "value": "Ph.D",
               "text": {
                 "default": "Ph.D",
-                "it": "Dottorato"
+                "it": "Dottorato di Ricerca"
               }
             },
             {
@@ -88,7 +87,7 @@
             {
               "value": "High School",
               "text": {
-                "it": "Diploma di scuola superiore"
+                "it": "Scuola secondaria di secondo grado"
               }
             },
             {
@@ -104,7 +103,7 @@
           "name": "Q5",
           "title": {
             "default": "Intended use of the building",
-            "it": "Scopo dell'edificio"
+            "it": "Destinazione d’uso dell’edificio"
           },
           "titleLocation": "left",
           "choices": [
@@ -141,7 +140,7 @@
             {
               "value": "House",
               "text": {
-                "it": "Abitazione"
+                "it": "Abitazione privata"
               }
             }
           ]
@@ -151,72 +150,47 @@
           "name": "Q6",
           "title": {
             "default": "Ambit/Role",
-            "it": "Ruolo professionale"
+            "it": "Ambito/Ruolo"
           },
           "titleLocation": "left",
           "choices": [
             {
               "value": "Engineering",
-              "text": {
-                "it": "Ingegneria",
-                "default": "Engineering"
-              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Management",
-              "text": {
-                "it": "Management"
-              },
               "visibleIf": "{Q5} anyof ['Office', 'Museum', 'Hotel', 'Hospital']"
             },
             {
               "value": "Administration",
               "text": {
-                "it": "Amministrazione"
+                "it": "Personale amministrativo"
               },
               "visibleIf": "{Q5} anyof ['Office', 'School', 'Museum', 'Hotel', 'Hospital']"
             },
             {
               "value": "Creative, design and architecture",
-              "text": {
-                "it": "Creatività, design e architettura"
-              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Sales and public affairs",
-              "text": {
-                "it": "Vendita e relazioni col pubblico"
-              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Teaching and research",
-              "text": {
-                "it": "Insegnamento e ricerca"
-              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Services",
-              "text": {
-                "it": "Servizi"
-              },
               "visibleIf": "{Q5} = 'Office' or {Q5} = 'School'"
             },
             {
               "value": "Head teacher",
-              "text": {
-                "it": "Preside"
-              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
               "value": "Teacher",
-              "text": {
-                "it": "Insegnante"
-              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
@@ -225,86 +199,50 @@
             },
             {
               "value": "Student",
-              "text": {
-                "it": "Studente"
-              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
               "value": "Tour Guide",
-              "text": {
-                "it": "Guida turistica"
-              },
               "visibleIf": "{Q5} = 'Museum'"
             },
             {
               "value": "Tourist",
-              "text": {
-                "it": "Turist"
-              },
               "visibleIf": "{Q5} = 'Museum'"
             },
             {
               "value": "Staff",
-              "text": {
-                "it": "Staff"
-              },
               "visibleIf": "{Q5} = 'Hotel'"
             },
             {
               "value": "Customer",
-              "text": {
-                "it": "Cliente"
-              },
               "visibleIf": "{Q5} = 'Hotel'"
             },
             {
               "value": "Doctor",
-              "text": {
-                "it": "Dottore"
-              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Nurse",
-              "text": {
-                "it": "Infermiere"
-              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "OSS",
-              "text": {
-                "it": "OSS"
-              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Patient",
-              "text": {
-                "it": "Paziente"
-              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Inhabitant",
-              "text": {
-                "it": "Inquilino"
-              },
               "visibleIf": "{Q5} = 'House'"
             },
             {
               "value": "Guest",
-              "text": {
-                "it": "Ospite"
-              },
               "visibleIf": "{Q5} = 'House'"
             },
             {
               "value": "Housekeeper",
-              "text": {
-                "it": "Governante"
-              },
               "visibleIf": "{Q5} = 'House'"
             }
           ],
@@ -319,7 +257,7 @@
           "name": "Q7",
           "title": {
             "default": "Number of people in the environment",
-            "it": "Numero di persone nell'ambiente"
+            "it": "Numero di persone nell’ambiente"
           },
           "titleLocation": "left",
           "choices": [
@@ -349,7 +287,7 @@
           "name": "Q8",
           "title": {
             "default": "Visual impariments",
-            "it": "Deficit visivi"
+            "it": "Disturbi della vista"
           },
           "titleLocation": "left",
           "choices": [
@@ -368,7 +306,7 @@
           "name": "Q9",
           "title": {
             "default": "Hearing impariments",
-            "it": "Deficit uditivi"
+            "it": "Disturbi dell'udito"
           },
           "titleLocation": "left",
           "choices": [
@@ -425,7 +363,7 @@
           "name": "Q12",
           "title": {
             "default": "Does an unsatisfacotry Indoor Environmental Quality significantly reduce your work productivity?",
-            "it": "Un'insoddisfacente qualità dell'ambiente riduce significativamente la tua produttività?"
+            "it": "La qualità ambientale interna non soddisfacente riduce significativamente la tua produttività? "
           },
           "titleLocation": "left",
           "choices": [
@@ -444,7 +382,7 @@
           "name": "question2",
           "title": {
             "default": "Does an unsatisfacotry Indoor Environmental Quality significantly reduce your well-being?",
-            "it": "Un'insoddisfacente qualità dell'ambiente riduce significativamente la tua produttività?"
+            "it": "La qualità ambientale interna non soddisfacente riduce significativamente il tuo benessere? "
           },
           "titleLocation": "left",
           "choices": [
@@ -462,7 +400,7 @@
       ],
       "title": {
         "default": "Would you provide information about yourself?",
-        "it": "Fornisci informazioni su di te"
+        "it": "Vuoi fornire informazioni su te stesso?"
       }
     },
     {
@@ -474,7 +412,10 @@
           "width": "800",
           "minWidth": "800",
           "maxWidth": "800",
-          "title": "Do you have control on...?",
+          "title": {
+            "default": "Do you have control on...?",
+            "it": "Hai il controllo su…?"
+          },
           "hideNumber": true
         },
         {
@@ -483,7 +424,7 @@
           "indent": 2,
           "title": {
             "default": "windows opening  and closing",
-            "it": "aprire e chiudere le finestre"
+            "it": "Apertura e chiusure delle finestre"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -505,7 +446,7 @@
           "indent": 2,
           "title": {
             "default": "solar shading",
-            "it": "proteggerti dal sole"
+            "it": "Schermature solari"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -527,7 +468,7 @@
           "indent": 2,
           "title": {
             "default": "electric lightings",
-            "it": "illuminazione elettrica"
+            "it": "Apparecchi di illuminazione artificiale"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -549,7 +490,7 @@
           "indent": 2,
           "title": {
             "default": "heating system",
-            "it": "riscaldamento"
+            "it": "Impianto di riscaldamento"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -571,7 +512,7 @@
           "indent": 2,
           "title": {
             "default": "cooling system",
-            "it": "climatizzatore"
+            "it": "Impianto di raffrescamento"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -593,7 +534,7 @@
           "indent": 2,
           "title": {
             "default": "reducing annoyance from noise",
-            "it": "isolarsi dal rumore"
+            "it": "Riduzione del disturbo da rumore"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -615,7 +556,10 @@
           "width": "800",
           "minWidth": "800",
           "maxWidth": "800",
-          "title": "Do you think it's important to have control on...?",
+          "title": {
+            "default": "Do you think it's important to have control on...?",
+            "it": "Pensi che sia importante avere il controllo su…?"
+          },
           "hideNumber": true
         },
         {
@@ -624,7 +568,7 @@
           "indent": 2,
           "title": {
             "default": "windows opening and closing",
-            "it": "aprire e chiudere le finestre"
+            "it": "Apertura e chiusure delle finestre"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -646,7 +590,7 @@
           "indent": 2,
           "title": {
             "default": "solar shading",
-            "it": "proteggersi dal sole"
+            "it": "Schermature solari"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -668,7 +612,7 @@
           "indent": 2,
           "title": {
             "default": "electric lightings",
-            "it": "illuminazione elettrica"
+            "it": "Apparecchi di illuminazione artificiale"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -690,7 +634,7 @@
           "indent": 2,
           "title": {
             "default": "heating system",
-            "it": "riscaldamento"
+            "it": "Impianto di riscaldamento"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -712,7 +656,7 @@
           "indent": 2,
           "title": {
             "default": "cooling system",
-            "it": "condizionatore"
+            "it": "Impianto di raffrescamento"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -734,7 +678,7 @@
           "indent": 2,
           "title": {
             "default": "reducing annoyance from noise",
-            "it": "isolarsi dal rumore"
+            "it": "Riduzione del disturbo da rumore"
           },
           "titleLocation": "left",
           "hideNumber": true,
@@ -753,11 +697,35 @@
       ],
       "title": {
         "default": "Would you provide information about your behaviour?",
-        "it": "Fornisci informazioni sul tuo comportamento nell'ambiente"
+        "it": "Vuoi fornire informazioni sul tuo comportamento nel tuo ambiente?"
       }
     }
   ],
   "showTitle": false,
+  "showCompletedPage": false,
   "widthMode": "responsive",
-  "showCompletedPage": false
+  "startSurveyText": {
+    "default": "Start",
+    "it": "Inizia"
+  },
+  "pagePrevText": {
+    "default": "Previous",
+    "it": "Precedente"
+  },
+  "pageNextText": {
+    "default": "Next",
+    "it": "Successivo"
+  },
+  "completeText": {
+    "default": "Complete",
+    "it": "Completato"
+  },
+  "previewText": {
+    "default": "Preview",
+    "it": "Anteprima"
+  },
+  "editText": {
+    "default": "Edit",
+    "it": "Modifica"
+  }
 }

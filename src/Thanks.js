@@ -44,10 +44,16 @@ export default function Thanks(props){
             </div>
             {error=== null ? null : <Alert variant="danger">{error}</Alert>}
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
-               <div style={{padding:10, height: props.logged ? "90%" : "100%"}}>Graphs</div>
+               <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>Graphs</div>
                 {
                     props.logged ?
-                        <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724"}}>Visit <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" rel="noopener noreferrer">this link</a> or scan <img style={{height:50, width:50}} src="https://i.imgur.com/vivPMHM.png"/> to get full objective and subjective data.</div>
+                        <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724"}}>
+                            {props.ita ? "Visita " : "Visit "}
+                            <a href="https://dev.prometeo.click/chart" target="_blank" rel="noopener noreferrer">{props.ita ? "questo link" : "this link"}</a>
+                            {props.ita ? " o scansiona" : " or scan"}
+                            <img style={{height:100, width:100}} src="https://i.imgur.com/oGwMLLO.png"/>
+                            {props.ita ? "per visualizzare tutti i dati oggettivi e soggettivi" : "to get full objective and subjective data."}
+                        </div>
                     : null
                 }
             </div>

@@ -141,7 +141,7 @@ function CreateAccount(props) {
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
                                 <div className="col-12 justify-content-center">
                                     <button style={{width:"25%", position:"absolute", right:50, bottom:50}} type="submit" className="btn btn-primary" disabled={loading}>
-                                        {loading ? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Registrati" : "Create"}
+                                        {loading ? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Crea account" : "Create"}
                                     </button>
                                 </div>
                             </div>

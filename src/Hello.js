@@ -18,7 +18,7 @@ export default function Hello(props){
                 {props.logged !== "" && props.logged !== null ?
                     <div className="row h-25">
                         <div className="col-6" style={{padding:"50px"}}>
-                            <h5 style={{display: "inline-block", padding: "10px"}}>Hello, {props.logged}</h5>
+                            <h5 style={{display: "inline-block", padding: "10px"}}>{props.ita ? "Ciao" : "Hello"}, {props.logged}</h5>
                             <p onClick={props.doLogout} style={{display: "inline-block", textDecoration: "underline"}}> Log out</p>
                         </div>
                     </div> : <div className="row h-25"/>

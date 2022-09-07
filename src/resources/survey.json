@@ -9,7 +9,7 @@
           "type": "radiogroup",
           "name": "Q0",
           "title": {
-            "it": "Sei soddisfatto del tuo ambiente di lavoro?*",
+            "it": "Sei soddisfatto del tuo ambiente?",
             "default": "Are you satisfied with your environment at work?"
           },
           "isRequired": true,
@@ -101,7 +101,7 @@
           "type": "imagepicker",
           "name": "Q2",
           "title": {
-            "it": "La tua risposta è stata negativa. Quali aspetti ambientali non ti soddisfano?*",
+            "it": "La tua valutazione è negativa, puoi dirci di quale aspetto dell’ambiente non sei soddisfatto?",
             "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?"
           },
           "isRequired": true,
@@ -109,7 +109,7 @@
             {
               "value": "THERMAL  COMFORT",
               "text": {
-                "it": "COMFORT TERMICO",
+                "it": "TERMICO",
                 "default": "THERMAL  COMFORT"
               },
               "imageLink": "https://i.imgur.com/aC9LHo5.png"
@@ -117,7 +117,7 @@
             {
               "value": "ACOUSTIC  COMFORT",
               "text": {
-                "it": "COMFORT ACUSTICO",
+                "it": "ACUSTICO",
                 "default": "ACOUSTIC  COMFORT"
               },
               "imageLink": "https://i.imgur.com/R2jQU45.png"
@@ -125,7 +125,7 @@
             {
               "value": "VISUAL  COMFORT",
               "text": {
-                "it": "COMFORT VISIVO",
+                "it": "VISIVO",
                 "default": "VISUAL  COMFORT"
               },
               "imageLink": "https://i.imgur.com/o0Fi4Ci.png"
@@ -133,7 +133,7 @@
             {
               "value": "INDOOR AIR  QUALITY",
               "text": {
-                "it": "QUALITA' DELL'ARIA",
+                "it": "QUALITA' DELL'ARIA INTERNA",
                 "default": "INDOOR AIR  QUALITY"
               },
               "imageLink": "https://i.imgur.com/Q1JXqKF.png"
@@ -169,7 +169,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with thermal comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with thermal comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort termico, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -180,7 +183,7 @@
           "type": "radiogroup",
           "name": "Q3",
           "title": {
-            "it": "Indica nella seguente scala come ti senti ora.*",
+            "it": "Per favore indica sulla scala sottostante come ti senti adesso.",
             "default": "Please indicate on the following scale how YOU feel NOW."
           },
           "isRequired": true,
@@ -188,21 +191,21 @@
             {
               "value": "3",
               "text": {
-                "it": "Molto accaldato",
+                "it": "Molto caldo",
                 "default": "Hot"
               }
             },
             {
               "value": "2",
               "text": {
-                "it": "Accaldato",
+                "it": "Caldo",
                 "default": "Warm"
               }
             },
             {
               "value": "1",
               "text": {
-                "it": "Lievemente accaldato",
+                "it": "Poco caldo",
                 "default": "Slightly warm"
               }
             },
@@ -216,31 +219,28 @@
             {
               "value": "-1",
               "text": {
-                "it": "Lievemente infreddolito",
+                "it": "Poco freddo",
                 "default": "Slightly cool"
               }
             },
             {
               "value": "-2",
               "text": {
-                "it": "Infreddolito",
+                "it": "Freddo",
                 "default": "Cool"
               }
             },
             {
               "value": "-3",
               "text": {
-                "it": "Molto infreddolito",
+                "it": "Molto freddo",
                 "default": "Cold"
               }
             }
           ]
         }
       ],
-      "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort termico. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']"
     },
     {
       "name": "P3",
@@ -260,7 +260,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with thermal comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with thermal comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort termico, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -272,7 +275,7 @@
           "name": "Q4",
           "title": {
             "default": "Please indicate on the following scale how YOU find the AIR VELOCITY in your environment NOW.",
-            "it": "Indica nella seguente scala la velocità dell'aria presente ora nell'ambiente*"
+            "it": "Per favore indica sulla scala sottostante come trovi la velocità dell’aria nel tuo ambiente adesso."
           },
           "isRequired": true,
           "choices": [
@@ -280,7 +283,7 @@
               "value": "1",
               "text": {
                 "default": "Not  draughty",
-                "it": "Nessuna corrente d'aria"
+                "it": "Molto ventilato"
               },
               "imageLink": "https://i.imgur.com/zwBiE02.png"
             },
@@ -288,7 +291,7 @@
               "value": "2",
               "text": {
                 "default": "Slightly  draughty",
-                "it": "Lievi correnti d'aria"
+                "it": "Ventilato"
               },
               "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
@@ -296,7 +299,7 @@
               "value": "3",
               "text": {
                 "default": "Draughty",
-                "it": "Correnti d'aria"
+                "it": "Poco ventilato"
               },
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
@@ -304,7 +307,7 @@
               "value": "4",
               "text": {
                 "default": "Very  draughty",
-                "it": "Forti correnti d'aria"
+                "it": "Non ventilato"
               },
               "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             }
@@ -317,10 +320,7 @@
         }
       ],
       "visible": false,
-      "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort termico. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['THERMAL  COMFORT']"
     },
     {
       "name": "P4",
@@ -340,7 +340,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with acoustic comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with acoustic comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort acustico, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -351,7 +354,7 @@
           "type": "imagepicker",
           "name": "Q5",
           "title": {
-            "it": "Indica nella seguente scala il rumore presente ora nell'ambiente*",
+            "it": "Per favore indica sulla scala sottostante come trovi il rumore nel tuo ambiente adesso.",
             "default": "Please indicate on the following scale how YOU find the NOISE in your environment NOW."
           },
           "isRequired": true,
@@ -367,7 +370,7 @@
             {
               "value": "2",
               "text": {
-                "it": "Lievemente fastidioso",
+                "it": "Poco fastidioso",
                 "default": "Slightly  annoying"
               },
               "imageLink": "https://i.imgur.com/EWoOhiQ.png"
@@ -398,10 +401,7 @@
           "showLabel": true
         }
       ],
-      "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort acustico. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']"
     },
     {
       "name": "P5",
@@ -421,7 +421,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with acoustic comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with acoustic comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort acustico, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -433,7 +436,7 @@
           "name": "Q6",
           "title": {
             "default": "Please indicate any sources of noise YOU can hear in your environment NOW.",
-            "it": "Indica quali fonti di rumore si sentono ora nell'ambiente*"
+            "it": "Per favore indica le sorgenti di rumore che puoi sentire nel tuo ambiente adesso."
           },
           "isRequired": true,
           "choices": [
@@ -441,21 +444,21 @@
               "value": "Building systems",
               "text": {
                 "default": "Building systems",
-                "it": "Impianti di costruzione"
+                "it": "Impianti"
               }
             },
             {
               "value": "Computer, printer, other office equipments",
               "text": {
                 "default": "Computer, printer, other office equipments",
-                "it": "Computer, stampanti e altri dispositivi dell'ufficio"
+                "it": "Computer, stampante, altri apparecchi "
               }
             },
             {
               "value": "People chatting",
               "text": {
                 "default": "People chatting",
-                "it": "Chiacchiericcio"
+                "it": "Persone che parlano"
               }
             },
             {
@@ -472,7 +475,12 @@
                 "it": "Altri rumori dall'esterno"
               }
             },
-            "Other"
+            {
+              "value": "Other",
+              "text": {
+                "it": "Altro"
+              }
+            }
           ],
           "otherText": {
             "default": "Other",
@@ -481,10 +489,7 @@
           "maxSelectedChoices": 6
         }
       ],
-      "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort acustico. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['ACOUSTIC  COMFORT']"
     },
     {
       "name": "P6",
@@ -504,7 +509,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort visivo, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -516,14 +524,14 @@
           "name": "Q7",
           "title": {
             "default": "Please indicate on the following scale how YOU find your VISUAL environment NOW.",
-            "it": "Indica nella seguente scala il tuo comfort visivo attuale.*"
+            "it": "Per favore indica sulla scala sottostante come trovi il tuo ambiente visivo adesso."
           },
           "isRequired": true,
           "choices": [
             {
               "value": "4",
               "text": {
-                "it": "Molto fastidioso",
+                "it": "Molto sconfortevole ",
                 "default": "Very uncomfortable"
               },
               "imageLink": "https://i.imgur.com/Jkm5ICt.png"
@@ -531,7 +539,7 @@
             {
               "value": "3",
               "text": {
-                "it": "Fastidioso",
+                "it": "Sconfortevole",
                 "default": "Uncomfortable"
               },
               "imageLink": "https://i.imgur.com/IZsH61S.png"
@@ -539,7 +547,7 @@
             {
               "value": "2",
               "text": {
-                "it": "Lievemente fastidioso",
+                "it": "Poco sconfortevole",
                 "default": "Slightly uncomfortable"
               },
               "imageLink": "https://i.imgur.com/EWoOhiQ.png"
@@ -547,7 +555,7 @@
             {
               "value": "1",
               "text": {
-                "it": "Non fastidioso",
+                "it": "Non sconfortevole ",
                 "default": "Not uncomfortable"
               },
               "imageLink": "https://i.imgur.com/zwBiE02.png"
@@ -562,10 +570,7 @@
           "showLabel": true
         }
       ],
-      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']"
     },
     {
       "name": "P7",
@@ -585,7 +590,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort visivo, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -597,7 +605,7 @@
           "name": "Q8",
           "title": {
             "default": "Please indicate any sources of glare YOU can see in your VISUAL environment NOW.",
-            "it": "Indica quali fonti di abbagliamento può vedere nell'ambiente.*"
+            "it": "Per favore indica le sorgenti di abbagliamento che puoi vedere nel tuo ambiente visivo adesso."
           },
           "isRequired": true,
           "choices": [
@@ -619,14 +627,14 @@
               "value": "Glass surfaces",
               "text": {
                 "default": "Glass surfaces",
-                "it": "Superfici in vetro"
+                "it": "Superfici vetrate"
               }
             },
             {
               "value": "Computer screens",
               "text": {
                 "default": "Computer screens",
-                "it": "Schermi"
+                "it": "Schermo del computer"
               }
             },
             {
@@ -636,7 +644,12 @@
                 "it": "Superfici riflettenti"
               }
             },
-            "Other"
+            {
+              "value": "Other",
+              "text": {
+                "it": "Altro"
+              }
+            }
           ],
           "otherText": {
             "default": "Other",
@@ -645,10 +658,7 @@
           "maxSelectedChoices": 6
         }
       ],
-      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']"
     },
     {
       "name": "P8",
@@ -668,7 +678,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with visual comfort, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto del comfort visivo, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -680,7 +693,7 @@
           "name": "Q9",
           "title": {
             "default": "Please rate on the following scale how YOU would like your visual environment to be NOW.",
-            "it": "Indica nella seguente scala come preferiresti che il tuo ambiente fosse.*"
+            "it": "Per favore indica sulla scala sottostante come vorresti che fosse il tuo ambiente visivo adesso."
           },
           "isRequired": true,
           "choices": [
@@ -702,45 +715,45 @@
               "value": "1",
               "text": {
                 "default": "Slightly lighter",
-                "it": "Lievemente più luminoso"
+                "it": "Poco più luminoso"
               }
             },
             {
               "value": "0",
               "text": {
                 "default": "No change",
-                "it": "Nessun cambiamento"
+                "it": "Non diverso"
               }
             },
             {
               "value": "-1",
               "text": {
                 "default": "Slightly darker",
-                "it": "Lievemente più scuro"
+                "it": "Poco più buio"
               }
             },
             {
               "value": "-2",
               "text": {
                 "default": "Darker",
-                "it": "Più scuro"
+                "it": "Più buio"
               }
             },
             {
               "value": "-3",
               "text": {
                 "default": "Much darker",
-                "it": "Molto più scuro"
+                "it": "Molto più buio"
               }
             }
           ],
-          "otherText": "Other"
+          "otherText": {
+            "default": "Other",
+            "it": "Altro"
+          }
         }
       ],
-      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']",
-      "title": {
-        "it": "Non sei soddisfatto del comfort visivo. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['VISUAL  COMFORT']"
     },
     {
       "name": "P9",
@@ -760,7 +773,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with indoor air quality, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with indoor air quality, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto della qualità dell’aria interna, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -772,7 +788,7 @@
           "name": "Q10",
           "title": {
             "default": "Please indicate on the following scale how YOU find the AIR QUALITY in your environment NOW.",
-            "it": "Indica nella seguente scala come ritieni la qualità dell'aria.*"
+            "it": "Per favore indica sulla scala sottostante come trovi la qualità dell’aria nel tuo ambiente adesso."
           },
           "isRequired": true,
           "choices": [
@@ -787,7 +803,7 @@
             {
               "value": "2",
               "text": {
-                "it": "Lievemente maleodorante",
+                "it": "Poco maleodorante",
                 "default": "Slightly smelly"
               },
               "imageLink": "https://i.imgur.com/EWoOhiQ.png"
@@ -818,10 +834,7 @@
           "showLabel": true
         }
       ],
-      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']",
-      "title": {
-        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']"
     },
     {
       "name": "P10",
@@ -841,7 +854,10 @@
           "minWidth": "85",
           "maxWidth": "85",
           "startWithNewLine": false,
-          "html": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with indoor air quality, can you explain why?</h3>"
+          "html": {
+            "default": "<h3 style=\"margin-top:45px; font-weight:bold\">You are dissatisfied with indoor air quality, can you explain why?</h3>",
+            "it": "<h3 style=\"margin-top:45px; font-weight:bold\">Non sei soddisfatto della qualità dell’aria interna, puoi spiegare il motivo?</h3>"
+          }
         },
         {
           "type": "html",
@@ -853,7 +869,7 @@
           "name": "Q11",
           "title": {
             "default": "Please indicate any sources of pollution that contribute to the AIR QUALITY in your environment NOW.",
-            "it": "Indica quali fonti di inquinamento influenzano la qualità dell'aria in questo momento.*"
+            "it": "Per favore indica le sorgenti di inquinamento che contribuiscono alla qualità dell’aria nel tuo ambiente adesso."
           },
           "isRequired": true,
           "choices": [
@@ -861,14 +877,14 @@
               "value": "Tobacco smoke",
               "text": {
                 "default": "Tobacco smoke",
-                "it": "Fumo di tabacco"
+                "it": "Fumo di sigaretta"
               }
             },
             {
               "value": "Human odours",
               "text": {
                 "default": "Human odours",
-                "it": "Odori antropici"
+                "it": "Odori legati alle persone"
               }
             },
             {
@@ -878,7 +894,12 @@
                 "it": "Odori chimici"
               }
             },
-            "Other"
+            {
+              "value": "Other",
+              "text": {
+                "it": "Altro"
+              }
+            }
           ],
           "otherText": {
             "default": "Other",
@@ -887,10 +908,7 @@
           "maxSelectedChoices": 4
         }
       ],
-      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']",
-      "title": {
-        "it": "Non sei soddisfatto della qualità dell'aria. Perchè?"
-      }
+      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']"
     },
     {
       "name": "page1",
@@ -910,6 +928,30 @@
   "showTitle": false,
   "showCompletedPage": false,
   "goNextPageAutomatic": true,
+  "startSurveyText": {
+    "default": "Start",
+    "it": "Inizia"
+  },
+  "pagePrevText": {
+    "default": "Previous",
+    "it": "Precedente"
+  },
+  "pageNextText": {
+    "default": "Next",
+    "it": "Successivo"
+  },
+  "completeText": {
+    "default": "Complete",
+    "it": "Completato"
+  },
+  "previewText": {
+    "default": "Preview",
+    "it": "Anteprima"
+  },
+  "editText": {
+    "default": "Edit",
+    "it": "Modifica"
+  },
   "questionTitlePattern": "numTitle",
   "widthMode": "responsive"
 }
