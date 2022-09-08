@@ -148,7 +148,8 @@ function App() {
                 null
             }
             {
-                location.pathname!=="/dashboard" ?
+                location.pathname!=="/dashboard" &&
+                location.pathname!=="/" ?
                 <div style={{"position":"absolute", "bottom":10, "width":"100%", "text-align":"center", "pointer-events":"none"}}>
                     <p style={{"font-size":"200%", "color":"#ff9724", "font-family":'Ink Free'}}>PROMET&O</p>
                 </div> : null

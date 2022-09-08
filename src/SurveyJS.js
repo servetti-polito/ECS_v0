@@ -14,8 +14,7 @@ StylesManager.applyTheme("modern");
 function SurveyJS(props) {
   let navigate = useNavigate();
   //TIMEOUT/////////////////////////////////////////////////////////////////////
-  //const timeout=1000*60*5; //5 minuti
-  const timeout=1000*10; //5 minuti
+  const timeout=1000*60*5; //5 minuti
   let inactivityTimeout = false
   resetTimeout()
   function onUserInactivity() {

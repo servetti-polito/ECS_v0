@@ -122,7 +122,7 @@ function CreateAccount(props) {
                             </div>
                             <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                 <div style={{"text-align": "left"}} className="col-3">
-                                    <label htmlFor="token"><h3>Personal Token</h3></label>
+                                    <label htmlFor="token"><h3>{props.ita ? "Token Personale" : "Personal Token"}</h3></label>
                                 </div>
                                 <div className="col-8">
                                     <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>

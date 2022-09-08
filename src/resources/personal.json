@@ -30,6 +30,7 @@
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q2",
           "title": {
             "default": "Age",
@@ -42,10 +43,12 @@
             "36-50",
             "51-65",
             "65+"
-          ]
+          ],
+          "allowClear": false
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q3",
           "title": {
             "default": "Country of birth",
@@ -54,10 +57,12 @@
           "titleLocation": "left",
           "choicesByUrl": {
             "url": "https://surveyjs.io/api/CountriesExample"
-          }
+          },
+          "allowClear": false
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q4",
           "title": {
             "default": "Educational qualification",
@@ -96,10 +101,12 @@
                 "it": "Nessuno"
               }
             }
-          ]
+          ],
+          "allowClear": false
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q5",
           "title": {
             "default": "Intended use of the building",
@@ -143,10 +150,12 @@
                 "it": "Abitazione privata"
               }
             }
-          ]
+          ],
+          "allowClear": false
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q6",
           "title": {
             "default": "Ambit/Role",
@@ -160,14 +169,11 @@
             },
             {
               "value": "Management",
-              "visibleIf": "{Q5} anyof ['Office', 'Museum', 'Hotel', 'Hospital']"
+              "visibleIf": "{Q5} anyof ['Office']"
             },
             {
               "value": "Administration",
-              "text": {
-                "it": "Personale amministrativo"
-              },
-              "visibleIf": "{Q5} anyof ['Office', 'School', 'Museum', 'Hotel', 'Hospital']"
+              "visibleIf": "{Q5} anyof ['Office']"
             },
             {
               "value": "Creative, design and architecture",
@@ -183,77 +189,218 @@
             },
             {
               "value": "Services",
-              "visibleIf": "{Q5} = 'Office' or {Q5} = 'School'"
+              "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Head teacher",
+              "text": {
+                "it": "Dirigente scolastico"
+              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
               "value": "Teacher",
+              "text": {
+                "it": "Docente"
+              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
-              "value": "Administration",
+              "value": "Administrative staff",
+              "text": {
+                "it": "Personale amministrativo"
+              },
+              "visibleIf": "{Q5} anyof ['School', 'Hotel','Hospital']"
+            },
+            {
+              "value": "Technical staff",
+              "text": {
+                "it": "Personale tecnico"
+              },
+              "visibleIf": "{Q5} = 'School'"
+            },
+            {
+              "value": "Auxiliary staff",
+              "text": {
+                "it": "Personale ausiliario"
+              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
               "value": "Student",
+              "text": {
+                "it": "Studente"
+              },
               "visibleIf": "{Q5} = 'School'"
             },
             {
-              "value": "Tour Guide",
+              "value": "Manager",
+              "text": {
+                "it": "Direttore"
+              },
+              "visibleIf": "{Q5} anyof ['Hotel', 'Museum']"
+            },
+            {
+              "value": "Research, care and management of collections staff",
+              "text": {
+                "it": "Personale addetto alla ricerca, cura e gestione delle collezioni"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Services and relations with public staff",
+              "text": {
+                "it": "Personale dei servizi e rapporti con il pubblico"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Administrative, financial, management and public relations staff",
+              "text": {
+                "it": "Personale amministrativo, finanziario, gestionale e delle relazioni pubbliche"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Facilities and safety staff",
+              "text": {
+                "it": "Personale addetto alle strutture e sicurezza"
+              },
+              "visibleIf": "{Q5} = 'Museum'"
+            },
+            {
+              "value": "Tourist Guide",
+              "text": {
+                "it": "Guida turistica"
+              },
               "visibleIf": "{Q5} = 'Museum'"
             },
             {
               "value": "Tourist",
+              "text": {
+                "it": "Turista"
+              },
               "visibleIf": "{Q5} = 'Museum'"
             },
             {
-              "value": "Staff",
+              "value": "Receptionist",
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Chambermaid",
+              "text": {
+                "it": "Cameriere ai piani"
+              },
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Waiter",
+              "text": {
+                "it": "Cameriere di sala"
+              },
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Chef",
+              "text": {
+                "it": "Cuoco"
+              },
+              "visibleIf": "{Q5} = 'Hotel'"
+            },
+            {
+              "value": "Barman",
+              "text": {
+                "it": "Barman"
+              },
               "visibleIf": "{Q5} = 'Hotel'"
             },
             {
               "value": "Customer",
+              "text": {
+                "it": "Cliente"
+              },
               "visibleIf": "{Q5} = 'Hotel'"
             },
             {
+              "value": "Medical director",
+              "text": {
+                "it": "Direttore sanitario"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
+              "value": "Hospital secretary",
+              "text": {
+                "it": "Personale della segreteria"
+              },
+              "visibleIf": "{Q5} = 'Hospital'"
+            },
+            {
               "value": "Doctor",
+              "text": {
+                "it": "Dottore/dottoressa"
+              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Nurse",
+              "text": {
+                "it": "Infermiere/infermiera"
+              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
-              "value": "OSS",
+              "value": "Social health operator",
+              "text": {
+                "it": "Operatore socio-sanitario"
+              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Patient",
+              "text": {
+                "it": "Paziente"
+              },
               "visibleIf": "{Q5} = 'Hospital'"
             },
             {
               "value": "Inhabitant",
+              "text": {
+                "it": "Inquilino"
+              },
               "visibleIf": "{Q5} = 'House'"
             },
             {
               "value": "Guest",
+              "text": {
+                "it": "Ospite"
+              },
               "visibleIf": "{Q5} = 'House'"
             },
             {
               "value": "Housekeeper",
+              "text": {
+                "it": "Governante"
+              },
               "visibleIf": "{Q5} = 'House'"
+            },
+            {
+              "value": "Other",
+              "text" : {
+                "it": "Altro"
+              },
+              "visibleIf": "{Q5} anyof ['Office', 'School', 'Museum', 'Hotel', 'Hospital']"
             }
           ],
-          "hasOther": true,
           "otherText": {
             "default": "Other",
             "it": "Altro"
-          }
+          },
+          "allowClear": false
         },
         {
           "type": "dropdown",
+          "showOptionsCaption": false,
           "name": "Q7",
           "title": {
             "default": "Number of people in the environment",
@@ -280,7 +427,8 @@
                 "it": "più di 10"
               }
             }
-          ]
+          ],
+          "allowClear": false
         },
         {
           "type": "radiogroup",
@@ -703,7 +851,6 @@
   ],
   "showTitle": false,
   "showCompletedPage": false,
-  "widthMode": "responsive",
   "startSurveyText": {
     "default": "Start",
     "it": "Inizia"
@@ -727,5 +874,6 @@
   "editText": {
     "default": "Edit",
     "it": "Modifica"
-  }
+  },
+  "widthMode": "responsive"
 }

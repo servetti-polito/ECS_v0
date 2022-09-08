@@ -26,7 +26,7 @@ export default function Hello(props){
             </div>
             <div className="row h-25 align-items-center">
                 <div className="col-12" style={{backgroundColor: "white", marginBottom:50}}>
-                    <h1 className="display-1 text-center" style={{"color":"#ff9724"}}>PROMET&O</h1>
+                    <h1 className="display-1 text-center" style={{"color":"#ff9724", "font-family":'Ink Free'}}>PROMET&O</h1>
                 </div>
                 <div className="col-12" style={{padding: 50}}>
                     <h1 className="display-1 text-center" style={{"color":"white"}}>{props.ita ? "Ciao!" : "Hello!"}</h1>

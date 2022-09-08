@@ -6,83 +6,31 @@
       "name": "P0",
       "elements": [
         {
-          "type": "radiogroup",
-          "name": "Q0",
-          "title": {
-            "it": "Sei soddisfatto del tuo ambiente?",
-            "default": "Are you satisfied with your environment at work?"
-          },
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "Yes",
-              "text": {
-                "it": "Si"
-              }
-            },
-            {
-              "value": "No",
-              "text": {
-                "it": "No"
-              }
-            }
-          ],
-          "colCount": 2
-        },
-        {
           "type": "imagepicker",
           "name": "Q1",
-          "titleLocation": "hidden",
+          "title": {
+            "default": "Are you satisfied with your environment?",
+            "it": "Sei soddisfatto del tuo ambiente?"
+          },
+          "titleLocation": "top",
           "hideNumber": true,
           "isRequired": true,
           "choices": [
             {
-              "value": "1_grey",
-              "visibleIf": "{Q0} = 'No'",
-              "enableIf": "false",
-              "imageLink": "https://i.imgur.com/WzmzhgA.png"
-            },
-            {
-              "value": "1",
-              "visibleIf": "{Q0} = 'Yes'",
-              "enableIf": "{Q0} = 'Yes'",
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
-            },
-            {
-              "value": "2_grey",
-              "visibleIf": "{Q0} = 'No'",
-              "enableIf": "false",
-              "imageLink": "https://i.imgur.com/TI1YRPc.png"
-            },
-            {
-              "value": "2",
-              "visibleIf": "{Q0} = 'Yes'",
-              "enableIf": "{Q0} = 'Yes'",
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
-            },
-            {
-              "value": "3_grey",
-              "visibleIf": "{Q0} = 'Yes'",
-              "enableIf": "false",
-              "imageLink": "https://i.imgur.com/ZIR0otT.png"
+              "value": "4",
+              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             },
             {
               "value": "3",
-              "visibleIf": "{Q0} = 'No'",
-              "enableIf": "{Q0} = 'No'",
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
             {
-              "value": "4_grey",
-              "visibleIf": "{Q0} = 'Yes'",
-              "enableIf": "false",
-              "imageLink": "https://i.imgur.com/2ZK52Jj.png"
+              "value": "2",
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
             {
-              "value": "4",
-              "visibleIf": "{Q0} = 'No'",
-              "enableIf": "{Q0} = 'No'",
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "value": "1",
+              "imageLink": "https://i.imgur.com/zwBiE02.png"
             }
           ],
           "colCount": 4,
@@ -280,20 +228,12 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "1",
+              "value": "4",
               "text": {
-                "default": "Not  draughty",
-                "it": "Molto ventilato"
+                "default": "Very  draughty",
+                "it": "Non ventilato"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
-            },
-            {
-              "value": "2",
-              "text": {
-                "default": "Slightly  draughty",
-                "it": "Ventilato"
-              },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             },
             {
               "value": "3",
@@ -304,12 +244,20 @@
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
             {
-              "value": "4",
+              "value": "2",
               "text": {
-                "default": "Very  draughty",
-                "it": "Non ventilato"
+                "default": "Slightly  draughty",
+                "it": "Ventilato"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+            },
+            {
+              "value": "1",
+              "text": {
+                "default": "Not  draughty",
+                "it": "Molto ventilato"
+              },
+              "imageLink": "https://i.imgur.com/zwBiE02.png"
             }
           ],
           "imageHeight": 200,
@@ -360,20 +308,12 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "1",
+              "value": "4",
               "text": {
-                "it": "Non fastidioso",
-                "default": "Not  annoying"
+                "it": "Molto fastidioso",
+                "default": "Very  annoying"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
-            },
-            {
-              "value": "2",
-              "text": {
-                "it": "Poco fastidioso",
-                "default": "Slightly  annoying"
-              },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             },
             {
               "value": "3",
@@ -384,12 +324,20 @@
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
             {
-              "value": "4",
+              "value": "2",
               "text": {
-                "it": "Molto fastidioso",
-                "default": "Very  annoying"
+                "it": "Poco fastidioso",
+                "default": "Slightly  annoying"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+            },
+            {
+              "value": "1",
+              "text": {
+                "it": "Non fastidioso",
+                "default": "Not  annoying"
+              },
+              "imageLink": "https://i.imgur.com/zwBiE02.png"
             }
           ],
           "colCount": 4,
@@ -793,20 +741,12 @@
           "isRequired": true,
           "choices": [
             {
-              "value": "1",
+              "value": "4",
               "text": {
-                "it": "Non maleodorante",
-                "default": "Not smelly"
+                "it": "Molto maleodorante",
+                "default": "Very smelly"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
-            },
-            {
-              "value": "2",
-              "text": {
-                "it": "Poco maleodorante",
-                "default": "Slightly smelly"
-              },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             },
             {
               "value": "3",
@@ -817,12 +757,20 @@
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
             {
-              "value": "4",
+              "value": "2",
               "text": {
-                "it": "Molto maleodorante",
-                "default": "Very smelly"
+                "it": "Poco maleodorante",
+                "default": "Slightly smelly"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+            },
+            {
+              "value": "1",
+              "text": {
+                "it": "Non maleodorante",
+                "default": "Not smelly"
+              },
+              "imageLink": "https://i.imgur.com/zwBiE02.png"
             }
           ],
           "colCount": 4,

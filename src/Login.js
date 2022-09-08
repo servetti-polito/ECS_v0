@@ -29,7 +29,7 @@ function Login(props) {
             <div style={{"padding":"20px"}} />
             <div className="row h-75 align-items-center">
                 <div className="col-12" style={{"padding":"50px"}}>
-                    <h1 className="display-1 text-center">Login</h1>
+                    <h1 className="display-1 text-center">{props.ita ? "Accedi" : "Login"}</h1>
                 </div>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                     <Formik
@@ -76,11 +76,10 @@ function Login(props) {
                             <form onSubmit={handleSubmit}>
                                 <div style={{"padding-top": 20, "padding-bottom": 20}} className="row align-items-center">
                                     <div className="col-3">
-                                        <label htmlFor="token"><h3>Token</h3></label>
+                                        <label htmlFor="token"><h3>{props.ita ? "Token Personale":"Personal Token"}</h3></label>
                                     </div>
                                     <div className="col-6">
                                         <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
-
                                         {
                                             errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
