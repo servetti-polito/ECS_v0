@@ -46,7 +46,6 @@ export default function Dashboard(props){
         setShowGraph(!showGraph);
     }
 
-
     console.log("userJWT",props.userJwt)
     if(props.userJwt === null)
         navigate("/login")

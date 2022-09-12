@@ -20,8 +20,10 @@ function Personal(props) {
         if((user===null || user === undefined)&&props.deviceJwt===null)
             navigate("/login")
         if(user!==null) {
-            API.get("userTokenAPI", "/personal/personalID?personalID=" + user, null).then(resp => {
-                console.log("get ok: " + JSON.stringify(resp));
+            API.get("userTokenAPI", "/personal/personalID?user=" + user, null).then(resp => {
+                console.log(JSON.stringify(resp))
+                //if(resp.length!==1)
+                    resp.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
                 oldValues=resp[0]
                 if(oldValues!==null)
                     fillOldValues()
@@ -33,8 +35,9 @@ function Personal(props) {
     {
         for(let ov in oldValues)
         {
-            if(ov!=="personalID")
-                survey.setValue(ov,oldValues[ov]);
+            if(ov!=="personalID" && ov!=="user" && ov!=="timestamp") {
+                survey.setValue(ov, oldValues[ov]);
+            }
         }
     }
     //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
@@ -52,9 +55,9 @@ function Personal(props) {
         else
         {
             let data = sur.data;
-            //data.personalID = generateResponseId()
-            //data.user = user===null ? props.anon : user
-            data.personalID = user===null ? props.anon : user
+            data.personalID = generateResponseId()
+            data.user = user===null ? props.anon : user
+            data.timestamp = Date.now()
             let init = {
                 body: data,
                 headers: {Authorization : props.deviceJwt}

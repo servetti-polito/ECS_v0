@@ -40,8 +40,6 @@ c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-D
-src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
 ?
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 `
@@ -50,7 +48,12 @@ E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
 A
 src/CSS/index.css,f\5\f5e0b60d8f0309dc7e8cace29b4e179a6dc87c79
-A
-src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
+?
+src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
+:
+
+src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+B
+src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 D
-src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581

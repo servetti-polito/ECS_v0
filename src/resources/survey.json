@@ -81,7 +81,7 @@
             {
               "value": "INDOOR AIR  QUALITY",
               "text": {
-                "it": "QUALITA' DELL'ARIA INTERNA",
+                "it": "QUALITA' DELL'ARIA",
                 "default": "INDOOR AIR  QUALITY"
               },
               "imageLink": "https://i.imgur.com/Q1JXqKF.png"
@@ -231,7 +231,7 @@
               "value": "4",
               "text": {
                 "default": "Very  draughty",
-                "it": "Non ventilato"
+                "it": "Molto ventilato"
               },
               "imageLink": "https://i.imgur.com/Jkm5ICt.png"
             },
@@ -239,7 +239,7 @@
               "value": "3",
               "text": {
                 "default": "Draughty",
-                "it": "Poco ventilato"
+                "it": "Ventilato"
               },
               "imageLink": "https://i.imgur.com/IZsH61S.png"
             },
@@ -247,7 +247,7 @@
               "value": "2",
               "text": {
                 "default": "Slightly  draughty",
-                "it": "Ventilato"
+                "it": "Poco ventilato"
               },
               "imageLink": "https://i.imgur.com/EWoOhiQ.png"
             },
@@ -255,7 +255,7 @@
               "value": "1",
               "text": {
                 "default": "Not  draughty",
-                "it": "Molto ventilato"
+                "it": "Non ventilato"
               },
               "imageLink": "https://i.imgur.com/zwBiE02.png"
             }

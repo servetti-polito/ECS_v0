@@ -47,7 +47,7 @@ export default function Thanks(props){
                <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>Graphs</div>
                 {
                     props.logged ?
-                        <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724"}}>
+                        <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724", fontSize:"150%"}}>
                             {props.ita ? "Visita " : "Visit "}
                             <a href="https://dev.prometeo.click/chart" target="_blank" rel="noopener noreferrer">{props.ita ? "questo link" : "this link"}</a>
                             {props.ita ? " o scansiona" : " or scan"}

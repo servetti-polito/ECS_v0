@@ -26,6 +26,7 @@ export default function Profile(props){
                 text = "Nessun dato"
             return "<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+text+"</h3></div>"
         }
+        list.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
         list.map(it=>
             result+="<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+new Date(it.timestamp).toLocaleString(locale)+"</h3></div>")
         return result
