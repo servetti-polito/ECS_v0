@@ -25,7 +25,7 @@ export default function Profile(props){
             let text = "No data collected"
             if(props.ita)
                 text = "Nessun dato"
-            return "<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+text+"</h3></div>"
+            return "<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724;\"}}>"+text+"</h3></div>"
         }
         list.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
         let listOut=[]
@@ -35,7 +35,7 @@ export default function Profile(props){
             listOut.push(list[(page * 10) + i])
         }
         listOut.map(it=>
-            result+="<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+new Date(it.timestamp).toLocaleString(props.ita?"it":"en")+"</h3></div>")
+            result+="<div className=\"row text-center\"><h3 id='surveyTime' style=\"width:'100%'; border-bottom: 1px solid #ff9724;\"}}>"+new Date(it.timestamp).toLocaleString(props.ita?"it":"en")+"</h3></div>")
         return result
     }
     useEffect(()=>{

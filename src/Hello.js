@@ -13,7 +13,7 @@ export default function Hello(props){
     }
 
     return (
-        <div className="container" style={{backgroundColor: '#FF9724', margin: 0, padding: 0}}>
+        <div className="container" style={{backgroundColor: '#FF9724'}}>
             <div className="row" style={{height: "20%"}}>
                 {props.logged !== "" && props.logged !== null ?
                     <div className="row h-25">

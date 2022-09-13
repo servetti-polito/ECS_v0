@@ -9,7 +9,7 @@
 }
 
 .form-control{
-  font-size: 150% !important;
+  font-size: 125% !important;
 }
 
 html, body {
@@ -115,4 +115,13 @@ html, body {
 
 .page-link {
   color:#ff9724 !important;
+}
+
+@media (max-height: 1080px) {
+  #surveyTime {
+    font-size:1.1rem
+  }
+  #graphBox {
+    height:65% !important;
+  }
 }

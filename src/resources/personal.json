@@ -30,14 +30,14 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q2",
           "title": {
             "default": "Age",
             "it": "Età"
           },
           "titleLocation": "left",
-          "choices": [
+          "showOptionsCaption": false,
+"choices": [
             "18-25",
             "26-35",
             "36-50",
@@ -48,8 +48,8 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q3",
+          "showOptionsCaption": false,
           "title": {
             "default": "Country of birth",
             "it": "Paese di nascita"
@@ -62,14 +62,14 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q4",
           "title": {
             "default": "Educational qualification",
             "it": "Qualifica professionale"
           },
           "titleLocation": "left",
-          "choices": [
+          "showOptionsCaption": false,
+"choices": [
             {
               "value": "Ph.D",
               "text": {
@@ -106,14 +106,14 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q5",
           "title": {
             "default": "Intended use of the building",
             "it": "Destinazione d’uso dell’edificio"
           },
           "titleLocation": "left",
-          "choices": [
+          "showOptionsCaption": false,
+"choices": [
             {
               "value": "Office",
               "text": {
@@ -155,16 +155,19 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q6",
           "title": {
             "default": "Ambit/Role",
             "it": "Ambito/Ruolo"
           },
           "titleLocation": "left",
-          "choices": [
+          "showOptionsCaption": false,
+"choices": [
             {
               "value": "Engineering",
+              "text": {
+                "it": "Ingegneria"
+              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
@@ -173,22 +176,37 @@
             },
             {
               "value": "Administration",
+              "text": {
+                "it": "Amministrazione"
+              },
               "visibleIf": "{Q5} anyof ['Office']"
             },
             {
               "value": "Creative, design and architecture",
+              "text": {
+                "it": "Creativo, design e architettura"
+              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Sales and public affairs",
+              "text": {
+                "it": "Vendite e affari pubblici"
+              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Teaching and research",
+              "text": {
+                "it": "Didattica e ricerca"
+              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
               "value": "Services",
+              "text": {
+                "it": "Servizi"
+              },
               "visibleIf": "{Q5} = 'Office'"
             },
             {
@@ -386,7 +404,7 @@
             },
             {
               "value": "Other",
-              "text" : {
+              "text": {
                 "it": "Altro"
               },
               "visibleIf": "{Q5} anyof ['Office', 'School', 'Museum', 'Hotel', 'Hospital']"
@@ -400,14 +418,14 @@
         },
         {
           "type": "dropdown",
-          "showOptionsCaption": false,
           "name": "Q7",
           "title": {
             "default": "Number of people in the environment",
             "it": "Numero di persone nell’ambiente"
           },
           "titleLocation": "left",
-          "choices": [
+          "showOptionsCaption": false,
+"choices": [
             "1",
             {
               "value": "2 to 5",

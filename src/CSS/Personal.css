@@ -3,6 +3,11 @@
     font-size: 175%;
 }
 
+#personal .sv-footer__prev-btn{
+    position:relative;
+    left:5%
+}
+
 #personal .sv-container-modern {
     margin: 0 auto;
 }
@@ -16,10 +21,26 @@
 }
 
 #personal .sv-page__title {
-    margin: 0;
+    margin-top:25px !important;
     margin-bottom: 10px;
     padding-left: 0.293em;
     font-size: 300% !important;
+}
+
+@media(max-height: 1080px)
+{
+    #personal .sv-title{
+        font-size: 150%;
+    }
+    #personal .sv-page__title{
+        font-size: 265% !important;
+    }
+    #personal .sv-dropdown {
+        font-size: 125% !important;
+    }
+    #personal .sv-selectbase__label {
+        font-size: 125% !important;
+    }
 }
 
 #personal .sv-question {
