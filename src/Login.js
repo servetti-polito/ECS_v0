@@ -80,12 +80,15 @@ function Login(props) {
                                     </div>
                                     <div className="col-6">
                                         <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
+                                    </div>
+                                    <div className="col-3"><img onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/></div>
+                                    <div className="col-3"/>
+                                    <div className="col-6">
                                         {
                                             errors.token && touched.token && errors.token ?
-                                            <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
+                                                <small style={{"color": "red", "font-size":"150%"}}>{errors.token && touched.token && errors.token}</small> : null
                                         }
                                     </div>
-                                    <div className="col-3"><img onClick={togglePassword} style={{width:30, height:30}} src={showPassword ? hide : show}/></div>
                                 </div>
                                 <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">
                                     <div className="col-6 justify-content-center">

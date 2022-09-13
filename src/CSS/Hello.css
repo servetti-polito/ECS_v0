@@ -8,8 +8,13 @@
   font-family: "Tw Cen MT";
 }
 
+.form-control{
+  font-size: 150% !important;
+}
+
 html, body {
   height: 100vh;
+  font-size: 150%;
 }
 
 .container {
@@ -95,4 +100,19 @@ html, body {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 500;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff !important;
+  background-color: #ff9724 !important;
+  border-color: #ff9724 !important;
+}
+
+.page-item.disabled .page-link {
+  color: lightgrey !important;
+}
+
+.page-link {
+  color:#ff9724 !important;
 }

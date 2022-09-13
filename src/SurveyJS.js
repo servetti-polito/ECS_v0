@@ -13,8 +13,8 @@ StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-  //TIMEOUT/////////////////////////////////////////////////////////////////////
-  const timeout=1000*60*5; //5 minuti
+  /*TIMEOUT/////////////////////////////////////////////////////////////////////
+  const timeout=1000*60*10; //10 minuti
   let inactivityTimeout = false
   resetTimeout()
   function onUserInactivity() {
@@ -33,7 +33,7 @@ function SurveyJS(props) {
     document.onmousemove=null;
   }
   document.onmousemove = resetTimeout;
-  /////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////*/
 
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
@@ -46,7 +46,7 @@ function SurveyJS(props) {
       props.setAnon(data.user)
       props.setAnswers(data)
       //deactivate timeout
-      stopTimeout()
+      //stopTimeout()
       navigate("/furtherQuestions")
     }
     else {
@@ -54,7 +54,7 @@ function SurveyJS(props) {
       props.setAnswers(data)
       props.setAnswers(data)
       //deactivate timeout
-      stopTimeout()
+      //stopTimeout()
       navigate("/thanks")
     }
   }
@@ -111,7 +111,7 @@ function SurveyJS(props) {
   })
   /////////////////////////////////////////////////////////////////////////////////
   function routeHome(){
-    stopTimeout()
+    //stopTimeout()
     navigate("/")
   }
   return(

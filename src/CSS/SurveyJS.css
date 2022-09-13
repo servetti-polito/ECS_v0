@@ -48,7 +48,7 @@
 #surveyjs .sv-footer__prev-btn, #surveyjs .sv-footer__next-btn, #surveyjs .sv-footer__complete-btn {
     background-color: #FF9724!important;
     /*font-size: 125%;*/
-    font-size: 150%;
+    font-size: 175%;
 }
 
 #surveyjs .sv-container-modern {
@@ -65,7 +65,7 @@
     padding: 20px;
     border-bottom: 1px solid #FF9724;
     /*padding-bottom: 20px;*/
-    font-size: 175%
+    /*font-size: 175%*/font-size: 250%;
 }
 
 #surveyjs .sv_qstn .sv-q-column-2, #surveyjs .sv-question .sv-q-column-2 {
@@ -92,7 +92,16 @@
 
 .sv-selectbase .sv-selectbase__item.sv-q-col-1 {
     padding-right: 0;
+    font-size: 200%;
+}
+
+.sv-question__erbox {
     font-size: 150%;
+}
+
+.sv-imagepicker__text {
+    font-size: 200% !important;
+    padding-left: 0;
 }
 
 .sv-imagepicker__text {
@@ -134,6 +143,7 @@
 
 #surveyjs .sv-text {
     border-color: lightgrey !important;
+    font-size: 200%;
 }
 
 #surveyjs .sv-imagepicker__item--inline:not(:last-child) {

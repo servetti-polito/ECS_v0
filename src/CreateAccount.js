@@ -116,7 +116,7 @@ function CreateAccount(props) {
                                     <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} className="form-control" id="email" placeholder="Email"/>
                                     {
                                         errors.email && touched.email && errors.email ?
-                                            <small style={{"color": "red"}}>{errors.email && touched.email && errors.email}</small> : null
+                                            <small style={{"color": "red", "font-size":"120%"}}>{errors.email && touched.email && errors.email}</small> : null
                                     }
                                 </div>
                             </div>
@@ -127,16 +127,15 @@ function CreateAccount(props) {
                                 <div className="col-8">
                                     <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
                                 </div>
-                                <div className="col-1"><img onClick={togglePassword} style={{width:30, height:30}} src={showPassword ? hide : show}/></div>
+                                <div className="col-1"><img onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/></div>
                                 <div className="col-3"/>
-                                <div className="col-6">
-                                    <small>{props.ita ? "Il cognome da nubile di tua madre in lettere minuscole + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname in lowercase letters + your date of birth (yyyymmdd)"}</small><br/>
+                                <div className="col-9">
+                                    <small style={{"font-size":"120%"}}>{props.ita ? "Il cognome da nubile di tua madre in lettere minuscole + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname in lowercase letters + your date of birth (yyyymmdd)"}</small><br/>
                                     {
                                         errors.token && touched.token && errors.token ?
-                                            <small style={{"color": "red"}}>{errors.token && touched.token && errors.token}</small> : null
+                                            <small style={{"color": "red", "font-size":"120%"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
-                                <div className="col-3"/>
                             </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
                                 <div className="col-12 justify-content-center">

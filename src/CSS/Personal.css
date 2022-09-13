@@ -1,6 +1,6 @@
 #personal .sv-footer__prev-btn, #personal .sv-footer__next-btn, #personal .sv-footer__complete-btn {
     background-color:#FF9724 !important;
-    font-size: 150%;
+    font-size: 175%;
 }
 
 #personal .sv-container-modern {
@@ -10,7 +10,7 @@
 #personal .sv-title {
     text-align: left;
     /* padding: 50px; */
-    font-size: 130%;
+    font-size: 190%;
     border-bottom: 0;
     width: 280%;
 }
@@ -19,7 +19,7 @@
     margin: 0;
     margin-bottom: 10px;
     padding-left: 0.293em;
-    font-size: 200%;
+    font-size: 300% !important;
 }
 
 #personal .sv-question {
@@ -48,6 +48,7 @@
     width: 70%;
     display: inline-block;
     float: right;
+    font-size: 150%;
 }
 
 #T2 .h3
@@ -85,6 +86,7 @@
     min-height: 30px;
     border: 1px;
     border-color: #FF9724;
+    font-size: 175%;
 }
 
 #personal .sv-item__svg {

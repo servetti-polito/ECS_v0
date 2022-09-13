@@ -1,25 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
-import {Alert, Button, Spinner} from "react-bootstrap";
+import {Alert, Button, Spinner, Pagination} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
+
+let MAXPAGES;
 
 export default function Profile(props){
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState([])
+    const [page, setPage] = useState(0);
     let navigate = useNavigate();
     const routeDashbaord = ()=>navigate("/dashboard")
     const routePersonal = () => navigate("/personal")
     const headers = {
         headers: {"Authorization": props.deviceJwt}
     };
+
     function listUpdate()
     {
         let result=""
-        let locale = "en"
-        if(props.ita)
-            locale = "it"
         if(list.length===0) {
             let text = "No data collected"
             if(props.ita)
@@ -27,21 +28,33 @@ export default function Profile(props){
             return "<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+text+"</h3></div>"
         }
         list.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
-        list.map(it=>
-            result+="<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+new Date(it.timestamp).toLocaleString(locale)+"</h3></div>")
+        let listOut=[]
+        for(let i=0; i<10; i++) {
+            if(list[(page * 10) + i]===undefined)
+                break
+            listOut.push(list[(page * 10) + i])
+        }
+        listOut.map(it=>
+            result+="<div className=\"row text-center\"><h3 style=\"width:'100%'; border-bottom: 1px solid #ff9724\"}}>"+new Date(it.timestamp).toLocaleString(props.ita?"it":"en")+"</h3></div>")
         return result
     }
     useEffect(()=>{
         setLoading(true)
         API.get("userTokenAPI", "/survey/user?user="+props.logged, headers)
-            .then(async data => {setList(data);setLoading(false)}).catch(err=>{setError("get fail:"+err); setLoading(false)})
+            .then(async data => {
+                setList(data);
+                MAXPAGES= (data.length%10===0)? data.length/10 : Math.floor(data.length/10)+1;
+                console.log("MAX PAGES",MAXPAGES);
+                setLoading(false)
+            }).catch(err=>{setError("get fail:"+err); setLoading(false)})
     },[])
+
     useEffect(()=>{
+        console.log("PAGE",page)
         if(document.getElementById("list")===null)
             return
         document.getElementById("list").innerHTML = listUpdate()
-    }, [list])
-
+    }, [list, page])
 
     if(props.logged===undefined||props.logged===null||props.logged==="")
         navigate("/login")
@@ -72,6 +85,13 @@ export default function Profile(props){
                     { loading ? <Spinner animation='border' variant="dark"/> : <div id="list"/>}
                 </div>
                 <div className="col-2"/>
+            </div>
+            <div className="row text-center">
+                {MAXPAGES>1 ? <Pagination  className='d-flex justify-content-center' style={{position:"fixed", bottom:"10%"}}>
+                    <Pagination.Prev disabled={page <= 0} onClick={()=>setPage(page-1)}/>
+                    <div style={{width:"30%"}}/>
+                    <Pagination.Next disabled={page >= MAXPAGES-1} onClick={()=>setPage(page+1)}/>
+                </Pagination> : null}
             </div>
         </div>
     );
