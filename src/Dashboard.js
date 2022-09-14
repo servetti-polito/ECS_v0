@@ -3,6 +3,10 @@ import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 
+const CIRCLE_DIAMETER = "170px";
+const IFRAME_HEIGHT = "120";
+const IFRAME_WIDTH = "130";
+
 const titles = {
     "Dash":"Indoor Environmental Quality",
     "Air":"Air quality",
@@ -47,13 +51,13 @@ export default function Dashboard(props){
     }
 
     console.log("userJWT",props.userJwt)
-    if(props.userJwt === null)
-        navigate("/login")
-    else
+    // if(props.userJwt === null)
+    //     navigate("/login")
+    // else
         return (
             <div id="Dashboard" className="container">
                 <div className="row h-100">
-                    <div className="col-4" style={{backgroundColor: "#FF9724", borderRadius: "50px"}}>
+                    <div className="col-3" style={{backgroundColor: "#FF9724", borderRadius: "50px"}}>
                         <div className="row">
                             <h1 style={{textAlign:"center", fontSize:"300%", marginTop:"20px", "font-family":'Ink Free'}}>PROMET&O</h1>
                         </div>
@@ -109,8 +113,8 @@ export default function Dashboard(props){
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            </div>);
+        // );
 }
 
 function DashGraphs ()
@@ -170,62 +174,98 @@ function DashGraphs ()
                 <div className="row" style={{height:"33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height:"50%"}}/>
-                        <div className="row" style={{height:"50%",background:"rgb(167,101,102)"}}>T</div>
+                        <div style={{borderRadius: "50%", border:"10px solid #c2a29f", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                        <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146601379&to=1663168201379&panelId=7" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                     <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(167,101,102)"}}>RH</div>
-                        <div className="row" style={{height:"50%",background:"rgb(167,101,102)",}}>Temp</div>
+                        <div style={{borderRadius: "50%", border:"10px solid #c2a29f", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
+                        <div>
+                        <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663149719485&to=1663171319485&panelId=19" width="300" height="300" frameborder="0"></iframe>
+                        </div>
                     </div>
                 </div>
-                <div className="row" style={{height:"33%"}}/>
+                <div className="row" style={{height:"18%"}}/>
                 <div className="row" style={{height:"33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height:"50%"}}/>
-                        <div className="row" style={{height:"50%",background:"rgb(132, 151, 131)",}}>SPL</div>
+                        <div style={{borderRadius: "50%", border:"10px solid #849783", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146827349&to=1663168427350&panelId=8" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                     <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(132, 151, 131)",}}>Audio</div>
-                        <div className="row" style={{height:"50%",background:"rgb(132, 151, 131)",}}>VOC</div>
+                        <div>
+                        <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663149689211&to=1663171289211&panelId=18" width="300" height="300" frameborder="0"></iframe>
+                        </div>
+                        
+                        <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147379085&to=1663168979085&panelId=9" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
+            {/* CENTRAL COLUMN */}
             <div className="col-4">
-                <div className="row" style={{height:"33%"}}/>
-                <div className="row" style={{height:"33%", background:"#ff9724"}}>IEC</div>
+                <div className="row" style={{height:"33%"}} />
+                {/* IEQ GAUGE ROW */}
+                <div className="row"  style={{height:"25%"}}>
+                  <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663149812344&to=1663171412344&panelId=21" width="300" height="300" frameborder="0"></iframe>
+                </div>
                 <div className="row" style={{height:"33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height:"50%"}}/>
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>CH2O</div>
+                        <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146951615&to=1663168551615&panelId=11" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                     <div className="col-6">
                         <div className="row" style={{height:"50%"}}/>
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>CO2</div>
+                        <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147433429&to=1663169033429&panelId=12" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
+            {/* RIGHT COLUMN */}
             <div className="col-4">
                 <div className="row" style={{height:"33%"}}>
                     <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(236, 203, 123)",}}>E</div>
-                        <div className="row" style={{height:"50%",background:"rgb(236, 203, 123)",}}>Luce</div>
+                      <div style={{borderRadius: "50%", border:"10px solid #eccb7b", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                        <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146673651&to=1663168273651&panelId=10" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                      </div>
+                      <div>
+                        <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663149757565&to=1663171357565&panelId=20"  width="300" height="300" frameborder="0"></iframe>
+                      </div>
                     </div>
                     <div className="col-6"/>
                 </div>
-                <div className="row" style={{height:"33%"}}>
-                    <div className="col-6"/>
-                    <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>PM2.5</div>
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>PM10</div>
+                <div className="row" style={{height:"18%"}}>
+                  <div className="col-6"/>
+                  <div className="col-6">
+                    <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                      <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147048574&to=1663168648575&panelId=16" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
                     </div>
+                    <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                      <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147179112&to=1663168779112&panelId=15" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                    </div>
+                  </div>
                 </div>
                 <div className="row" style={{height:"33%"}}>
                     <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>Aria</div>
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>CO</div>
+                        <div>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663149622840&to=1663171222841&panelId=6"  width="300" height="300" frameborder="0"></iframe>
+                        </div>
+                        <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147253668&to=1663168853668&panelId=13" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                        </div>
                     </div>
                     <div className="col-6">
-                        <div className="row" style={{height:"50%",background:"rgb(196, 211, 224)",}}>NO2</div>
-                        <div className="row" style={{height:"50%"}}/>
+                        <div className="row" style={{height:"50%"}}></div>
+                      <div style={{borderRadius: "50%", border:"10px solid #c4d3e0", width:CIRCLE_DIAMETER, height:CIRCLE_DIAMETER, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <iframe src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663147212870&to=1663168812870&panelId=14" width={IFRAME_WIDTH} height={IFRAME_HEIGHT} frameborder="0"></iframe>
+                      </div>
                     </div>
                 </div>
             </div>
