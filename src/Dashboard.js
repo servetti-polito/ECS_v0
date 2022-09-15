@@ -54,7 +54,7 @@ export default function Dashboard(props) {
         return (
             <div id="Dashboard" className="container">
                 <div className="row h-100">
-                    <div className="col-4" style={{backgroundColor: "#FF9724", borderRadius: "50px"}}>
+                    <div className="container col-4" style={{backgroundColor: "#FF9724", borderRadius: "50px"}}>
                         <div className="row">
                             <h1 style={{textAlign: "center", fontSize: "300%", marginTop: "20px", fontFamily: 'Ink Free'}}>PROMET&O</h1>
                         </div>
@@ -73,15 +73,23 @@ export default function Dashboard(props) {
                             <h5 style={{textAlign: "center", padding: "20px"}}>{explain[topic]}</h5>
                         </div>
                         <div className="row">
-                            <h2 style={{textAlign: "center"}}>Reference value: {referenceValue}</h2>
+                            <h4 style={{textAlign: "center"}}>Reference value: {referenceValue}</h4>
                         </div>
-                        <div className="row align-items-end" style={{height: "20%"}}>
-                            <h2 style={{textAlign: "center"}}>{showCompliances ? "Mean Value: 60%\nStandard Deviation: 3%\n10th Percentile: 60%\n90th Percentile: 5%\n" : "Real-time value: " + RTValue}</h2>
+                        <div className="row" id="compliances">
+                                {showCompliances ?
+                                    <h4 style={{textAlign: "center"}}>
+                                        Mean Value: 60%<br/>Standard Deviation: 3%<br/>10th Percentile: 60%<br/>90th Percentile: 5%
+                                    </h4>
+
+                                    : <h4 style={{textAlign: "center"}}>Real-time value: {RTValue}</h4>
+                                }
                         </div>
-                        <div className="row justify-content-center">
-                            <button style={{fontSize: "175%", "width": "75%", "color": "#FF9724"}}
-                                    className="btn btn-white" type="button"
-                                    onClick={toggleGraph}>{showGraph ? "Hide the graph" : "Show the graph"}</button>
+                        <div className="row" style={{position:"fixed", bottom:"50px", width:"34%"}}>
+                            <div className="row justify-content-center">
+                                <button style={{fontSize: "150% !important", "width": "75%", "color": "#FF9724"}}
+                                        className="btn btn-white" type="button"
+                                        onClick={toggleGraph}>{showGraph ? "Hide the graph" : "Show the graph"}</button>
+                            </div>
                         </div>
                     </div>
                     <div className="col-8">
