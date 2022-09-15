@@ -50,8 +50,6 @@ B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 ?
 src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
-=
-src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
 A
 src/CSS/index.css,f\5\f5e0b60d8f0309dc7e8cace29b4e179a6dc87c79
 ?
@@ -70,3 +68,6 @@ I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
+:
+
+src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714

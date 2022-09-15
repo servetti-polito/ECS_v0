@@ -7,6 +7,10 @@
     font-size:125% !important;
 }
 
+#Dashboard .btn-compliances {
+    padding:0px !important;
+}
+
 .overlay{
     /*background: rgba(0, 0, 0, 0.2);*/
     width: 130%;

@@ -36,6 +36,13 @@ export default function Thanks(props){
             navigate("/")
     }
 
+    const iframes = {
+        "Temp": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23"  frameBorder="0"/>,
+        "Light": <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24"  frameBorder="0"/>,
+        "Sound": <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26"  frameBorder="0"/>,
+        "Air": <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25"  frameBorder="0"/>,
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -44,7 +51,18 @@ export default function Thanks(props){
             </div>
             {error=== null ? null : <Alert variant="danger">{error}</Alert>}
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
-               <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>Graphs</div>
+               <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
+                   <div className="container" style={{height:"100%"}}>
+                       <div className="row h-50">
+                           <div className="col-6">{iframes["Temp"]}</div>
+                           <div className="col-6">{iframes["Light"]}</div>
+                       </div>
+                       <div className="row h-50">
+                           <div className="col-6">{iframes["Sound"]}</div>
+                           <div className="col-6">{iframes["Air"]}</div>
+                       </div>
+                   </div>
+               </div>
                 {
                     props.logged ?
                         <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724", fontSize:"150%"}}>
