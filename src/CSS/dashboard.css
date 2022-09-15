@@ -3,5 +3,40 @@
     border-bottom-left-radius: 15px 15px !important;
     border-top-right-radius: 15px 15px !important;
     border-bottom-right-radius: 15px 15px !important;
-    width:100%
+    width:100%;
+    font-size:125% !important;
+}
+
+.overlay{
+    /*background: rgba(0, 0, 0, 0.2);*/
+    width: 130%;
+    height: 150%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+iframe{
+    z-index: 0;
+}
+
+.holder{
+    padding:0px !important;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid;
+}
+
+.holderGauge{
+    padding:0px !important;
+    position: relative;
 }
