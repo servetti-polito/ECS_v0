@@ -25,9 +25,7 @@ export default function Thanks(props){
                 body: props.answers,
                 headers: {Authorization : props.deviceJwt}
             }
-            console.log(JSON.stringify(init))
             API.post("userTokenAPI", "/survey", init).then(data=>{
-                console.log("post ok: "+JSON.stringify(data));
                 let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
                 let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
                     "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
@@ -43,12 +41,12 @@ export default function Thanks(props){
                     },
                     body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
                 }
-                console.log("init",init)
+                console.log("INIT: "+JSON.stringify(init))
                 fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
                     props.setAnswers(null);
                     navigate("/")
-                }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
-            }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})
+                }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
+            }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
         }
         else
             navigate("/")
@@ -67,20 +65,21 @@ export default function Thanks(props){
                 <div className="col-12" style={{marginTop:20, marginBottom:0, textAlign:"center", borderBottom:"2px solid #ff9724"}}>
                     <h1>{props.ita ? "Grazie per aver completato il sondaggio": "Thank you for completing the survey"} </h1></div>
             </div>
-            {error=== null ? null : <Alert variant="danger">{error}</Alert>}
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
-               <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
-                   <div className="container" style={{height:"100%"}}>
-                       <div className="row h-50">
-                           <div className="col-6">{iframes["Temp"]}</div>
-                           <div className="col-6">{iframes["Light"]}</div>
+                {error=== null ?
+                   <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
+                       <div className="container" style={{height:"100%"}}>
+                           <div className="row h-50">
+                               <div className="col-6">{iframes["Temp"]}</div>
+                               <div className="col-6">{iframes["Light"]}</div>
+                           </div>
+                           <div className="row h-50">
+                               <div className="col-6">{iframes["Sound"]}</div>
+                               <div className="col-6">{iframes["Air"]}</div>
+                           </div>
                        </div>
-                       <div className="row h-50">
-                           <div className="col-6">{iframes["Sound"]}</div>
-                           <div className="col-6">{iframes["Air"]}</div>
-                       </div>
-                   </div>
-               </div>
+                   </div> : <div style={{padding:10, height: props.logged ? "85%" : "100%"}}><Alert variant="danger"><h3>{error}</h3></Alert></div>
+                }
                 {
                     props.logged ?
                         <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724", fontSize:"150%"}}>
