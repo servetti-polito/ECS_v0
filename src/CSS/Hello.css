@@ -124,4 +124,7 @@ html, body {
   #graphBox {
     height:65% !important;
   }
+  .btn {
+    font-size: 150% !important;
+  }
 }

@@ -1,3 +1,13 @@
 .h3 {
     border-bottom: 1px solid #ff9724;
 }
+
+/*@media (max-height: 1080px) {
+    #Profile .btn {
+        font-size: 125% !important;
+    }
+
+    .title {
+        font-size: 150%;
+    }
+}*/

@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {Alert, Button, Spinner, Pagination} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
+import "./CSS/Profile.css"
 
 let MAXPAGES;
 
@@ -59,12 +60,12 @@ export default function Profile(props){
     if(props.logged===undefined||props.logged===null||props.logged==="")
         navigate("/login")
     return (
-        <div className="container">
+        <div className="container" id="Profile">
             <div className="row">
                 <div className="col-12" style={{marginTop:20, marginBottom:0, textAlign:"center", borderBottom:"2px solid #ff9724"}}>
-                    <h1>{props.ita ? "Benvenuto ": "Welcome "}{props.logged}</h1></div>
+                    <h1 className="title">{props.ita ? "Benvenuto ": "Welcome "}{props.logged}</h1></div>
             </div>
-            <div className="row" style={{marginTop:20, marginBottom:20}}>
+            <div className="row" style={{marginTop:20, marginBottom:20, fontSize:"100% !important"}}>
                 <div className="col-1"/>
                 <div className="col-4">
                     <Button style={{width:"100%"}} classname="btn btn-primary" onClick={routeDashbaord}>Dashboard</Button>
@@ -79,7 +80,7 @@ export default function Profile(props){
                 <div className="col-2"/>
                 <div className="col-8">
                     <div className="row text-center" style={{borderBottom:"3px solid #FF9724", marginBottom:20}}>
-                        <h1 style={{width:"100%"}}>{props.ita ? "Risposte ai sondaggi" : "Survey answers"}</h1>
+                        <h1 className="title" style={{width:"100%"}}>{props.ita ? "Risposte ai sondaggi" : "Survey answers"}</h1>
                     </div>
                     { error!=="" ? <Alert variant="danger">{error}</Alert> : null}
                     { loading ? <Spinner animation='border' variant="dark"/> : <div id="list"/>}

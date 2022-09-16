@@ -54,16 +54,10 @@ A
 src/CSS/index.css,f\5\f5e0b60d8f0309dc7e8cace29b4e179a6dc87c79
 ?
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
 src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 <
 src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
->
-src/Profile.js,2\f\2fe10b6a7ec7966cc963870560b8f06ad7be7527
-D
-src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 K

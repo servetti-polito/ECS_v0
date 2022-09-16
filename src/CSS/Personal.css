@@ -21,7 +21,7 @@
 }
 
 #personal .sv-page__title {
-    margin-top:25px !important;
+    /*margin-top:25px !important;*/
     margin-bottom: 10px;
     padding-left: 0.293em;
     font-size: 300% !important;
@@ -40,6 +40,9 @@
     }
     #personal .sv-selectbase__label {
         font-size: 125% !important;
+    }
+    #personal .sv-action-bar{
+        margin-top: 10px;
     }
 }
 
