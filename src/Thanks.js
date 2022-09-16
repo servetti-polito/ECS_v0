@@ -28,8 +28,26 @@ export default function Thanks(props){
             console.log(JSON.stringify(init))
             API.post("userTokenAPI", "/survey", init).then(data=>{
                 console.log("post ok: "+JSON.stringify(data));
-                props.setAnswers(null);
-                navigate("/")
+                let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
+                let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
+                    "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
+                    "Hello, \n\nThank you for filling Promet&o's survey."+
+                    "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
+                let init = {
+                    mode:"no-cors",
+                    method:"POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${props.deviceJwt}`
+                    },
+                    body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
+                }
+                console.log("init",init)
+                fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                    props.setAnswers(null);
+                    navigate("/")
+                }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
             }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})
         }
         else
