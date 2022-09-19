@@ -350,19 +350,20 @@ export default function Dashboard(props) {
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
                                 <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="T"?1:0.2 }}
-                                     hidden={topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
-                                    {iframes["T"][timeWindow]}
+                                hidden = {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
+                                    {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T" ? null : iframes["T"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("T")}/>
                                 </div>
                         </div>
                         <div className="col-6">
-                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="RH"?1:0.2 }} hidden={topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
-                                    {iframes["RH"][timeWindow]}
+                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="RH"?1:0.2 }}
+                                     hidden = {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
+                                    {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T" ? null : iframes["RH"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("RH")}/>
                                 </div>
-                                <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Temp"||topic==="RH"||topic==="T"}/>
+                            <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Temp"||topic==="T"||topic==="RH"}/>
                             <div className="row" style={{height: "50%"}}>
                                 <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : topic==="IEQ"||topic==="Temp"||topic==="init"?1:0.2}}>
                                     {iframes["Temp"][timeWindow]}
@@ -377,8 +378,10 @@ export default function Dashboard(props) {
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
                             <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : topic==="IEQ"||topic==="SPL"?1:0.2}}
-                                 hidden={topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"}>
-                                {iframes["SPL"][timeWindow]}
+                            hidden={topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"}>
+                                {
+                                    topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"? null: iframes["SPL"][timeWindow]
+                                }
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => setTopic("SPL")}/>
                             </div>
@@ -392,8 +395,11 @@ export default function Dashboard(props) {
                                 </div>
                             </div>
                             <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="VOC"?1:0.2}}
-                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                {iframes["VOC"][timeWindow]}
+                            hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
+                                {
+                                    topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                    null : iframes["VOC"][timeWindow]
+                                }
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => setTopic("VOC")}/>
                             </div>
@@ -414,7 +420,10 @@ export default function Dashboard(props) {
                             <div className="row" style={{height: "50%"}}/>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CH2O"?1:0.2}}
                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["CH2O"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                        null : iframes["CH2O"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("CH2O")}/>
                                 </div>
@@ -423,7 +432,10 @@ export default function Dashboard(props) {
                             <div className="row" style={{height: "50%"}}/>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO2"?1:0.2}}
                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["CO2"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                            null: iframes["CO2"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("CO2")}/>
                                 </div>
@@ -435,7 +447,10 @@ export default function Dashboard(props) {
                         <div className="col-6">
                                 <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : topic==="IEQ"||topic==="E"?1:0.2}}
                                      hidden={topic!=="IEQ"&&topic!=="Light"&&topic!=="E"}>
-                                    {iframes["E"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Light"&&topic!=="E"?
+                                            null : iframes["E"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("E")}/>
                                 </div>
@@ -455,14 +470,20 @@ export default function Dashboard(props) {
                         <div className="col-6">
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM2.5"?1:0.2}}
                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["PM2.5"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                        null : iframes["PM2.5"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("PM2.5")}/>
                                 </div>
                             <div className="row" style={{height:"40px"}}/>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM10"?1:0.2}}
                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["PM10"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                            null : iframes["PM10"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("PM10")}/>
                                 </div>
@@ -478,8 +499,11 @@ export default function Dashboard(props) {
                                 </div>
                             </div>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO"?1:0.2}}
-                                    hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["CO"][timeWindow]}
+                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                        null : iframes["CO"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("CO")}/>
                                 </div>
@@ -488,7 +512,10 @@ export default function Dashboard(props) {
                                 <div className="row" style={{height:"50%"}}/>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="NO2"?1:0.2}}
                                     hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {iframes["NO2"][timeWindow]}
+                                    {
+                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
+                                            null : iframes["NO2"][timeWindow]
+                                    }
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("NO2")}/>
                                 </div>
