@@ -6,23 +6,65 @@ import {useState, useEffect} from "react";
 export default function Dashboard(props) {
 
     const titles = {
-        "Dash": props.ita ? "Qualità dell'ambiente interno" : "Indoor Environmental Quality",
-        "Air": props.ita ? "Qualità dell'aria" : "Air quality",
-        "Temp": props.ita ? "Temperatura": "Temperature",
-        "Light": props.ita ? "Illuminazione":"Light",
-        "Sound": props.ita ? "Acustica":"Sound"
+        "RH": props.ita ? "Umidità relativa":"Relative Humidity",
+        "T":props.ita ? "Temperatura dell'aria":"Air temperature",
+        "Temp": props.ita ? "Comfort termico": "Thermal Comfort",
+        "SPL":props.ita ? "Livello di pressione sonora":"Sound Pressure Level",
+        "VOC":props.ita ? "Composti organici volatili":"Volatile Organic Compounds",
+        "CH2O":props.ita ? "Formaldeide":"Formaldehyde",
+        "CO2":props.ita?"Anidride carbonica":"Carbon dioxide",
+        "CO":props.ita?"Monossido di carbonio":"Carbon monoxide",
+        "NO2":props.ita?"Biossido di azoto":"Nitrogen dioxide",
+        "PM10":props.ita?"PM10":"Particulate Matter 10",
+        "PM2.5":props.ita?"PM2.5":"Particulate Matter 2.5",
+        "E":props.ita?"Illuminazione":"Illuminance",
+        "IEQ": props.ita ? "Qualità dell'ambiente interno" : "Indoor Environmental Quality",
+        "Air": props.ita ? "Qualità dell'aria interna" : "Indoor Air Quality",
+        "Light": props.ita ? "Comfort visivo":"Visual Comfort",
+        "Sound": props.ita ? "Comfort acustico":"Acoustic Comfort"
     }
     const explain = {
-        "Dash": props.ita ? "Spiegazione su qualità dell'ambiente interno":"Some text about Indoor Environmental Quality",
-        "Air": props.ita ? "Spiegazione su qualità dell'aria" : "Some text about Air quality",
-        "Temp": props.ita ? "Spiegazione su temperatura" : "Some text about Temperature",
-        "Light": props.ita ? "Spiegazione su illuminazione" : "Some text about Light",
-        "Sound": props.ita? "Spiegazione su acustica" : "Some text about sound"
+        "RH":props.ita ? "Spiegazione su RH":"The value gives the composition of the air in terms of water vapour in relation to the maximum amount it can hold at a given temperature characterize the relative humidity of the environment.",
+        "T":props.ita ? "Spiegazione su temperatura dell'aria":"Air temperature is the temperature of the air around the human body. ",
+        "Temp": props.ita ? "Spiegazione su comfort termico" : "Thermal comfort is that condition of mind which expresses satisfaction with the thermal environment. ",
+        "SPL":props.ita? "Spiegazione su SPL":"Logarithm of the ratio of a given sound pressure to the reference sound pressure. Sound pressure level in decibels is 20 times the logarithm to the base ten of the ratio.",
+        "VOC":props.ita? "Spiegazione su VOC":"Volatile organic compounds are organic chemical compounds whose composition makes it possible for them to evaporate under normal indoor atmospheric conditions of temperature and pressure. Are toxic by inhalation and exposition, with chronic or acute effects.",
+        "CH2O":props.ita? "Spiegazione su Formaldeide":"Formaldehyde is a colourless gas, flammable and highly reactive at room temperature. It is formed primarily by numerous natural sources and anthropogenic activities.",
+        "CO2":props.ita?"Spiegazione su Anidride Carbonica":"Carbon dioxide is a colourless and odourless gas at atmospheric temperature and pressure. It is produced by the combustion of organic compounds.",
+        "CO":props.ita?"Spiegazione su monossido di carbonio":"Carbon monoxide is a colourless, non-irritant, odourless and tasteless toxic gas. It is produced by the incomplete combustion of carbonaceous fuels such as wood, petrol, coal, natural gas and kerosene.",
+        "NO2":props.ita?"Spiegazione su biossido di azoto":"Nitrogen dioxide in its gaseous form is volatile, reddish-brown in colour and heavier than air. It has a characteristic pungent odour perceptible from a concentration of 188 μg/m3 (0.1 ppm). It is one of the principal nitrogen oxides associated with combustion sources.",
+        "PM10":props.ita?"Spiegazione su PM10":"Inhalable particles, with diameters that are 10 micrometers or smaller.",
+        "PM2.5":props.ita?"Spiegazione su PM2.5":"Fine inhalable particles, with diameters that are 2.5 micrometers or smaller. ",
+        "E":props.ita?"Spiegazione su illuminazione":"Illuminance is the ratio between the luminous flux incident on an elementary surface and the area of the elementary surface itself. ",
+        "IEQ": props.ita ? "Spiegazione su qualità dell'ambiente interno":"Indoor Environmental Quality is the physical characterization of indoor environments in terms of thermal, acoustic, lighting and indoor air quality.",
+        "Air": props.ita ? "Spiegazione su qualità dell'aria" : "Indoor air quality is considered acceptable when there are no specific pollutants in harmful concentrations and no conditions that are likely to be associated with occupant's health or comfort complaints.",
+        "Light": props.ita ? "Spiegazione su comfort visivo" : "Visual comfort is that condition of satisfaction of visual requirements expressed by the user.",
+        "Sound": props.ita? "Spiegazione su comfort acustico" : "Acoustic comfort is that condition, in a specific environment, in which the user experiences a sense of well-being related to the hearing conditions."
+    }
+    const refValues = {
+        "RH": props.ita?"Intervallo di riferimento: ":"Reference Range: "+"25-60%",
+        "T":props.ita?"Intervallo di riferimento: ":"Reference Range: "+"20-24°C",
+        "SPL":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 40 dB(A)",
+        "VOC":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
+        "CH2O":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
+        "CO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 ppm",
+        "CO":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 100 mg/m³",
+        "NO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 200 µg/m³",
+        "PM10":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 50 µg/m³",
+        "PM2.5":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 25 µg/m³",
+        "E":props.ita?"Valore di riferimento: ":"Reference Value: "+"≥ 500 lux",
+        "IEQ": "",
+        "Temp":"",
+        "Air": "",
+        "Light": "",
+        "Sound": ""
     }
 
     let [showGraph, setShowGraph] = useState(false)
     let [timeWindow, setTimeWindow] = useState("RT")
-    let [topic, setTopic] = useState("Dash")
+    let [topic, setTopic] = useState("init")
+
+    console.log("TOPIC",topic)
 
     function Clock (){
         let [date, setDate] = useState("")
@@ -46,7 +88,6 @@ export default function Dashboard(props) {
         )
     }
     function Compliances () {
-        let [referenceValue, setReferenceValue] = useState("...")
         let [RTValue, setRTValue] = useState("...")
         let [showCompliances, setShowCompliances] = useState(false)
         const toggleCompliance = () => {
@@ -55,7 +96,11 @@ export default function Dashboard(props) {
         return (
             <>
                 <div className="row">
-                    <h4 style={{textAlign: "center"}}>{props.ita?"Valore di riferimento: ":"Reference value: "}{referenceValue}</h4>
+                    {
+                        topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
+                        <h4 style={{textAlign: "center"}}>{refValues[topic]}</h4>
+                        : null
+                    }
                 </div>
                 <div className="row" id="compliances">
                     {showCompliances ?
@@ -304,20 +349,22 @@ export default function Dashboard(props) {
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="Dash"||topic==="Temp"?1:0.2 }}>
+                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="T"?1:0.2 }}
+                                     hidden={topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
                                     {iframes["T"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Temp")}/>
+                                         onClick={() => setTopic("T")}/>
                                 </div>
                         </div>
                         <div className="col-6">
-                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="Dash"||topic==="Temp"?1:0.2 }}>
+                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="RH"?1:0.2 }} hidden={topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
                                     {iframes["RH"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Temp")}/>
+                                         onClick={() => setTopic("RH")}/>
                                 </div>
+                                <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Temp"||topic==="RH"||topic==="T"}/>
                             <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : topic==="Dash"||topic==="Temp"?1:0.2}}>
+                                <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : topic==="IEQ"||topic==="Temp"||topic==="init"?1:0.2}}>
                                     {iframes["Temp"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("Temp")}/>
@@ -329,24 +376,26 @@ export default function Dashboard(props) {
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
-                            <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : topic==="Dash"||topic==="Sound"?1:0.2}}>
+                            <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : topic==="IEQ"||topic==="SPL"?1:0.2}}
+                                 hidden={topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"}>
                                 {iframes["SPL"][timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
-                                     onClick={() => setTopic("Sound")}/>
+                                     onClick={() => setTopic("SPL")}/>
                             </div>
                         </div>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1,position:"relative", top:"-55px", left:"-45px", opacity : topic==="Dash"||topic==="Sound"?1:0.2}} >
+                                <div className="holderGauge" style={{zIndex:1,position:"relative", top:"-55px", left:"-45px", opacity : topic==="init"||topic==="IEQ"||topic==="Sound"?1:0.2}} >
                                     {iframes["Sound"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("Sound")}/>
                                 </div>
                             </div>
-                            <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                            <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="VOC"?1:0.2}}
+                                 hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                 {iframes["VOC"][timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
-                                     onClick={() => setTopic("Air")}/>
+                                     onClick={() => setTopic("VOC")}/>
                             </div>
                         </div>
                     </div>
@@ -354,27 +403,29 @@ export default function Dashboard(props) {
                 <div className="col-4">
                     <div className="row" style={{height: "33%"}}/>
                     <div className="row" style={{height: "33%"}}>
-                        <div className="holderGauge"  style={{zIndex:0, opacity : topic==="Dash"?1:0.2}}>
+                        <div className="holderGauge"  style={{zIndex:0, opacity : topic==="init"||topic==="IEQ"?1:0.2}}>
                             {iframes["IEQ"][timeWindow]}
                             <div className="overlay" style={{position: "absolute"}}
-                                 onClick={() => setTopic("Dash")}/>
+                                 onClick={() => setTopic("IEQ")}/>
                         </div>
                     </div>
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CH2O"?1:0.2}}
+                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["CH2O"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("CH2O")}/>
                                 </div>
                         </div>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO2"?1:0.2}}
+                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["CO2"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("CO2")}/>
                                 </div>
                         </div>
                     </div>
@@ -382,13 +433,15 @@ export default function Dashboard(props) {
                 <div className="col-4">
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6">
-                                <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : topic==="Dash"||topic==="Light"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : topic==="IEQ"||topic==="E"?1:0.2}}
+                                     hidden={topic!=="IEQ"&&topic!=="Light"&&topic!=="E"}>
                                     {iframes["E"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Light")}/>
+                                         onClick={() => setTopic("E")}/>
                                 </div>
+                                <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Light"||topic==="E"}/>
                             <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, position:"relative", left:"-50px", opacity : topic==="Dash"||topic==="Light"?1:0.2}}>
+                                <div className="holderGauge" style={{zIndex:1, position:"relative", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Light"?1:0.2}}>
                                     {iframes["Light"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("Light")}/>
@@ -400,40 +453,44 @@ export default function Dashboard(props) {
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6"/>
                         <div className="col-6">
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM2.5"?1:0.2}}
+                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["PM2.5"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("PM2.5")}/>
                                 </div>
                             <div className="row" style={{height:"40px"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM10"?1:0.2}}
+                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["PM10"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("PM10")}/>
                                 </div>
                         </div>
                     </div>
                     <div className="row" style={{height: "33%"}}>
                         <div className="col-6">
                             <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, position:"relative", top:"-55px", left:"-50px", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holderGauge" style={{zIndex:1, position:"relative", top:"-55px", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Air"?1:0.2}}>
                                     {iframes["Air"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
                                          onClick={() => setTopic("Air")}/>
                                 </div>
                             </div>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO"?1:0.2}}
+                                    hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["CO"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("CO")}/>
                                 </div>
                         </div>
                         <div className="col-6">
                                 <div className="row" style={{height:"50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="Dash"||topic==="Air"?1:0.2}}>
+                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="NO2"?1:0.2}}
+                                    hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
                                     {iframes["NO2"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("NO2")}/>
                                 </div>
                             <div className="row" style={{height: "50%"}}/>
                         </div>
@@ -481,7 +538,7 @@ export default function Dashboard(props) {
                 "1M" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
             },
         }
-        if(topic==="Dash")
+        if(topic==="IEQ")
         return (
             <div className="container" style={{height:"100%"}}>
                <div className="row h-50">
