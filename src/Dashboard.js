@@ -64,8 +64,7 @@ export default function Dashboard(props) {
     let [showGraph, setShowGraph] = useState(false)
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
-
-    fetchData(new Date()-5000, new Date()-0).then(result=>console.log("RESULT",JSON.stringify(result))).catch(e=>console.log("ERROR",JSON.stringify(e)))
+    let [values, setValues] = useState(null)
 
     function Clock (){
         let [date, setDate] = useState("")
@@ -129,6 +128,33 @@ export default function Dashboard(props) {
         }
     },[])
 
+    setInterval(()=>{
+        fetchData(new Date()-5000, new Date()-0)
+            .then(result=>{
+                console.log("RESULT",JSON.stringify(result))
+                console.log("SPL",result["results"]["SPL"]["frames"][0]["data"]["values"][0][1])
+                /*setValues({
+                    "RH":"",
+                    "T":"",
+                    "SPL":"",
+                    "VOC":"",
+                    "CH2O":"",
+                    "CO2":"",
+                    "CO":"",
+                    "NO2":"",
+                    "PM10":"",
+                    "PM2.5":"",
+                    "E":"",
+                    "IEQ": "",
+                    "Temp":"",
+                    "Air": "",
+                    "Light": "",
+                    "Sound": ""
+                })*/
+            })
+            .catch(e=>console.log("ERROR",JSON.stringify(e)))
+    },5000)
+
         return (
             <div id="Dashboard" className="container">
                 <div className="row h-100">
@@ -180,10 +206,10 @@ export default function Dashboard(props) {
                             </div>
                         </div>
                         <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
-                            {/*showGraph ?
+                            {showGraph ?
                                 <DashGraphs/>
                                 :
-                                <DashIframes/>*/
+                                <DashIframes/>
                             }
                         </div>
                     </div>
