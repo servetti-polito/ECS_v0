@@ -20,6 +20,7 @@ export default function Dashboard(props) {
         "PM2.5":props.ita?"PM2.5":"Particulate Matter 2.5",
         "E":props.ita?"Illuminazione":"Illuminance",
         "IEQ": props.ita ? "Qualità dell'ambiente interno" : "Indoor Environmental Quality",
+        "init": props.ita ? "Qualità dell'ambiente interno" : "Indoor Environmental Quality",
         "Air": props.ita ? "Qualità dell'aria interna" : "Indoor Air Quality",
         "Light": props.ita ? "Comfort visivo":"Visual Comfort",
         "Sound": props.ita ? "Comfort acustico":"Acoustic Comfort"
@@ -38,6 +39,7 @@ export default function Dashboard(props) {
         "PM2.5":props.ita?"Spiegazione su PM2.5":"Fine inhalable particles, with diameters that are 2.5 micrometers or smaller. ",
         "E":props.ita?"Spiegazione su illuminazione":"Illuminance is the ratio between the luminous flux incident on an elementary surface and the area of the elementary surface itself. ",
         "IEQ": props.ita ? "Spiegazione su qualità dell'ambiente interno":"Indoor Environmental Quality is the physical characterization of indoor environments in terms of thermal, acoustic, lighting and indoor air quality.",
+        "init": props.ita ? "Spiegazione su qualità dell'ambiente interno":"Indoor Environmental Quality is the physical characterization of indoor environments in terms of thermal, acoustic, lighting and indoor air quality.",
         "Air": props.ita ? "Spiegazione su qualità dell'aria" : "Indoor air quality is considered acceptable when there are no specific pollutants in harmful concentrations and no conditions that are likely to be associated with occupant's health or comfort complaints.",
         "Light": props.ita ? "Spiegazione su comfort visivo" : "Visual comfort is that condition of satisfaction of visual requirements expressed by the user.",
         "Sound": props.ita? "Spiegazione su comfort acustico" : "Acoustic comfort is that condition, in a specific environment, in which the user experiences a sense of well-being related to the hearing conditions."
@@ -64,7 +66,6 @@ export default function Dashboard(props) {
     let [showGraph, setShowGraph] = useState(false)
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
-    let [values, setValues] = useState(null)
 
     function Clock (){
         let [date, setDate] = useState("")
@@ -88,8 +89,34 @@ export default function Dashboard(props) {
         )
     }
     function Compliances () {
-        let [RTValue, setRTValue] = useState("...")
         let [showCompliances, setShowCompliances] = useState(false)
+        let RTvalues={}
+
+        //setInterval(()=>{
+        fetchData(new Date()-5000, new Date()-0)
+            .then(result=>{
+                RTvalues = {
+                    "RH":result["results"]["RH"]["frames"][0]["data"]["values"][1][0],
+                    "T":result["results"]["T"]["frames"][0]["data"]["values"][1][0],
+                    "SPL": result["results"]["SPL"]["frames"][0]["data"]["values"][1][0],
+                    "VOC":result["results"]["VOC"]["frames"][0]["data"]["values"][1][0],
+                    "CH2O":result["results"]["CH20"]["frames"][0]["data"]["values"][1][0],
+                    "CO2":result["results"]["CO2"]["frames"][0]["data"]["values"][1][0],
+                    "CO":result["results"]["CO"]["frames"][0]["data"]["values"][1][0],
+                    "NO2":result["results"]["NO2"]["frames"][0]["data"]["values"][1][0],
+                    "PM10":result["results"]["PM10"]["frames"][0]["data"]["values"][1][0],
+                    "PM2.5":result["results"]["PM2.5"]["frames"][0]["data"]["values"][1][0],
+                    "E":result["results"]["E"]["frames"][0]["data"]["values"][1][0],
+                    "IEQ": result["results"]["IEQ"]["frames"][0]["data"]["values"][1][0],
+                    "Temp":result["results"]["Temp"]["frames"][0]["data"]["values"][1][0],
+                    "Air": result["results"]["Air"]["frames"][0]["data"]["values"][1][0],
+                    "Light": result["results"]["Light"]["frames"][0]["data"]["values"][1][0],
+                    "Sound": result["results"]["Sound"]["frames"][0]["data"]["values"][1][0]
+                }
+            })
+            .catch(e=>console.log("ERROR",JSON.stringify(e)))
+        //},5000)
+
         const toggleCompliance = () => {
             setShowCompliances(!showCompliances);
         }
@@ -98,7 +125,7 @@ export default function Dashboard(props) {
                 <div className="row">
                     {
                         topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                        <h4 style={{textAlign: "center"}}>{refValues[topic]}</h4>
+                        <h4 style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
                         : null
                     }
                 </div>
@@ -107,7 +134,7 @@ export default function Dashboard(props) {
                             props.ita?
                                 <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
                                 <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValue}</h4>:null
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTvalues[topic==="init"?"IEQ":topic]}</h4>:null
                     }
                 </div>
                 <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
@@ -127,33 +154,6 @@ export default function Dashboard(props) {
             navigate("/login")
         }
     },[])
-
-    setInterval(()=>{
-        fetchData(new Date()-5000, new Date()-0)
-            .then(result=>{
-                console.log("RESULT",JSON.stringify(result))
-                console.log("SPL",result["results"]["SPL"]["frames"][0]["data"]["values"][0][1])
-                /*setValues({
-                    "RH":"",
-                    "T":"",
-                    "SPL":"",
-                    "VOC":"",
-                    "CH2O":"",
-                    "CO2":"",
-                    "CO":"",
-                    "NO2":"",
-                    "PM10":"",
-                    "PM2.5":"",
-                    "E":"",
-                    "IEQ": "",
-                    "Temp":"",
-                    "Air": "",
-                    "Light": "",
-                    "Sound": ""
-                })*/
-            })
-            .catch(e=>console.log("ERROR",JSON.stringify(e)))
-    },5000)
 
         return (
             <div id="Dashboard" className="container">
