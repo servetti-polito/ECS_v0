@@ -352,8 +352,10 @@ export default function Dashboard(props) {
         setInterval(()=>{
             fetchData(new Date()-5000, new Date()-0)
                 .then(result=>{
-            setRTV(result["results"][topic]===undefined?"...":
-                parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    console.log("RESULT", JSON.stringify(result))
+                    setRTV(result["results"][topic]===undefined?"...":
+                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    console.log("2")
                 })
                 .catch(e=>console.log("ERROR",JSON.stringify(e)))
         },5000)
