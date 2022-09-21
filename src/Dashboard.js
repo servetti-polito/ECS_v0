@@ -62,7 +62,24 @@ export default function Dashboard(props) {
         "Light": "",
         "Sound": ""
     }
-
+    const measures = {
+        "RH": "%",
+        "T":"°C",
+        "SPL":"dB(A)",
+        "VOC": "µg/m³",
+        "CH2O":"µg/m³",
+        "CO2":"ppm",
+        "CO":"mg/m³",
+        "NO2":"µg/m³",
+        "PM10":"µg/m³",
+        "PM2.5":"µg/m³",
+        "E":"lux",
+        "IEQ": "%",
+        "Temp":"%",
+        "Air": "%",
+        "Light": "%",
+        "Sound": "%"
+    }
     let [showGraph, setShowGraph] = useState(false)
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
@@ -90,32 +107,256 @@ export default function Dashboard(props) {
     }
     function Compliances () {
         let [showCompliances, setShowCompliances] = useState(false)
-        let RTvalues={}
+        let [RTV, setRTV] = useState("...")
+        /*let [topicRTvalue, setTopicRTvalue] = useState("...")
+        let RTvalues = {
+            "RH": "...",
+            "T": "...",
+            "SPL":"...",
+            "VOC":"...",
+            "CH2O":"...",
+            "CO2":"...",
+            "CO":"...",
+            "NO2":"...",
+            "PM10":"...",
+            "PM2.5":"...",
+            "E":"...",
+            "IEQ": "...",
+            "Temp":"...",
+            "Air": "...",
+            "Light": "...",
+            "Sound": "..."
+        }
 
-        //setInterval(()=>{
-        fetchData(new Date()-5000, new Date()-0)
-            .then(result=>{
-                RTvalues = {
-                    "RH":result["results"]["RH"]["frames"][0]["data"]["values"][1][0],
-                    "T":result["results"]["T"]["frames"][0]["data"]["values"][1][0],
-                    "SPL": result["results"]["SPL"]["frames"][0]["data"]["values"][1][0],
-                    "VOC":result["results"]["VOC"]["frames"][0]["data"]["values"][1][0],
-                    "CH2O":result["results"]["CH20"]["frames"][0]["data"]["values"][1][0],
-                    "CO2":result["results"]["CO2"]["frames"][0]["data"]["values"][1][0],
-                    "CO":result["results"]["CO"]["frames"][0]["data"]["values"][1][0],
-                    "NO2":result["results"]["NO2"]["frames"][0]["data"]["values"][1][0],
-                    "PM10":result["results"]["PM10"]["frames"][0]["data"]["values"][1][0],
-                    "PM2.5":result["results"]["PM2.5"]["frames"][0]["data"]["values"][1][0],
-                    "E":result["results"]["E"]["frames"][0]["data"]["values"][1][0],
-                    "IEQ": result["results"]["IEQ"]["frames"][0]["data"]["values"][1][0],
-                    "Temp":result["results"]["Temp"]["frames"][0]["data"]["values"][1][0],
-                    "Air": result["results"]["Air"]["frames"][0]["data"]["values"][1][0],
-                    "Light": result["results"]["Light"]["frames"][0]["data"]["values"][1][0],
-                    "Sound": result["results"]["Sound"]["frames"][0]["data"]["values"][1][0]
+        setInterval(()=>{
+            //fetchData(new Date()-5000, new Date()-0)
+            //    .then(result=>{
+            const result = {
+                "results": {
+                    "E": {
+                        "frames": [
+                            {
+                                "schema": {
+                                    "refId": "E",
+                                    "fields": [
+                                        {
+                                            "name": "time",
+                                            "type": "time",
+                                            "typeInfo": {
+                                                "frame": "time.Time",
+                                                "nullable": true
+                                            },
+                                            "config": {
+                                                "interval": 120000
+                                            }
+                                        },
+                                        {
+                                            "name": "E-series",
+                                            "type": "number",
+                                            "typeInfo": {
+                                                "frame": "float64",
+                                                "nullable": true
+                                            },
+                                            "labels": {}
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "values": [
+                                        [
+                                            1663766806494
+                                        ],
+                                        [
+                                            29.94998669846978
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "RH": {
+                        "frames": [
+                            {
+                                "schema": {
+                                    "refId": "RH",
+                                    "fields": [
+                                        {
+                                            "name": "time",
+                                            "type": "time",
+                                            "typeInfo": {
+                                                "frame": "time.Time",
+                                                "nullable": true
+                                            },
+                                            "config": {
+                                                "interval": 120000
+                                            }
+                                        },
+                                        {
+                                            "name": "RH-series",
+                                            "type": "number",
+                                            "typeInfo": {
+                                                "frame": "float64",
+                                                "nullable": true
+                                            },
+                                            "labels": {}
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "values": [
+                                        [
+                                            1663766806494
+                                        ],
+                                        [
+                                            36.57164735852234
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "SPL": {
+                        "frames": [
+                            {
+                                "schema": {
+                                    "refId": "SPL",
+                                    "fields": [
+                                        {
+                                            "name": "time",
+                                            "type": "time",
+                                            "typeInfo": {
+                                                "frame": "time.Time",
+                                                "nullable": true
+                                            },
+                                            "config": {
+                                                "interval": 120000
+                                            }
+                                        },
+                                        {
+                                            "name": "SPL-series",
+                                            "type": "number",
+                                            "typeInfo": {
+                                                "frame": "float64",
+                                                "nullable": true
+                                            },
+                                            "labels": {}
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "values": [
+                                        [
+                                            1663766806494
+                                        ],
+                                        [
+                                            79.46969985244975
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "Ta": {
+                        "frames": [
+                            {
+                                "schema": {
+                                    "refId": "Ta",
+                                    "fields": [
+                                        {
+                                            "name": "time",
+                                            "type": "time",
+                                            "typeInfo": {
+                                                "frame": "time.Time",
+                                                "nullable": true
+                                            },
+                                            "config": {
+                                                "interval": 120000
+                                            }
+                                        },
+                                        {
+                                            "name": "Ta-series",
+                                            "type": "number",
+                                            "typeInfo": {
+                                                "frame": "float64",
+                                                "nullable": true
+                                            },
+                                            "labels": {}
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "values": [
+                                        [
+                                            1663766806494
+                                        ],
+                                        [
+                                            87.1473696757231
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "VOC": {
+                        "frames": [
+                            {
+                                "schema": {
+                                    "refId": "VOC",
+                                    "fields": [
+                                        {
+                                            "name": "time",
+                                            "type": "time",
+                                            "typeInfo": {
+                                                "frame": "time.Time",
+                                                "nullable": true
+                                            },
+                                            "config": {
+                                                "interval": 120000
+                                            }
+                                        },
+                                        {
+                                            "name": "VOC-series",
+                                            "type": "number",
+                                            "typeInfo": {
+                                                "frame": "float64",
+                                                "nullable": true
+                                            },
+                                            "labels": {}
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "values": [
+                                        [
+                                            1663766806494
+                                        ],
+                                        [
+                                            53.930723518159354
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    }
                 }
-            })
-            .catch(e=>console.log("ERROR",JSON.stringify(e)))
-        //},5000)
+            }
+            for(let t in RTvalues) {
+                RTvalues[t] = result["results"][t]===undefined?"...":result["results"][t]["frames"][0]["data"]["values"][1][0]
+                console.log(t,RTvalues[t])
+            }
+            setTopicRTvalue(RTvalues[topic])
+            //    })
+            //    .catch(e=>console.log("ERROR",JSON.stringify(e)))
+        },5000)*/
+
+        setInterval(()=>{
+            fetchData(new Date()-5000, new Date()-0)
+                .then(result=>{
+            setRTV(result["results"][topic]===undefined?"...":
+                parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                })
+                .catch(e=>console.log("ERROR",JSON.stringify(e)))
+        },5000)
 
         const toggleCompliance = () => {
             setShowCompliances(!showCompliances);
@@ -131,10 +372,10 @@ export default function Dashboard(props) {
                 </div>
                 <div className="row" id="compliances">
                     {showCompliances&&timeWindow==="RT" ?
-                            props.ita?
-                                <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                                <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTvalues[topic==="init"?"IEQ":topic]}</h4>:null
+                        props.ita?
+                            <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
+                            <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTV}</h4>:null
                     }
                 </div>
                 <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
@@ -205,13 +446,13 @@ export default function Dashboard(props) {
                                 <button className={timeWindow === "1M" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("1M")}}>1M</button>
                             </div>
                         </div>
-                        <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
-                            {showGraph ?
-                                <DashGraphs/>
-                                :
-                                <DashIframes/>
-                            }
-                        </div>
+                            <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
+                                    {showGraph ?
+                                        <DashGraphs/>
+                                        :
+                                        <DashIframes/>
+                                    }
+                            </div>
                     </div>
                 </div>
             </div>
