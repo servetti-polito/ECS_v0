@@ -13,6 +13,7 @@ export default function fetchData (from,to)
         body:JSON.stringify(template)
     }
     return fetch("https://dev.prometeo.click/chart/api/ds/query", init).then(result=>{
+        console.log("RESULT IN FETCH",JSON.stringify(result))
         return result;
     }).catch(e=>console.log("ERROR",JSON.stringify(e)))
 }
