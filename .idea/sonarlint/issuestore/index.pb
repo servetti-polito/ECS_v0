@@ -40,8 +40,6 @@ c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-?
-src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 E
@@ -62,6 +60,12 @@ I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
+?
+src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
+>
+src/Account.js,7\6\76e8440647f6201e04477c9fce831d701656f6c5
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581

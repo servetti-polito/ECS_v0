@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
+import fetchData from './GrafanaAPI';
 
 export default function Dashboard(props) {
 
@@ -64,7 +65,7 @@ export default function Dashboard(props) {
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
 
-    console.log("TOPIC",topic)
+    fetchData(new Date()-5000, new Date()-0).then(result=>console.log("RESULT",JSON.stringify(result))).catch(e=>console.log("ERROR",JSON.stringify(e)))
 
     function Clock (){
         let [date, setDate] = useState("")
@@ -103,11 +104,11 @@ export default function Dashboard(props) {
                     }
                 </div>
                 <div className="row" id="compliances">
-                    {showCompliances ?
+                    {showCompliances&&timeWindow==="RT" ?
                             props.ita?
                                 <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
                                 <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : <h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValue}</h4>
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValue}</h4>:null
                     }
                 </div>
                 <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
@@ -179,10 +180,10 @@ export default function Dashboard(props) {
                             </div>
                         </div>
                         <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
-                            {showGraph ?
+                            {/*showGraph ?
                                 <DashGraphs/>
                                 :
-                                <DashIframes/>
+                                <DashIframes/>*/
                             }
                         </div>
                     </div>
@@ -368,7 +369,9 @@ export default function Dashboard(props) {
                                 <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : topic==="IEQ"||topic==="Temp"||topic==="init"?1:0.2}}>
                                     {iframes["Temp"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Temp")}/>
+                                         onClick={() => setTopic("Temp")}>
+                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/l87VLQF.png" alt="temp"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -391,7 +394,9 @@ export default function Dashboard(props) {
                                 <div className="holderGauge" style={{zIndex:1,position:"relative", top:"-55px", left:"-45px", opacity : topic==="init"||topic==="IEQ"||topic==="Sound"?1:0.2}} >
                                     {iframes["Sound"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Sound")}/>
+                                         onClick={() => setTopic("Sound")}>
+                                        <img style={{height:"80px", width:"80px", position:"absolute", left:"32%", top:"20%"}} src="https://i.imgur.com/wFrcxHX.png" alt="sound"/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="VOC"?1:0.2}}
@@ -412,7 +417,9 @@ export default function Dashboard(props) {
                         <div className="holderGauge"  style={{zIndex:0, opacity : topic==="init"||topic==="IEQ"?1:0.2}}>
                             {iframes["IEQ"][timeWindow]}
                             <div className="overlay" style={{position: "absolute"}}
-                                 onClick={() => setTopic("IEQ")}/>
+                                 onClick={() => setTopic("IEQ")}>
+                                <img style={{height:"120px", width:"120px", position:"absolute", left:"21%", top:"25%"}} src="https://i.imgur.com/gKIoYkH.png" alt="IEQ"/>
+                            </div>
                         </div>
                     </div>
                     <div className="row" style={{height: "33%"}}>
@@ -459,7 +466,9 @@ export default function Dashboard(props) {
                                 <div className="holderGauge" style={{zIndex:1, position:"relative", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Light"?1:0.2}}>
                                     {iframes["Light"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Light")}/>
+                                         onClick={() => setTopic("Light")}>
+                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/LaD4xXO.png" alt="light"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -495,7 +504,9 @@ export default function Dashboard(props) {
                                 <div className="holderGauge" style={{zIndex:1, position:"relative", top:"-55px", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Air"?1:0.2}}>
                                     {iframes["Air"][timeWindow]}
                                     <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}/>
+                                         onClick={() => setTopic("Air")}>
+                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/xViGhBz.png" alt="air"/>
+                                    </div>
                                 </div>
                             </div>
                                 <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO"?1:0.2}}
@@ -565,7 +576,7 @@ export default function Dashboard(props) {
                 "1M" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
             },
         }
-        if(topic==="IEQ")
+        if(topic==="IEQ"||topic==="init")
         return (
             <div className="container" style={{height:"100%"}}>
                <div className="row h-50">

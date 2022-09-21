@@ -1,0 +1,51 @@
+{
+  "queries": [
+    {
+      "refId": "Ta",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "RH",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "SPL",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "E",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "VOC",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    }
+  ],
+  "range": {
+    "from": "2022-09-19T06:29:44.375Z",
+    "to": "2022-09-19T12:29:44.375Z",
+    "raw": { "from": "now-6h", "to": "now" }
+  },
+  "from": "0",
+  "to": "0"
+}
