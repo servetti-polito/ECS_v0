@@ -360,11 +360,12 @@ export default function Dashboard(props) {
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
                     console.log("200")
-                    let result = xhttp.responseText
-                    console.log("RESULT TOPIC", topic, JSON.stringify(result["results"][topic]))
-                    console.log("WOULD BE WRITTEN",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
-                    setRTV(result["results"][topic]===undefined?"...":
-                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    console.log("topic",topic)
+                    console.log("response",xhttp.responseText)
+                    console.log("RESULT TOPIC", topic, JSON.stringify(xhttp.responseText["results"][topic]))
+                    console.log("WOULD BE WRITTEN",parseFloat(xhttp.responseText["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    setRTV(xhttp.responseText["results"][topic]===undefined?"...":
+                        parseFloat(xhttp.responseText["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
                 }
                 else if (this.readyState === 4 && this.status !== 200)
                     console.log("ERROR "+xhttp.statusText)
