@@ -137,7 +137,7 @@ export default function Dashboard(props) {
 
     function Compliances () {
         let [showCompliances, setShowCompliances] = useState(false)
-        let [RTV, setRTV] = useState("...")
+        //let [RTV, setRTV] = useState("...")
         const measures = {
             "RH": "%",
             "T":"°C",
@@ -188,8 +188,8 @@ export default function Dashboard(props) {
                             curtopic="Ta"
                         if(topic==="init")
                             curtopic="IEQ"
-                        setRTV(result["results"][curtopic]===undefined?"...":
-                            parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                        /*setRTV(result["results"][curtopic]===undefined?"...":
+                            parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])*/
                         for(let t in result["results"])
                         {
                             console.log("topic to be changed",t)
@@ -229,7 +229,7 @@ export default function Dashboard(props) {
                         props.ita?
                             <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
                             <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTV}</h4>:null
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{/*RTV*/RTValues[topic]}</h4>:null
                     }
                 </div>
                 <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
