@@ -15,11 +15,10 @@ export default function fetchData (from,to)
     console.log("INIT: "+JSON.stringify(init))
     return fetch("https://dev.prometeo.click/chart/api/ds/query", init)
     //return fetch("https://caimano.polito.it:8080/chart/api/ds/query", init)
-        .then(result=>{
-            console.log("GOOD")
-            //console.log("RESULT IN FETCH",JSON.stringify(result))
-            return result;
-        },
+        .then(result => {
+                console.log("RESULT IN FETCH",JSON.stringify(result.json()))
+                return result.json();
+            },
             rejected=>{
             console.log("Somehow rejected",JSON.stringify(rejected))
         })
