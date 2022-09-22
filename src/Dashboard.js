@@ -3,6 +3,7 @@ import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import fetchData from './GrafanaAPI';
+import template from "./resources/GrafanaReqTemplate.json";
 
 export default function Dashboard(props) {
 
@@ -352,14 +353,31 @@ export default function Dashboard(props) {
 
         setInterval(()=>{
             console.log("in")
-            fetchData(new Date()-5000, new Date()-0)
+            template.from=""+from;
+            template.to=""+to;
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    let result = xhttp.responseText
+                    console.log("RESULT", JSON.stringify(result))
+                    setRTV(result["results"][topic]===undefined?"...":
+                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                }
+                else if (this.readyState === 4 && this.status !== 200)
+                    console.log("ERROR "+xhttp.statusText)
+            };
+            xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
+            xhttp.setRequestHeader("Content-Type","application/json")
+            xhttp.setRequestHeader("Host","dev.prometeo.click",)
+            xhttp.send(JSON.stringify(template));
+            /*fetchData(new Date()-5000, new Date()-0)
                 .then(result=>{
                     console.log("RESULT", JSON.stringify(result))
                     setRTV(result["results"][topic]===undefined?"...":
                         parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
                     console.log("2")
                 })
-                .catch(e=>console.log("ERROR",JSON.stringify(e)))
+                .catch(e=>console.log("ERROR",JSON.stringify(e)))*/
         },5000)
 
         const toggleCompliance = () => {

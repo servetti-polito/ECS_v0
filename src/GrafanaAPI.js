@@ -7,8 +7,9 @@ export default function fetchData (from,to)
     template.to=""+to;
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200)
-            return xhttp.responseText
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(xhttp.responseText)
+        }
         else if (this.readyState === 4 && this.status !== 200)
             console.log("ERROR "+xhttp.statusText)
     };
@@ -16,6 +17,7 @@ export default function fetchData (from,to)
     xhttp.setRequestHeader("Content-Type","application/json")
     xhttp.setRequestHeader("Host","dev.prometeo.click",)
     xhttp.send(JSON.stringify(template));
+
     /*let init = {
         method:"POST",
         mode: 'cors',
