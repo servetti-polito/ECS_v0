@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
-import fetchData from './GrafanaAPI';
 import template from "./resources/GrafanaReqTemplate.json";
 
 export default function Dashboard(props) {
@@ -48,86 +47,25 @@ export default function Dashboard(props) {
     let [showGraph, setShowGraph] = useState(false)
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
+    let [RTValues, setRTValues] = useState({
+        RH:"...",
+        T:"...",
+        Temp:"...",
+        SPL:"...",
+        VOC:"...",
+        CH2O:"...",
+        CO2:"...",
+        CO:"...",
+        NO2:"...",
+        PM10:"...",
+        "PM2.5":"...",
+        E:"..."
+    })
 
-    /*function Clock (){
-        let [date, setDate] = useState("")
-        let [time, setTime] = useState("")
-        setInterval(() => {
-            let dateTime = new Date();
-            let timeString = dateTime.toTimeString().split(' ')[0].slice(0, -3)
-            let dateString = dateTime.toLocaleDateString('en-GB')
-            setDate(dateString)
-            setTime(timeString)
-        }, 1000)
-        return (
-            <div className="row">
-                <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginRight: "2.5%", marginLeft: "5%"}}>
-                    <h3 style={{textAlign: "center", margin: "5px", marginLeft: 0, letterSpacing: "-1px", color: "#FF9724"}}>{date}</h3>
-                </div>
-                <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginLeft: "2.5%", marginRight: "5%"}}>
-                    <h3 style={{textAlign: "center", margin: "5px", color: "#FF9724"}}>{time}</h3>
-                </div>
-            </div>
-        )
-    }*/
-    /*function Compliances () {
-        let [showCompliances, setShowCompliances] = useState(false)
-        let [RTV, setRTV] = useState("...")
-
-        useEffect(()=>{
-            const APIcall = setInterval(()=>{
-                console.log("in")
-                template.from=(new Date()-5000).toString();
-                template.to=(new Date()-0).toString();
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        let result = JSON.parse(xhttp.responseText)
-                        setRTV(result["results"][topic]===undefined?"...":
-                            parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
-                    }
-                    else if (this.readyState === 4 && this.status !== 200)
-                        console.log("ERROR "+xhttp.statusText)
-                };
-                xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
-                xhttp.setRequestHeader("Content-Type","application/json")
-                xhttp.setRequestHeader("Host","dev.prometeo.click",)
-                xhttp.send(JSON.stringify(template));
-            },5000)
-            return ()=>clearInterval(APIcall);
-        },[])
-
-        const toggleCompliance = () => {
-            setShowCompliances(!showCompliances);
-        }
-        return (
-            <>
-                <div className="row">
-                    {
-                        topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                        <h4 style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
-                        : null
-                    }
-                </div>
-                <div className="row" id="compliances">
-                    {showCompliances&&timeWindow==="RT" ?
-                        props.ita?
-                            <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                            <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTV}</h4>:null
-                    }
-                </div>
-                <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
-                    <button className="btn btn-white-border btn-compliances" type="button"
-                            onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
-                </div>
-            </>)
-    }*/
+    console.log("RTValues",JSON.stringify(RTValues))
 
     let navigate = useNavigate();
-    const toggleGraph = () => {
-        setShowGraph(!showGraph);
-    }
+    const toggleGraph = () => {setShowGraph(!showGraph);}
 
     useEffect(()=>{
         if (props.userJwt === null) {
@@ -252,6 +190,16 @@ export default function Dashboard(props) {
                             curtopic="IEQ"
                         setRTV(result["results"][curtopic]===undefined?"...":
                             parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                        for(let t in result["results"])
+                        {
+                            console.log("topic to be changed",t)
+                            let updatedValue = {[t]:parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic]}
+                            console.log("updated value", updatedValue)
+                            setRTValues(rtv => ({
+                                ...rtv,
+                                ...updatedValue
+                            }))
+                        }
                     }
                     else if (this.readyState === 4 && this.status !== 200)
                         console.log("ERROR "+xhttp.statusText)
