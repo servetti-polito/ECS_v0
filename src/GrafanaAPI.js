@@ -2,6 +2,7 @@ import template from './resources/GrafanaReqTemplate.json';
 
 export default function fetchData (from,to)
 {
+    console.log("in fetch data")
     template.from=""+from;
     template.to=""+to;
     let xhttp = new XMLHttpRequest();
