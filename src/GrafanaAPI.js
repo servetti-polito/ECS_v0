@@ -4,13 +4,23 @@ export default function fetchData (from,to)
 {
     template.from=""+from;
     template.to=""+to;
-    let init = {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200)
+            console.log("OK: "+xhttp.responseText)
+        else if (this.readyState === 4 && this.status !== 200)
+            console.log("ERROR "+xhttp.statusText)
+    };
+    xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
+    xhttp.setRequestHeader("Content-Type","application/json")
+    xhttp.setRequestHeader("Host","dev.prometeo.click",)
+    xhttp.send(JSON.stringify(template));
+    /*let init = {
         method:"POST",
         mode: 'cors',
         headers:{
             "Content-Type":"application/json",
-            "Host":"dev.prometeo.click",
-            "Accept":"application/json"
+            "Host":"dev.prometeo.click"
         },
         body:JSON.stringify(template)
     }
@@ -24,5 +34,5 @@ export default function fetchData (from,to)
             rejected=>{
             console.log("Somehow rejected",JSON.stringify(rejected))
         })
-        .catch(e=>console.log("ERROR",JSON.stringify(e)))
+        .catch(e=>console.log("ERROR",JSON.stringify(e)))*/
 }
