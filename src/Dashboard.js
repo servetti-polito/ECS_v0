@@ -108,6 +108,7 @@ export default function Dashboard(props) {
     function Compliances () {
         let [showCompliances, setShowCompliances] = useState(false)
         let [RTV, setRTV] = useState("...")
+
         /*let [topicRTvalue, setTopicRTvalue] = useState("...")
         let RTvalues = {
             "RH": "...",
