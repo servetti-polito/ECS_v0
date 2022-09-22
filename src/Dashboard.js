@@ -355,17 +355,16 @@ export default function Dashboard(props) {
             console.log("in")
             template.from=(new Date()-5000).toString();
             template.to=(new Date()-0).toString();
-            console.log("TEMPLATE",JSON.stringify(template))
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
-                    console.log("200")
                     console.log("topic",topic)
                     console.log("response",xhttp.responseText)
-                    console.log("RESULT TOPIC", topic, JSON.stringify(xhttp.responseText["results"][topic]))
-                    console.log("WOULD BE WRITTEN",parseFloat(xhttp.responseText["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
-                    setRTV(xhttp.responseText["results"][topic]===undefined?"...":
-                        parseFloat(xhttp.responseText["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    let result = JSON.parse(xhttp.responseText)
+                    console.log("RESULT TOPIC", topic, result["results"][topic])
+                    console.log("WOULD BE WRITTEN",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    setRTV(result["results"][topic]===undefined?"...":
+                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
                 }
                 else if (this.readyState === 4 && this.status !== 200)
                     console.log("ERROR "+xhttp.statusText)
