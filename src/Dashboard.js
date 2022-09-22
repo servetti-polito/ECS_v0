@@ -359,6 +359,7 @@ export default function Dashboard(props) {
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
+                    console.log("200")
                     let result = xhttp.responseText
                     console.log("RESULT TOPIC", topic, JSON.stringify(result["results"][topic]))
                     console.log("WOULD BE WRITTEN",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
