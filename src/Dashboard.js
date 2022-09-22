@@ -613,7 +613,7 @@ function DashIframes(props) {
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
                                     null : /*iframes["PM2.5"][props.timeWindow]*/
-                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM2.5</p>{props.RTValues["PM2.5"]}</div>
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"3px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM2.5</p>{props.RTValues["PM2.5"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("PM2.5")}/>
@@ -624,7 +624,7 @@ function DashIframes(props) {
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
                                     null : /*iframes["PM10"][props.timeWindow]*/
-                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM10</p>{props.RTValues["PM10"]}</div>
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"3px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM10</p>{props.RTValues["PM10"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("PM10")}/>
