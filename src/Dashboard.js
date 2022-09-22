@@ -193,7 +193,7 @@ export default function Dashboard(props) {
                         for(let t in result["results"])
                         {
                             console.log("topic to be changed",t)
-                            let updatedValue = {[t]:parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic]}
+                            let updatedValue = {[t]:"meme"}
                             console.log("updated value", updatedValue)
                             setRTValues(rtv => ({
                                 ...rtv,
