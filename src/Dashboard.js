@@ -475,7 +475,7 @@ function DashIframes(props) {
                         <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.2 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
                             {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null
-                                : /*iframes["T"][props.timeWindow]*/ "Ta: "+props.RTValues+" °C"
+                                : /*iframes["T"][props.timeWindow]*/ "Ta: "+props.RTValues["T"]+" °C"
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("T")}/>
