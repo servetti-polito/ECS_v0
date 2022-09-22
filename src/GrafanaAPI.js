@@ -6,6 +6,7 @@ export default function fetchData (from,to)
     template.to=""+to;
     let init = {
         method:"POST",
+        mode: 'cors',
         headers:{
             "Content-Type":"application/json",
             "Host":"dev.prometeo.click",
