@@ -185,7 +185,7 @@ export default function Dashboard(props) {
                         for(let t in result["results"])
                         {
                             console.log("topic to be changed",t)
-                            let updatedValue = {[t==="Ta"?"T":t]:parseFloat(result["results"][t]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[t==="Ta"?"T":t]}
+                            let updatedValue = {[t==="Ta"?"T":t]:parseFloat(result["results"][t]["frames"][0]["data"]["values"][1][0]).toFixed(0)+" "+measures[t==="Ta"?"T":t]}
                             console.log("updated value", updatedValue)
                             setRTValues(rtv => ({
                                 ...rtv,
