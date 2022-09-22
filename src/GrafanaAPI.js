@@ -8,7 +8,8 @@ export default function fetchData (from,to)
         method:"POST",
         headers:{
             "Content-Type":"application/json",
-            "Host":"dev.prometeo.click"
+            "Host":"dev.prometeo.click",
+            "Accept":"application/json"
         },
         body:JSON.stringify(template)
     }
