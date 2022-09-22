@@ -351,6 +351,7 @@ export default function Dashboard(props) {
         },5000)*/
 
         setInterval(()=>{
+            console.log("in")
             fetchData(new Date()-5000, new Date()-0)
                 .then(result=>{
                     console.log("RESULT", JSON.stringify(result))

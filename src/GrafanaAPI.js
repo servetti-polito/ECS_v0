@@ -7,10 +7,7 @@ export default function fetchData (from,to)
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200)
-        {
-            console.log("OK: "+xhttp.responseText)
             return xhttp.responseText
-        }
         else if (this.readyState === 4 && this.status !== 200)
             console.log("ERROR "+xhttp.statusText)
     };
