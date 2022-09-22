@@ -668,15 +668,23 @@ function Compliances (props) {
 
     useEffect(()=>{
         const APIcall = setInterval(()=>{
-            console.log("in")
             template.from=(new Date()-5000).toString();
             template.to=(new Date()-0).toString();
+            console.log("template",JSON.stringify(template))
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
                     let result = JSON.parse(xhttp.responseText)
-                    setRTV(result["results"][props.topic]===undefined?"...":
-                        parseFloat(result["results"][props.topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[props.topic])
+                    console.log("RESULT", JSON.stringify(result))
+                    let topic=props.topic
+                    if(topic==="T")
+                        topic="Ta"
+                    if(topic==="init")
+                        topic="IEQ"
+                    console.log("topic",topic)
+                    setRTV(result["results"][topic]===undefined?"...":
+                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[props.topic])
+                    console.log("State",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[props.topic])
                 }
                 else if (this.readyState === 4 && this.status !== 200)
                     console.log("ERROR "+xhttp.statusText)
