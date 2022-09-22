@@ -127,7 +127,7 @@ export default function Dashboard(props) {
                                     {showGraph ?
                                         <DashGraphs timeWindow={timeWindow} topic={topic}/>
                                         :
-                                        <DashIframes timeWindow={timeWindow} topic={topic} setTopic={setTopic}/>
+                                        <DashIframes timeWindow={timeWindow} topic={topic} setTopic={setTopic} RTValues={RTValues}/>
                                     }
                             </div>
                     </div>
@@ -137,7 +137,6 @@ export default function Dashboard(props) {
 
     function Compliances () {
         let [showCompliances, setShowCompliances] = useState(false)
-        //let [RTV, setRTV] = useState("...")
         const measures = {
             "RH": "%",
             "T":"°C",
@@ -183,13 +182,6 @@ export default function Dashboard(props) {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
                         let result = JSON.parse(xhttp.responseText)
-                        let curtopic=topic
-                        if(topic==="T")
-                            curtopic="Ta"
-                        if(topic==="init")
-                            curtopic="IEQ"
-                        /*setRTV(result["results"][curtopic]===undefined?"...":
-                            parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])*/
                         for(let t in result["results"])
                         {
                             console.log("topic to be changed",t)
@@ -229,7 +221,7 @@ export default function Dashboard(props) {
                         props.ita?
                             <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
                             <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{/*RTV*/RTValues[topic]}</h4>:null
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{/*RTV*/RTValues[topic==="init"?"IEQ":topic]}</h4>:null
                     }
                 </div>
                 <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
@@ -482,7 +474,9 @@ function DashIframes(props) {
                         <div className="row" style={{height: "50%"}}/>
                         <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.2 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
-                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null : iframes["T"][props.timeWindow]}
+                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null
+                                : /*iframes["T"][props.timeWindow]*/ "Ta: "+props.RTValues+" °C"
+                            }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("T")}/>
                         </div>
