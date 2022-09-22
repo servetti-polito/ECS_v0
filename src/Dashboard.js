@@ -187,9 +187,9 @@ export default function Dashboard(props) {
                         </div>
                             <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
                                     {showGraph ?
-                                        <DashGraphs/>
+                                        <DashGraphs timeWindow={timeWindow} topic={topic}/>
                                         :
-                                        <DashIframes/>
+                                        <DashIframes timeWindow={timeWindow} topic={topic} setTopic={setTopic}/>
                                     }
                             </div>
                     </div>
@@ -197,412 +197,6 @@ export default function Dashboard(props) {
             </div>
         );
 
-    function DashIframes() {
-        const IFRAMEW="120"
-        const IFRAMEH="120"
-        const IFRAMEW_G="250"
-        const IFRAMEH_G="150"
-
-        const iframes = {
-            "T":{
-                "RT":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "3H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "12H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "24H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "3D":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "1W":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-                "1H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
-            },
-            "RH":{
-                "RT":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "3H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "12H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "24H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "3D":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "1W":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-                "1H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
-            },
-            "Temp":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>
-            },
-            "SPL":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>
-            },
-            "Sound":{
-                "RT": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>
-            },
-            "VOC":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/>
-            },
-            "IEQ":{
-                "RT": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>
-            },
-            "CH2O":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>
-            },
-            "CO2":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>
-            },
-            "E":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>
-            },
-            "Light":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>
-            },
-            "PM2.5":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>
-            },
-            "PM10":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>
-            },
-            "Air":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>
-            },
-            "CO":{
-                "RT":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "3H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "12H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "24H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "3D":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "1W":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
-                "1H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>
-            },
-            "NO2":{
-                "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
-                "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>
-            }
-        }
-
-        return (
-            <div className="row" style={{height: "100%", margin: "10px"}}>
-                <div className="col-4">
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="T"?1:0.2 }}
-                                hidden = {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
-                                    {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T" ? null : iframes["T"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("T")}/>
-                                </div>
-                        </div>
-                        <div className="col-6">
-                                <div className="holder" style={{borderColor: "#c2a29f", opacity : topic==="IEQ"||topic==="RH"?1:0.2 }}
-                                     hidden = {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T"}>
-                                    {topic!=="IEQ"&&topic!=="Temp"&&topic!=="RH"&&topic!=="T" ? null : iframes["RH"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("RH")}/>
-                                </div>
-                            <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Temp"||topic==="T"||topic==="RH"}/>
-                            <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : topic==="IEQ"||topic==="Temp"||topic==="init"?1:0.2}}>
-                                    {iframes["Temp"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Temp")}>
-                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/l87VLQF.png" alt="temp"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row" style={{height: "33%"}}/>
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}/>
-                            <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : topic==="IEQ"||topic==="SPL"?1:0.2}}
-                            hidden={topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"}>
-                                {
-                                    topic!=="IEQ"&&topic!=="Sound"&&topic!=="SPL"? null: iframes["SPL"][timeWindow]
-                                }
-                                <div className="overlay" style={{position: "absolute"}}
-                                     onClick={() => setTopic("SPL")}/>
-                            </div>
-                        </div>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1,position:"relative", top:"-55px", left:"-45px", opacity : topic==="init"||topic==="IEQ"||topic==="Sound"?1:0.2}} >
-                                    {iframes["Sound"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Sound")}>
-                                        <img style={{height:"80px", width:"80px", position:"absolute", left:"32%", top:"20%"}} src="https://i.imgur.com/wFrcxHX.png" alt="sound"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="VOC"?1:0.2}}
-                            hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                {
-                                    topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                    null : iframes["VOC"][timeWindow]
-                                }
-                                <div className="overlay" style={{position: "absolute"}}
-                                     onClick={() => setTopic("VOC")}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div className="row" style={{height: "33%"}}/>
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="holderGauge"  style={{zIndex:0, opacity : topic==="init"||topic==="IEQ"?1:0.2}}>
-                            {iframes["IEQ"][timeWindow]}
-                            <div className="overlay" style={{position: "absolute"}}
-                                 onClick={() => setTopic("IEQ")}>
-                                <img style={{height:"120px", width:"120px", position:"absolute", left:"21%", top:"25%"}} src="https://i.imgur.com/gKIoYkH.png" alt="IEQ"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CH2O"?1:0.2}}
-                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                        null : iframes["CH2O"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("CH2O")}/>
-                                </div>
-                        </div>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO2"?1:0.2}}
-                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                            null: iframes["CO2"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("CO2")}/>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-4">
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6">
-                                <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : topic==="IEQ"||topic==="E"?1:0.2}}
-                                     hidden={topic!=="IEQ"&&topic!=="Light"&&topic!=="E"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Light"&&topic!=="E"?
-                                            null : iframes["E"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("E")}/>
-                                </div>
-                                <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={topic==="IEQ"||topic==="Light"||topic==="E"}/>
-                            <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, position:"relative", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Light"?1:0.2}}>
-                                    {iframes["Light"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Light")}>
-                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/LaD4xXO.png" alt="light"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-6"/>
-                    </div>
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6"/>
-                        <div className="col-6">
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM2.5"?1:0.2}}
-                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                        null : iframes["PM2.5"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("PM2.5")}/>
-                                </div>
-                            <div className="row" style={{height:"40px"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="PM10"?1:0.2}}
-                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                            null : iframes["PM10"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("PM10")}/>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="row" style={{height: "33%"}}>
-                        <div className="col-6">
-                            <div className="row" style={{height: "50%"}}>
-                                <div className="holderGauge" style={{zIndex:1, position:"relative", top:"-55px", left:"-50px", opacity : topic==="init"||topic==="IEQ"||topic==="Air"?1:0.2}}>
-                                    {iframes["Air"][timeWindow]}
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("Air")}>
-                                        <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/xViGhBz.png" alt="air"/>
-                                    </div>
-                                </div>
-                            </div>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="CO"?1:0.2}}
-                                hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                        null : iframes["CO"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("CO")}/>
-                                </div>
-                        </div>
-                        <div className="col-6">
-                                <div className="row" style={{height:"50%"}}/>
-                                <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : topic==="IEQ"||topic==="NO2"?1:0.2}}
-                                    hidden={topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"}>
-                                    {
-                                        topic!=="IEQ"&&topic!=="Air"&&topic!=="VOC"&&topic!=="CH2O"&&topic!=="CO2"&&topic!=="CO"&&topic!=="NO2"&&topic!=="PM2.5"&&topic!=="PM10"?
-                                            null : iframes["NO2"][timeWindow]
-                                    }
-                                    <div className="overlay" style={{position: "absolute"}}
-                                         onClick={() => setTopic("NO2")}/>
-                                </div>
-                            <div className="row" style={{height: "50%"}}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-    function DashGraphs() {
-        const iframes = {
-            "Temp": {
-                "RT": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23&refresh=5s"  frameBorder="0"/>,
-                "3H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
-                "12H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
-                "24H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
-                "3D": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
-                "1W": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
-                "1M": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>
-            },
-            "Light": {
-                "RT":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "3H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "12H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "24H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "3D":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "1W":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-                "1M":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
-            },
-            "Sound": {
-                "RT":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "3H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "12H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "24H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "3D":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "1W":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-                "1M":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
-            },
-            "Air": {
-                "RT" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "3H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "12H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "24H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "3D" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "1W" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-                "1M" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
-            },
-        }
-        if(topic==="IEQ"||topic==="init")
-        return (
-            <div className="container" style={{height:"100%"}}>
-               <div className="row h-50">
-                    <div className="col-6">{iframes["Temp"][timeWindow]}</div>
-                    <div className="col-6">{iframes["Light"][timeWindow]}</div>
-               </div>
-                <div className="row h-50">
-                    <div className="col-6">{iframes["Sound"][timeWindow]}</div>
-                    <div className="col-6">{iframes["Air"][timeWindow]}</div>
-                </div>
-            </div>
-        );
-        else
-            return(
-                <div className="container" style={{height:"100%"}}>
-                        {iframes[topic][timeWindow]}
-                </div>
-            )
-
-    }
     function Compliances () {
         let [showCompliances, setShowCompliances] = useState(false)
         let [RTV, setRTV] = useState("...")
@@ -647,21 +241,17 @@ export default function Dashboard(props) {
             const APIcall = setInterval(()=>{
                 template.from=(new Date()-5000).toString();
                 template.to=(new Date()-0).toString();
-                console.log("template",JSON.stringify(template))
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
                         let result = JSON.parse(xhttp.responseText)
-                        console.log("RESULT", JSON.stringify(result))
                         let curtopic=topic
                         if(topic==="T")
                             curtopic="Ta"
                         if(topic==="init")
                             curtopic="IEQ"
-                        console.log("topic",curtopic)
                         setRTV(result["results"][curtopic]===undefined?"...":
                             parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
-                        console.log("State",parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
                     }
                     else if (this.readyState === 4 && this.status !== 200)
                         console.log("ERROR "+xhttp.statusText)
@@ -719,6 +309,412 @@ function Clock (){
             </div>
             <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginLeft: "2.5%", marginRight: "5%"}}>
                 <h3 style={{textAlign: "center", margin: "5px", color: "#FF9724"}}>{time}</h3>
+            </div>
+        </div>
+    )
+}
+function DashGraphs(props) {
+    const iframes = {
+        "Temp": {
+            "RT": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23&refresh=5s"  frameBorder="0"/>,
+            "3H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
+            "12H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
+            "24H": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
+            "3D": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
+            "1W": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>,
+            "1M": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=27&refresh=5s"  frameBorder="0"/>
+        },
+        "Light": {
+            "RT":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "12H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "24H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "3D":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "1W":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "1M":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=24&refresh=5s"  frameBorder="0"/>,
+        },
+        "Sound": {
+            "RT":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "12H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "24H":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "3D":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "1W":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "1M":<iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=26&refresh=5s"  frameBorder="0"/>,
+        },
+        "Air": {
+            "RT" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "12H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "24H" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3D" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "1W" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "1M" : <iframe style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=25&refresh=5s"  frameBorder="0"/>,
+        },
+    }
+    if(props.topic==="IEQ"||props.topic==="init")
+        return (
+            <div className="container" style={{height:"100%"}}>
+                <div className="row h-50">
+                    <div className="col-6">{iframes["Temp"][props.timeWindow]}</div>
+                    <div className="col-6">{iframes["Light"][props.timeWindow]}</div>
+                </div>
+                <div className="row h-50">
+                    <div className="col-6">{iframes["Sound"][props.timeWindow]}</div>
+                    <div className="col-6">{iframes["Air"][props.timeWindow]}</div>
+                </div>
+            </div>
+        );
+    else
+        return(
+            <div className="container" style={{height:"100%"}}>
+                {iframes[props.topic][props.timeWindow]}
+            </div>
+        )
+
+}
+function DashIframes(props) {
+    const IFRAMEW="120"
+    const IFRAMEH="120"
+    const IFRAMEW_G="250"
+    const IFRAMEH_G="150"
+
+    const iframes = {
+        "T":{
+            "RT":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "3H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "12H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "24H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "3D":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "1W":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+            "1H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="T" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146601379&amp;to=1663168201379&amp;panelId=7" frameBorder="0"/>,
+        },
+        "RH":{
+            "RT":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "3H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "12H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "24H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "3D":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "1W":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+            "1H":<iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="RH" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&refresh=5s&from=1663146185228&to=1663167785228&panelId=4" frameBorder="0"/>,
+        },
+        "Temp":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;from=1663149719485&amp;to=1663171319485&amp;panelId=19" frameBorder="0"/>
+        },
+        "SPL":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="SPL" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=8" frameBorder="0"/>
+        },
+        "Sound":{
+            "RT": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} title="Sound" width={IFRAMEW_G} height={IFRAMEH_G} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=18" frameBorder="0"/>
+        },
+        "VOC":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/> ,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="VOC" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=9" frameBorder="0"/>
+        },
+        "IEQ":{
+            "RT": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={350} height={250} title="IEQ" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=21" frameBorder="0"/>
+        },
+        "CH2O":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CH2O" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=11" frameBorder="0"/>
+        },
+        "CO2":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=12" frameBorder="0"/>
+        },
+        "E":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="E" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=10" frameBorder="0"/>
+        },
+        "Light":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Light" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=20" frameBorder="0"/>
+        },
+        "PM2.5":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM2.5" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=16" frameBorder="0"/>
+        },
+        "PM10":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="PM10" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=15" frameBorder="0"/>
+        },
+        "Air":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW_G} height={IFRAMEH_G} title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663146827349&amp;to=1663168427350&amp;panelId=6" frameBorder="0"/>
+        },
+        "CO":{
+            "RT":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "3H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "12H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "24H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "3D":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "1W":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>,
+            "1H":  <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="CO" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=13" frameBorder="0"/>
+        },
+        "NO2":{
+            "RT": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "3H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "12H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "24H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "3D": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "1W": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>,
+            "1H": <iframe style={{position: "absolute"}} width={IFRAMEW} height={IFRAMEH} title="NO2" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;from=1663147379085&amp;to=1663168979085&amp;panelId=14" frameBorder="0"/>
+        }
+    }
+
+    return (
+        <div className="row" style={{height: "100%", margin: "10px"}}>
+            <div className="col-4">
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}/>
+                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.2 }}
+                             hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
+                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null : iframes["T"][props.timeWindow]}
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("T")}/>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="RH"?1:0.2 }}
+                             hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
+                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null : iframes["RH"][props.timeWindow]}
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("RH")}/>
+                        </div>
+                        <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={props.topic==="IEQ"||props.topic==="Temp"||props.topic==="T"||props.topic==="RH"}/>
+                        <div className="row" style={{height: "50%"}}>
+                            <div className="holderGauge" style={{zIndex:1, left:"-45px", opacity : props.topic==="IEQ"||props.topic==="Temp"||props.topic==="init"?1:0.2}}>
+                                {iframes["Temp"][props.timeWindow]}
+                                <div className="overlay" style={{position: "absolute"}}
+                                     onClick={() => props.setTopic("Temp")}>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/l87VLQF.png" alt="temp"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row" style={{height: "33%"}}/>
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}/>
+                        <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : props.topic==="IEQ"||props.topic==="SPL"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"? null: iframes["SPL"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("SPL")}/>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}>
+                            <div className="holderGauge" style={{zIndex:1,position:"relative", top:"-55px", left:"-45px", opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Sound"?1:0.2}} >
+                                {iframes["Sound"][props.timeWindow]}
+                                <div className="overlay" style={{position: "absolute"}}
+                                     onClick={() => props.setTopic("Sound")}>
+                                    <img style={{height:"80px", width:"80px", position:"absolute", left:"32%", top:"20%"}} src="https://i.imgur.com/wFrcxHX.png" alt="sound"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="VOC"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["VOC"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("VOC")}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-4">
+                <div className="row" style={{height: "33%"}}/>
+                <div className="row" style={{height: "33%"}}>
+                    <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
+                        {iframes["IEQ"][props.timeWindow]}
+                        <div className="overlay" style={{position: "absolute"}}
+                             onClick={() => props.setTopic("IEQ")}>
+                            <img style={{height:"120px", width:"120px", position:"absolute", left:"21%", top:"25%"}} src="https://i.imgur.com/gKIoYkH.png" alt="IEQ"/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}/>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CH2O"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["CH2O"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("CH2O")}/>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}/>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO2"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null: iframes["CO2"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("CO2")}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="col-4">
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6">
+                        <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : props.topic==="IEQ"||props.topic==="E"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"?
+                                    null : iframes["E"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("E")}/>
+                        </div>
+                        <div className="hidden" style={{height:IFRAMEH+"px", borderColor:"#fff"}} hidden={props.topic==="IEQ"||props.topic==="Light"||props.topic==="E"}/>
+                        <div className="row" style={{height: "50%"}}>
+                            <div className="holderGauge" style={{zIndex:1, position:"relative", left:"-50px", opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Light"?1:0.2}}>
+                                {iframes["Light"][props.timeWindow]}
+                                <div className="overlay" style={{position: "absolute"}}
+                                     onClick={() => props.setTopic("Light")}>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/LaD4xXO.png" alt="light"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-6"/>
+                </div>
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6"/>
+                    <div className="col-6">
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM2.5"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["PM2.5"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("PM2.5")}/>
+                        </div>
+                        <div className="row" style={{height:"40px"}}/>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM10"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["PM10"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("PM10")}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row" style={{height: "33%"}}>
+                    <div className="col-6">
+                        <div className="row" style={{height: "50%"}}>
+                            <div className="holderGauge" style={{zIndex:1, position:"relative", top:"-55px", left:"-50px", opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Air"?1:0.2}}>
+                                {iframes["Air"][props.timeWindow]}
+                                <div className="overlay" style={{position: "absolute"}}
+                                     onClick={() => props.setTopic("Air")}>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/xViGhBz.png" alt="air"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["CO"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("CO")}/>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <div className="row" style={{height:"50%"}}/>
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="NO2"?1:0.2}}
+                             hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
+                            {
+                                props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
+                                    null : iframes["NO2"][props.timeWindow]
+                            }
+                            <div className="overlay" style={{position: "absolute"}}
+                                 onClick={() => props.setTopic("NO2")}/>
+                        </div>
+                        <div className="row" style={{height: "50%"}}/>
+                    </div>
+                </div>
             </div>
         </div>
     )
