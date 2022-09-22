@@ -603,6 +603,103 @@ export default function Dashboard(props) {
             )
 
     }
+    function Compliances () {
+        let [showCompliances, setShowCompliances] = useState(false)
+        let [RTV, setRTV] = useState("...")
+        const measures = {
+            "RH": "%",
+            "T":"°C",
+            "SPL":"dB(A)",
+            "VOC": "µg/m³",
+            "CH2O":"µg/m³",
+            "CO2":"ppm",
+            "CO":"mg/m³",
+            "NO2":"µg/m³",
+            "PM10":"µg/m³",
+            "PM2.5":"µg/m³",
+            "E":"lux",
+            "IEQ": "%",
+            "Temp":"%",
+            "Air": "%",
+            "Light": "%",
+            "Sound": "%"
+        }
+        const refValues = {
+            "RH": props.ita?"Intervallo di riferimento: ":"Reference Range: "+"25-60%",
+            "T":props.ita?"Intervallo di riferimento: ":"Reference Range: "+"20-24°C",
+            "SPL":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 40 dB(A)",
+            "VOC":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
+            "CH2O":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
+            "CO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 ppm",
+            "CO":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 100 mg/m³",
+            "NO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 200 µg/m³",
+            "PM10":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 50 µg/m³",
+            "PM2.5":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 25 µg/m³",
+            "E":props.ita?"Valore di riferimento: ":"Reference Value: "+"≥ 500 lux",
+            "IEQ": "",
+            "Temp":"",
+            "Air": "",
+            "Light": "",
+            "Sound": ""
+        }
+
+        useEffect(()=>{
+            const APIcall = setInterval(()=>{
+                template.from=(new Date()-5000).toString();
+                template.to=(new Date()-0).toString();
+                console.log("template",JSON.stringify(template))
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        let result = JSON.parse(xhttp.responseText)
+                        console.log("RESULT", JSON.stringify(result))
+                        let curtopic=topic
+                        if(topic==="T")
+                            curtopic="Ta"
+                        if(topic==="init")
+                            curtopic="IEQ"
+                        console.log("topic",curtopic)
+                        setRTV(result["results"][curtopic]===undefined?"...":
+                            parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                        console.log("State",parseFloat(result["results"][curtopic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+                    }
+                    else if (this.readyState === 4 && this.status !== 200)
+                        console.log("ERROR "+xhttp.statusText)
+                };
+                xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
+                xhttp.setRequestHeader("Content-Type","application/json")
+                xhttp.setRequestHeader("Host","dev.prometeo.click",)
+                xhttp.send(JSON.stringify(template));
+            },5000)
+            return ()=>clearInterval(APIcall);
+        },[])
+
+        const toggleCompliance = () => {
+            setShowCompliances(!showCompliances);
+        }
+        return (
+            <>
+                <div className="row">
+                    {
+                        topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
+                            <h4 style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
+                            : null
+                    }
+                </div>
+                <div className="row" id="compliances">
+                    {showCompliances&&timeWindow==="RT" ?
+                        props.ita?
+                            <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
+                            <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
+                        : timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTV}</h4>:null
+                    }
+                </div>
+                <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
+                    <button className="btn btn-white-border btn-compliances" type="button"
+                            onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
+                </div>
+            </>)
+    }
 }
 
 function Clock (){
@@ -625,101 +722,4 @@ function Clock (){
             </div>
         </div>
     )
-}
-function Compliances (props) {
-    let [showCompliances, setShowCompliances] = useState(false)
-    let [RTV, setRTV] = useState("...")
-    const measures = {
-        "RH": "%",
-        "T":"°C",
-        "SPL":"dB(A)",
-        "VOC": "µg/m³",
-        "CH2O":"µg/m³",
-        "CO2":"ppm",
-        "CO":"mg/m³",
-        "NO2":"µg/m³",
-        "PM10":"µg/m³",
-        "PM2.5":"µg/m³",
-        "E":"lux",
-        "IEQ": "%",
-        "Temp":"%",
-        "Air": "%",
-        "Light": "%",
-        "Sound": "%"
-    }
-    const refValues = {
-        "RH": props.ita?"Intervallo di riferimento: ":"Reference Range: "+"25-60%",
-        "T":props.ita?"Intervallo di riferimento: ":"Reference Range: "+"20-24°C",
-        "SPL":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 40 dB(A)",
-        "VOC":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
-        "CH2O":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
-        "CO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 ppm",
-        "CO":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 100 mg/m³",
-        "NO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 200 µg/m³",
-        "PM10":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 50 µg/m³",
-        "PM2.5":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 25 µg/m³",
-        "E":props.ita?"Valore di riferimento: ":"Reference Value: "+"≥ 500 lux",
-        "IEQ": "",
-        "Temp":"",
-        "Air": "",
-        "Light": "",
-        "Sound": ""
-    }
-
-    useEffect(()=>{
-        const APIcall = setInterval(()=>{
-            template.from=(new Date()-5000).toString();
-            template.to=(new Date()-0).toString();
-            console.log("template",JSON.stringify(template))
-            let xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    let result = JSON.parse(xhttp.responseText)
-                    console.log("RESULT", JSON.stringify(result))
-                    let topic=props.topic
-                    if(topic==="T")
-                        topic="Ta"
-                    if(topic==="init")
-                        topic="IEQ"
-                    console.log("topic",topic)
-                    setRTV(result["results"][topic]===undefined?"...":
-                        parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[props.topic])
-                    console.log("State",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[props.topic])
-                }
-                else if (this.readyState === 4 && this.status !== 200)
-                    console.log("ERROR "+xhttp.statusText)
-            };
-            xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
-            xhttp.setRequestHeader("Content-Type","application/json")
-            xhttp.setRequestHeader("Host","dev.prometeo.click",)
-            xhttp.send(JSON.stringify(template));
-        },5000)
-        return ()=>clearInterval(APIcall);
-    },[])
-
-    const toggleCompliance = () => {
-        setShowCompliances(!showCompliances);
-    }
-    return (
-        <>
-            <div className="row">
-                {
-                    props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="Temp"&&props.topic!=="Light"&&props.topic!=="Sound" ?
-                        <h4 style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[props.topic==="init"?"IEQ":props.topic]}</h4>
-                        : null
-                }
-            </div>
-            <div className="row" id="compliances">
-                {showCompliances&&props.timeWindow==="RT" ?
-                    props.ita?
-                        <h4 style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                        <h4 style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                    : props.timeWindow==="RT"?<h4 style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTV}</h4>:null
-                }
-            </div>
-            <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
-                <button className="btn btn-white-border btn-compliances" type="button"
-                        onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
-            </div>
-        </>)
 }
