@@ -475,7 +475,7 @@ function DashIframes(props) {
                         <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.2 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
                             {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null
-                                : /*iframes["T"][props.timeWindow]*/<div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>Ta:</p>{props.RTValues["T"]}</div>
+                                : /*iframes["T"][props.timeWindow]*/<div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>T<sub>a</sub></p>{props.RTValues["T"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("T")}/>
@@ -484,7 +484,9 @@ function DashIframes(props) {
                     <div className="col-6">
                         <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="RH"?1:0.2 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
-                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null : iframes["RH"][props.timeWindow]}
+                            {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null : /*iframes["RH"][props.timeWindow]*/
+                                <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>RH</p>{props.RTValues["RH"]}</div>
+                            }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("RH")}/>
                         </div>
@@ -507,7 +509,8 @@ function DashIframes(props) {
                         <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : props.topic==="IEQ"||props.topic==="SPL"?1:0.2}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"}>
                             {
-                                props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"? null: iframes["SPL"][props.timeWindow]
+                                props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"? null: /*iframes["SPL"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>SPL</p>{props.RTValues["SPL"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("SPL")}/>
@@ -527,7 +530,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["VOC"][props.timeWindow]
+                                    null : /*iframes["VOC"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>VOC</p>{props.RTValues["VOC"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("VOC")}/>
@@ -553,7 +557,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["CH2O"][props.timeWindow]
+                                    null : /*iframes["CH2O"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>CH<sub>2</sub>O</p>{props.RTValues["CH2O"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("CH2O")}/>
@@ -565,7 +570,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null: iframes["CO2"][props.timeWindow]
+                                    null: /*iframes["CO2"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>CO<sub>2</sub></p>{props.RTValues["CO2"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("CO2")}/>
@@ -580,7 +586,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"?
-                                    null : iframes["E"][props.timeWindow]
+                                    null : /*iframes["E"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>E</p>{props.RTValues["E"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("E")}/>
@@ -605,7 +612,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["PM2.5"][props.timeWindow]
+                                    null : /*iframes["PM2.5"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM2.5</p>{props.RTValues["PM2.5"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("PM2.5")}/>
@@ -615,7 +623,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["PM10"][props.timeWindow]
+                                    null : /*iframes["PM10"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>PM10</p>{props.RTValues["PM10"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("PM10")}/>
@@ -637,7 +646,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["CO"][props.timeWindow]
+                                    null : /*iframes["CO"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>CO</p>{props.RTValues["CO"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("CO")}/>
@@ -649,7 +659,8 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : iframes["NO2"][props.timeWindow]
+                                    null : /*iframes["NO2"][props.timeWindow]*/
+                                    <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>NO<sub>2</sub></p>{props.RTValues["NO2"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
                                  onClick={() => props.setTopic("NO2")}/>
