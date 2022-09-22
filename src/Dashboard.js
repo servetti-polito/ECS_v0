@@ -361,6 +361,7 @@ export default function Dashboard(props) {
                     console.log("topic",topic)
                     console.log("response",xhttp.responseText)
                     let result = JSON.parse(xhttp.responseText)
+                    console.log("RESULT",result)
                     console.log("RESULT TOPIC", topic, result["results"][topic])
                     console.log("WOULD BE WRITTEN",parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
                     setRTV(result["results"][topic]===undefined?"...":
