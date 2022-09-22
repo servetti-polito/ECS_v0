@@ -84,6 +84,15 @@ export default function Dashboard(props) {
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
 
+    fetchData(new Date()-5000, new Date()-0)
+        .then(result=>{
+            console.log("RESULT", JSON.stringify(result))
+            //            setRTV(result["results"][topic]===undefined?"...":
+            //                parseFloat(result["results"][topic]["frames"][0]["data"]["values"][1][0]).toFixed(2)+" "+measures[topic])
+            console.log("2")
+        })
+        .catch(e=>console.log("ERROR",JSON.stringify(e)))
+
     function Clock (){
         let [date, setDate] = useState("")
         let [time, setTime] = useState("")
@@ -350,7 +359,7 @@ export default function Dashboard(props) {
             //    .catch(e=>console.log("ERROR",JSON.stringify(e)))
         },5000)*/
 
-        //setInterval(()=>{
+        /*setInterval(()=>{
             fetchData(new Date()-5000, new Date()-0)
                 .then(result=>{
                     console.log("RESULT", JSON.stringify(result))
@@ -359,7 +368,7 @@ export default function Dashboard(props) {
                     console.log("2")
                 })
                 .catch(e=>console.log("ERROR",JSON.stringify(e)))
-        //},5000)
+        //},5000)*/
 
         const toggleCompliance = () => {
             setShowCompliances(!showCompliances);
