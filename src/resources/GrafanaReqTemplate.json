@@ -39,6 +39,94 @@
       "datasourceId": -1,
       "intervalMs": 120000,
       "maxDataPoints": 1
+    },
+    {
+      "refId": "CH2O",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "CO2",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "CO",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "NO2",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "PM10",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "PM2.5",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "IEQ",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "Air",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "Light",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "Temp",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
+    },
+    {
+      "refId": "Sound",
+      "datasource": { "uid": "grafana", "type": "datasource" },
+      "queryType": "randomWalk",
+      "datasourceId": -1,
+      "intervalMs": 120000,
+      "maxDataPoints": 1
     }
   ],
   "range": {
