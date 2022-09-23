@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
-import {Alert, Button, Spinner, Pagination} from "react-bootstrap";
+import {Alert, Button, Spinner, Pagination, Modal} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
 import "./CSS/Profile.css"
+import PrivacyNotice from "./PrivacyNotice";
 
 let MAXPAGES;
 
@@ -12,13 +13,35 @@ export default function Profile(props){
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState([])
     const [page, setPage] = useState(0);
+    //modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    function PrivacyModal() {
+        return (
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Privacy</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <PrivacyNotice/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            I understand
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+        );
+    }
+    //navigation
     let navigate = useNavigate();
     const routeDashbaord = ()=>navigate("/dashboard")
     const routePersonal = () => navigate("/personal")
     const headers = {
         headers: {"Authorization": props.deviceJwt}
     };
-
+    //page update
     function listUpdate()
     {
         let result=""
@@ -94,6 +117,8 @@ export default function Profile(props){
                     <Pagination.Next disabled={page >= MAXPAGES-1} onClick={()=>setPage(page+1)}/>
                 </Pagination> : null}
             </div>
+            <p onClick={handleShow} style={{ "position": "fixed", "bottom": 25, "right": 25, textDecoration: "underline", fontSize:"130%"}}>Privacy</p>
+            <PrivacyModal/>
         </div>
     );
 }

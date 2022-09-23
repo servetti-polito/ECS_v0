@@ -64,9 +64,6 @@ K
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 >
 src/Account.js,7\6\76e8440647f6201e04477c9fce831d701656f6c5
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 D
 src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
