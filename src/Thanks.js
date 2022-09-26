@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {Alert, Spinner} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
+import qrcode from "./resources/images/qrcode.png"
 
 export default function Thanks(props){
     const [error, setError] = useState(null);
@@ -15,12 +16,56 @@ export default function Thanks(props){
             navigate("/")
     }, [])
 
-    let navigate = useNavigate();
-    const routeHome = () => {
+    useEffect(()=>{
         localStorage.removeItem("previousPersonal")
         setLoading(true)
         if(props.logged && error===null && props.answers!==null)
         {
+            console.log("SENDING SURVEY DATA")
+            let init = {
+                body: props.answers,
+                headers: {Authorization : props.deviceJwt}
+            }
+            API.post("userTokenAPI", "/survey", init).then(data=>{
+                console.log("SENDING MAIL")
+                let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
+                let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
+                    "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
+                    "Hello, \n\nThank you for filling Promet&o's survey."+
+                    "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
+                let init = {
+                    mode:"no-cors",
+                    method:"POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${props.deviceJwt}`
+                    },
+                    body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
+                }
+                console.log("INIT: "+JSON.stringify(init))
+                fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                    console.log("MAIL SENT")
+                    setLoading(false);
+                    props.setAnswers(null);
+                    //navigate("/")
+                }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
+            }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
+        }
+    }, [])
+
+    const routeHome=()=>{
+        navigate("/")
+    }
+    let navigate = useNavigate();
+
+
+/*    const routeHome = () => {
+        localStorage.removeItem("previousPersonal")
+        setLoading(true)
+        if(props.logged && error===null && props.answers!==null)
+        {
+            console.log("ROUTE HOME")
             let init = {
                 body: props.answers,
                 headers: {Authorization : props.deviceJwt}
@@ -50,7 +95,7 @@ export default function Thanks(props){
         }
         else
             navigate("/")
-    }
+    }*/
 
     const iframes = {
         "Temp": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23"  frameBorder="0"/>,
@@ -86,7 +131,7 @@ export default function Thanks(props){
                             {props.ita ? "Visita " : "Visit "}
                             <a href="https://dev.prometeo.click/chart" target="_blank" rel="noopener noreferrer">{props.ita ? "questo link" : "this link"}</a>
                             {props.ita ? " o scansiona" : " or scan"}
-                            <img style={{height:100, width:100}} src="https://i.imgur.com/oGwMLLO.png"/>
+                            <img style={{height:100, width:100}} src={qrcode}/>
                             {props.ita ? "per visualizzare tutti i dati oggettivi e soggettivi" : "to get full objective and subjective data."}
                         </div>
                     : null

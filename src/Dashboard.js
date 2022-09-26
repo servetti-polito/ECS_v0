@@ -3,6 +3,12 @@ import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import template from "./resources/GrafanaReqTemplate.json";
+import air from "./resources/images/air.png";
+import temp from "./resources/images/temp.png";
+import light from "./resources/images/light.png";
+import IEQ from "./resources/images/ieq.png";
+import sound from "./resources/images/sound.png";
+
 
 export default function Dashboard(props) {
 
@@ -496,7 +502,7 @@ function DashIframes(props) {
                                 {iframes["Temp"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Temp")}>
-                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/l87VLQF.png" alt="temp"/>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src={temp} alt="temp"/>
                                 </div>
                             </div>
                         </div>
@@ -522,7 +528,7 @@ function DashIframes(props) {
                                 {iframes["Sound"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Sound")}>
-                                    <img style={{height:"80px", width:"80px", position:"absolute", left:"32%", top:"20%"}} src="https://i.imgur.com/wFrcxHX.png" alt="sound"/>
+                                    <img style={{height:"80px", width:"80px", position:"absolute", left:"32%", top:"20%"}} src={sound} alt="sound"/>
                                 </div>
                             </div>
                         </div>
@@ -546,7 +552,7 @@ function DashIframes(props) {
                         {iframes["IEQ"][props.timeWindow]}
                         <div className="overlay" style={{position: "absolute"}}
                              onClick={() => props.setTopic("IEQ")}>
-                            <img style={{height:"120px", width:"120px", position:"absolute", left:"21%", top:"25%"}} src="https://i.imgur.com/gKIoYkH.png" alt="IEQ"/>
+                            <img style={{height:"120px", width:"120px", position:"absolute", left:"21%", top:"25%"}} src={IEQ} alt="IEQ"/>
                         </div>
                     </div>
                 </div>
@@ -598,7 +604,7 @@ function DashIframes(props) {
                                 {iframes["Light"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Light")}>
-                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/LaD4xXO.png" alt="light"/>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src={light} alt="light"/>
                                 </div>
                             </div>
                         </div>
@@ -638,7 +644,7 @@ function DashIframes(props) {
                                 {iframes["Air"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Air")}>
-                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src="https://i.imgur.com/xViGhBz.png" alt="air"/>
+                                    <img style={{height:"50px", width:"50px", position:"absolute", left:"36%", top:"32%"}} src={air} alt="air"/>
                                 </div>
                             </div>
                         </div>

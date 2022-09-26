@@ -4,8 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {API} from "aws-amplify";
 import {Alert, Spinner} from "react-bootstrap";
-const hide = "https://i.imgur.com/pTAKMYx.png"
-const show = "https://i.imgur.com/ZONBZN0.png"
+import hide from "./resources/images/eye_closed.png"
+import show from "./resources/images/eye_open.png"
 
 function CreateAccount(props) {
     const navigate = useNavigate();

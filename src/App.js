@@ -35,7 +35,8 @@ function App() {
     let navigate = useNavigate();
     const doLogin = async (email, token) => {
         let jwt = await jwtGenerator(token, deviceJwt)
-        document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
+        //document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
+        document.cookie = "jwt="+jwt.jwt+"; expires=0"
         console.log("CHECK: "+document.cookie)
         setUserJwt(jwt);
         setLogged(email);
@@ -53,6 +54,7 @@ function App() {
             document.cookie = "jwt="+userJwt.jwt+"; expires="+new Date(1970,1,1,0,0,0,0)
         setAnswers(null);
     }
+
     const routeHome = () => {
         navigate("/");
     }
@@ -106,24 +108,6 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
                 <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
                 <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
-                {/*<Route exact path='/' element={<ProtectedRoute logged={adminLogged} />}>
-                    <Route exact path='/' element={<Hello deviceJwt={deviceJwt} doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
-                </Route>
-                <Route exact path='/login' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/login' element={<Login deviceJwt={deviceJwt} /*setUserJwt={setUserJwt}*//* doLogin={doLogin} ita={ita}/>} />
-                </Route>
-                <Route exact path='/profile' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita}/>}/>
-                </Route>
-                <Route exact path='/personal' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
-                </Route>
-                <Route exact path='/thanks' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
-                </Route>
-                <Route exact path='/dashboard' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
-                </Route>*/}
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
