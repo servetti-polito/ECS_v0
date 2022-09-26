@@ -22,15 +22,15 @@
             },
             {
               "value": "3",
-              "imageLink": "https://i.imgur.com/IZsH61S.png"
+              "imageLink": "https://dev.prometeo.click/mid.png"
             },
             {
               "value": "2",
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://dev.prometeo.click/smile1.png"
             },
             {
               "value": "1",
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
+              "imageLink": "https://dev.prometeo.click/smile2.png"
             }
           ],
           "colCount": 4,
@@ -60,7 +60,7 @@
                 "it": "TERMICO",
                 "default": "THERMAL  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/aC9LHo5.png"
+              "imageLink": "https://dev.prometeo.click/temp.png"
             },
             {
               "value": "ACOUSTIC  COMFORT",
@@ -68,7 +68,7 @@
                 "it": "ACUSTICO",
                 "default": "ACOUSTIC  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/R2jQU45.png"
+              "imageLink": "https://dev.prometeo.click/sound.png"
             },
             {
               "value": "VISUAL  COMFORT",
@@ -76,7 +76,7 @@
                 "it": "VISIVO",
                 "default": "VISUAL  COMFORT"
               },
-              "imageLink": "https://i.imgur.com/o0Fi4Ci.png"
+              "imageLink": "https://dev.prometeo.click/light.png"
             },
             {
               "value": "INDOOR AIR  QUALITY",
@@ -84,7 +84,7 @@
                 "it": "QUALITA' DELL'ARIA",
                 "default": "INDOOR AIR  QUALITY"
               },
-              "imageLink": "https://i.imgur.com/Q1JXqKF.png"
+              "imageLink": "https://dev.prometeo.click/air.png"
             }
           ],
           "colCount": 4,
@@ -108,7 +108,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/aC9LHo5.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/temp.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -199,7 +199,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/aC9LHo5.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/temp.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -233,7 +233,7 @@
                 "default": "Very  draughty",
                 "it": "Molto ventilato"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://dev.prometeo.click/sad.png"
             },
             {
               "value": "3",
@@ -241,7 +241,7 @@
                 "default": "Draughty",
                 "it": "Ventilato"
               },
-              "imageLink": "https://i.imgur.com/IZsH61S.png"
+              "imageLink": "https://dev.prometeo.click/mid.png"
             },
             {
               "value": "2",
@@ -249,7 +249,7 @@
                 "default": "Slightly  draughty",
                 "it": "Poco ventilato"
               },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://dev.prometeo.click/smile1.png"
             },
             {
               "value": "1",
@@ -257,7 +257,7 @@
                 "default": "Not  draughty",
                 "it": "Non ventilato"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
+              "imageLink": "https://dev.prometeo.click/smile2.png"
             }
           ],
           "imageWidth": 300,
@@ -280,7 +280,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/R2jQU45.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/sound.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -314,7 +314,7 @@
                 "it": "Molto fastidioso",
                 "default": "Very  annoying"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://dev.prometeo.click/sad.png"
             },
             {
               "value": "3",
@@ -322,7 +322,7 @@
                 "it": "Fastidioso",
                 "default": "Annoying"
               },
-              "imageLink": "https://i.imgur.com/IZsH61S.png"
+              "imageLink": "https://dev.prometeo.click/mid.png"
             },
             {
               "value": "2",
@@ -330,7 +330,7 @@
                 "it": "Poco fastidioso",
                 "default": "Slightly  annoying"
               },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://dev.prometeo.click/smile1.png"
             },
             {
               "value": "1",
@@ -338,7 +338,7 @@
                 "it": "Non fastidioso",
                 "default": "Not  annoying"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
+              "imageLink": "https://dev.prometeo.click/smile2.png"
             }
           ],
           "colCount": 4,
@@ -361,7 +361,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/R2jQU45.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/sound.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -449,7 +449,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/light.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -483,7 +483,7 @@
                 "it": "Molto sconfortevole ",
                 "default": "Very uncomfortable"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://dev.prometeo.click/sad.png"
             },
             {
               "value": "3",
@@ -491,7 +491,7 @@
                 "it": "Sconfortevole",
                 "default": "Uncomfortable"
               },
-              "imageLink": "https://i.imgur.com/IZsH61S.png"
+              "imageLink": "https://dev.prometeo.click/mid.png"
             },
             {
               "value": "2",
@@ -499,7 +499,7 @@
                 "it": "Poco sconfortevole",
                 "default": "Slightly uncomfortable"
               },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://dev.prometeo.click/smile1.png"
             },
             {
               "value": "1",
@@ -507,7 +507,7 @@
                 "it": "Non sconfortevole ",
                 "default": "Not uncomfortable"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
+              "imageLink": "https://dev.prometeo.click/smile2.png"
             }
           ],
           "colCount": 4,
@@ -530,7 +530,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/light.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -618,7 +618,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/o0Fi4Ci.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/light.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -713,7 +713,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/Q1JXqKF.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/air.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
@@ -747,7 +747,7 @@
                 "it": "Molto maleodorante",
                 "default": "Very smelly"
               },
-              "imageLink": "https://i.imgur.com/Jkm5ICt.png"
+              "imageLink": "https://dev.prometeo.click/sad.png"
             },
             {
               "value": "3",
@@ -755,7 +755,7 @@
                 "it": "Maleodorante",
                 "default": "Smelly"
               },
-              "imageLink": "https://i.imgur.com/IZsH61S.png"
+              "imageLink": "https://dev.prometeo.click/mid.png"
             },
             {
               "value": "2",
@@ -763,7 +763,7 @@
                 "it": "Poco maleodorante",
                 "default": "Slightly smelly"
               },
-              "imageLink": "https://i.imgur.com/EWoOhiQ.png"
+              "imageLink": "https://dev.prometeo.click/smile1.png"
             },
             {
               "value": "1",
@@ -771,7 +771,7 @@
                 "it": "Non maleodorante",
                 "default": "Not smelly"
               },
-              "imageLink": "https://i.imgur.com/zwBiE02.png"
+              "imageLink": "https://dev.prometeo.click/smile2.png"
             }
           ],
           "colCount": 4,
@@ -794,7 +794,7 @@
           "width": "15%",
           "minWidth": "10",
           "maxWidth": "10",
-          "html": "<img src=\"https://i.imgur.com/Q1JXqKF.png\" style=\"width: 150px; height: 150px;\"/>"
+          "html": "<img src=\"https://dev.prometeo.click/air.png\" style=\"width: 150px; height: 150px;\"/>"
         },
         {
           "type": "html",
