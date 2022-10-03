@@ -2,6 +2,10 @@
   font-family: "Tw Cen MT";
   src: url("/src/resources/TWCenMT.TTF");
 }
+@font-face {
+  font-family: "Ink Free";
+  src: url("/src/resources/Inkfree.ttf")
+}
 
 *{
   /*font-family: "Muli";*/
