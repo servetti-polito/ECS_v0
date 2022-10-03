@@ -37,7 +37,6 @@ function App() {
         let jwt = await jwtGenerator(token, deviceJwt)
         //document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
         document.cookie = "jwt="+jwt.jwt+"; expires=0"
-        console.log("CHECK: "+document.cookie)
         setUserJwt(jwt);
         setLogged(email);
         localStorage.setItem("userJwt",jwt)

@@ -57,10 +57,13 @@ function Login(props) {
                                     }
                                     else {
                                         console.log("user email: " + user[0].email)
-                                        props.doLogin(user[0].email, user[0].token)
-                                        setSubmitting(false);
-                                        setLoading(false)
-                                        navigate("/");
+                                        props.doLogin(user[0].email, user[0].token).then(
+                                            ()=>{
+                                                setSubmitting(false);
+                                                setLoading(false)
+                                                navigate("/");
+                                            }
+                                        )
                                     }
                             }).catch(err=>console.log("get fail:",err))
                         }}
@@ -92,7 +95,7 @@ function Login(props) {
                                 </div>
                                 <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">
                                     <div className="col-6 justify-content-center">
-                                        <button style={{"width":"50%"}} onClick={routeHome} className="btn btn-secondary" disabled={loading}>
+                                        <button type="button" style={{"width":"50%"}} onClick={routeHome} className="btn btn-secondary" disabled={loading}>
                                             Home
                                         </button>
                                     </div>
