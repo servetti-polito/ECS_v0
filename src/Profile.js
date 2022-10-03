@@ -27,7 +27,7 @@ export default function Profile(props){
                         <PrivacyNotice/>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button style={{fontSize:"100%", height:"80%", width:"80%"}} variant="secondary" onClick={handleClose}>
+                        <Button style={{fontSize:"110% !important"}} variant="secondary" onClick={handleClose}>
                             I understand
                         </Button>
                     </Modal.Footer>
