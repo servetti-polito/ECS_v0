@@ -6,6 +6,7 @@ import {API} from "aws-amplify";
 import {Alert, Spinner} from "react-bootstrap";
 import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
+import "./CSS/CreateAccount.css"
 
 function CreateAccount(props) {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function CreateAccount(props) {
                 <div className="col-12" style={{"border-bottom":"2px solid #ff9724"}}>
                     <h1 className="text-center">{props.ita ? "Crea il tuo account":"Create your account"}</h1>
                 </div>
-                <div style={{padding: 50}}/>
+                <div style={{padding: 10}}/>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                 <Formik
                     initialValues={{ email: '', token: ''}}
@@ -127,7 +128,10 @@ function CreateAccount(props) {
                                 <div className="col-8">
                                     <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
                                 </div>
-                                <div className="col-1"><img onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/></div>
+                                <div className="col-1">
+                                    <img hidden={loading} onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/>
+                                    <Spinner animation="border" hidden={!loading}/>
+                                </div>
                                 <div className="col-3"/>
                                 <div className="col-9">
                                     <small style={{"font-size":"120%"}}>{props.ita ? "Crea il tuo token, per esempio il tuo colore preferito seguito dalla tua data di nascita. Usa almeno 6 caratteri" : "Create your token, for example your favourite color followed by your birthday. Use at least 6 characters"}</small><br/>
@@ -139,8 +143,8 @@ function CreateAccount(props) {
                             </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
                                 <div className="col-12 justify-content-center">
-                                    <button style={{width:"25%", position:"absolute", right:50, bottom:50}} type="submit" className="btn btn-primary" disabled={loading}>
-                                        {loading ? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Crea account" : "Create"}
+                                    <button id="createButton" style={{width:"25%"}} type="submit" className="btn btn-primary" disabled={loading}>
+                                        {props.ita ? "Crea account" : "Create"}
                                     </button>
                                 </div>
                             </div>

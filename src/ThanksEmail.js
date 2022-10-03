@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from "react-router-dom";
+import "./CSS/ThanksEmail.css"
 
 export default function ThanksEmail(props){
     let navigate = useNavigate();

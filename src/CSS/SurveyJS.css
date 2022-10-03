@@ -92,7 +92,8 @@
 
 .sv-selectbase .sv-selectbase__item.sv-q-col-1 {
     padding-right: 0;
-    font-size: 200%;
+    font-size: 170%;
+    margin:0px
 }
 
 .sv-question__erbox {

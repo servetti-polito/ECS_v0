@@ -45,6 +45,16 @@
         margin-top: 10px;
     }
 }
+@media(max-height: 900px)
+{
+    #personal .sv-page__title{
+        font-size: 220% !important;
+    }
+    #personal .sv-title{
+        font-size: 120%;
+    }
+}
+
 
 #personal .sv-question {
     overflow:hidden;

@@ -11,6 +11,11 @@
     padding:0px !important;
 }
 
+#Dashboard #timeButton{
+    font-size: 120% !important;
+    padding:0px;
+}
+
 .overlay{
     /*background: rgba(0, 0, 0, 0.2);*/
     width: 130%;
@@ -43,4 +48,165 @@ iframe{
 .holderGauge{
     padding:0px !important;
     position: relative;
+}
+
+#dashGraph{
+    position: relative;
+    height: 100%;
+    width: 100%
+}
+
+@media (max-height: 900px){
+    #dashPrometeo{
+        font-size: 200%;
+    }
+    #dashTitle{
+        font-size: 150%;
+    }
+    #dashExplain{
+        font-size: 110%
+    }
+    #clock{
+        font-size: 120%;
+    }
+    #compliance{
+        font-size: 120%;
+    }
+    #dashGauge{
+        position: absolute;
+        width:190px;
+        height:120px;
+    }
+    #dashIEQ{
+        position: absolute;
+        width:300px;
+        height:200px;
+    }
+    #gaugeTemp{
+        z-index:1;
+    }
+    #imgTemp{
+        height:35px;
+        width:35px;
+        position:absolute;
+        left:76px;
+        top:40px
+    }
+    #gaugeSound{
+        z-index:1;
+        position:relative;
+        top:-55px;
+        left:-15px;
+    }
+    #imgSound{
+        height:60px;
+        width:60px;
+        position:absolute;
+        left:70px;
+        top:28px;
+    }
+    #imgIEQ{
+        height:100px;
+        width:100px;
+        position:absolute;
+        left:100px;
+        top:50px;
+    }
+    #gaugeLight{
+        zIndex:1;
+        position:relative;
+        left:-25px;
+    }
+    #imgLight{
+        height:40px;
+        width:40px;
+        position:absolute;
+        left:75px;
+        top:35px;
+    }
+    #gaugeAir{
+        position:relative;
+        top:-55px;
+        left:-20px;
+    }
+    #imgAir{
+        height:50px;
+        width:50px;
+        position:absolute;
+        left:70px;
+        top:35px
+    }
+    #PM10{
+        top:-20px;
+    }
+}
+@media (min-height: 901px){
+    #dashPrometeo {
+        font-size: 300%;
+    }
+    #dashGauge{
+        position: absolute;
+        width:250px;
+        height:150px;
+    }
+    #dashIEQ{
+        position: absolute;
+        width:350px;
+        height:250px;
+    }
+    #gaugeTemp{
+        z-index:1;
+        left:-45px
+    }
+    #imgTemp{
+        height:50px;
+        width:50px;
+        position:absolute;
+        left:97px;
+        top:45px
+    }
+    #gaugeSound{
+        z-index:1;
+        position:relative;
+        top:-55px;
+        left:-45px;
+    }
+    #imgSound{
+        height:80px;
+        width:80px;
+        position:absolute;
+        left:85px;
+        top:28px;
+    }
+    #imgIEQ{
+        height:120px;
+        width:120px;
+        position:absolute;
+        left:115px;
+        top:70px;
+    }
+    #gaugeLight{
+        zIndex:1;
+        position:relative;
+        left:-50px;
+    }
+    #imgLight{
+        height:50px;
+        width:50px;
+        position:absolute;
+        left:98px;
+        top:45px
+    }
+    #gaugeAir{
+        position:relative;
+        top:-55px;
+        left:-50px;
+    }
+    #imgAir{
+        height:50px;
+        width:50px;
+        position:absolute;
+        left:100px;
+        top:50px
+    }
 }

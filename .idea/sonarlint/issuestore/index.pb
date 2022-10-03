@@ -44,10 +44,6 @@ A
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
-B
-src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
-?
-src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 ?
@@ -62,9 +58,5 @@ U
 %src/resources/GrafanaReqTemplate.json,a\4\a49dd2c47856f58332538c398b620d7fc9fc6a8f
 ?
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
-@
-src/Dashboard.js,f\f\ffdc31ed626203891aea2df6fdbf4019ec0c3d3e
-=
-src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
 I
 src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce

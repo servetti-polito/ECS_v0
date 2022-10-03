@@ -6,6 +6,7 @@ import {useState} from "react";
 import {Alert, Spinner} from "react-bootstrap";
 import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
+import "./CSS/Login.css"
 
 function Login(props) {
 
@@ -15,10 +16,6 @@ function Login(props) {
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
 
-    /*const headers = {
-        headers: {"Authorization" : props.deviceJwt}
-    };*/
-
     const togglePassword = () => {
         let curShowPW = showPassword
         setShowPassword(!curShowPW)
@@ -26,10 +23,9 @@ function Login(props) {
 
     return (
         <div className="container" style={{"padding":"50px"}} >
-            <div style={{"padding":"20px"}} />
             <div className="row h-75 align-items-center">
-                <div className="col-12" style={{"padding":"50px"}}>
-                    <h1 className="display-1 text-center">{props.ita ? "Accedi" : "Login"}</h1>
+                <div className="col-12">
+                    <h1 id="loginTitle" className= "text-center">{props.ita ? "Accedi" : "Login"}</h1>
                 </div>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                     <Formik
@@ -84,7 +80,10 @@ function Login(props) {
                                     <div className="col-6">
                                         <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
                                     </div>
-                                    <div className="col-3"><img onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/></div>
+                                    <div className="col-3">
+                                        <img hidden={loading} onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/>
+                                        <Spinner animation="border" hidden={!loading}/>
+                                    </div>
                                     <div className="col-3"/>
                                     <div className="col-6">
                                         {
@@ -101,7 +100,7 @@ function Login(props) {
                                     </div>
                                     <div className="col-6 justify-content-center">
                                         <button style={{"width":"50%"}} type="submit" className="btn btn-primary" disabled={loading}>
-                                            {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Accedi" : "Submit"}
+                                            {props.ita ? "Accedi" : "Submit"}
                                         </button>
                                     </div>
                                 </div>

@@ -86,16 +86,16 @@ export default function Profile(props){
         <div className="container" id="Profile">
             <div className="row">
                 <div className="col-12" style={{marginTop:20, marginBottom:0, textAlign:"center", borderBottom:"2px solid #ff9724"}}>
-                    <h1 className="title">{props.ita ? "Benvenuto ": "Welcome "}{props.logged}</h1></div>
+                    <h1 className="title" id="profileTitle">{props.ita ? "Benvenuto ": "Welcome "}{props.logged}</h1></div>
             </div>
             <div className="row" style={{marginTop:20, marginBottom:20, fontSize:"100% !important"}}>
                 <div className="col-1"/>
                 <div className="col-4">
-                    <Button style={{width:"100%"}} classname="btn btn-primary" onClick={routeDashbaord}>Dashboard</Button>
+                    <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routeDashbaord}>Dashboard</Button>
                 </div>
                 <div className="col-2"/>
                 <div className="col-4">
-                    <Button style={{width:"100%"}} classname="btn btn-primary" onClick={routePersonal}>{props.ita ? "Area Personale" : "Personal"}</Button>
+                    <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routePersonal}>{props.ita ? "Area Personale" : "Personal"}</Button>
                 </div>
                 <div className="col-2"/>
             </div>
@@ -103,7 +103,7 @@ export default function Profile(props){
                 <div className="col-2"/>
                 <div className="col-8">
                     <div className="row text-center" style={{borderBottom:"3px solid #FF9724", marginBottom:20}}>
-                        <h1 className="title" style={{width:"100%"}}>{props.ita ? "Risposte ai sondaggi" : "Survey answers"}</h1>
+                        <h1 className="title" id="profileTitle" style={{width:"100%"}}>{props.ita ? "Risposte ai sondaggi" : "Survey answers"}</h1>
                     </div>
                     { error!=="" ? <Alert variant="danger">{error}</Alert> : null}
                     { loading ? <Spinner animation='border' variant="dark"/> : <div id="list"/>}

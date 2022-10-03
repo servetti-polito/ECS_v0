@@ -5,9 +5,27 @@
 .modal-content {
     width: 210%;
     left: -50%;
-    max-height: 80vh;
+    max-height: 90vh;
 }
 
 .modal-body{
     overflow-y:scroll;
+}
+
+@media (max-height: 900px) {
+    #surveyTime{
+        font-size: 110%;
+    }
+    #profileTitle{
+        font-size: 150% !important;
+        margin-bottom: 0;
+    }
+    #profileButton{
+        font-size: 120% !important;
+    }
+}
+@media (min-height: 901px) {
+    #surveyTime{
+        font-size: 115%;
+    }
 }

@@ -18,6 +18,7 @@
 html, body {
   height: 100vh;
   font-size: 150%;
+  margin:0;
 }
 
 .container {
@@ -120,7 +121,7 @@ html, body {
   color:#ff9724 !important;
 }
 
-@media (max-height: 1080px) {
+@media (max-height: 900px) {
   #surveyTime {
     font-size:1.1rem
   }
@@ -129,5 +130,14 @@ html, body {
   }
   .btn {
     font-size: 150% !important;
+  }
+  #prometeoTitle{
+    font-size: 300%;
+  }
+}
+
+@media (min-height: 901px){
+  #prometeoTitle{
+    font-size: 400%;
   }
 }

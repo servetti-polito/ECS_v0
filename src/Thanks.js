@@ -4,98 +4,68 @@ import {Alert, Spinner} from "react-bootstrap";
 import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
+import "./CSS/Thanks.css"
 
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    useEffect(()=>{
-        if((props.logged===null||props.logged==="")&&props.deviceJwt===null)
-            navigate("/")
-        if(props.answers===null&&localStorage.getItem("previousPersonal")===null)
-            navigate("/")
-    }, [])
-
-    useEffect(()=>{
-        localStorage.removeItem("previousPersonal")
-        setLoading(true)
-        if(props.logged && error===null && props.answers!==null)
-        {
-            console.log("SENDING SURVEY DATA")
-            let init = {
-                body: props.answers,
-                headers: {Authorization : props.deviceJwt}
-            }
-            API.post("userTokenAPI", "/survey", init).then(data=>{
-                console.log("SENDING MAIL")
-                let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
-                let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
-                    "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
-                    "Hello, \n\nThank you for filling Promet&o's survey."+
-                    "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
-                let init = {
-                    mode:"no-cors",
-                    method:"POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type":"application/json",
-                        Authorization: `Bearer ${props.deviceJwt}`
-                    },
-                    body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
-                }
-                console.log("INIT: "+JSON.stringify(init))
-                fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
-                    console.log("MAIL SENT")
-                    setLoading(false);
-                    props.setAnswers(null);
-                    //navigate("/")
-                }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
-            }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
-        }
-    }, [])
 
     const routeHome=()=>{
         navigate("/")
     }
     let navigate = useNavigate();
 
-
-/*    const routeHome = () => {
-        localStorage.removeItem("previousPersonal")
+    useEffect(()=>{
+        ////////////////////////////////////////////////////////
+        if((props.logged===null||props.logged==="")&&props.deviceJwt===null)
+            navigate("/")
+        if(props.answers===null&&localStorage.getItem("previousPersonal")===null) {
+            routeHome()
+        }
+        ///////////////////////////////////////////////////////
+        console.log("previouspersonal",localStorage.getItem("previousPersonal"))
         setLoading(true)
         if(props.logged && error===null && props.answers!==null)
         {
-            console.log("ROUTE HOME")
             let init = {
                 body: props.answers,
                 headers: {Authorization : props.deviceJwt}
             }
             API.post("userTokenAPI", "/survey", init).then(data=>{
-                let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
-                let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
-                    "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
-                    "Hello, \n\nThank you for filling Promet&o's survey."+
-                    "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
-                let init = {
-                    mode:"no-cors",
-                    method:"POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type":"application/json",
-                        Authorization: `Bearer ${props.deviceJwt}`
-                    },
-                    body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
-                }
-                console.log("INIT: "+JSON.stringify(init))
-                fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                if(localStorage.getItem("previousPersonal")===null)
+                {
                     props.setAnswers(null);
-                    navigate("/")
-                }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
+                    let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
+                    let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
+                        "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
+                        "Hello, \n\nThank you for filling Promet&o's survey."+
+                        "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
+                    let init = {
+                        mode:"no-cors",
+                        method:"POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type":"application/json",
+                            Authorization: `Bearer ${props.deviceJwt}`
+                        },
+                        body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
+                    }
+                    console.log("INIT: "+JSON.stringify(init))
+                    fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                        setLoading(false);
+                    }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
+                }
+                else {
+                    localStorage.removeItem("previousPersonal")
+                    setLoading(false);
+                }
             }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
         }
         else
-            navigate("/")
-    }*/
+        {
+            setLoading(false);
+        }
+    }, [])
 
     const iframes = {
         "Temp": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23"  frameBorder="0"/>,
@@ -108,7 +78,7 @@ export default function Thanks(props){
         <div className="container">
             <div className="row">
                 <div className="col-12" style={{marginTop:20, marginBottom:0, textAlign:"center", borderBottom:"2px solid #ff9724"}}>
-                    <h1>{props.ita ? "Grazie per aver completato il sondaggio": "Thank you for completing the survey"} </h1></div>
+                    <h1 id="thanksTitle">{props.ita ? "Grazie per aver completato il sondaggio": "Thank you for completing the survey"} </h1></div>
             </div>
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
                 {error=== null ?
@@ -138,7 +108,7 @@ export default function Thanks(props){
                 }
             </div>
 
-            {   /*localStorage.getItem("noNavigation")==="true" ? null :*/
+            {
                 <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary" type="button" onClick={routeHome} disabled={loading}>
                     {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back home"}
                 </button>
