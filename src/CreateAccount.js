@@ -37,8 +37,8 @@ function CreateAccount(props) {
                         {props.ita ? errors.email="Indirizzo email non valido" : errors.email = 'Invalid email address'}
                         if(!values.token)
                         {props.ita ? errors.token = "Campo richiesto" : errors.token = 'Required'}
-                        else if (! /^[a-z]{1,20}[0-9]{8}/.test(values.token))
-                        {props.ita ? errors.token = "Formato non valido" : errors.token = "Invalid format"}
+                        else if (values.token.length < 6)
+                        {props.ita ? errors.token = "Token troppo corto, usa almeno 6 caratteri" : errors.token = "Token too short, use at least 6 characters"}
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
@@ -130,7 +130,7 @@ function CreateAccount(props) {
                                 <div className="col-1"><img onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/></div>
                                 <div className="col-3"/>
                                 <div className="col-9">
-                                    <small style={{"font-size":"120%"}}>{props.ita ? "Il cognome da nubile di tua madre in lettere minuscole + la tua data di nascita (yyyymmdd)" : "Your mother's maiden surname in lowercase letters + your date of birth (yyyymmdd)"}</small><br/>
+                                    <small style={{"font-size":"120%"}}>{props.ita ? "Crea il tuo token, per esempio il tuo colore preferito seguito dalla tua data di nascita. Usa almeno 6 caratteri" : "Create your token, for example your favourite color followed by your birthday. Use at least 6 characters"}</small><br/>
                                     {
                                         errors.token && touched.token && errors.token ?
                                             <small style={{"color": "red", "font-size":"120%"}}>{errors.token && touched.token && errors.token}</small> : null

@@ -60,8 +60,6 @@ A
 src/GrafanaAPI.js,1\6\1614cbab01b6fae2a465297f0c9d6ba0cbbbcef3
 U
 %src/resources/GrafanaReqTemplate.json,a\4\a49dd2c47856f58332538c398b620d7fc9fc6a8f
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
 src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 ?
