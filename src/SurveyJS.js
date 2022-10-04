@@ -121,6 +121,7 @@ function SurveyJS(props) {
       <div className='col-12'>
         <Survey id = 'surveyjs' css={css} model = {survey} onComplete={sendDataToServer} /></div>
     </div>
+    <p id="prometeoSmallLogo" style={{marginTop:"-70px"}}>PROMET&O</p>
   </div>);
 
 }

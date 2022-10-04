@@ -50,6 +50,7 @@ export default function FurtherQuestions(props){
                     </div>
                 </div>
             </div>
+            <p id="prometeoSmallLogo" style={{marginTop:"320px"}}>PROMET&O</p>
         </div>
     );
 }

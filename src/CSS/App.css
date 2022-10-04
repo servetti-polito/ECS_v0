@@ -1,0 +1,26 @@
+@media(min-height: 901px) {
+    #prometeoLogo {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+    }
+    #prometeoSmallLogo{
+        display:none;
+    }
+}
+@media(max-height: 900px)
+{
+    #prometeoLogo {
+        display:none;
+    }
+    #prometeoSmallLogo{
+        /*pointer-events: none;*/
+        font-size: 150%;
+        width:100%;
+        color:#FF9724;
+        text-align:center;
+        font-family:"Ink Free"
+    }
+}

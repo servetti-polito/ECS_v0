@@ -119,6 +119,7 @@ export default function Profile(props){
             </div>
             <p onClick={handleShow} style={{ "position": "fixed", "bottom": 25, "right": 25, textDecoration: "underline", fontSize:"130%"}}>Privacy</p>
             <PrivacyModal/>
+            <p id="prometeoSmallLogo" style={{marginTop:"-30px"}}>PROMET&O</p>
         </div>
     );
 }

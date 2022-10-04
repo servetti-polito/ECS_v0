@@ -15,7 +15,7 @@ export default function Thanks(props){
     }
     let navigate = useNavigate();
 
-    useEffect(()=>{
+/*    useEffect(()=>{
         ////////////////////////////////////////////////////////
         if((props.logged===null||props.logged==="")&&props.deviceJwt===null)
             navigate("/")
@@ -65,7 +65,7 @@ export default function Thanks(props){
         {
             setLoading(false);
         }
-    }, [])
+    }, [])*/
 
     const iframes = {
         "Temp": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23"  frameBorder="0"/>,
@@ -113,6 +113,7 @@ export default function Thanks(props){
                     {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back home"}
                 </button>
             }
+            <p id="prometeoSmallLogo" style={{marginTop:"40px"}}>PROMET&O</p>
             </div>
     );
 }

@@ -17,6 +17,7 @@ import config from "./aws-exports";
 import Dashboard from "./Dashboard";
 import jwtGenerator from "./jwtGenerator";
 import Profile from "./Profile";
+import "./CSS/App.css"
 
 Amplify.configure(config);
 
@@ -133,9 +134,9 @@ function App() {
             {
                 location.pathname!=="/dashboard" &&
                 location.pathname!=="/" ?
-                <div style={{"position":"absolute", "bottom":10, "width":"100%", "text-align":"center", "pointer-events":"none"}}>
-                    <p style={{"font-size":"200%", "color":"#ff9724", "font-family":'Ink Free'}}>PROMET&O</p>
-                </div> : null
+                    <div id="prometeoLogo">
+                        <p style={{"font-size":"200%", "color":"#ff9724", "font-family":'Ink Free'}}>PROMET&O</p>
+                    </div>: null
             }
         </>
     );

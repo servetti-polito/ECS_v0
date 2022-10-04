@@ -24,7 +24,7 @@ export default function ThanksEmail(props){
                     <div className="col-lg-3 col-1"/>
                 </div>
             </div>
-                <div className="row h-25" />
+                <p id="prometeoSmallLogo" style={{marginTop:"150px"}}>PROMET&O</p>
         </div>
     );
 }

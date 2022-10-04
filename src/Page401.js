@@ -8,6 +8,7 @@ function Page401(props)
                     <h1 class="text-center">{props.ita ? "Scansiona un url valido da QR code" : "Scan a valid url from QR code"}</h1>
                 </div>
             </div>
+            <p id="prometeoSmallLogo" style={{marginTop:"140px"}}>PROMET&O</p>
         </div>
     );
 }

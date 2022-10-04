@@ -152,6 +152,7 @@ function CreateAccount(props) {
                     )}
                 </Formik>
             </div>
+            <p id="prometeoSmallLogo" style={{marginTop:"270px"}}>PROMET&O</p>
         </div>
     );
 }

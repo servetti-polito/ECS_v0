@@ -8,6 +8,7 @@ function Page404(props)
                     {props.noNavigation ? null : <h1 class="text-center" ><a id="err404" href="./">{props.ita ? "Torna alla home" : "Return to home"}</a></h1>}
                 </div>
             </div>
+            <p id="prometeoSmallLogo" style={{marginTop:"140px"}}>PROMET&O</p>
         </div>
     );
 }

@@ -76,6 +76,7 @@ function Personal(props) {
         survey.locale='it'
     return <div className='container-fluid'>
         <Survey id = 'personal' css={css} model = {survey} onComplete={sendDataToServer} />
+        <p id="prometeoSmallLogo" style={{marginTop:"-60px"}}>PROMET&O</p>
     </div>
 }
 

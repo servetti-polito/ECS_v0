@@ -7,6 +7,7 @@ import {Alert, Spinner} from "react-bootstrap";
 import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
 import "./CSS/Login.css"
+import "./CSS/App.css"
 
 function Login(props) {
 
@@ -23,6 +24,7 @@ function Login(props) {
 
     return (
         <div className="container" style={{"padding":"50px"}} >
+            <div classname="row" style={{height:"10%"}}/>
             <div className="row h-75 align-items-center">
                 <div className="col-12">
                     <h1 id="loginTitle" className= "text-center">{props.ita ? "Accedi" : "Login"}</h1>
@@ -108,6 +110,7 @@ function Login(props) {
                         )}
                     </Formik>
                 </div>
+            <p id="prometeoSmallLogo" style={{marginTop:"105px"}}>PROMET&O</p>
         </div>
     );
 }
