@@ -9,6 +9,20 @@
 
 #Dashboard .btn-compliances {
     padding:0px !important;
+    font-size:150% !important;
+}
+
+#Dashboard .btn-topic{
+    padding:0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 15px 15px !important;
+    border-bottom-left-radius: 15px 15px !important;
+    border-top-right-radius: 15px 15px !important;
+    border-bottom-right-radius: 15px 15px !important;
+    width:100%;
+    font-size: 100% !important;
+    border: 2px solid #fff !important;
 }
 
 #Dashboard #timeButton{
@@ -80,7 +94,7 @@ iframe{
     #dashIEQ{
         position: absolute;
         width:300px;
-        height:200px;
+        height:180px;
     }
     #gaugeTemp{
         z-index:1;
@@ -139,6 +153,10 @@ iframe{
     #PM10{
         top:-20px;
     }
+    #dashLogo{
+        width:300px;
+        height:270px;
+    }
 }
 @media (min-height: 901px){
     #dashPrometeo {
@@ -153,6 +171,8 @@ iframe{
         position: absolute;
         width:350px;
         height:250px;
+        left:10px;
+        top: -20px
     }
     #gaugeTemp{
         z-index:1;
@@ -179,11 +199,11 @@ iframe{
         top:28px;
     }
     #imgIEQ{
-        height:120px;
-        width:120px;
+        height:150px;
+        width:150px;
         position:absolute;
-        left:115px;
-        top:70px;
+        left:110px;
+        top:30px;
     }
     #gaugeLight{
         zIndex:1;
@@ -209,4 +229,9 @@ iframe{
         left:100px;
         top:50px
     }
+    #dashLogo{
+        width:370px;
+        height:350px;
+    }
 }
+

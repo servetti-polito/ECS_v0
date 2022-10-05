@@ -8,7 +8,7 @@ import temp from "./resources/images/temp.png";
 import light from "./resources/images/light.png";
 import IEQ from "./resources/images/ieq.png";
 import sound from "./resources/images/sound.png";
-
+import dashLogo from "./resources/images/logo.png";
 
 export default function Dashboard(props) {
 
@@ -51,6 +51,7 @@ export default function Dashboard(props) {
         "Sound": props.ita? "Spiegazione su comfort acustico" : "Acoustic comfort is that condition, in a specific environment, in which the user experiences a sense of well-being related to the hearing conditions."
     }
     let [showGraph, setShowGraph] = useState(false)
+    let [compareGraph, setCompareGraph] = useState (false)
     let [timeWindow, setTimeWindow] = useState("RT")
     let [topic, setTopic] = useState("init")
     let [RTValues, setRTValues] = useState({
@@ -67,9 +68,76 @@ export default function Dashboard(props) {
         "PM2.5":"...",
         E:"..."
     })
+    let [compareTopics, setCompareTopics] = useState([]);
+    let [disableTopics, setDisableTopics] = useState(false);
+    let [compareTime, setCompareTime] = useState([]);
+    let [disableTime, setDisableTime] = useState(false);
 
     let navigate = useNavigate();
-    const toggleGraph = () => {setShowGraph(!showGraph);}
+    const toggleGraph = () => {
+        if(showGraph) {
+            setCompareGraph(false)
+            setCompareTopics([]);
+            setCompareTime([]);
+            setDisableTime(false);
+            setDisableTopics(false)
+        }
+        setShowGraph(!showGraph);
+    }
+    const toggleCompare = () => {
+        if(!compareGraph) {
+            console.log("TOPIC",topic)
+            setCompareTime([timeWindow])
+            setCompareTopics([topic==="init"?"IEQ":topic])
+        }
+        setCompareGraph(!compareGraph);
+    }
+    const addCompareTopic = (newTopic) =>{
+        let tempTopics = compareTopics
+        if(tempTopics.includes(newTopic))
+        {
+            let index = tempTopics.indexOf(newTopic);
+            console.log(index, tempTopics[index])
+            if (index > -1 && tempTopics.length>1)
+                tempTopics.splice(index, 1);
+            if(tempTopics.length<4)
+                setDisableTopics(false);
+            if(tempTopics.length<2)
+                setDisableTime(false);
+        }
+        else
+        {
+            tempTopics.push(newTopic)
+            if(tempTopics.length>=2)
+                setDisableTime(true);
+            if(tempTopics.length>=4)
+                setDisableTopics(true);
+        }
+        setCompareTopics([...tempTopics])
+    }
+    const addCompareTime = (newTime) => {
+        let tempTime = compareTime;
+        if(tempTime.includes(newTime))
+        {
+            let index = tempTime.indexOf(newTime);
+            console.log(index, tempTime[index])
+            if (index > -1 && tempTime.length>1)
+                tempTime.splice(index, 1);
+            if(tempTime.length<4)
+                setDisableTime(false);
+            if(tempTime.length<2)
+                setDisableTopics(false);
+        }
+    else
+        {
+            tempTime.push(newTime)
+            if(tempTime.length>=4)
+                setDisableTime(true);
+            if(tempTime.length>=2)
+                setDisableTopics(true);
+        }
+        setCompareTime([...tempTime])
+    }
 
     useEffect(()=>{
         if (props.userJwt === null) {
@@ -85,53 +153,85 @@ export default function Dashboard(props) {
                             <h1 id="dashPrometeo" style={{textAlign: "center", marginTop: "20px", fontFamily: 'Ink Free'}}>PROMET&O</h1>
                         </div>
                         <Clock/>
-                        <div className="row">
-                            <h2 id="dashTitle" style={{textAlign: "center", paddingTop: "50px"}}>{titles[topic]}</h2>
-                        </div>
-                        <div className="row">
-                            <h5 id="dashExplain" style={{textAlign: "center", padding: "20px"}}>{explain[topic]}</h5>
-                        </div>
+                        {
+                            compareGraph ?
+                                <div className="row" style={{marginTop:"10%"}}>
+                                    <div className="col-6" style={{textAlign:"center"}}>
+                                        <button type="button" onClick={()=>{addCompareTopic("IEQ")}} disabled={compareTopics.includes("IEQ") ? false : disableTopics} className={compareTopics.includes("IEQ")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>IEQ</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("Temp")}} disabled={compareTopics.includes("Temp") ? false : disableTopics} className={compareTopics.includes("Temp")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>{props.ita ? "Comfort Termico" : "Thermal Comfort"}</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("Air")}} disabled={compareTopics.includes("Air") ? false : disableTopics} className={compareTopics.includes("Air")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>{props.ita ? "Qualità dell'aria" : "Indoor Air Quality"}</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("Light")}} disabled={compareTopics.includes("Light") ? false : disableTopics} className={compareTopics.includes("Light")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>{props.ita ? "Comfort Visivo" : "Visual Comfort"}</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("Sound")}} disabled={compareTopics.includes("Sound") ? false : disableTopics} className={compareTopics.includes("Sound")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>{props.ita ? "Comfort Acustico" : "Acoustic Comfort"}</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("T")}} disabled={compareTopics.includes("T") ? false : disableTopics} className={compareTopics.includes("T")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>T<sub>a</sub></button>
+                                        <button type="button" onClick={()=>{addCompareTopic("RH")}} disabled={compareTopics.includes("RH") ? false : disableTopics} className={compareTopics.includes("RH")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>RH</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("SPL")}} disabled={compareTopics.includes("SPL") ? false : disableTopics} className={compareTopics.includes("SPL")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>SPL</button>
+                                    </div>
+                                    <div className="col-6" style={{textAlign:"center"}}>
+                                        <button type="button" onClick={()=>{addCompareTopic("E")}} disabled={compareTopics.includes("E") ? false : disableTopics} className={compareTopics.includes("E")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>E</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("NO2")}} disabled={compareTopics.includes("NO2") ? false : disableTopics} className={compareTopics.includes("NO2")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>NO2</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("VOC")}} disabled={compareTopics.includes("VOC") ? false : disableTopics} className={compareTopics.includes("VOC")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>VOC</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("CH2O")}} disabled={compareTopics.includes("CH2O") ? false : disableTopics} className={compareTopics.includes("CH2O")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>CH2O</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("CO")}} disabled={compareTopics.includes("CO") ? false : disableTopics} className={compareTopics.includes("CO")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>CO</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("CO2")}} disabled={compareTopics.includes("CO2") ? false : disableTopics} className={compareTopics.includes("CO2")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>CO2</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("PM2.5")}} disabled={compareTopics.includes("PM2.5") ? false : disableTopics} className={compareTopics.includes("PM2.5")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>PM2.5</button>
+                                        <button type="button" onClick={()=>{addCompareTopic("PM10")}} disabled={compareTopics.includes("PM10") ? false : disableTopics} className={compareTopics.includes("PM10")?"btn btn-primary btn-topic":"btn btn-white-border btn-topic"}>PM10</button>
+                                    </div>
+                                </div>
+                                :
+                                <>
+                                    <div className="row">
+                                        <h2 id="dashTitle" style={{textAlign: "center", paddingTop: "50px"}}>{titles[topic]}</h2>
+                                    </div>
+                                    <div className="row">
+                                        <h5 id="dashExplain" style={{textAlign: "center", padding: "20px"}}>{explain[topic]}</h5>
+                                    </div>
+                                </>
+                        }
                         <Compliances topic={topic} timeWindow={timeWindow} ita={props.ita}/>
                         <div className="row" style={{position:"fixed", bottom:"50px", width:"34%"}}>
                             <div className="row justify-content-center">
-                                <button style={{fontSize: "150% !important", "width": "75%", "color": "#FF9724"}}
-                                        className="btn btn-white" type="button"
-                                        onClick={toggleGraph}>{showGraph ? props.ita?"Nascondi il grafico":"Hide the graph" : props.ita?"Mostra il grafico":"Show the graph"}</button>
+                                <button style={{fontSize: "150% !important", "width": "75%", "color": "#FF9724"}} className="btn btn-white btn-compliances" type="button" onClick={toggleGraph}>{showGraph ? props.ita?"Nascondi il grafico":"Hide the graph" : props.ita?"Mostra il grafico":"Show the graph"}</button>
                             </div>
                         </div>
                     </div>
                     <div className="col-8">
                         <div style={{margin: "9%"}}/>
-                        <div className="row" style={{width: "95%"}}>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "RT" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("RT")}}>RT</button>
+                            <div className="row" style={{width: "95%"}}>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("RT")} className={(!compareGraph && timeWindow === "RT") || (compareGraph && compareTime.includes("RT")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("RT"); else setTimeWindow("RT");}}>RT</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3H")} className={(!compareGraph && timeWindow === "3H")|| (compareGraph && compareTime.includes("3H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3H"); else setTimeWindow("3H");}}>3H</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("12H")} className={(!compareGraph && timeWindow === "12H") || (compareGraph && compareTime.includes("12H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("12H"); else setTimeWindow("12H")}}>12H</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("24H")} className={(!compareGraph && timeWindow === "24H") || (compareGraph && compareTime.includes("24H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("24H"); else setTimeWindow("24H")}}>24H</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3D")} className={(!compareGraph && timeWindow === "3D") || (compareGraph && compareTime.includes("3D")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3D"); else setTimeWindow("3D")}}>3D</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1W")} className={(!compareGraph && timeWindow === "1W") || (compareGraph && compareTime.includes("1W")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1W"); else setTimeWindow("1W")}}>1W</button>
+                                </div>
+                                <div className="col">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1M")} className={(!compareGraph && timeWindow === "1M")|| (compareGraph && compareTime.includes("1M")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1M"); else setTimeWindow("1M")}}>1M</button>
+                                </div>
                             </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "3H" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("3H")}}>3H</button>
-                            </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "12H" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("12H")}}>12H</button>
-                            </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "24H" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("24H")}}>24H</button>
-                            </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "3D" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("3D")}}>3D</button>
-                            </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "1W" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("1W")}}>1W</button>
-                            </div>
-                            <div className="col">
-                                <button id="timeButton" className={timeWindow === "1M" ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {setTimeWindow("1M")}}>1M</button>
-                            </div>
-                        </div>
-                            <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
+                        <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
                                     {showGraph ?
-                                        <DashGraphs timeWindow={timeWindow} topic={topic}/>
+                                        compareGraph ?
+                                            <CompareGraphs compareTopics={compareTopics} compareTime={compareTime}/>
+                                            :
+                                            <DashGraphs timeWindow={timeWindow} topic={topic}/>
                                         :
                                         <DashIframes timeWindow={timeWindow} topic={topic} setTopic={setTopic} RTValues={RTValues}/>
                                     }
                             </div>
+                    </div>
+                    <div className="row" style={{position:"absolute", bottom:"20px", right:"30%",width:"20%"}}>
+                        <button hidden={!showGraph} className={compareGraph?"btn btn-primary btn-compliances":"btn btn-white-border btn-compliances"} type="button" onClick={toggleCompare}>{props.ita ? "Confronta grafici" : "Compare graphs"}</button>
                     </div>
                 </div>
             </div>
@@ -196,7 +296,7 @@ export default function Dashboard(props) {
                         }
                     }
                     else if (this.readyState === 4 && this.status !== 200)
-                        console.log("ERROR "+xhttp.statusText)
+                    {}    //console.log("ERROR "+xhttp.statusText)
                 };
                 xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
                 xhttp.setRequestHeader("Content-Type","application/json")
@@ -209,28 +309,41 @@ export default function Dashboard(props) {
         const toggleCompliance = () => {
             setShowCompliances(!showCompliances);
         }
+
         return (
-            <div style={{background:"#fff", borderRadius:"20px", height:"25%"}}>
-                <div className="row">
-                    {
-                        topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                            <h4 id="compliance" style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
-                            : null
-                    }
-                </div>
-                <div className="row" id="compliances">
-                    {showCompliances&&timeWindow==="RT" ?
-                        props.ita?
-                            <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                            <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                        : timeWindow==="RT"?<h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4>:null
-                    }
-                </div>
-                <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
-                    <button disabled={showGraph} className="btn btn-white-border btn-compliances" type="button"
-                            onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
-                </div>
-            </div>)
+            <>
+                {
+                    compareGraph ? null :
+                    <div style={{background:"#fff", borderRadius:"20px", height:"25%"}}>
+                        <div className="row">
+                        {
+                            topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
+                                <h4 id="compliance" style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
+                                : null
+                        }
+                        </div>
+                        <div className="row" id="compliances">
+                            {/*showCompliances&&timeWindow==="RT" ?
+                                props.ita?
+                                    <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
+                                    <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
+                                : timeWindow==="RT"?<h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4>:null*/
+                                timeWindow==="RT" ?
+                                    <h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4> :
+                                    props.ita?
+                                        <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
+                                        <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
+                            }
+                        </div>
+                    </div>
+                }
+                {/*
+                    <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
+                        <button disabled={showGraph} className="btn btn-white-border btn-compliances" type="button"
+                                onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
+                    </div>
+                */}</>
+        )
     }
 }
 
@@ -414,8 +527,169 @@ function DashGraphs(props) {
         )
 
 }
+function CompareGraphs(props) {
+    const iframes = {
+        "Temp": {
+            "RT": <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=23&refresh=5s"  frameBorder="0"/>,
+            "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+            "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+            "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+            "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+            "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+            "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>
+        },
+        "T": {
+            "RT": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=30&refresh=5s" frameBorder="0"/>,
+            "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+            "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+            "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+            "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+            "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+            "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>
+        },
+        "RH": {
+            "RT": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=32&refresh=5s"  frameBorder="0"/>,
+            "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+            "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+            "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+            "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+            "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+            "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>
+        },
+        "Light": {
+            "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        },
+        "E": {
+            "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+            "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        },
+        "Sound": {
+            "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        },
+        "SPL": {
+            "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26&refresh=5s"  frameBorder="0"/>,
+            "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+            "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        },
+        "Air": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "PM2.5": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "PM10": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "NO2": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "CO": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "CO2": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "CH2O": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "VOC": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        }
+    }
+    let graphs = [];
+    for(let i=0; i<props.compareTopics.length; i++)
+        for(let j=0; j<props.compareTime.length; j++)
+        {
+            console.log("index",i,j)
+            console.log(props.compareTopics[i]+" "+props.compareTime[j])
+            //console.log(iframes[props.compareTopics[i]][props.compareTime[j]])
+        }
+    return (
+    <div className="row">
+        <div className="col-6">
+            {graphs.length>=1 ? graphs[0] : null}
+        </div>
+        <div className="col-6">
+            {graphs.length>=2 ? graphs[1] : null}
+        </div>
+        <div className="col-6">
+            {graphs.length>=3 ? graphs[2] : null}
+        </div>
+        <div className="col-6">
+            {graphs.length>=4 ? graphs[3] : null}
+        </div>
+    </div>)
+}
 function DashIframes(props) {
-
     const iframes = {
         "Temp":{
             "RT": <iframe id="dashGauge" title="Temp" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;panelId=19" frameBorder="0"/>,
@@ -463,7 +737,6 @@ function DashIframes(props) {
             "1H": <iframe id="dashGauge" title="Air" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&amp;refresh=5s&amp;panelId=6" frameBorder="0"/>
         }
     }
-
     return (
         <div className="row" style={{height: "100%", margin: "10px"}}>
             <div className="col-4">
@@ -538,7 +811,8 @@ function DashIframes(props) {
                 </div>
             </div>
             <div className="col-4">
-                <div className="row" style={{height: "33%"}}/>
+                {
+                    /*<div className="row" style={{height: "33%"}}/>
                 <div className="row" style={{height: "33%"}}>
                     <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
                         {iframes["IEQ"][props.timeWindow]}
@@ -547,6 +821,19 @@ function DashIframes(props) {
                             <img id="imgIEQ" src={IEQ} alt="IEQ"/>
                         </div>
                     </div>
+                </div>*/
+                }
+                <div className="row" style={{height: "33%"}}>
+                    <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
+                        {iframes["IEQ"][props.timeWindow]}
+                        <div className="overlay" style={{position: "absolute"}}
+                             onClick={() => props.setTopic("IEQ")}>
+                            <img id="imgIEQ" src={IEQ} alt="IEQ"/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row text-center" style={{height: "33%"}}>
+                    <img id="dashLogo" src={dashLogo} alt="logo"/>
                 </div>
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
