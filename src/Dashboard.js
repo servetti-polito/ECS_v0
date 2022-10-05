@@ -86,7 +86,8 @@ export default function Dashboard(props) {
     }
     const toggleCompare = () => {
         if(!compareGraph) {
-            console.log("TOPIC",topic)
+            setDisableTopics(false)
+            setDisableTime(false)
             setCompareTime([timeWindow])
             setCompareTopics([topic==="init"?"IEQ":topic])
         }
