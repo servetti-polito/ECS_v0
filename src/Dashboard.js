@@ -366,10 +366,10 @@ function Clock (){
     return (
         <div className="row">
             <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginRight: "2.5%", marginLeft: "5%"}}>
-                <h3 id="clock" style={{textAlign: "center", margin: "5px", marginLeft: 0, letterSpacing: "-1px", color: "#FF9724"}}>{date}</h3>
+                <p id="clock" style={{textAlign: "center", margin: "5px", marginLeft: 0, letterSpacing: "-1px", color: "#FF9724"}}>{date}</p>
             </div>
             <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginLeft: "2.5%", marginRight: "5%"}}>
-                <h3 id="clock" style={{textAlign: "center", margin: "5px", color: "#FF9724"}}>{time}</h3>
+                <p id="clock" style={{textAlign: "center", margin: "5px", color: "#FF9724"}}>{time}</p>
             </div>
         </div>
     )
@@ -807,7 +807,7 @@ function DashIframes(props) {
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
-                                    null : /*iframes["VOC"][props.timeWindow]*/
+                                    null :
                                     <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>VOC</p>{props.RTValues["VOC"]}</div>
                             }
                             <div className="overlay" style={{position: "absolute"}}
@@ -817,18 +817,6 @@ function DashIframes(props) {
                 </div>
             </div>
             <div className="col-4">
-                {
-                    /*<div className="row" style={{height: "33%"}}/>
-                <div className="row" style={{height: "33%"}}>
-                    <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
-                        {iframes["IEQ"][props.timeWindow]}
-                        <div className="overlay" style={{position: "absolute"}}
-                             onClick={() => props.setTopic("IEQ")}>
-                            <img id="imgIEQ" src={IEQ} alt="IEQ"/>
-                        </div>
-                    </div>
-                </div>*/
-                }
                 <div className="row" style={{height: "33%"}}>
                     <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
                         {iframes["IEQ"][props.timeWindow]}

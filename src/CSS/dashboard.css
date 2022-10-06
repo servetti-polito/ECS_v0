@@ -81,7 +81,7 @@ iframe{
         font-size: 110%
     }
     #clock{
-        font-size: 120%;
+        font-size: 100%;
     }
     #compliance{
         font-size: 120%;
@@ -159,6 +159,9 @@ iframe{
     }
 }
 @media (min-height: 901px){
+    #clock{
+        font-size: 120%;
+    }
     #dashPrometeo {
         font-size: 300%;
     }
