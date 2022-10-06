@@ -320,26 +320,28 @@ export default function Dashboard(props) {
             <>
                 {
                     compareGraph ? null :
-                    <div style={{background:"#fff", borderRadius:"20px", height:"30%", position:"fixed", bottom:"10%", width:"31%"}}>
-                        <div className="row">
-                        {
-                            topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                                <h4 id="compliance" style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
-                                : null
-                        }
-                        </div>
-                        <div className="row" id="compliances">
-                            {/*showCompliances&&timeWindow==="RT" ?
-                                props.ita?
-                                    <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                                    <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                                : timeWindow==="RT"?<h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4>:null*/
-                                timeWindow==="RT" ?
-                                    <h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4> :
+                    <div style={{position:"fixed", bottom:"10%", width:"31%"}}>
+                        <div style={{background:"#fff", borderRadius:"20px", height:"30vh"}}>
+                            <div className="row">
+                            {
+                                topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
+                                    <h4 id="compliance" style={{textAlign: "center", textDecoration:"1px solid black"}}>{refValues[topic==="init"?"IEQ":topic]}</h4>
+                                    : null
+                            }
+                            </div>
+                            <div className="row" id="compliances">
+                                {/*showCompliances&&timeWindow==="RT" ?
                                     props.ita?
                                         <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
                                         <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                            }
+                                    : timeWindow==="RT"?<h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4>:null*/
+                                    timeWindow==="RT" ?
+                                        <h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4> :
+                                        props.ita?
+                                            <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
+                                            <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
+                                }
+                            </div>
                         </div>
                     </div>
                 }
@@ -365,17 +367,19 @@ function Clock (){
     }, 1000)
     return (
         <div className="row">
-            <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginRight: "2.5%", marginLeft: "5%"}}>
-                <p id="clock" style={{textAlign: "center", margin: "5px", marginLeft: 0, letterSpacing: "-1px", color: "#FF9724"}}>{date}</p>
+            {/*<div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginRight: "2.5%", marginLeft: "5%"}}>*/}
+            <div className="col-6" style={{padding:2.5, backgroundColor:"white"}}>
+                <p id="clock" style={{textAlign: "center", margin: "0px", letterSpacing: "-1px", color: "#FF9724"}}>{date}</p>
             </div>
-            <div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginLeft: "2.5%", marginRight: "5%"}}>
-                <p id="clock" style={{textAlign: "center", margin: "5px", color: "#FF9724"}}>{time}</p>
+            {/*<div className="col-5" style={{backgroundColor: "white", borderRadius: "10px", marginLeft: "2.5%", marginRight: "5%"}}>*/}
+            <div className="col-6" style={{padding:2.5, backgroundColor:"white"}} >
+                <p id="clock" style={{textAlign: "center", margin: "0px", color: "#FF9724"}}>{time}</p>
             </div>
         </div>
     )
 }
 function DashGraphs(props) {
-    const iframes = {
+    /*const iframes = {
         "Temp": {
             "RT": <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=23&refresh=5s"  frameBorder="0"/>,
             "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
@@ -511,8 +515,8 @@ function DashGraphs(props) {
             "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
             "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
         }
-    }
-    if(props.topic==="IEQ"||props.topic==="init")
+    }*/
+    /*if(props.topic==="IEQ"||props.topic==="init")
         return (
             <div className="container" style={{height:"100%"}}>
                 <div className="row h-50">
@@ -525,16 +529,16 @@ function DashGraphs(props) {
                 </div>
             </div>
         );
-    else
+    else*/
         return(
             <div className="container" style={{height:"100%"}}>
-                {iframes[props.topic][props.timeWindow]}
+                {iframes[props.topic==="init"?"IEQ":props.topic][props.timeWindow]}
             </div>
         )
 
 }
 function CompareGraphs(props) {
-    const iframes = {
+/*    const iframes = {
         "Temp": {
             "RT": <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=23&refresh=5s"  frameBorder="0"/>,
             "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
@@ -669,29 +673,41 @@ function CompareGraphs(props) {
             "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
             "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
             "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        },
+        "IEQ": {
+            "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+            "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+            "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
         }
-    }
+    }*/
     let graphs = [];
     for(let i=0; i<props.compareTopics.length; i++)
         for(let j=0; j<props.compareTime.length; j++)
         {
-            console.log("index",i,j)
             console.log(props.compareTopics[i]+" "+props.compareTime[j])
-            //console.log(iframes[props.compareTopics[i]][props.compareTime[j]])
+            graphs.push(iframes[props.compareTopics[i]][props.compareTime[j]])
         }
     return (
-    <div className="row">
-        <div className="col-6">
-            {graphs.length>=1 ? graphs[0] : null}
+    <div className="row" style={{height:"100%"}}>
+        <div className="row">
+            <div className="col-6" >
+                {graphs.length>=1 ? graphs[0] : null}
+            </div>
+            <div className="col-6" >
+                {graphs.length>=2 ? graphs[1] : null}
+            </div>
         </div>
-        <div className="col-6">
-            {graphs.length>=2 ? graphs[1] : null}
-        </div>
-        <div className="col-6">
-            {graphs.length>=3 ? graphs[2] : null}
-        </div>
-        <div className="col-6">
-            {graphs.length>=4 ? graphs[3] : null}
+        <div className="row">
+            <div className="col-6" >
+                {graphs.length>=3 ? graphs[2] : null}
+            </div>
+            <div className="col-6" >
+                {graphs.length>=4 ? graphs[3] : null}
+            </div>
         </div>
     </div>)
 }
@@ -950,4 +966,151 @@ function DashIframes(props) {
             </div>
         </div>
     )
+}
+
+const iframes = {
+    "Temp": {
+        "RT": <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=23&refresh=5s"  frameBorder="0"/>,
+        "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+        "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+        "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+        "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+        "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>,
+        "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=27"  frameBorder="0"/>
+    },
+    "T": {
+        "RT": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=30&refresh=5s" frameBorder="0"/>,
+        "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+        "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+        "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+        "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+        "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>,
+        "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=31"  frameBorder="0"/>
+    },
+    "RH": {
+        "RT": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=32&refresh=5s"  frameBorder="0"/>,
+        "3H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+        "12H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+        "24H": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+        "3D": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+        "1W": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>,
+        "1M": <iframe  id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=33"  frameBorder="0"/>
+    },
+    "Light": {
+        "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24&refresh=5s"  frameBorder="0"/>,
+        "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+    },
+    "E": {
+        "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24&refresh=5s"  frameBorder="0"/>,
+        "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+        "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=24"  frameBorder="0"/>,
+    },
+    "Sound": {
+        "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26&refresh=5s"  frameBorder="0"/>,
+        "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+    },
+    "SPL": {
+        "RT":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26&refresh=5s"  frameBorder="0"/>,
+        "3H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "12H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "24H":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "3D":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "1W":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+        "1M":<iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=26"  frameBorder="0"/>,
+    },
+    "Air": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "PM2.5": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "PM10": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "NO2": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "CO": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "CO2": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "CH2O": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "VOC": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    },
+    "IEQ": {
+        "RT" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "12H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "24H" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "3D" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1W" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "1M" : <iframe id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+    }
 }
