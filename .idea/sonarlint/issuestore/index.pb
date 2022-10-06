@@ -44,8 +44,6 @@ A
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
 E
 src/ProtectedRoute.js,c\1\c127948911c16948e6247efd85b7b768eb565394
-K
-src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 ?
 src/UserPool.js,7\a\7aef5b86a3066bdb4df9da5237ea8d623a8b22cd
 >
@@ -78,9 +76,6 @@ G
 src/CSS/ThanksEmail.css,2\0\20218e1ababfeb7fbc74243188ffdb682c977654
 C
 src/CSS/Profile.css,9\8\982520eaf3db0eb04aeaa8caafb04a06771ac6a3
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 <
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 <

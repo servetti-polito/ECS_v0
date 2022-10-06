@@ -57,7 +57,11 @@ export default function Dashboard(props) {
     let [RTValues, setRTValues] = useState({
         RH:"...",
         T:"...",
-        Temp:"...",
+        Temp:"",
+        Air:"",
+        Sound:"",
+        Light:"",
+        IEQ:"",
         SPL:"...",
         VOC:"...",
         CH2O:"...",
@@ -188,38 +192,39 @@ export default function Dashboard(props) {
                                     </div>
                                 </>
                         }
-                        <Compliances topic={topic} timeWindow={timeWindow} ita={props.ita}/>
-                        <div className="row" style={{position:"fixed", bottom:"50px", width:"34%"}}>
+                        {showGraph ? null : <Compliances topic={topic} timeWindow={timeWindow} ita={props.ita}/>}
+                        <div className="row" style={{position:"fixed", bottom:"20px", width:"34%"}}>
                             <div className="row justify-content-center">
                                 <button style={{fontSize: "150% !important", "width": "75%", "color": "#FF9724"}} className="btn btn-white btn-compliances" type="button" onClick={toggleGraph}>{showGraph ? props.ita?"Nascondi il grafico":"Hide the graph" : props.ita?"Mostra il grafico":"Show the graph"}</button>
                             </div>
                         </div>
                     </div>
                     <div className="col-8">
-                        <div style={{margin: "9%"}}/>
-                            <div className="row" style={{width: "95%"}}>
-                                <div className="col">
+                        <div style={{margin: "3.5%"}}/>
+                            <div className="row" style={{width: "93%"}}>
+                                <div className="col" id="timecol">
                                     <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("RT")} className={(!compareGraph && timeWindow === "RT") || (compareGraph && compareTime.includes("RT")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("RT"); else setTimeWindow("RT");}}>RT</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3H")} className={(!compareGraph && timeWindow === "3H")|| (compareGraph && compareTime.includes("3H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3H"); else setTimeWindow("3H");}}>3H</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3H")} className={(!compareGraph && timeWindow === "3H")|| (compareGraph && compareTime.includes("3H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3H"); else setTimeWindow("3H");}}>3h</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("12H")} className={(!compareGraph && timeWindow === "12H") || (compareGraph && compareTime.includes("12H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("12H"); else setTimeWindow("12H")}}>12H</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("12H")} className={(!compareGraph && timeWindow === "12H") || (compareGraph && compareTime.includes("12H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("12H"); else setTimeWindow("12H")}}>12h</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("24H")} className={(!compareGraph && timeWindow === "24H") || (compareGraph && compareTime.includes("24H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("24H"); else setTimeWindow("24H")}}>24H</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("24H")} className={(!compareGraph && timeWindow === "24H") || (compareGraph && compareTime.includes("24H")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("24H"); else setTimeWindow("24H")}}>24h</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3D")} className={(!compareGraph && timeWindow === "3D") || (compareGraph && compareTime.includes("3D")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3D"); else setTimeWindow("3D")}}>3D</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("3D")} className={(!compareGraph && timeWindow === "3D") || (compareGraph && compareTime.includes("3D")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("3D"); else setTimeWindow("3D")}}>3d</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1W")} className={(!compareGraph && timeWindow === "1W") || (compareGraph && compareTime.includes("1W")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1W"); else setTimeWindow("1W")}}>1W</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1W")} className={(!compareGraph && timeWindow === "1W") || (compareGraph && compareTime.includes("1W")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1W"); else setTimeWindow("1W")}}>1w</button>
                                 </div>
-                                <div className="col">
-                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1M")} className={(!compareGraph && timeWindow === "1M")|| (compareGraph && compareTime.includes("1M")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1M"); else setTimeWindow("1M")}}>1M</button>
+                                <div className="col" id="timecol">
+                                    <button id="timeButton" disabled={compareGraph&&disableTime&&!compareTime.includes("1M")} className={(!compareGraph && timeWindow === "1M")|| (compareGraph && compareTime.includes("1M")) ? "btn btn-primary btn-dash" : "btn btn-white-border btn-dash"} onClick={() => {if(compareGraph) addCompareTime("1M"); else setTimeWindow("1M")}}>1m</button>
                                 </div>
                             </div>
+                        <div style={{margin:"5%"}}/>
                         <div id="graphBox" style={{height: "70%", marginTop: "25px", marginBottom: "25px"}}>
                                     {showGraph ?
                                         compareGraph ?
@@ -231,7 +236,7 @@ export default function Dashboard(props) {
                                     }
                             </div>
                     </div>
-                    <div className="row" style={{position:"absolute", bottom:"20px", right:"30%",width:"20%"}}>
+                    <div className="row" style={{position:"fixed", bottom:"20px", right:"2%",width:"20%"}}>
                         <button hidden={!showGraph} className={compareGraph?"btn btn-primary btn-compliances":"btn btn-white-border btn-compliances"} type="button" onClick={toggleCompare}>{props.ita ? "Confronta grafici" : "Compare graphs"}</button>
                     </div>
                 </div>
@@ -315,7 +320,7 @@ export default function Dashboard(props) {
             <>
                 {
                     compareGraph ? null :
-                    <div style={{background:"#fff", borderRadius:"20px", height:"25%"}}>
+                    <div style={{background:"#fff", borderRadius:"20px", height:"30%", position:"fixed", bottom:"10%", width:"31%"}}>
                         <div className="row">
                         {
                             topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
@@ -833,7 +838,7 @@ function DashIframes(props) {
                         </div>
                     </div>
                 </div>
-                <div className="row text-center" style={{height: "33%"}}>
+                <div className="row text-center" style={{height: "33%", position:"relative"}}>
                     <img id="dashLogo" src={dashLogo} alt="logo"/>
                 </div>
                 <div className="row" style={{height: "33%"}}>

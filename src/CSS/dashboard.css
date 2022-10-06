@@ -171,8 +171,15 @@ iframe{
         position: absolute;
         width:350px;
         height:250px;
-        left:10px;
+        left:5px;
         top: -20px
+    }
+    #imgIEQ{
+        height:150px;
+        width:150px;
+        position:absolute;
+        left:105px;
+        top:30px;
     }
     #gaugeTemp{
         z-index:1;
@@ -197,13 +204,6 @@ iframe{
         position:absolute;
         left:85px;
         top:28px;
-    }
-    #imgIEQ{
-        height:150px;
-        width:150px;
-        position:absolute;
-        left:110px;
-        top:30px;
     }
     #gaugeLight{
         zIndex:1;
@@ -232,6 +232,11 @@ iframe{
     #dashLogo{
         width:370px;
         height:350px;
+        position:absolute;
+        left:-10px
     }
 }
 
+#timecol{
+    padding:2px
+}

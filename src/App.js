@@ -127,9 +127,10 @@ function App() {
                 location.pathname!=="/login" &&
                 location.pathname!=="/thanks" &&
                 location.pathname!=="/survey" &&
-                location.pathname!=="/furtherQuestions" ?
+                location.pathname!=="/furtherQuestions"
+                && location.pathname!=="/dashboard" ?
                 <p style={{ "position": "fixed", "top": 25, "right": 25, textDecoration: "underline", fontSize:"130%"}} onClick={routeHome} >Home</p> :
-                null
+                    location.pathname==="/dashboard" ? <p style={{ "position": "fixed", "top": "4%", "right": "1.5%", textDecoration: "underline", fontSize:"130%"}} onClick={routeHome} >Home</p> : null
             }
             {
                 location.pathname!=="/dashboard" &&
