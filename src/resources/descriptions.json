@@ -1,0 +1,66 @@
+{
+  "RH":{
+    "it":"Spiegazione su RH",
+    "en":"The value gives the composition of the air in terms of water vapour in relation to the maximum amount it can hold at a given temperature characterize the relative humidity of the environment."
+  },
+  "T":{
+    "it":"Spiegazione su temperatura dell'aria",
+    "en":"Air temperature is the temperature of the air around the human body."
+  },
+  "IEQ":{
+    "it":"Spiegazione su qualità dell'ambiente interno",
+    "en":"Indoor Environmental Quality is the physical characterization of indoor environments in terms of thermal, acoustic, lighting and indoor air quality."
+  },
+  "Temp":{
+    "it":"Spiegazione su comfort termico",
+    "en":"Thermal comfort is that condition of mind which expresses satisfaction with the thermal environment."
+  },
+  "SPL":{
+    "it": "Spiegazione su SPL",
+    "en": "Logarithm of the ratio of a given sound pressure to the reference sound pressure. Sound pressure level in decibels is 20 times the logarithm to the base ten of the ratio."
+  },
+  "VOC":{
+    "it":"Spiegazione su VOC",
+    "en":"Volatile organic compounds are organic chemical compounds whose composition makes it possible for them to evaporate under normal indoor atmospheric conditions of temperature and pressure. Are toxic by inhalation and exposition, with chronic or acute effects."
+  },
+  "CH2O":{
+    "it":"Spiegazione su Formaldeide",
+    "en":"Formaldehyde is a colourless gas, flammable and highly reactive at room temperature. It is formed primarily by numerous natural sources and anthropogenic activities."
+  },
+  "CO2":{
+    "it":"Spiegazione su Anidride Carbonica",
+    "en":"Carbon dioxide is a colourless and odourless gas at atmospheric temperature and pressure. It is produced by the combustion of organic compounds."
+  },
+  "CO":{
+    "it":"Spiegazione su monossido di carbonio" ,
+    "en": "Carbon monoxide is a colourless, non-irritant, odourless and tasteless toxic gas. It is produced by the incomplete combustion of carbonaceous fuels such as wood, petrol, coal, natural gas and kerosene."
+  },
+  "NO2":{
+    "it":"Spiegazione su biossido di azoto",
+    "en":"Nitrogen dioxide in its gaseous form is volatile, reddish-brown in colour and heavier than air. It has a characteristic pungent odour perceptible from a concentration of 188 μg/m3 (0.1 ppm). It is one of the principal nitrogen oxides associated with combustion sources."
+  },
+  "PM10":{
+    "it":"Spiegazione su PM10",
+    "en":"Inhalable particles, with diameters that are 10 micrometers or smaller."
+  },
+  "PM2.5":{
+    "it":"Spiegazione su PM2.5",
+    "en":"Fine inhalable particles, with diameters that are 2.5 micrometers or smaller."
+  },
+  "E":{
+    "it":"Spiegazione su illuminazione",
+    "en":"Illuminance is the ratio between the luminous flux incident on an elementary surface and the area of the elementary surface itself."
+  },
+  "Air":{
+    "it":"Spiegazione su qualità dell'aria",
+    "en":"Indoor air quality is considered acceptable when there are no specific pollutants in harmful concentrations and no conditions that are likely to be associated with occupant's health or comfort complaints."
+  },
+  "Light": {
+    "it":"Spiegazione su comfort visivo",
+    "en":"Visual comfort is that condition of satisfaction of visual requirements expressed by the user."
+  },
+  "Sound": {
+    "it":"Spiegazione su comfort acustico",
+    "en":"Acoustic comfort is that condition, in a specific environment, in which the user experiences a sense of well-being related to the hearing conditions."
+  }
+}

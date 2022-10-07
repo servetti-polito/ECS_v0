@@ -1,0 +1,66 @@
+{
+  "RH": {
+    "it":"Umidità relativa",
+    "en":"Relative Humidity"
+  },
+  "T": {
+    "it": "Temperatura dell'aria",
+    "en":"Air temperature"
+  },
+  "Temp": {
+    "it":"Comfort termico",
+    "en":"Thermal Comfort"
+  },
+  "SPL": {
+    "it":"Livello di pressione sonora",
+    "en":"Sound Pressure Level"
+  },
+  "VOC": {
+    "it":"Composti organici volatili",
+    "en":"Volatile Organic Compounds"
+  },
+  "CH2O": {
+    "it":"Formaldeide",
+    "en":"Formaldehyde"
+  },
+  "CO2": {
+    "it":"Anidride carbonica",
+    "en":"Carbon dioxide"
+  },
+  "CO": {
+    "it":"Monossido di carbonio",
+    "en":"Carbon monoxide"
+  },
+  "NO2": {
+    "it":"Biossido di azoto",
+    "en":"Nitrogen dioxide"
+  },
+  "PM10": {
+    "it":"PM10",
+    "en":"Particulate Matter 10"
+  },
+  "PM2.5": {
+    "it":"PM2.5",
+    "en":"Particulate Matter 2.5"
+  },
+  "E": {
+    "it":"Illuminazione",
+    "en":"Illuminance"
+  },
+  "IEQ":{
+    "it":"Qualità dell'ambiente interno",
+    "en":"Indoor Environmental Quality"
+  },
+  "Air":{
+    "it":"Qualità dell'aria interna",
+    "en":"Indoor Air Quality"
+  },
+  "Light":{
+    "it":"Comfort visivo",
+    "en":"Visual Comfort"
+  },
+  "Sound": {
+    "it":"Comfort acustico",
+    "en":"Acoustic Comfort"
+  }
+}
