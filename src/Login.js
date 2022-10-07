@@ -80,7 +80,7 @@ function Login(props) {
                                         <label htmlFor="token"><h3>{props.ita ? "Token Personale":"Personal Token"}</h3></label>
                                     </div>
                                     <div className="col-6">
-                                        <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder="smith19701231"/>
+                                        <input type={showPassword ? "text" : "password"} name="token" onChange={handleChange} onBlur={handleBlur} value={values.token} className="form-control" id="token" placeholder={props.ita?"rosso01011970":"red01011970"}/>
                                     </div>
                                     <div className="col-3">
                                         <img hidden={loading} onClick={togglePassword} style={{width:50, height:50}} src={showPassword ? hide : show}/>

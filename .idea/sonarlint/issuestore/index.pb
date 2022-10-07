@@ -84,10 +84,6 @@ C
 src/CSS/App.css,b\e\be19728d10d9e7fee8e50c4f3aa8c285ed12637b
 G
 src/FurtherQuestions.js,8\d\8de45bc010705354eb900f4cc5ade3dc9a110f00
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
-<
-src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
 >
