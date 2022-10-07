@@ -429,6 +429,12 @@
               "text": {
                 "it": "Altro"
               }
+            },
+            {
+              "value": "None",
+              "text": {
+                "it": "Nessuno dei precedenti"
+              }
             }
           ],
           "otherText": {
@@ -597,6 +603,12 @@
               "value": "Other",
               "text": {
                 "it": "Altro"
+              }
+            },
+            {
+              "value": "None",
+              "text": {
+                "it": "Nessuno dei precedenti"
               }
             }
           ],
@@ -847,6 +859,12 @@
               "value": "Other",
               "text": {
                 "it": "Altro"
+              }
+            },
+            {
+              "value": "None",
+              "text": {
+                "it": "Nessuno dei precedenti"
               }
             }
           ],

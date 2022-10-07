@@ -52,8 +52,6 @@ A
 src/GrafanaAPI.js,1\6\1614cbab01b6fae2a465297f0c9d6ba0cbbbcef3
 U
 %src/resources/GrafanaReqTemplate.json,a\4\a49dd2c47856f58332538c398b620d7fc9fc6a8f
-I
-src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 D
 src/PrivacyNotice.js,2\8\287b4bc80fb91fbb58eb40567729ae625ff9b936
 I
