@@ -90,8 +90,6 @@ G
 src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
 B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
-=
-src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
 ?
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
 >
@@ -103,3 +101,13 @@ E
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+R
+"src/resources/referenceValues.json,4\9\49eb2aac2ee06aba607839a4aa842abd06f7020e
+K
+src/resources/measures.json,e\2\e2fd336919ae50e241e3c3d04086964049c8b529
+I
+src/resources/titles.json,5\e\5e75cad4a795ba4d3957730a9750a7b7254b69cb
+O
+src/resources/descriptions.json,0\8\08e7e3c6bb30902958b6a75a7e57a86f0086398c
+<
+src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260

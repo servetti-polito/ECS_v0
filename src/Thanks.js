@@ -15,7 +15,7 @@ export default function Thanks(props){
     }
     let navigate = useNavigate();
 
-/*    useEffect(()=>{
+    useEffect(()=>{
         ////////////////////////////////////////////////////////
         if((props.logged===null||props.logged==="")&&props.deviceJwt===null)
             navigate("/")
@@ -27,6 +27,7 @@ export default function Thanks(props){
         setLoading(true)
         if(props.logged && error===null && props.answers!==null)
         {
+            evaluateComfort(props.answers)
             let init = {
                 body: props.answers,
                 headers: {Authorization : props.deviceJwt}
@@ -65,7 +66,7 @@ export default function Thanks(props){
         {
             setLoading(false);
         }
-    }, [])*/
+    }, [])
 
     const iframes = {
         "Temp": <iframe  style={{position: "relative", height: "100%", width: "100%"}} src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&from=1663212204191&to=1663233804191&panelId=23"  frameBorder="0"/>,
@@ -116,4 +117,70 @@ export default function Thanks(props){
             <p id="prometeoSmallLogo" style={{marginTop:"40px"}}>PROMET&O</p>
             </div>
     );
+}
+
+function evaluateComfort(answers){
+    //console.log(JSON.stringify(answers["Q2"]))
+    if(answers["Q2"].includes("THERMAL  COMFORT"))
+    {
+        let q3,q4, TC;
+        switch(answers["Q3"])
+        {
+            case "3": q3=25; break;
+            case "2": q3=50; break;
+            case "1": q3=75; break;
+            case "0": q3=100; break;
+            case "-1": q3=75; break;
+            case "-2": q3=50; break;
+            case "-3": q3=25; break;
+        }
+        switch(answers["Q4"])
+        {
+            case "4": q4=25; break;
+            case "3": q4=50; break;
+            case "2": q4=75; break;
+            case "1": q4=100; break;
+        }
+        TC=(q3+q4)/2
+        console.log("Thermal comfort: "+TC+"%");
+    }
+    if(answers["Q2"].includes("ACOUSTIC  COMFORT"))
+    {
+        let q5, AC;
+        switch(answers["Q5"])
+        {
+            case "4": q5=25; break;
+            case "3": q5=50; break;
+            case "2": q5=75; break;
+            case "1": q5=100; break;
+        }
+        AC=q5
+        console.log("Acoustic comfort: "+AC+"%");
+    }
+    if(answers["Q2"].includes("VISUAL  COMFORT"))
+    {
+        let q7, VC;
+        switch(answers["Q7"])
+        {
+            case "4": q7=25; break;
+            case "3": q7=50; break;
+            case "2": q7=75; break;
+            case "1": q7=100; break;
+        }
+        VC=q7
+        console.log("Visual comfort: "+VC+"%");
+    }
+    if(answers["Q2"].includes("INDOOR AIR QUALITY"))
+    {
+        let q10, IAQ;
+        switch(answers["Q10"])
+        {
+            case "4": q10=25; break;
+            case "3": q10=50; break;
+            case "2": q10=75; break;
+            case "1": q10=100; break;
+        }
+        IAQ=q10
+        console.log("Indoor Air Quality: "+IAQ+"%");
+    }
 }

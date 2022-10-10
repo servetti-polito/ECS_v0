@@ -211,43 +211,6 @@ export default function Dashboard(props) {
 
     function Compliances () {
         /*let [showCompliances, setShowCompliances] = useState(false)*/
-        /*const measures = {
-            "RH": "%",
-            "T":"°C",
-            "SPL":"dB(A)",
-            "VOC": "µg/m³",
-            "CH2O":"µg/m³",
-            "CO2":"ppm",
-            "CO":"mg/m³",
-            "NO2":"µg/m³",
-            "PM10":"µg/m³",
-            "PM2.5":"µg/m³",
-            "E":"lux",
-            "IEQ": "%",
-            "Temp":"%",
-            "Air": "%",
-            "Light": "%",
-            "Sound": "%"
-        }*/
-        /*const refValues = {
-            "RH": props.ita?"Intervallo di riferimento: ":"Reference Range: "+"25-60%",
-            "T":props.ita?"Intervallo di riferimento: ":"Reference Range: "+"20-24°C",
-            "SPL":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 40 dB(A)",
-            "VOC":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
-            "CH2O":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 µg/m³",
-            "CO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 800 ppm",
-            "CO":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 100 mg/m³",
-            "NO2":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 200 µg/m³",
-            "PM10":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 50 µg/m³",
-            "PM2.5":props.ita?"Valore di riferimento: ":"Reference Value: "+"≤ 25 µg/m³",
-            "E":props.ita?"Valore di riferimento: ":"Reference Value: "+"≥ 500 lux",
-            "IEQ": "",
-            "Temp":"",
-            "Air": "",
-            "Light": "",
-            "Sound": ""
-        }*/
-
         useEffect(()=>{
             const APIcall = setInterval(()=>{
                 template.from=(new Date()-5000).toString();
@@ -633,7 +596,6 @@ function DashIframes(props) {
         </div>
     )
 }
-
 const iframes = {
     "Temp": {
         "RT": <iframe title="TempRT" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=23&refresh=5s"  frameBorder="0"/>,

@@ -79,10 +79,10 @@
               "imageLink": "https://dev.prometeo.click/light.png"
             },
             {
-              "value": "INDOOR AIR  QUALITY",
+              "value": "INDOOR AIR QUALITY",
               "text": {
                 "it": "QUALITA' DELL'ARIA",
-                "default": "INDOOR AIR  QUALITY"
+                "default": "INDOOR AIR QUALITY"
               },
               "imageLink": "https://dev.prometeo.click/air.png"
             }
@@ -795,7 +795,7 @@
           "showLabel": true
         }
       ],
-      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']"
+      "visibleIf": "{Q2} anyof ['INDOOR AIR QUALITY']"
     },
     {
       "name": "P10",
@@ -875,7 +875,7 @@
           "maxSelectedChoices": 4
         }
       ],
-      "visibleIf": "{Q2} anyof ['INDOOR AIR  QUALITY']"
+      "visibleIf": "{Q2} anyof ['INDOOR AIR QUALITY']"
     },
     {
       "name": "page1",
