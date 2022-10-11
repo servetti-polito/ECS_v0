@@ -248,11 +248,11 @@ export default function Dashboard(props) {
                 {
                     compareGraph ? null :
                     <div style={{position:"fixed", bottom:"10%", width:"31%"}}>
-                        <div style={{background:"#fff", borderRadius:"20px", height:"30vh"}}>
+                        <div style={{background:"#fff", borderRadius:"20px", height:"30vh", padding:20}}>
                             <div className="row">
                             {
-                                topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                                    <h4 id="compliance" style={{textAlign: "center", textDecoration:"1px solid black"}}>{props.ita?"Valore di riferimento:":"Reference value:"}{refValues[topic==="init"?"IEQ":topic]}</h4>
+                                topic!=="init"&&topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
+                                    <h4 id="compliance" style={{textAlign: "center", textDecoration:"underline"}}>{props.ita?"Valori di riferimento: ":"Reference values: "}{refValues[topic==="init"?"IEQ":topic]}</h4>
                                     : null
                             }
                             </div>
