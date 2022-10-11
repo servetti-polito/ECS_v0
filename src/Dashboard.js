@@ -203,7 +203,7 @@ export default function Dashboard(props) {
                             </div>
                     </div>
                     <div className="row" style={{position:"fixed", bottom:"20px", right:"2%",width:"20%"}}>
-                        <button hidden={!showGraph} className={compareGraph?"btn btn-primary btn-compliances":"btn btn-white-border btn-compliances"} type="button" onClick={toggleCompare}>{props.ita ? "Confronta grafici" : "Compare graphs"}</button>
+                        <button hidden={!showGraph} className={compareGraph?"btn btn-primary btn-compliances":"btn btn-white-border btn-compliances"} type="button" onClick={toggleCompare}>{props.ita ? "Confronta i grafici" : "Compare the graphs"}</button>
                     </div>
                 </div>
             </div>

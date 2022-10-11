@@ -111,3 +111,9 @@ O
 src/resources/descriptions.json,0\8\08e7e3c6bb30902958b6a75a7e57a86f0086398c
 <
 src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
+<
+src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
+I
+src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
