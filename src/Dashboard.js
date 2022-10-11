@@ -733,12 +733,12 @@ const iframes = {
         "1M" : <iframe title="VOC1M" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
     },
     "IEQ": {
-        "RT" : <iframe title="IEQRT" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25&refresh=5s"  frameBorder="0"/>,
-        "3H" : <iframe title="IEQ3H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
-        "12H" : <iframe title="IEQ12H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
-        "24H" : <iframe title="IEQ24H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
-        "3D" : <iframe title="IEQ3D" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
-        "1W" : <iframe title="IEQ1W" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
-        "1M" : <iframe title="IEQ1M" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=25"  frameBorder="0"/>,
+        "RT" : <iframe title="IEQRT" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=34&refresh=5s"  frameBorder="0"/>,
+        "3H" : <iframe title="IEQ3H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
+        "12H" : <iframe title="IEQ12H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
+        "24H" : <iframe title="IEQ24H" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
+        "3D" : <iframe title="IEQ3D" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
+        "1W" : <iframe title="IEQ1W" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
+        "1M" : <iframe title="IEQ1M" id="dashGraph" src="https://dev.prometeo.click/chart/d-solo/-eCH23G4k/nuova2?orgId=1&panelId=35"  frameBorder="0"/>,
     }
 }
