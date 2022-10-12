@@ -1,5 +1,8 @@
 import './CSS/Hello.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Modal} from "react-bootstrap";
+import PrivacyNotice from "./PrivacyNotice";
+import {useState} from "react";
 
 export default function Hello(props){
 
@@ -10,6 +13,27 @@ export default function Hello(props){
     const toggleLanguage = () => {
         let curr = props.ita;
         props.setIta(!curr);
+    }
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    function PrivacyModal() {
+        return (
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Privacy</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <PrivacyNotice/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button style={{fontSize:"110% !important"}} variant="secondary" onClick={handleClose}>
+                        I understand
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        );
     }
 
     return (
@@ -59,6 +83,8 @@ export default function Hello(props){
             <div style={{ "position": "fixed", "top": 50, "right": 50}}>
                 <p onClick={toggleLanguage}>{props.ita ? <b>ITA</b> : "ITA"} | { props.ita ? "ENG" : <b>ENG</b>}</p>
             </div>
+            <p onClick={handleShow} style={{ "position": "fixed", "bottom": 50, "right": 50, textDecoration: "underline", fontSize:"130%"}}>Privacy</p>
+            <PrivacyModal/>
         </div>
     );
 }

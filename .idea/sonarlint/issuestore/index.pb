@@ -92,8 +92,6 @@ B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 ?
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
->
-src/Profile.js,2\f\2fe10b6a7ec7966cc963870560b8f06ad7be7527
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 E
@@ -109,8 +107,6 @@ I
 src/resources/titles.json,5\e\5e75cad4a795ba4d3957730a9750a7b7254b69cb
 O
 src/resources/descriptions.json,0\8\08e7e3c6bb30902958b6a75a7e57a86f0086398c
-<
-src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 D
 src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
