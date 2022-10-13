@@ -7,6 +7,16 @@
     font-size:125% !important;
 }
 
+#Dashboard .btn-hintsmore {
+    border-top-left-radius: 15px 15px !important;
+    border-bottom-left-radius: 15px 15px !important;
+    border-top-right-radius: 15px 15px !important;
+    border-bottom-right-radius: 15px 15px !important;
+    width:30%;
+    font-size:120% !important;
+    padding:0px;
+}
+
 #Dashboard .btn-compliances {
     padding:0px !important;
     font-size:150% !important;
@@ -28,6 +38,18 @@
 #Dashboard #timeButton{
     font-size: 120% !important;
     padding:0px;
+    /*border-radius: 10px !important;*/
+}
+
+.btn-modalclose{
+    font-size: 120% !important;
+    padding: 0;
+    width:20%;
+    border-radius: 10px;
+    background-color: #FFFFFF !important;
+    border: 2px solid #FF9724 !important;
+    outline: none !important;
+    color: #FF9724 !important;
 }
 
 .overlay{
@@ -163,6 +185,9 @@ iframe{
     #timecol{
         padding:5px
     }
+    #hintsmore{
+        padding-top: 80px;
+    }
 }
 @media (min-height: 901px){
     .btn-topic{
@@ -249,5 +274,8 @@ iframe{
         height:350px;
         position:absolute;
         left:-10px
+    }
+    #hintsmore{
+        padding-top: 20px;
     }
 }

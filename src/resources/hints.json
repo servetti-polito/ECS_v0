@@ -1,0 +1,178 @@
+{
+  "RH": [{
+    "it": "Suggerimento su RH 1",
+    "en": "Hints on RH 1"
+  },{
+    "it": "Suggerimento su RH 2",
+    "en": "Hints on RH 2"
+  },{
+    "it": "Suggerimento su RH 3",
+    "en": "Hints on RH 3"
+  }
+  ],
+  "T":[{
+    "it": "Suggerimento su T 1",
+    "en": "Hints on T 1"
+  },{
+    "it": "Suggerimento su T 2",
+    "en": "Hints on T 2"
+  },{
+    "it": "Suggerimento su T 3",
+    "en": "Hints on T 3"
+  }
+  ],
+  "SPL":[{
+    "it": "Suggerimento su SPL 1",
+    "en": "Hints on SPL 1"
+  },{
+    "it": "Suggerimento su SPL 2",
+    "en": "Hints on SPL 2"
+  },{
+    "it": "Suggerimento su SPL 3",
+    "en": "Hints on SPL 3"
+  }
+  ],
+  "VOC": [{
+    "it": "Suggerimento su VOC 1",
+    "en": "Hints on VOC 1"
+  },{
+    "it": "Suggerimento su VOC 2",
+    "en": "Hints on VOC 2"
+  },{
+    "it": "Suggerimento su VOC 3",
+    "en": "Hints on VOC 3"
+  }
+  ],
+  "CH2O":[{
+    "it": "Suggerimento su CH2O 1",
+    "en": "Hints on CH2O 1"
+  },{
+    "it": "Suggerimento su CH2O 2",
+    "en": "Hints on CH2O 2"
+  },{
+    "it": "Suggerimento su CH2O 3",
+    "en": "Hints on CH2O 3"
+  }
+  ],
+  "CO2": [{
+    "it": "Suggerimento su CO2 1",
+    "en": "Hints on CO2 1"
+  },{
+    "it": "Suggerimento su CO2 2",
+    "en": "Hints on CO2 2"
+  },{
+    "it": "Suggerimento su CO2 3",
+    "en": "Hints on CO2 3"
+  }
+  ],
+  "CO":[{
+    "it": "Suggerimento su CO 1",
+    "en": "Hints on CO 1"
+  },{
+    "it": "Suggerimento su CO 2",
+    "en": "Hints on CO 2"
+  },{
+    "it": "Suggerimento su CO 3",
+    "en": "Hints on CO 3"
+  }
+  ],
+  "NO2":[{
+    "it": "Suggerimento su NO2 1",
+    "en": "Hints on NO2 1"
+  },{
+    "it": "Suggerimento su NO2 2",
+    "en": "Hints on NO2 2"
+  },{
+    "it": "Suggerimento su NO2 3",
+    "en": "Hints on NO2 3"
+  }
+  ],
+  "PM10":[{
+    "it": "Suggerimento su PM10 1",
+    "en": "Hints on PM10 1"
+  },{
+    "it": "Suggerimento su PM10 2",
+    "en": "Hints on PM10 2"
+  },{
+    "it": "Suggerimento su PM10 3",
+    "en": "Hints on PM10 3"
+  }
+  ],
+  "PM2.5":[{
+    "it": "Suggerimento su PM2.5 1",
+    "en": "Hints on PM2.5 1"
+  },{
+    "it": "Suggerimento su PM2.5 2",
+    "en": "Hints on PM2.5 2"
+  },{
+    "it": "Suggerimento su PM2.5 3",
+    "en": "Hints on PM2.5 3"
+  }
+  ],
+  "E":[{
+    "it": "Suggerimento su E 1",
+    "en": "Hints on E 1"
+  },{
+    "it": "Suggerimento su E 2",
+    "en": "Hints on E 2"
+  },{
+    "it": "Suggerimento su E 3",
+    "en": "Hints on E 3"
+  }
+  ],
+  "IEQ": [{
+    "it": "Suggerimento su IEQ 1",
+    "en": "Hints on IEQ 1"
+  },{
+    "it": "Suggerimento su IEQ 2",
+    "en": "Hints on IEQ 2"
+  },{
+    "it": "Suggerimento su IEQ 3",
+    "en": "Hints on IEQ 3"
+  }
+  ],
+  "Temp":[{
+    "it": "Suggerimento su Temp 1",
+    "en": "Hints on Temp 1"
+  },{
+    "it": "Suggerimento su Temp 2",
+    "en": "Hints on Temp 2"
+  },{
+    "it": "Suggerimento su Temp 3",
+    "en": "Hints on Temp 3"
+  }
+  ],
+  "Air": [{
+    "it": "Suggerimento su Air 1",
+    "en": "Hints on Air 1"
+  },{
+    "it": "Suggerimento su Air 2",
+    "en": "Hints on Air 2"
+  },{
+    "it": "Suggerimento su Air 3",
+    "en": "Hints on Air 3"
+  }
+  ],
+  "Light":[{
+    "it": "Suggerimento su Light 1",
+    "en": "Hints on Light 1"
+  },{
+    "it": "Suggerimento su Light 2",
+    "en": "Hints on Light 2"
+  },{
+    "it": "Suggerimento su Light 3",
+    "en": "Hints on Light 3"
+  }
+  ],
+  "Sound":[{
+    "it": "Suggerimento su Sound 1",
+    "en": "Hints on Sound 1"
+  },{
+    "it": "Suggerimento su Sound 2",
+    "en": "Hints on Sound 2"
+  },{
+    "it": "Suggerimento su Sound 3",
+    "en": "Hints on Sound 3"
+  }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "RH": {
+    "it": "Più info su RH",
+    "en": "More info about RH"
+  },
+  "T":{
+    "it": "Più info su T",
+    "en": "More info about T"
+  },
+  "SPL":{
+    "it": "Più info su SPL",
+    "en": "More info about SPL"
+  },
+  "VOC": {
+    "it": "Più info su VOC",
+    "en": "More info about VOC"
+  },
+  "CH2O":{
+    "it": "Più info su CH2O",
+    "en": "More info about CH2O"
+  },
+  "CO2":{
+    "it": "Più info su CO2",
+    "en": "More info about CO2"
+  },
+  "CO":{
+    "it": "Più info su CO",
+    "en": "More info about CO"
+  },
+  "NO2":{
+    "it": "Più info su NO2",
+    "en": "More info about NO2"
+  },
+  "PM10":{
+    "it": "Più info su PM10",
+    "en": "More info about PM10"
+  },
+  "PM2.5":{
+    "it": "Più info su PM2.5",
+    "en": "More info about PM2.5"
+  },
+  "E":{
+    "it": "Più info su E",
+    "en": "More info about E"
+  },
+  "IEQ": {
+    "it": "Più info su IEQ",
+    "en": "More info about IEQ"
+  },
+  "Temp":{
+    "it": "Più info su Temp",
+    "en": "More info about Temp"
+  },
+  "Air": {
+    "it": "Più info su Air",
+    "en": "More info about Air"
+  },
+  "Light": {
+    "it": "Più info su Light",
+    "en": "More info about Light"
+  },
+  "Sound": {
+    "it": "Più info su Sound",
+    "en": "More info about Sound"
+  }
+}

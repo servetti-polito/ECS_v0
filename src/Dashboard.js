@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './CSS/dashboard.css'
 import {useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
+import Modal from 'react-bootstrap/Modal';
 import template from "./resources/GrafanaReqTemplate.json";
 import air from "./resources/images/air.png";
 import temp from "./resources/images/temp.png";
@@ -12,7 +13,9 @@ import dashLogo from "./resources/images/logo.png";
 import explain from "./resources/descriptions.json";
 import titles from "./resources/titles.json";
 import measures from "./resources/measures.json";
-import refValues from "./resources/referenceValues.json"
+import refValues from "./resources/referenceValues.json";
+import hints from "./resources/hints.json";
+import more from "./resources/more.json";
 
 export default function Dashboard(props) {
 
@@ -200,9 +203,14 @@ export default function Dashboard(props) {
                                         :
                                         <DashIframes timeWindow={timeWindow} topic={topic} setTopic={setTopic} RTValues={RTValues}/>
                                     }
-                            </div>
+                        </div>
+                        <div>
+                            {
+                                showGraph ? <Legenda/> : <HintsMore topic={topic} ita={props.ita}/>
+                            }
+                        </div>
                     </div>
-                    <div className="row" style={{position:"fixed", bottom:"20px", right:"2%",width:"20%"}}>
+                    <div className="row" style={{position:"fixed", bottom:"20px", right:"2%",width:"25%"}}>
                         <button hidden={!showGraph} className={compareGraph?"btn btn-primary btn-compliances":"btn btn-white-border btn-compliances"} type="button" onClick={toggleCompare}>{props.ita ? "Confronta i grafici" : "Compare the graphs"}</button>
                     </div>
                 </div>
@@ -210,7 +218,6 @@ export default function Dashboard(props) {
         );
 
     function Compliances () {
-        /*let [showCompliances, setShowCompliances] = useState(false)*/
         useEffect(()=>{
             const APIcall = setInterval(()=>{
                 template.from=(new Date()-5000).toString();
@@ -229,7 +236,7 @@ export default function Dashboard(props) {
                         }
                     }
                     else if (this.readyState === 4 && this.status !== 200)
-                    {}    //console.log("ERROR "+xhttp.statusText)
+                    {}
                 };
                 xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
                 xhttp.setRequestHeader("Content-Type","application/json")
@@ -238,10 +245,6 @@ export default function Dashboard(props) {
             },5000)
             return ()=>clearInterval(APIcall);
         },[])
-
-        /*const toggleCompliance = () => {
-            setShowCompliances(!showCompliances);
-        }*/
 
         return (
             <>
@@ -257,12 +260,7 @@ export default function Dashboard(props) {
                             }
                             </div>
                             <div className="row" id="compliances">
-                                {/*showCompliances&&timeWindow==="RT" ?
-                                    props.ita?
-                                        <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
-                                        <h4 id="compliance" style={{textAlign: "center"}}>Mean Value: ...<br/>Standard Deviation: ...<br/>10th Percentile: ...<br/>90th Percentile: ...</h4>
-                                    : timeWindow==="RT"?<h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4>:null*/
-                                    timeWindow==="RT" ?
+                                {timeWindow==="RT" ?
                                         <h4 id="compliance" style={{textAlign: "center"}}>{props.ita?"Valore in tempo reale: ":"Real-time value: "}{RTValues[topic==="init"?"IEQ":topic]}</h4> :
                                         props.ita?
                                             <h4 id="compliance" style={{textAlign: "center"}}>Media: ...<br/>Deviazione Standard: ...<br/>10° Percentile: ...<br/>90° Percentile: ...</h4> :
@@ -272,12 +270,7 @@ export default function Dashboard(props) {
                         </div>
                     </div>
                 }
-                {/*
-                    <div className="row" style={{position:"absolute", bottom:"20px", right:"20px",width:"20%"}}>
-                        <button disabled={showGraph} className="btn btn-white-border btn-compliances" type="button"
-                                onClick={toggleCompliance}>{props.ita ? showCompliances? "Nascondi normative" : "Mostra normative" : showCompliances ? "Hide compliance" : "Show compliance"}</button>
-                    </div>
-                */}</>
+                </>
         )
     }
 }
@@ -593,6 +586,65 @@ function DashIframes(props) {
                     </div>
                 </div>
             </div>
+        </div>
+    )
+}
+function Legenda (props) {
+    return(
+        <div>
+            Legenda
+        </div>
+    )
+}
+function HintsMore(props){
+    let topic=props.topic==="init"?"IEQ":props.topic
+    const [hint, setHint] = useState("")
+    //HINTS///////////////////////////////////////////////////////
+    const [showHints, setShowHints] = useState(false);
+    const handleCloseHints = () => setShowHints(false);
+    const handleShowHints = () => {
+        let random = Math.floor(Math.random() * (hints[topic].length))
+        setHint(hints[topic][random][props.ita?"it":"en"]);
+        setShowHints(true);
+    }
+    //MORE////////////////////////////////////////////////////////
+    const [showMore, setShowMore] = useState(false);
+    const handleCloseMore = () => setShowMore(false);
+    const handleShowMore = () => setShowMore(true);
+    return (
+        <div className="row" id="hintsmore">
+            <div className="col-6 text-end">
+                <button className={showHints?"btn btn-primary btn-hintsmore":"btn btn-white-border btn-hintsmore"} onClick={handleShowHints}>Hints</button>
+            </div>
+            <div className="col-6">
+                <button className={showMore?"btn btn-primary btn-hintsmore":"btn btn-white-border btn-hintsmore"} onClick={handleShowMore}>More</button>
+            </div>
+            <Modal id="HintsModal" show={showHints} onHide={handleCloseHints}>
+                <Modal.Body style={{position:"relative", overflowY:"hidden"}}>
+                    <Modal.Title style={{color:"#ff9724", textAlign:"center"}}>Hints</Modal.Title>
+                    <div style={{overflowY:"scroll", height:"30vh"}}>
+                        {hint}
+                    </div>
+                    <Modal.Footer>
+                        <div className="text-center" style={{width:"100%"}}>
+                        <button className="btn btn-modalclose" onClick={handleCloseHints}>Back</button>
+                        </div>
+                    </Modal.Footer>
+                </Modal.Body>
+            </Modal>
+            <Modal id="MoreModal" show={showMore} onHide={handleCloseMore}>
+                <Modal.Body style={{position:"relative", overflowY:"hidden"}}>
+                    <Modal.Title style={{color:"#ff9724", textAlign:"center"}}>More</Modal.Title>
+                    <div style={{overflowY:"scroll", height:"30vh"}}>
+                        {more[topic][props.ita?"it":"en"]}
+                    </div>
+                    <Modal.Footer>
+                        <div className="text-center" style={{width:"100%"}}>
+                            <button className="btn btn-modalclose" onClick={handleCloseMore}>Back</button>
+                        </div>
+                    </Modal.Footer>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }
