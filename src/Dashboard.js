@@ -16,6 +16,7 @@ import measures from "./resources/measures.json";
 import refValues from "./resources/referenceValues.json";
 import hints from "./resources/hints.json";
 import more from "./resources/more.json";
+import laws from "./resources/laws.json";
 
 export default function Dashboard(props) {
 
@@ -255,8 +256,10 @@ export default function Dashboard(props) {
                             <div className="row">
                             {
                                 topic!=="init"&&topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?
-                                    <h4 id="compliance" style={{textAlign: "center", textDecoration:"underline"}}>{props.ita?"Valori di riferimento: ":"Reference values: "}{refValues[topic==="init"?"IEQ":topic]}</h4>
-                                    : null
+                                    <div className="text-center">
+                                    <h4 id="compliance" style={{textAlign: "center", textDecoration:"underline", margin:0}}>{props.ita?"Valori di riferimento: ":"Reference values: "}{refValues[topic==="init"?"IEQ":topic]}</h4>
+                                    <p style={{marginBottom:20}}>({laws[topic]})</p>
+                                    </div>: null
                             }
                             </div>
                             <div className="row" id="compliances">

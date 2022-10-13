@@ -1,0 +1,18 @@
+{
+  "RH": "norma RH",
+  "T":"norma T",
+  "SPL":"norma SPL",
+  "VOC": "norma VOC",
+  "CH2O":"norma CH2O",
+  "CO2":"norma CO2",
+  "CO":"norma CO",
+  "NO2":"norma NO2",
+  "PM10":"norma PM10",
+  "PM2.5":"norma PM2.5",
+  "E":"norma E",
+  "IEQ": "",
+  "Temp":"",
+  "Air": "",
+  "Light": "",
+  "Sound": ""
+}
