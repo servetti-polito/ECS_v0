@@ -93,6 +93,9 @@ iframe{
 }
 
 @media (max-height: 900px){
+    #legenda{
+        padding-top: 50px;
+    }
     .btn-topic{
         font-size: 110% !important;
     }
