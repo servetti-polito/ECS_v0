@@ -82,22 +82,27 @@ export default function Thanks(props){
                     <h1 id="thanksTitle">{props.ita ? "Grazie per aver completato il sondaggio": "Thank you for completing the survey"} </h1></div>
             </div>
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
-                {error=== null ?
-                   <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
-                       <div className="container" style={{height:"100%"}}>
-                           <div className="row h-50">
-                               <div className="col-6">{iframes["Temp"]}</div>
-                               <div className="col-6">{iframes["Light"]}</div>
-                           </div>
-                           <div className="row h-50">
-                               <div className="col-6">{iframes["Sound"]}</div>
-                               <div className="col-6">{iframes["Air"]}</div>
-                           </div>
-                       </div>
-                   </div> : <div style={{padding:10, height: props.logged ? "85%" : "100%"}}><Alert variant="danger"><h3>{error}</h3></Alert></div>
+                {
+                    error===null?
+                        <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
+                            {
+                                props.NO_DASH ? null :
+                                <div className="container" style={{height:"100%"}}>
+                                    <div className="row h-50">
+                                        <div className="col-6">{iframes["Temp"]}</div>
+                                        <div className="col-6">{iframes["Light"]}</div>
+                                    </div>
+                                    <div className="row h-50">
+                                        <div className="col-6">{iframes["Sound"]}</div>
+                                        <div className="col-6">{iframes["Air"]}</div>
+                                    </div>
+                                </div>
+                            }
+                        </div> :
+                        <div style={{padding:10, height: props.logged ? "85%" : "100%"}}><Alert variant="danger"><h3>{error}</h3></Alert></div>
                 }
                 {
-                    props.logged ?
+                    props.logged&& !props.NO_DASH ?
                         <div style={{borderTop:"2px solid #ff9724", borderBottom:"2px solid #ff9724", fontSize:"150%"}}>
                             {props.ita ? "Visita " : "Visit "}
                             <a href="https://dev.prometeo.click/chart" target="_blank" rel="noopener noreferrer">{props.ita ? "questo link" : "this link"}</a>
@@ -120,67 +125,69 @@ export default function Thanks(props){
 }
 
 function evaluateComfort(answers){
-    //console.log(JSON.stringify(answers["Q2"]))
-    if(answers["Q2"].includes("THERMAL  COMFORT"))
+    if(answers["Q1"]==="4"||answers["Q2"]==="3")
     {
-        let q3,q4, TC;
-        switch(answers["Q3"])
+        if(answers["Q2"].includes("THERMAL  COMFORT"))
         {
-            case "3": q3=25; break;
-            case "2": q3=50; break;
-            case "1": q3=75; break;
-            case "0": q3=100; break;
-            case "-1": q3=75; break;
-            case "-2": q3=50; break;
-            case "-3": q3=25; break;
+            let q3,q4, TC;
+            switch(answers["Q3"])
+            {
+                case "3": q3=25; break;
+                case "2": q3=50; break;
+                case "1": q3=75; break;
+                case "0": q3=100; break;
+                case "-1": q3=75; break;
+                case "-2": q3=50; break;
+                case "-3": q3=25; break;
+            }
+            switch(answers["Q4"])
+            {
+                case "4": q4=25; break;
+                case "3": q4=50; break;
+                case "2": q4=75; break;
+                case "1": q4=100; break;
+            }
+            TC=(q3+q4)/2
+            console.log("Thermal comfort: "+TC+"%");
         }
-        switch(answers["Q4"])
+        if(answers["Q2"].includes("ACOUSTIC  COMFORT"))
         {
-            case "4": q4=25; break;
-            case "3": q4=50; break;
-            case "2": q4=75; break;
-            case "1": q4=100; break;
+            let q5, AC;
+            switch(answers["Q5"])
+            {
+                case "4": q5=25; break;
+                case "3": q5=50; break;
+                case "2": q5=75; break;
+                case "1": q5=100; break;
+            }
+            AC=q5
+            console.log("Acoustic comfort: "+AC+"%");
         }
-        TC=(q3+q4)/2
-        console.log("Thermal comfort: "+TC+"%");
-    }
-    if(answers["Q2"].includes("ACOUSTIC  COMFORT"))
-    {
-        let q5, AC;
-        switch(answers["Q5"])
+        if(answers["Q2"].includes("VISUAL  COMFORT"))
         {
-            case "4": q5=25; break;
-            case "3": q5=50; break;
-            case "2": q5=75; break;
-            case "1": q5=100; break;
+            let q7, VC;
+            switch(answers["Q7"])
+            {
+                case "4": q7=25; break;
+                case "3": q7=50; break;
+                case "2": q7=75; break;
+                case "1": q7=100; break;
+            }
+            VC=q7
+            console.log("Visual comfort: "+VC+"%");
         }
-        AC=q5
-        console.log("Acoustic comfort: "+AC+"%");
-    }
-    if(answers["Q2"].includes("VISUAL  COMFORT"))
-    {
-        let q7, VC;
-        switch(answers["Q7"])
+        if(answers["Q2"].includes("INDOOR AIR QUALITY"))
         {
-            case "4": q7=25; break;
-            case "3": q7=50; break;
-            case "2": q7=75; break;
-            case "1": q7=100; break;
+            let q10, IAQ;
+            switch(answers["Q10"])
+            {
+                case "4": q10=25; break;
+                case "3": q10=50; break;
+                case "2": q10=75; break;
+                case "1": q10=100; break;
+            }
+            IAQ=q10
+            console.log("Indoor Air Quality: "+IAQ+"%");
         }
-        VC=q7
-        console.log("Visual comfort: "+VC+"%");
-    }
-    if(answers["Q2"].includes("INDOOR AIR QUALITY"))
-    {
-        let q10, IAQ;
-        switch(answers["Q10"])
-        {
-            case "4": q10=25; break;
-            case "3": q10=50; break;
-            case "2": q10=75; break;
-            case "1": q10=100; break;
-        }
-        IAQ=q10
-        console.log("Indoor Air Quality: "+IAQ+"%");
     }
 }

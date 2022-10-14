@@ -22,6 +22,9 @@ import "./CSS/App.css"
 Amplify.configure(config);
 
 function App() {
+
+    const NO_DASH=false;
+
     const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState(localStorage.getItem("logged"))
     const [userJwt, setUserJwt] = useState(localStorage.getItem("userJwt"))
@@ -104,10 +107,12 @@ function App() {
                 <Route exact path="/page401" element={<Page401/>}/>
                 <Route exact path='/' element={<Hello deviceJwt={deviceJwt} doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 <Route path='/login' element={<Login deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
-                <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita}/>}/>
-                <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
+                <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita} NO_DASH={NO_DASH}/>}/>
+                {
+                    NO_DASH ? null : <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
+                }
                 <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
-                <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers}/>} />
+                <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers} NO_DASH={NO_DASH}/>} />
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>

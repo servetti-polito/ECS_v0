@@ -94,9 +94,6 @@ B
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 R
 "src/resources/referenceValues.json,4\9\49eb2aac2ee06aba607839a4aa842abd06f7020e
 K
@@ -109,5 +106,9 @@ D
 src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
 src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
-I
-src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
+<
+src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
+H
+src/resources/hints.json,1\d\1dc6f0d5f8bc68b8d5045a7333c2337ad92efee8
+G
+src/resources/more.json,0\1\0103cc019f733b4b974b96f944014b96d2a25876

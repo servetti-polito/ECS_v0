@@ -13,27 +13,6 @@ export default function Profile(props){
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState([])
     const [page, setPage] = useState(0);
-    /*/modal
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    function PrivacyModal() {
-        return (
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Privacy</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <PrivacyNotice/>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button style={{fontSize:"110% !important"}} variant="secondary" onClick={handleClose}>
-                            I understand
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-        );
-    }*/
     //navigation
     let navigate = useNavigate();
     const routeDashbaord = ()=>navigate("/dashboard")
@@ -88,17 +67,27 @@ export default function Profile(props){
                 <div className="col-12" style={{marginTop:20, marginBottom:0, textAlign:"center", borderBottom:"2px solid #ff9724"}}>
                     <h1 className="title" id="profileTitle">{props.ita ? "Benvenuto ": "Welcome "}{props.logged}</h1></div>
             </div>
-            <div className="row" style={{marginTop:20, marginBottom:20, fontSize:"100% !important"}}>
-                <div className="col-1"/>
-                <div className="col-4">
-                    <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routeDashbaord}>Dashboard</Button>
+            {
+                props.NO_DASH ?
+                <div className="row" style={{marginTop:20, marginBottom:20, fontSize:"100% !important"}}>
+                    <div className="col-4"/>
+                    <div className="col-4">
+                        <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routePersonal}>{props.ita ? "Area Personale" : "Personal"}</Button>
+                    </div>
+                    <div className="col-4"/>
+                </div> :
+                <div className="row" style={{marginTop:20, marginBottom:20, fontSize:"100% !important"}}>
+                    <div className="col-1"/>
+                    <div className="col-4">
+                        <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routeDashbaord}>Dashboard</Button>
+                    </div>
+                    <div className="col-2"/>
+                    <div className="col-4">
+                        <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routePersonal}>{props.ita ? "Area Personale" : "Personal"}</Button>
+                    </div>
+                    <div className="col-2"/>
                 </div>
-                <div className="col-2"/>
-                <div className="col-4">
-                    <Button id="profileButton" style={{width:"100%"}} classname="btn btn-primary" onClick={routePersonal}>{props.ita ? "Area Personale" : "Personal"}</Button>
-                </div>
-                <div className="col-2"/>
-            </div>
+            }
             <div className="row h-75" style={{textAlign:"center", margin:10}}>
                 <div className="col-2"/>
                 <div className="col-8">
@@ -117,8 +106,6 @@ export default function Profile(props){
                     <Pagination.Next disabled={page >= MAXPAGES-1} onClick={()=>setPage(page+1)}/>
                 </Pagination> : null}
             </div>
-            {/*<p onClick={handleShow} style={{ "position": "fixed", "bottom": 25, "right": 25, textDecoration: "underline", fontSize:"130%"}}>Privacy</p>
-            <PrivacyModal/>*/}
             <p id="prometeoSmallLogo" style={{marginTop:"-30px"}}>PROMET&O</p>
         </div>
     );
