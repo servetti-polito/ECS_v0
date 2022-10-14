@@ -1,8 +1,8 @@
 {
   "authSelections": "userPoolOnly",
-  "resourceName": "ecsv044bf4765",
+  "resourceName": "ecsv0a7514dc6",
   "serviceType": "imported",
-  "region": "us-east-1",
+  "region": "eu-west-3",
   "authProvidersUserPool": [],
   "requiredAttributes": [],
   "passwordPolicyMinLength": 8,

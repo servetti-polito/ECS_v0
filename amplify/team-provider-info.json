@@ -1,41 +1,41 @@
 {
-  "dev": {
+  "sampledev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-ecsv0-dev-110955-authRole",
-      "UnauthRoleArn": "arn:aws:iam::572882000650:role/amplify-ecsv0-dev-110955-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::572882000650:role/amplify-ecsv0-dev-110955-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-      "UnauthRoleName": "amplify-ecsv0-dev-110955-unauthRole",
-      "StackName": "amplify-ecsv0-dev-110955",
-      "StackId": "arn:aws:cloudformation:us-east-1:572882000650:stack/amplify-ecsv0-dev-110955/ba991350-080b-11ed-b430-0a01e0cac573",
-      "AmplifyAppId": "dp7820s0pwus2"
+      "AuthRoleName": "amplify-ecsv0-sampledev-172938-authRole",
+      "UnauthRoleArn": "arn:aws:iam::572882000650:role/amplify-ecsv0-sampledev-172938-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::572882000650:role/amplify-ecsv0-sampledev-172938-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-ecsv0-sampledev-172938-deployment",
+      "UnauthRoleName": "amplify-ecsv0-sampledev-172938-unauthRole",
+      "StackName": "amplify-ecsv0-sampledev-172938",
+      "StackId": "arn:aws:cloudformation:eu-west-3:572882000650:stack/amplify-ecsv0-sampledev-172938/04211e70-4bd5-11ed-b119-06b53d796034",
+      "AmplifyAppId": "d2zunfxu096v6b"
     },
     "categories": {
       "auth": {
-        "ecsv044bf4765": {
-          "userPoolId": "us-east-1_EDjVEAFzD",
+        "ecsv0a7514dc6": {
+          "userPoolId": "eu-west-3_rMtCV6Oho",
           "userPoolName": "SurveyAdmin",
-          "webClientId": "2aosd0oa4hkfv01b84c6tfah3p",
-          "nativeClientId": "2aosd0oa4hkfv01b84c6tfah3p"
+          "webClientId": "40gqtif2ukr91bom358nvtv8v3",
+          "nativeClientId": "40gqtif2ukr91bom358nvtv8v3"
         }
       },
       "function": {
-        "userTokenLambda": {
-          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/userTokenLambda-4e6f3037475756733565-build.zip"
+        "jwtSign": {
+          "deploymentBucketName": "amplify-ecsv0-sampledev-172938-deployment",
+          "s3Key": "amplify-builds/jwtSign-465573313366566a3335-build.zip"
         },
-        "surveyLambda": {
-          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/surveyLambda-7666667669686f656b55-build.zip"
+        "userTokenLambda": {
+          "deploymentBucketName": "amplify-ecsv0-sampledev-172938-deployment",
+          "s3Key": "amplify-builds/userTokenLambda-6765482b336d7676624b-build.zip"
         },
         "personalLambda": {
-          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/personalLambda-684554794237685a5141-build.zip"
+          "deploymentBucketName": "amplify-ecsv0-sampledev-172938-deployment",
+          "s3Key": "amplify-builds/personalLambda-735958304d4f394a5842-build.zip"
         },
-        "jwtSign": {
-          "deploymentBucketName": "amplify-ecsv0-dev-110955-deployment",
-          "s3Key": "amplify-builds/jwtSign-59566e4279574e676856-build.zip"
+        "surveyLambda": {
+          "deploymentBucketName": "amplify-ecsv0-sampledev-172938-deployment",
+          "s3Key": "amplify-builds/surveyLambda-78664f574472524e6e67-build.zip"
         }
       }
     }
