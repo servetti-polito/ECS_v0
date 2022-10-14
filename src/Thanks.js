@@ -198,6 +198,7 @@ function evaluateComfort(answers){
             result["Air"]=IAQ;
         }
     }
+    result["IEQ"]=(result["Air"]+result["Light"]+result["Temp"]+result["Sound"])/4
     console.log(JSON.stringify(result))
     return result;
 }
