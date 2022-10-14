@@ -252,7 +252,7 @@ export default function Dashboard(props) {
                 {
                     compareGraph ? null :
                     <div style={{position:"fixed", bottom:"10%", width:"31%"}}>
-                        <div style={{background:"#fff", borderRadius:"20px", height:"30vh", padding:20}}>
+                        <div style={{borderTop:"5px solid white",/*background:"#fff", borderRadius:"20px", */height:"30vh", padding:20}}>
                             <div className="row">
                             {
                                 topic!=="init"&&topic!=="IEQ"&&topic!=="Air"&&topic!=="Temp"&&topic!=="Light"&&topic!=="Sound" ?

@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
 import "./CSS/Thanks.css"
 
+
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -125,6 +126,13 @@ export default function Thanks(props){
 }
 
 function evaluateComfort(answers){
+    let result = {
+        "Temp":100,
+        "Light":100,
+        "Sound":100,
+        "Air":100,
+        "IEQ":100
+    }
     if(answers["Q1"]==="4"||answers["Q2"]==="3")
     {
         if(answers["Q2"].includes("THERMAL  COMFORT"))
@@ -148,7 +156,7 @@ function evaluateComfort(answers){
                 case "1": q4=100; break;
             }
             TC=(q3+q4)/2
-            console.log("Thermal comfort: "+TC+"%");
+            result["Temp"]=TC;
         }
         if(answers["Q2"].includes("ACOUSTIC  COMFORT"))
         {
@@ -161,7 +169,7 @@ function evaluateComfort(answers){
                 case "1": q5=100; break;
             }
             AC=q5
-            console.log("Acoustic comfort: "+AC+"%");
+            result["Sound"]=AC;
         }
         if(answers["Q2"].includes("VISUAL  COMFORT"))
         {
@@ -174,7 +182,7 @@ function evaluateComfort(answers){
                 case "1": q7=100; break;
             }
             VC=q7
-            console.log("Visual comfort: "+VC+"%");
+            result["Light"]=VC;
         }
         if(answers["Q2"].includes("INDOOR AIR QUALITY"))
         {
@@ -187,7 +195,9 @@ function evaluateComfort(answers){
                 case "1": q10=100; break;
             }
             IAQ=q10
-            console.log("Indoor Air Quality: "+IAQ+"%");
+            result["Air"]=IAQ;
         }
     }
+    console.log(JSON.stringify(result))
+    return result;
 }

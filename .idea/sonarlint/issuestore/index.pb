@@ -75,8 +75,6 @@ G
 C
 src/CSS/Profile.css,9\8\982520eaf3db0eb04aeaa8caafb04a06771ac6a3
 <
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
-<
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 ?
 src/CSS/App.css,b\e\be19728d10d9e7fee8e50c4f3aa8c285ed12637b
