@@ -39,7 +39,7 @@ export default function Thanks(props){
                     props.setAnswers(null);
                     let object = props.ita ? "Grazie per la tua risposta su Promet&o" : "Thanks for taking the survey on Promet&o"
                     let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
-                        "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
+                        "\nVisita https://paris.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
                         "Hello, \n\nThank you for filling Promet&o's survey."+
                         "\nVisit https://paris.prometeo.click/ to get full objective and subjective comfort data"
                     let init = {
