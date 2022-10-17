@@ -66,7 +66,7 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = props.ita ? "Ciao, "+values.token+"\n\nVisita: https://dev.prometeo.click/" : "Hello, "+values.token+"\n\nVisit: https://dev.prometeo.click/"
+                                        let message = props.ita ? "Ciao, "+values.token+"\n\nVisita: https://paris.prometeo.click/" : "Hello, "+values.token+"\n\nVisit: https://dev.prometeo.click/"
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
@@ -78,7 +78,7 @@ function CreateAccount(props) {
                                             body: JSON.stringify({"email":values.email, "object": object, "message":message})
                                         }
                                         console.log("init",init)
-                                        fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                                        fetch("https://822240w7r0.execute-api.eu-west-3.amazonaws.com/sampledev/sendEmail",init).then(data=>{
                                             if(props.answers!==null) {
                                                 props.answers.user = values.email
                                                 let init = {

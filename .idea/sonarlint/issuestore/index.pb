@@ -12,8 +12,6 @@ G
 amplify/hooks/README.md,7\b\7bff652e4105a1a42f8cffda4dfdcbfe716e45aa
 A
 amplify/README.md,5\b\5b22b11d37562d0c69b2816865c2f2de26b89d7c
-b
-2amplify/backend/auth/ecsv044bf4765/parameters.json,4\6\46418323c6c0505b5e403033704662c6f64c05fb
 n
 >amplify/backend/function/userTokenLambda/src/package-lock.json,b\8\b8dfe6be0bdc8915321359609d6693ad461d59da
 `
@@ -85,10 +83,6 @@ G
 >
 src/Page401.js,8\1\81b94293c92948775cdff180dead86fdb132d20c
 ?
-src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
-B
-src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
-?
 src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
@@ -100,8 +94,6 @@ I
 src/resources/titles.json,5\e\5e75cad4a795ba4d3957730a9750a7b7254b69cb
 O
 src/resources/descriptions.json,0\8\08e7e3c6bb30902958b6a75a7e57a86f0086398c
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 <
 src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 <

@@ -41,7 +41,7 @@ export default function Thanks(props){
                     let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al sondaggio." +
                         "\nVisita https://dev.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
                         "Hello, \n\nThank you for filling Promet&o's survey."+
-                        "\nVisit https://dev.prometeo.click/ to get full objective and subjective comfort data"
+                        "\nVisit https://paris.prometeo.click/ to get full objective and subjective comfort data"
                     let init = {
                         mode:"no-cors",
                         method:"POST",
@@ -53,7 +53,7 @@ export default function Thanks(props){
                         body: JSON.stringify({"email":props.answers.user, "object": object, "message":message})
                     }
                     console.log("INIT: "+JSON.stringify(init))
-                    fetch("https://jsfivsynr8.execute-api.us-east-1.amazonaws.com/sendEmail",init).then(data=>{
+                    fetch("https://822240w7r0.execute-api.eu-west-3.amazonaws.com/sampledev/sendEmail",init).then(data=>{
                         setLoading(false);
                     }).catch(err=>{setLoading(false); setError("MAIL FAILED"+err)})
                 }
