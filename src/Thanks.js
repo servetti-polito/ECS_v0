@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
 import "./CSS/Thanks.css"
 
-
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -28,7 +27,10 @@ export default function Thanks(props){
         setLoading(true)
         if(props.logged && error===null && props.answers!==null)
         {
-            evaluateComfort(props.answers)
+            //MQTT/////////////////////////////////////////////////////////
+            let message = evaluateComfort(props.answers)
+            props.client.publish("theDoctor1002",JSON.stringify(message))
+            //////////////////////////////////////////////////////////////*/
             let init = {
                 body: props.answers,
                 headers: {Authorization : props.deviceJwt}

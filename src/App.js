@@ -19,6 +19,15 @@ import jwtGenerator from "./jwtGenerator";
 import Profile from "./Profile";
 import "./CSS/App.css"
 
+//MQTT///////////////////////////////////////////
+import mqtt from "mqtt/dist/mqtt";
+//let client = mqtt.connect("wss://test.mosquitto.org:8081")
+let client = mqtt.connect("wss://test.mosquitto.org:9001")
+client.on("connect",function(){
+    console.log("I'm connected!")
+})
+/////////////////////////////////////////////////
+
 Amplify.configure(config);
 
 function App() {
@@ -112,7 +121,7 @@ function App() {
                     NO_DASH ? null : <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
                 }
                 <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
-                <Route path='/thanks' element={<Thanks deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers} NO_DASH={NO_DASH}/>} />
+                <Route path='/thanks' element={<Thanks client={client} deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers} NO_DASH={NO_DASH}/>} />
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
