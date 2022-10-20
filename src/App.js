@@ -21,8 +21,8 @@ import "./CSS/App.css"
 
 //MQTT///////////////////////////////////////////
 import mqtt from "mqtt/dist/mqtt";
-//let client = mqtt.connect("wss://test.mosquitto.org:8081")
-let client = mqtt.connect("wss://test.mosquitto.org:9001")
+let client = mqtt.connect("wss://test.mosquitto.org:8081")
+//let client = mqtt.connect("wss://test.mosquitto.org:9001")
 client.on("connect",function(){
     console.log("I'm connected!")
 })

@@ -53,13 +53,20 @@ export default function Hello(props){
                     <h1 id="prometeoTitle" className="display-1 text-center" style={{"color":"#ff9724", "font-family":'Ink Free', marginTop:20, marginBottom:20}}>PROMET&O</h1>
                 </div>
                 <div className="col-12" style={{padding: 40}}>
-                    <h1 className="display-3 text-center" style={{"color":"white"}}>{props.ita ? "Ciao!" : "Hello!"}</h1>
+                    <h1 className="display-3 text-center" style={{"color":"white"}}>
+                        {/*props.ita ? "Ciao!" : "Hello!"*/
+                            props.ita ? "Benvenuto al sondaggio sul" : "Welcome to the questionnaire of"
+                        }<br/>{props.ita ? "comfort ambientale!":"Indoor Environmental Quality!"}
+                    </h1>
                 </div>
                 {   props.deviceJwt === null ? null : <>
                     <div className="row gap-2">
                     <div className="col-lg-2 col-1"/>
                     <div className="d-grid col-lg-8 col-10">
-                        <button  style={{"font-size": "175%", "color":"#ff9724"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>
+                        {
+                            /*<button  style={{"font-size": "175%", "color":"#ff9724"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire on Indoor Environmental Quality"}</button>*/
+                            <button  style={{"font-size": "175%", "color":"#ff9724"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire"}</button>
+                        }
                         <p className="text-center" style={{margin:0, color:"#fff"}}>{props.ita?"Tempo di completamento stimato: 5 min":"Estimated completion time: 5 min"}</p>
                     </div>
                     <div className="col-lg-2 col-1"/>

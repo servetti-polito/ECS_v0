@@ -58,7 +58,7 @@
               "value": "THERMAL  COMFORT",
               "text": {
                 "it": "TERMICO",
-                "default": "THERMAL  COMFORT"
+                "default": "THERMAL"
               },
               "imageLink": "https://dev.prometeo.click/temp.png"
             },
@@ -66,7 +66,7 @@
               "value": "ACOUSTIC  COMFORT",
               "text": {
                 "it": "ACUSTICO",
-                "default": "ACOUSTIC  COMFORT"
+                "default": "ACOUSTIC"
               },
               "imageLink": "https://dev.prometeo.click/sound.png"
             },
@@ -74,7 +74,7 @@
               "value": "VISUAL  COMFORT",
               "text": {
                 "it": "VISIVO",
-                "default": "VISUAL  COMFORT"
+                "default": "VISUAL"
               },
               "imageLink": "https://dev.prometeo.click/light.png"
             },

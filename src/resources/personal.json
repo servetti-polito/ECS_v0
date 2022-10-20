@@ -509,7 +509,7 @@
           "type": "radiogroup",
           "name": "Q11",
           "title": {
-            "default": "Do you conduct a healty lifestyle?",
+            "default": "Do you conduct a healthy lifestyle?",
             "it": "Conduci uno stile di vita sano?"
           },
           "titleLocation": "left",
@@ -589,7 +589,7 @@
           "name": "Q13",
           "indent": 2,
           "title": {
-            "default": "windows opening  and closing",
+            "default": "windows opening and closing",
             "it": "Apertura e chiusure delle finestre"
           },
           "titleLocation": "left",

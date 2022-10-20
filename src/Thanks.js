@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
 import "./CSS/Thanks.css"
 
+//const TOPIC=<sensorID>/questionnaire
+
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ export default function Thanks(props){
         if(props.logged && error===null && props.answers!==null)
         {
             //MQTT/////////////////////////////////////////////////////////
-            let message = evaluateComfort(props.answers)
+            let message = evaluateComfort(props.answers) //TODO add timestamp, QoS 1 o 0,
             props.client.publish("theDoctor1002",JSON.stringify(message))
             //////////////////////////////////////////////////////////////*/
             let init = {
@@ -119,7 +121,7 @@ export default function Thanks(props){
 
             {
                 <button style={{position: "absolute", right: 20, bottom: 20}} className="btn btn-lg btn-primary" type="button" onClick={routeHome} disabled={loading}>
-                    {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back home"}
+                    {loading? <Spinner animation="border" hidden={!loading}/> : props.ita ? "Torna alla home" : "Go back to home"}
                 </button>
             }
             <p id="prometeoSmallLogo" style={{marginTop:"40px"}}>PROMET&O</p>
@@ -129,10 +131,10 @@ export default function Thanks(props){
 
 function evaluateComfort(answers){
     let result = {
-        "Temp":100,
-        "Light":100,
-        "Sound":100,
-        "Air":100,
+        "temp":100,
+        "light":100,
+        "sound":100,
+        "air":100,
         "IEQ":100
     }
     if(answers["Q1"]==="4"||answers["Q2"]==="3")
@@ -158,7 +160,7 @@ function evaluateComfort(answers){
                 case "1": q4=100; break;
             }
             TC=(q3+q4)/2
-            result["Temp"]=TC;
+            result["temp"]=TC;
         }
         if(answers["Q2"].includes("ACOUSTIC  COMFORT"))
         {
@@ -171,7 +173,7 @@ function evaluateComfort(answers){
                 case "1": q5=100; break;
             }
             AC=q5
-            result["Sound"]=AC;
+            result["sound"]=AC;
         }
         if(answers["Q2"].includes("VISUAL  COMFORT"))
         {
@@ -184,7 +186,7 @@ function evaluateComfort(answers){
                 case "1": q7=100; break;
             }
             VC=q7
-            result["Light"]=VC;
+            result["light"]=VC;
         }
         if(answers["Q2"].includes("INDOOR AIR QUALITY"))
         {
@@ -197,10 +199,10 @@ function evaluateComfort(answers){
                 case "1": q10=100; break;
             }
             IAQ=q10
-            result["Air"]=IAQ;
+            result["air"]=IAQ;
         }
     }
-    result["IEQ"]=(result["Air"]+result["Light"]+result["Temp"]+result["Sound"])/4
+    result["IEQ"]=(result["air"]+result["light"]+result["temp"]+result["sound"])/4
     console.log(JSON.stringify(result))
     return result;
 }

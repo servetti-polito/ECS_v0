@@ -19,7 +19,7 @@ export default function ThanksEmail(props){
                 <div className="row">
                     <div className="col-lg-3 col-1"/>
                     <div className="d-grid col-lg-6 col-10">
-                        <button className="btn btn-lg btn-primary" type="button" onClick={routeHome}>{props.ita ? "Torna alla home" : "Go back home"}</button>
+                        <button className="btn btn-lg btn-primary" type="button" onClick={routeHome}>{props.ita ? "Torna alla home" : "Go back to home"}</button>
                     </div>
                     <div className="col-lg-3 col-1"/>
                 </div>
