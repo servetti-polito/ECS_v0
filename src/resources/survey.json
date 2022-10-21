@@ -894,7 +894,7 @@
   "showPrevButton": false,
   "showTitle": false,
   "showCompletedPage": false,
-  "goNextPageAutomatic": true,
+  "goNextPageAutomatic": false,
   "startSurveyText": {
     "default": "Start",
     "it": "Inizia"
