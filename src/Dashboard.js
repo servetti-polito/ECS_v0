@@ -396,7 +396,7 @@ function DashIframes(props) {
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}/>
-                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.2 }}
+                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="T"?1:0.5 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
                             {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null
                                 : <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>T<sub>a</sub></p>{props.RTValues["T"]}</div>
@@ -406,7 +406,7 @@ function DashIframes(props) {
                         </div>
                     </div>
                     <div className="col-6">
-                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="RH"?1:0.2 }}
+                        <div className="holder" style={{borderColor: "#c2a29f", opacity : props.topic==="IEQ"||props.topic==="RH"?1:0.5 }}
                              hidden = {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T"}>
                             {props.topic!=="IEQ"&&props.topic!=="Temp"&&props.topic!=="RH"&&props.topic!=="T" ? null :
                                 <div style={{fontSize:"100%", textAlign:"center", position:"absolute", top:"-2px"}}><p style={{margin:"0px", fontSize:"125%", fontWeight:"bold"}}>RH</p>{props.RTValues["RH"]}</div>
@@ -416,7 +416,7 @@ function DashIframes(props) {
                         </div>
                         <div className="hidden" style={{height:"120px", borderColor:"#fff"}} hidden={props.topic==="IEQ"||props.topic==="Temp"||props.topic==="T"||props.topic==="RH"}/>
                         <div className="row" style={{height: "50%"}}>
-                            <div className="holderGauge" id="gaugeTemp" style={{opacity : props.topic==="IEQ"||props.topic==="Temp"||props.topic==="init"?1:0.2}}>
+                            <div className="holderGauge" id="gaugeTemp" style={{opacity : props.topic==="IEQ"||props.topic==="Temp"||props.topic==="init"?1:0.5}}>
                                 {gauges["Temp"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Temp")}>
@@ -430,7 +430,7 @@ function DashIframes(props) {
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}/>
-                        <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : props.topic==="IEQ"||props.topic==="SPL"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(132,151,131)", opacity : props.topic==="IEQ"||props.topic==="SPL"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Sound"&&props.topic!=="SPL"? null:
@@ -442,7 +442,7 @@ function DashIframes(props) {
                     </div>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}>
-                            <div className="holderGauge" id="gaugeSound" style={{opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Sound"?1:0.2}} >
+                            <div className="holderGauge" id="gaugeSound" style={{opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Sound"?1:0.5}} >
                                 {gauges["Sound"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Sound")}>
@@ -450,7 +450,7 @@ function DashIframes(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="VOC"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="VOC"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -465,7 +465,7 @@ function DashIframes(props) {
             </div>
             <div className="col-4">
                 <div className="row" style={{height: "33%"}}>
-                    <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.2}}>
+                    <div className="holderGauge"  style={{zIndex:0, opacity : props.topic==="init"||props.topic==="IEQ"?1:0.5}}>
                         {gauges["IEQ"][props.timeWindow]}
                         <div className="overlay" style={{position: "absolute"}}
                              onClick={() => props.setTopic("IEQ")}>
@@ -479,7 +479,7 @@ function DashIframes(props) {
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}/>
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CH2O"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CH2O"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -492,7 +492,7 @@ function DashIframes(props) {
                     </div>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}/>
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO2"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO2"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -508,7 +508,7 @@ function DashIframes(props) {
             <div className="col-4">
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
-                        <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : props.topic==="IEQ"||props.topic==="E"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(236, 203, 123)", opacity : props.topic==="IEQ"||props.topic==="E"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Light"&&props.topic!=="E"?
@@ -520,7 +520,7 @@ function DashIframes(props) {
                         </div>
                         <div className="hidden" style={{height:"120px", borderColor:"#fff"}} hidden={props.topic==="IEQ"||props.topic==="Light"||props.topic==="E"}/>
                         <div className="row" style={{height: "50%"}}>
-                            <div id="gaugeLight" className="holderGauge" style={{opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Light"?1:0.2}}>
+                            <div id="gaugeLight" className="holderGauge" style={{opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Light"?1:0.5}}>
                                 {gauges["Light"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Light")}>
@@ -534,7 +534,7 @@ function DashIframes(props) {
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6"/>
                     <div className="col-6">
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM2.5"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM2.5"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -545,7 +545,7 @@ function DashIframes(props) {
                                  onClick={() => props.setTopic("PM2.5")}/>
                         </div>
                         <div className="row" style={{height:"40px"}}/>
-                        <div id="PM10" className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM10"?1:0.2}}
+                        <div id="PM10" className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="PM10"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -560,7 +560,7 @@ function DashIframes(props) {
                 <div className="row" style={{height: "33%"}}>
                     <div className="col-6">
                         <div className="row" style={{height: "50%"}}>
-                            <div className="holderGauge" id="gaugeAir" style={{zIndex:1, opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Air"?1:0.2}}>
+                            <div className="holderGauge" id="gaugeAir" style={{zIndex:1, opacity : props.topic==="init"||props.topic==="IEQ"||props.topic==="Air"?1:0.5}}>
                                 {gauges["Air"][props.timeWindow]}
                                 <div className="overlay" style={{position: "absolute"}}
                                      onClick={() => props.setTopic("Air")}>
@@ -568,7 +568,7 @@ function DashIframes(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="CO"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
@@ -581,7 +581,7 @@ function DashIframes(props) {
                     </div>
                     <div className="col-6">
                         <div className="row" style={{height:"50%"}}/>
-                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="NO2"?1:0.2}}
+                        <div className="holder" style={{borderColor: "rgb(196, 211, 224)", opacity : props.topic==="IEQ"||props.topic==="NO2"?1:0.5}}
                              hidden={props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"}>
                             {
                                 props.topic!=="IEQ"&&props.topic!=="Air"&&props.topic!=="VOC"&&props.topic!=="CH2O"&&props.topic!=="CO2"&&props.topic!=="CO"&&props.topic!=="NO2"&&props.topic!=="PM2.5"&&props.topic!=="PM10"?
