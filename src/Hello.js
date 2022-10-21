@@ -55,8 +55,8 @@ export default function Hello(props){
                 <div className="col-12" style={{padding: 40}}>
                     <h1 className="display-3 text-center" style={{"color":"white"}}>
                         {/*props.ita ? "Ciao!" : "Hello!"*/
-                            props.ita ? "Benvenuto al sondaggio sul" : "Welcome to the questionnaire of"
-                        }<br/>{props.ita ? "comfort ambientale!":"Indoor Environmental Quality!"}
+                            props.ita ? "Benvenuto al sondaggio sulla" : "Welcome to the questionnaire of"
+                        }<br/>{props.ita ? "qualità dell'ambiente interno!":"Indoor Environmental Quality!"}
                     </h1>
                 </div>
                 {   props.deviceJwt === null ? null : <>

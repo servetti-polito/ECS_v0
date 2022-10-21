@@ -528,7 +528,7 @@
           "type": "radiogroup",
           "name": "Q12",
           "title": {
-            "default": "Does an unsatisfacotry Indoor Environmental Quality significantly reduce your work productivity?",
+            "default": "Does an unsatisfactory Indoor Environmental Quality significantly reduce your work productivity?",
             "it": "La qualità ambientale interna non soddisfacente riduce significativamente la tua produttività? "
           },
           "titleLocation": "left",
@@ -547,7 +547,7 @@
           "type": "radiogroup",
           "name": "question2",
           "title": {
-            "default": "Does an unsatisfacotry Indoor Environmental Quality significantly reduce your well-being?",
+            "default": "Does an unsatisfactory Indoor Environmental Quality significantly reduce your well-being?",
             "it": "La qualità ambientale interna non soddisfacente riduce significativamente il tuo benessere? "
           },
           "titleLocation": "left",

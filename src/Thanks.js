@@ -93,7 +93,7 @@ export default function Thanks(props){
                             {
                                 props.NO_DASH ? null :
                                 <div className="container" style={{height:"90%"}}>
-                                    <h5>Below are the graphs related to the real time comfort assessment</h5>
+                                    <h5>{props.ita? "" : "Below are the graphs related to the real time comfort assessment"}</h5>
                                     <div className="row h-50">
                                         <div className="col-6">{iframes["Temp"]}</div>
                                         <div className="col-6">{iframes["Light"]}</div>
