@@ -151,6 +151,16 @@
     margin-right: 0;
 }
 
+#surveyjs .sv-imagepicker__item--allowhover:hover .sv-imagepicker__image{
+    background:transparent !important;
+    border-color: transparent !important;
+}
+#surveyjs .sv-checkbox--allowhover:hover .sv-checkbox__svg {
+    border: 3px solid rgba(64,64,64,.5) !important;
+    background-color: transparent !important;
+    fill: #fff;
+}
+
 #surveyjs .sv-row:not(:last-child) {
     padding-bottom: 0;
 }
