@@ -108,8 +108,6 @@ B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
-=
-src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714

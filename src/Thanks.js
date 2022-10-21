@@ -92,7 +92,8 @@ export default function Thanks(props){
                         <div style={{padding:10, height: props.logged ? "85%" : "100%"}}>
                             {
                                 props.NO_DASH ? null :
-                                <div className="container" style={{height:"100%"}}>
+                                <div className="container" style={{height:"90%"}}>
+                                    <h5>Below are the graphs related to the real time comfort assessment</h5>
                                     <div className="row h-50">
                                         <div className="col-6">{iframes["Temp"]}</div>
                                         <div className="col-6">{iframes["Light"]}</div>
