@@ -102,9 +102,6 @@ B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 D
 src/CSS/SurveyJS.css,a\4\a4b27095a2a5f52cda4ce6b22c4e40953d684f87
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 A

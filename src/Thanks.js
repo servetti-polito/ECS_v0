@@ -6,8 +6,6 @@ import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
 import "./CSS/Thanks.css"
 
-//const TOPIC=<sensorID>/questionnaire
-
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -25,13 +23,14 @@ export default function Thanks(props){
             routeHome()
         }
         ///////////////////////////////////////////////////////
-        console.log("previouspersonal",localStorage.getItem("previousPersonal"))
         setLoading(true)
         if(props.logged && error===null && props.answers!==null)
         {
             //MQTT/////////////////////////////////////////////////////////
-            let message = evaluateComfort(props.answers) //TODO add timestamp, QoS 1 o 0,
-            props.client.publish("theDoctor1002",JSON.stringify(message))
+            let message = evaluateComfort(props.answers)
+            let QoS = {qos: 1};
+            let topic = localStorage.getItem("multi")+"/questionnaire"
+            props.client.publish(topic,JSON.stringify(message),QoS)
             //////////////////////////////////////////////////////////////*/
             let init = {
                 body: props.answers,
@@ -39,7 +38,7 @@ export default function Thanks(props){
             }
             API.post("userTokenAPI", "/survey", init).then(data=>{
                 API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : props.deviceJwt}}).then(data=>{
-                    console.log(JSON.stringify(data)+" "+data.length)
+                    //console.log(JSON.stringify(data)+" "+data.length)
                     if(localStorage.getItem("previousPersonal")===null)
                     {
                         props.setAnswers(null);
@@ -147,7 +146,8 @@ function evaluateComfort(answers){
         "light":100,
         "sound":100,
         "air":100,
-        "IEQ":100
+        "IEQ":100,
+        "timestamp":0
     }
     if(answers["Q1"]==="4"||answers["Q2"]==="3")
     {
@@ -215,6 +215,7 @@ function evaluateComfort(answers){
         }
     }
     result["IEQ"]=(result["air"]+result["light"]+result["temp"]+result["sound"])/4
+    result["timestamp"]=answers["timestamp"]
     console.log(JSON.stringify(result))
     return result;
 }
