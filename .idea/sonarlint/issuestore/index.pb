@@ -115,3 +115,7 @@ I
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+=
+src/Thanks.js,e\a\ea92f1ca75885dd234fa542c1e26dbb3b7cb5066
+<
+src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
