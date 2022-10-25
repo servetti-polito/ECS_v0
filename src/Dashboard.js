@@ -325,21 +325,21 @@ function CompareGraphs(props) {
     <div className="row" style={{height:"100%"}}>
         <div className="row" style={{height:"50%", marginLeft:5}}>
             <div className="col-6" style={{borderRight:"1px solid #bbbbbb", borderBottom:"1px solid #bbbbbb"}}>
-                <div className="row"><p style={{margin:0}}>{time.length>=1 ? time[0]:null}</p></div>
+                <div className="row"><p style={{margin:0, textAlign:"right"}}>{time.length>=1 ? time[0]:null}</p></div>
                 <div className="row" style={{height:"85%"}}>{graphs.length>=1 ? graphs[0] : null}</div>
             </div>
             <div className="col-6"  style={{borderLeft:"1px solid #bbbbbb", borderBottom:"1px solid #bbbbbb"}}>
-                <div className="row"><p style={{margin:0}}>{time.length>=2 ? time[1]:null}</p></div>
+                <div className="row"><p style={{margin:0, textAlign:"right"}}>{time.length>=2 ? time[1]:null}</p></div>
                 <div className="row" style={{height:"85%"}}>{graphs.length>=2 ? graphs[1] : null}</div>
             </div>
         </div>
         <div className="row" style={{height:"50%", marginLeft:5}}>
             <div className="col-6"  style={{borderRight:"1px solid #bbbbbb", borderTop:"1px solid #bbbbbb"}}>
-                <div className="row"><p style={{margin:0}}>{time.length>=3 ? time[2]:null}</p></div>
+                <div className="row"><p style={{margin:0, textAlign:"right"}}>{time.length>=3 ? time[2]:null}</p></div>
                 <div className="row" style={{height:"85%"}}>{graphs.length>=3 ? graphs[2] : null}</div>
             </div>
             <div className="col-6"  style={{borderLeft:"1px solid #bbbbbb", borderTop:"1px solid #bbbbbb"}}>
-                <div className="row"><p style={{margin:0}}>{time.length>=4 ? time[3]:null}</p></div>
+                <div className="row"><p style={{margin:0, textAlign:"right"}}>{time.length>=4 ? time[3]:null}</p></div>
                 <div className="row" style={{height:"85%"}}>{graphs.length>=4 ? graphs[3] : null}</div>
             </div>
         </div>
