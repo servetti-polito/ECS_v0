@@ -214,6 +214,12 @@ function evaluateComfort(answers){
             result["air"]=IAQ;
         }
     }
+    if(answers["Q1"]==="2"){
+        result["air"]=75
+        result["light"]=75
+        result["temp"]=75
+        result["sound"]=75
+    }
     result["IEQ"]=(result["air"]+result["light"]+result["temp"]+result["sound"])/4
     result["timestamp"]=answers["timestamp"]
     console.log(JSON.stringify(result))
