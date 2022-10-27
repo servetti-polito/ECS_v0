@@ -49,8 +49,8 @@
           "type": "imagepicker",
           "name": "Q2",
           "title": {
-            "it": "La tua valutazione è negativa, puoi dirci di quale aspetto dell’ambiente non sei soddisfatto?",
-            "default": "Your evaluation is negative, can you tell us which environmental aspect are you dissatisfied with?"
+            "it": "La tua valutazione è negativa, puoi dirci di quali aspetti dell’ambiente non sei soddisfatto?",
+            "default": "Your evaluation is negative, can you tell us which environmental aspects are you dissatisfied with?"
           },
           "isRequired": true,
           "choices": [

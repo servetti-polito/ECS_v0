@@ -98,8 +98,6 @@ B
 src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
-I
-src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce
 <
 src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 >
