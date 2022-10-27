@@ -6,9 +6,14 @@
   font-family: "Ink Free";
   src: url("/src/resources/Inkfree.ttf")
 }
+@font-face {
+  font-family: "Text";
+  src: url("/src/resources/SourceSans3.ttf")
+}
 
 *{
-  font-family: "Tw Cen MT";
+  /*font-family: "Tw Cen MT";*/
+  font-family: "Text";
 }
 
 .form-control{
