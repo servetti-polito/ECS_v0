@@ -165,7 +165,7 @@ function CreateAccount(props) {
                                             <small style={{"color": "red", "font-size":"120%"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
-                                <div className="col-12">
+                                <div className="col-12" style={{paddingTop:20}}>
                                     <input className="form-check-input" name="privacy" onChange={handleChange} onBlur={handleBlur} type="checkbox" id="privacy" value={values.privacy}/>
                                     <label className="form-check-label" htmlFor="privacy">
                                         {props.ita? "Ho letto e compreso l'":"I have read and agreed on PROMET&O's "}<a href="#" onClick={handleShow}>{props.ita?"Informativa sulla Privacy":"Privacy Policy"}</a>{props.ita?" di PROMET&O":null}

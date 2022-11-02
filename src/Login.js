@@ -92,6 +92,7 @@ function Login(props) {
                                             errors.token && touched.token && errors.token ?
                                                 <small style={{"color": "red", "font-size":"150%"}}>{errors.token && touched.token && errors.token}</small> : null
                                         }
+                                        <p>{props.ita ? "Non hai un account? ":"You don't have an account? "}<a href="#" onClick={()=>navigate("/createAccount")}>{props.ita?"Registrati":"Sign in"}</a></p>
                                     </div>
                                 </div>
                                 <div style={{"text-align": "center", "padding":"100px"}} className="row align-items-center">

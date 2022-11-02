@@ -116,6 +116,8 @@ function App() {
                 <Route exact path='/' element={<Hello deviceJwt={deviceJwt} doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 <Route path='/login' element={<Login deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita} NO_DASH={NO_DASH}/>}/>
+                <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
+                <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
                 {
                     NO_DASH ? null : <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
                 }
@@ -124,15 +126,15 @@ function App() {
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />
                 </Route>
-                <Route exact path='/thanksEmail' element={<ProtectedRoute logged={adminLogged}/>}>
-                    <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
-                </Route>
                 <Route exact path='/furtherQuestions' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/furtherQuestions' element={<FurtherQuestions deviceJwt={deviceJwt} answers={answers} ita={ita} setAnswers={setAnswers}/>}/>
                 </Route>
-                <Route exact path='/createAccount' element={<ProtectedRoute logged={adminLogged}/>}>
+                {/*<Route exact path='/createAccount' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 </Route>
+                <Route exact path='/thanksEmail' element={<ProtectedRoute logged={adminLogged}/>}>
+                    <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
+                </Route>*/}
             </Routes>
             {
                 localStorage.getItem("noNavigation")!=="true"&&
