@@ -3,10 +3,11 @@ import {Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {API} from "aws-amplify";
-import {Alert, Spinner} from "react-bootstrap";
+import {Alert, Button, Modal, Spinner} from "react-bootstrap";
 import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
 import "./CSS/CreateAccount.css"
+import PrivacyNotice from "./PrivacyNotice";
 
 function CreateAccount(props) {
     const navigate = useNavigate();
@@ -19,6 +20,28 @@ function CreateAccount(props) {
         setShowPassword(!curShowPW)
     }
 
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
+    function PrivacyModal() {
+        return (
+            <Modal show={showModal} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Privacy</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <PrivacyNotice/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button style={{fontSize:"110% !important"}} variant="secondary" onClick={handleClose}>
+                        I understand
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
+
     return (
         <div className="container" style={{"padding":"50px"}}>
             <div style={{padding: 50}}/>
@@ -29,9 +52,11 @@ function CreateAccount(props) {
                 <div style={{padding: 10}}/>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
                 <Formik
-                    initialValues={{ email: '', token: ''}}
+                    initialValues={{ email: '', token: '', privacy:'false'}}
                     validate={values => {
                         const errors = {};
+                        if(values.privacy.toString()==="false")
+                        {props.ita ? errors.privacy = "Accetta l'informativa sulla privacy per continuare" : errors.privacy="Please, accept the privacy policy"}
                         if (!values.email)
                         {props.ita ? errors.email = "Campo richiesto" : errors.email = 'Required'}
                         else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
@@ -140,7 +165,18 @@ function CreateAccount(props) {
                                             <small style={{"color": "red", "font-size":"120%"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
-                            </div>
+                                <div className="col-12">
+                                    <input className="form-check-input" name="privacy" onChange={handleChange} onBlur={handleBlur} type="checkbox" id="privacy" value={values.privacy}/>
+                                    <label className="form-check-label" htmlFor="privacy">
+                                        {props.ita? "Ho letto e compreso l'":"I have read and agreed on PROMET&O's "}<a href="#" onClick={handleShow}>{props.ita?"Informativa sulla Privacy":"Privacy Policy"}</a>{props.ita?" di PROMET&O":null}
+                                    </label>
+                                </div>
+                                <div className="col-12">
+                                    {
+                                        errors.privacy&&touched.privacy ? <small style={{"color": "red", "font-size":"120%"}}>{errors.privacy}</small> : null
+                                    }
+                                </div>
+                                </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
                                 <div className="col-12 justify-content-center">
                                     <button id="createButton" style={{width:"25%"}} type="submit" className="btn btn-primary" disabled={loading}>
@@ -153,6 +189,7 @@ function CreateAccount(props) {
                 </Formik>
             </div>
             <p id="prometeoSmallLogo" style={{marginTop:"270px"}}>PROMET&O</p>
+            <PrivacyModal/>
         </div>
     );
 }
