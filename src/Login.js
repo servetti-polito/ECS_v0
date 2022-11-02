@@ -110,8 +110,10 @@ function Login(props) {
                             </form>
                         )}
                     </Formik>
+                <div className="row">
+                    <p id="prometeoSmallLogo" style={{marginTop:"105px"}}>PROMET&O</p>
                 </div>
-            <p id="prometeoSmallLogo" style={{marginTop:"105px"}}>PROMET&O</p>
+                </div>
         </div>
     );
 }

@@ -142,7 +142,7 @@ function CreateAccount(props) {
                                     <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} className="form-control" id="email" placeholder="Email"/>
                                     {
                                         errors.email && touched.email && errors.email ?
-                                            <small style={{"color": "red", "font-size":"120%"}}>{errors.email && touched.email && errors.email}</small> : null
+                                            <small style={{"color": "red", "font-size":"100%"}}>{errors.email && touched.email && errors.email}</small> : null
                                     }
                                 </div>
                             </div>
@@ -162,19 +162,15 @@ function CreateAccount(props) {
                                     <small style={{"font-size":"120%"}}>{props.ita ? "Crea il tuo token, per esempio il tuo colore preferito seguito dalla tua data di nascita. Usa almeno 6 caratteri" : "Create your token, for example your favourite color followed by your birthday. Use at least 6 characters"}</small><br/>
                                     {
                                         errors.token && touched.token && errors.token ?
-                                            <small style={{"color": "red", "font-size":"120%"}}>{errors.token && touched.token && errors.token}</small> : null
+                                            <small style={{"color": "red", "font-size":"100%"}}>{errors.token && touched.token && errors.token}</small> : null
                                     }
                                 </div>
                                 <div className="col-12" style={{paddingTop:20}}>
                                     <input className="form-check-input" name="privacy" onChange={handleChange} onBlur={handleBlur} type="checkbox" id="privacy" value={values.privacy}/>
                                     <label className="form-check-label" htmlFor="privacy">
-                                        {props.ita? "Ho letto e compreso l'":"I have read and agreed on PROMET&O's "}<a href="#" onClick={handleShow}>{props.ita?"Informativa sulla Privacy":"Privacy Policy"}</a>{props.ita?" di PROMET&O":null}
+                                        {props.ita? "Ho letto e compreso l'":"I have read and agreed on PROMET&O's "}<a href="#" onClick={handleShow}>{props.ita?"Informativa sulla Privacy":"Privacy Policy"}</a>{props.ita?" di PROMET&O": ""}
                                     </label>
-                                </div>
-                                <div className="col-12">
-                                    {
-                                        errors.privacy&&touched.privacy ? <small style={{"color": "red", "font-size":"120%"}}>{errors.privacy}</small> : null
-                                    }
+                                    {errors.privacy&&touched.privacy ? <small style={{"color": "red", "font-size":"100%"}}>{"\t"+errors.privacy} </small> : null}
                                 </div>
                                 </div>
                             <div style={{"text-align": "center", "padding":"50px"}} className="row align-items-center">
@@ -187,8 +183,10 @@ function CreateAccount(props) {
                         </form>
                     )}
                 </Formik>
+                <div className="row">
+                    <p id="prometeoSmallLogo" style={{marginTop:"0px"}}>PROMET&O</p>
+                </div>
             </div>
-            <p id="prometeoSmallLogo" style={{marginTop:"270px"}}>PROMET&O</p>
             <PrivacyModal/>
         </div>
     );

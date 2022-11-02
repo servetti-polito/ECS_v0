@@ -58,10 +58,6 @@ A
 src/CSS/index.css,f\5\f5e0b60d8f0309dc7e8cace29b4e179a6dc87c79
 B
 src/CSS/Thanks.css,a\3\a39ba868fe2b6ed31b458a914a9e4be210b49c76
-A
-src/CSS/Login.css,d\9\d9b7763989aa871118fb429f5727a865679d932f
-I
-src/CSS/CreateAccount.css,d\9\d947dd59f81f6dfb7d4cdba814e096d619d5426b
 D
 src/CSS/Personal.css,5\9\590c71ccaef67e1e200051dc31f92a65e8d9cf10
 G
