@@ -31,7 +31,7 @@ Amplify.configure(config);
 
 function App() {
 
-    const NO_DASH=false;
+    const NO_DASH=true;
 
     const [adminLogged, setAdminLogged] = useState(false);
     const [logged, setLogged] = useState(localStorage.getItem("logged"))

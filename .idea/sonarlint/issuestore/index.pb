@@ -50,8 +50,6 @@ A
 src/GrafanaAPI.js,1\6\1614cbab01b6fae2a465297f0c9d6ba0cbbbcef3
 U
 %src/resources/GrafanaReqTemplate.json,a\4\a49dd2c47856f58332538c398b620d7fc9fc6a8f
-D
-src/PrivacyNotice.js,2\8\287b4bc80fb91fbb58eb40567729ae625ff9b936
 I
 src/CSS/PrivacyNotice.css,2\8\2893211b7745796628647b93b45d60a9107a5a97
 A
@@ -72,8 +70,6 @@ G
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
 >
 src/Page401.js,8\1\81b94293c92948775cdff180dead86fdb132d20c
-?
-src/SurveyJS.js,a\6\a6f7b3a20c43ccef2a6889f7be412e270425a497
 R
 "src/resources/referenceValues.json,4\9\49eb2aac2ee06aba607839a4aa842abd06f7020e
 K
@@ -93,10 +89,20 @@ K
 >
 src/Profile.js,2\f\2fe10b6a7ec7966cc963870560b8f06ad7be7527
 <
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
-<
 src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 A
 src/CSS/Login.css,d\9\d9b7763989aa871118fb429f5727a865679d932f
 I
 src/CSS/CreateAccount.css,d\9\d947dd59f81f6dfb7d4cdba814e096d619d5426b
+A
+public/robots.txt,d\a\dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
+D
+src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
+A
+src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
+<
+src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
+?
+src/CSS/App.css,b\e\be19728d10d9e7fee8e50c4f3aa8c285ed12637b
+D
+public/manifest.json,4\2\42e89cd2213b9d5dfae4f63522702c623170d792
