@@ -8,6 +8,7 @@ import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
 import "./CSS/CreateAccount.css"
 import PrivacyNotice from "./PrivacyNotice";
+import emailsText from "./resources/emails.json"
 
 function CreateAccount(props) {
     const navigate = useNavigate();
@@ -91,7 +92,8 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = props.ita ? "Ciao, "+values.token+"\n\nVisita: https://paris.prometeo.click/" : "Hello, "+values.token+"\n\nVisit: https://paris.prometeo.click/"
+                                        console.log("NS01")
+                                        let message = props.ita ? emailsText["welcome"]["it"]:emailsText["welcome"]["en"]
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
