@@ -8,6 +8,7 @@ import hide from "./resources/images/eye_closed.png"
 import show from "./resources/images/eye_open.png"
 import "./CSS/CreateAccount.css"
 import PrivacyNotice from "./PrivacyNotice";
+import emailsText from "./resources/emails.json";
 
 function CreateAccount(props) {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ function CreateAccount(props) {
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = props.ita ? "Ciao, "+values.token+"\n\nVisita: https://paris.prometeo.click/" : "Hello, "+values.token+"\n\nVisit: https://paris.prometeo.click/"
+                                        let message = props.ita ? emailsText["welcome"]["it"] : emailsText["welcome"]["en"]
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
@@ -120,7 +121,7 @@ function CreateAccount(props) {
                                             else
                                                 navigate("/thanksEmail")
                                         }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
-                                    }).catch(err=>{setLoading(false); console.log("post failed: "+JSON.stringify(err))})
+                                    }).catch(err=>{setLoading(false); console.log("post Token failed: "+JSON.stringify(err))})
                                 }
                             }).catch(err=>{setLoading(false); console.log("get failed: "+JSON.stringify(err))})
                     }}

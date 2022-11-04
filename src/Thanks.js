@@ -5,6 +5,7 @@ import {API} from "aws-amplify";
 import {useEffect, useState} from "react";
 import qrcode from "./resources/images/qrcode.png"
 import "./CSS/Thanks.css"
+import emailsText from "./resources/emails.json";
 
 export default function Thanks(props){
     const [error, setError] = useState(null);
@@ -38,17 +39,13 @@ export default function Thanks(props){
             }
             API.post("userTokenAPI", "/survey", init).then(data=>{
                 API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : props.deviceJwt}}).then(data=>{
-                    //console.log(JSON.stringify(data)+" "+data.length)
                     if(localStorage.getItem("previousPersonal")===null)
                     {
                         props.setAnswers(null);
                         if (data.length === 1)
                         {
                             let object = props.ita ? "Grazie per la tua prima risposta su Promet&o" : "Thanks for taking your first survey on Promet&o"
-                            let message = props.ita ? "Ciao,\n\nGrazie per aver risposto al tuo primo sondaggio." +
-                                "\nVisita https://paris.prometeo.click/ per verificare i dati su comfort oggettivo e soggettivo" :
-                                "Hello, \n\nThank you for filling your first Promet&o's survey." +
-                                "\nVisit https://paris.prometeo.click/ to get full objective and subjective comfort data"
+                            let message = props.ita ? emailsText["survey"]["it"] : emailsText["survey"]["en"]
                             let init = {
                                 mode: "no-cors",
                                 method: "POST",
@@ -63,7 +60,7 @@ export default function Thanks(props){
                                     "message": message
                                 })
                             }
-                            console.log("sending mail...")
+                            console.log("sending mail..."+JSON.stringify(init))
                             fetch("https://822240w7r0.execute-api.eu-west-3.amazonaws.com/sampledev/sendEmail", init)
                                 .then(data => {setLoading(false);})
                                 .catch(err => {setLoading(false);setError("MAIL FAILED" + err)})
