@@ -82,8 +82,6 @@ H
 src/resources/hints.json,1\d\1dc6f0d5f8bc68b8d5045a7333c2337ad92efee8
 G
 src/resources/more.json,0\1\0103cc019f733b4b974b96f944014b96d2a25876
-B
-src/ThanksEmail.js,c\1\c1cb4d16ec3b00b178c5098fe9d4af6c587d36fe
 K
 src/resources/personal.json,6\0\608b271226d30faefbd04eef41fa144fc61d1b5c
 >

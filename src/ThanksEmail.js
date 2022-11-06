@@ -14,7 +14,7 @@ export default function ThanksEmail(props){
             <div className="row h-50 align-items-center">
                 <div className="col-12">
                     <h1 className="display-1 text-center">{props.ita ? "Grazie per esserti registrato" : "Thanks for signing in"}</h1>
-                    <h3 className="display-3 text-center">{props.ita ? "Riceverai una mail di conferma" : "A confirmation email has been sent to you"}</h3>
+                    {/*<h3 className="display-3 text-center">{props.ita ? "Riceverai una mail di conferma" : "A confirmation email has been sent to you"}</h3>*/}
                 </div>
                 <div className="row">
                     <div className="col-lg-3 col-1"/>
