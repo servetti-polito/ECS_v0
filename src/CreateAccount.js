@@ -80,10 +80,14 @@ function CreateAccount(props) {
                                 }
                                 else
                                 {
+                                    const code = verificationCode()
                                     let init = {
                                         body: {
                                             email: values.email,
-                                            token: values.token
+                                            token: values.token,
+                                            code: code,
+                                            active: false,
+                                            subscribed: true
                                         },
                                         headers: {Authorization: `Bearer ${props.deviceJwt}`}
                                     }
@@ -91,8 +95,11 @@ function CreateAccount(props) {
                                         console.log("post ok: "+JSON.stringify(data));
                                         setSubmitting(false);
                                         props.doLogin(values.email, values.token)
+                                        let verificationLink = "https://paris.prometeo.click/verification?user="+values.email+"&code="+code
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        let message = props.ita ? emailsText["welcome"]["it"] : emailsText["welcome"]["en"]
+                                        let message = props.ita ?
+                                            emailsText["welcome"]["it"][0]+verificationLink+emailsText["welcome"]["it"][1] :
+                                            emailsText["welcome"]["en"][0]+verificationLink+emailsText["welcome"]["en"][1]
                                         let init = {
                                             mode:"no-cors",
                                             method:"POST",
@@ -191,5 +198,16 @@ function CreateAccount(props) {
             <PrivacyModal/>
         </div>
     );
+}
+
+function verificationCode(){
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 6; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    console.log("verification: "+result)
+    return result;
 }
 export default CreateAccount

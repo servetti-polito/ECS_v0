@@ -53,6 +53,11 @@ function Login(props) {
                                         setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
                                         setLoading(false)
                                     }
+                                    if(user[0]["active"]===false)
+                                    {
+                                        setError(props.ita ? "Verifica il tuo account per accedere" : "Verify your account to log in");
+                                        setLoading(false)
+                                    }
                                     else {
                                         console.log("user email: " + user[0].email)
                                         props.doLogin(user[0].email, user[0].token).then(

@@ -8,6 +8,7 @@ import FurtherQuestions from "./FurtherQuestions";
 import CreateAccount from "./CreateAccount";
 import Personal from "./Personal";
 import ThanksEmail from "./ThanksEmail";
+import Verification from "./Verification";
 import {useState, useContext, useEffect} from "react";
 import {AccountContext} from "./Account";
 import Page401 from "./Page401";
@@ -118,6 +119,7 @@ function App() {
                 <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita} NO_DASH={NO_DASH}/>}/>
                 <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
+                <Route  path='/verification' element={<Verification ita={ita} doLogin={doLogin}/>} />
                 {
                     NO_DASH ? null : <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
                 }
