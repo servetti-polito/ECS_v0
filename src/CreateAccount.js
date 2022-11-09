@@ -94,7 +94,7 @@ function CreateAccount(props) {
                                     API.post("userTokenAPI", "/token", init).then(data=>{
                                         console.log("post ok: "+JSON.stringify(data));
                                         setSubmitting(false);
-                                        props.doLogin(values.email, values.token)
+                                        //props.doLogin(values.email, values.token)
                                         let verificationLink = "https://paris.prometeo.click/verification?user="+values.email+"&code="+code
                                         let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
                                         let message = props.ita ?
@@ -106,7 +106,7 @@ function CreateAccount(props) {
                                             headers: {
                                                 Accept: "application/json",
                                                 "Content-Type":"application/json",
-                                                Authorization: `Bearer ${props.deviceJwt}`
+                                                //Authorization: `Bearer ${props.deviceJwt}`
                                             },
                                             body: JSON.stringify({"email":values.email, "object": object, "message":message})
                                         }
