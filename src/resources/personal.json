@@ -596,7 +596,7 @@
           "hideNumber": true,
           "choices": [
             {
-              "value": "item1",
+              "value": "Yes",
               "text": {
                 "default": "Yes",
                 "it": "Si"
@@ -618,7 +618,7 @@
           "hideNumber": true,
           "choices": [
             {
-              "value": "item1",
+              "value": "Yes",
               "text": {
                 "default": "Yes",
                 "it": "Si"
@@ -640,7 +640,7 @@
           "hideNumber": true,
           "choices": [
             {
-              "value": "item1",
+              "value": "Yes",
               "text": {
                 "default": "Yes",
                 "it": "Si"
