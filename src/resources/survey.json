@@ -231,7 +231,7 @@
               "value": "4",
               "text": {
                 "default": "Very  draughty",
-                "it": "Molto ventilato"
+                "it": "Correnti d'aria forti"
               },
               "imageLink": "https://dev.prometeo.click/sad.png"
             },
@@ -239,7 +239,7 @@
               "value": "3",
               "text": {
                 "default": "Draughty",
-                "it": "Ventilato"
+                "it": "Correnti d'aria moderate"
               },
               "imageLink": "https://dev.prometeo.click/mid.png"
             },
@@ -247,7 +247,7 @@
               "value": "2",
               "text": {
                 "default": "Slightly  draughty",
-                "it": "Poco ventilato"
+                "it": "Correnti d'aria lievi"
               },
               "imageLink": "https://dev.prometeo.click/smile1.png"
             },
@@ -255,7 +255,7 @@
               "value": "1",
               "text": {
                 "default": "Not  draughty",
-                "it": "Non ventilato"
+                "it": "Nessuna corrente d'aria"
               },
               "imageLink": "https://dev.prometeo.click/smile2.png"
             }
