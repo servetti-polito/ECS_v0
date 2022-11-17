@@ -9,8 +9,8 @@
           "type": "imagepicker",
           "name": "Q1",
           "title": {
-            "default": "Are you satisfied with your environment?",
-            "it": "Sei soddisfatto del tuo ambiente?"
+            "default": "Are you satisfied with the thermal, acoustic, visual, and air quality conditions in your environment?",
+            "it": "Sei soddisfatto delle condizioni termiche, acustiche, visive e di qualità dell’aria nel tuo ambiente?"
           },
           "titleLocation": "top",
           "hideNumber": true,
