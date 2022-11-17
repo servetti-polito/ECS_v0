@@ -1,9 +1,7 @@
 import 'survey-core/modern.min.css';
 import { Survey, Model } from 'survey-react-ui';
 import { StylesManager } from 'survey-core';
-import $ from 'jquery';
 import * as surveyJSON from './resources/survey.json';
-import {wait} from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import * as css from "./CSS/SurveyJS.css";
 
@@ -13,28 +11,6 @@ StylesManager.applyTheme("modern");
 
 function SurveyJS(props) {
   let navigate = useNavigate();
-  /*TIMEOUT/////////////////////////////////////////////////////////////////////
-  const timeout=1000*60*10; //10 minuti
-  let inactivityTimeout = false
-  resetTimeout()
-  function onUserInactivity() {
-    stopTimeout()
-    if (props.logged)
-      props.doLogout();
-    navigate("/")
-  }
-  function resetTimeout() {
-    console.log("reset")
-    clearTimeout(inactivityTimeout)
-    inactivityTimeout = setTimeout(onUserInactivity, timeout)
-  }
-  function stopTimeout(){
-    clearTimeout(inactivityTimeout)
-    document.onmousemove=null;
-  }
-  document.onmousemove = resetTimeout;
-  ////////////////////////////////////////////////////////////////////////////////*/
-
   //RESPONSE//////////////////////////////////////////////////////////////////////////////////////////
   function sendDataToServer(sur) {
     let data = sur.data
@@ -45,16 +21,12 @@ function SurveyJS(props) {
       data.user = generateAnonId()
       props.setAnon(data.user)
       props.setAnswers(data)
-      //deactivate timeout
-      //stopTimeout()
       navigate("/furtherQuestions")
     }
     else {
       data.user = props.logged
       props.setAnswers(data)
       props.setAnswers(data)
-      //deactivate timeout
-      //stopTimeout()
       navigate("/thanks")
     }
   }
@@ -62,33 +34,6 @@ function SurveyJS(props) {
   let survey = new Model(surveyJSON);
   if(props.ita)
     survey.locale='it'
-  //ANIMAZIONI//////////////////////////////////////////////////////////////////////////////////////////
-  let doAnimantion = true;
-  survey.onCurrentPageChanging.add(function (sender, options) {
-    if (!doAnimantion) return;
-    options.allowChanging = false;
-    setTimeout(function () {
-      doAnimantion = false;
-      sender.currentPage = options.newCurrentPage;
-      doAnimantion = true;
-    }, 500);
-    $(document.getElementById("survey")).slideUp();
-  });
-  survey.onCurrentPageChanged.add(function (/*sender*/) {
-    $(document.getElementById("survey")).hide().slideDown();
-  });
-  survey.onCompleting.add(function (sender, options) {
-    if (!doAnimantion) return;
-    options.allowComplete = false;
-    setTimeout(function () {
-      doAnimantion = false;
-      sender.doComplete();
-      doAnimantion = true;
-    }, 500);
-    $(document.getElementById("survey")).slideUp()
-    wait(1000)
-    $(document.getElementById("survey")).slideDown()
-  });
 //CSS/////////////////////////////////////////////////////////////////////////////////
   survey.onUpdateQuestionCssClasses.add((sur, options) => {
     let classes = options.cssClasses
@@ -110,10 +55,7 @@ function SurveyJS(props) {
     }
   })
   /////////////////////////////////////////////////////////////////////////////////
-  function routeHome(){
-    //stopTimeout()
-    navigate("/")
-  }
+  function routeHome(){navigate("/")}
   return(
   <div className="container">
     <p style={{ "position": "fixed", "top": 25, "right": 25, "text-decoration": "underline", "font-size":"130%"}} onClick={routeHome} >Home</p>
