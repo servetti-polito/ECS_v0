@@ -100,6 +100,63 @@
       "visibleIf": "{Q1} = 3 or {Q1} = 4"
     },
     {
+      "name": "P1.5",
+      "elements": [
+        {
+          "type": "imagepicker",
+          "name": "Q2.5",
+          "title": {
+            "it": "La tua valutazione è positiva, puoi dirci quali aspetti della qualità ambientale consideri particolarmente soddisfacenti?",
+            "default": "Your evaluation is positive, can you tell us which environmental aspects you consider particularly satisfying?"
+          },
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "THERMAL  COMFORT",
+              "text": {
+                "it": "TERMICO",
+                "default": "THERMAL"
+              },
+              "imageLink": "https://dev.prometeo.click/temp.png"
+            },
+            {
+              "value": "ACOUSTIC  COMFORT",
+              "text": {
+                "it": "ACUSTICO",
+                "default": "ACOUSTIC"
+              },
+              "imageLink": "https://dev.prometeo.click/sound.png"
+            },
+            {
+              "value": "VISUAL  COMFORT",
+              "text": {
+                "it": "VISIVO",
+                "default": "VISUAL"
+              },
+              "imageLink": "https://dev.prometeo.click/light.png"
+            },
+            {
+              "value": "INDOOR AIR QUALITY",
+              "text": {
+                "it": "QUALITA' DELL'ARIA",
+                "default": "INDOOR AIR QUALITY"
+              },
+              "imageLink": "https://dev.prometeo.click/air.png"
+            }
+          ],
+          "colCount": 4,
+          "imageHeight": 300,
+          "imageWidth": 300,
+          "minImageHeight": 300,
+          "maxImageWidth": 300,
+          "maxImageHeight": 300,
+          "showLabel": true,
+          "multiSelect": true
+        }
+      ],
+      "visibleIf": "{Q1} = 1 or {Q1} = 2"
+    },
+    {
       "name": "P2",
       "elements": [
         {
