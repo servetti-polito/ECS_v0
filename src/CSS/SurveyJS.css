@@ -101,13 +101,19 @@
 }
 
 .sv-imagepicker__text {
-    font-size: 200% !important;
+    /*font-size: 200% !important;*/
     padding-left: 0;
 }
 
 .sv-imagepicker__text {
-    font-size: 150%;
+    /*font-size: 150%;*/
+    font-size: 175%;
     padding-left: 0.24em;
+}
+
+.sv-root-modern .sv-description {
+    color: rgba(64, 64, 64, 0.5);
+    font-size: 175% !important;
 }
 
 #surveyjs .sv-item__svg {
