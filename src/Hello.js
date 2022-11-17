@@ -64,7 +64,7 @@ export default function Hello(props){
                     <div className="col-md-3 col-1"/>
                     <div className="d-grid col-md-6 col-10">
                         <button  style={{"font-size": "175%", "color":"#ff9724"}} className="btn glow-button btn-lg btn-white" type="button" onClick={routeSurvey}>{props.ita ? "Inizia il sondaggio" : "Start the questionnaire"}</button>
-                        <p className="text-center" style={{margin:0, color:"#fff"}}>{props.ita?"Tempo di completamento stimato: 5 min":"Estimated completion time: 5 min"}</p>
+                        <p className="text-center" style={{margin:0, color:"#fff"}}>{props.ita?"Tempo di completamento stimato: 2-5 min":"Estimated completion time: 2-5 min"}</p>
                     </div>
                     <div className="col-lg-2 col-1"/>
                 </div>

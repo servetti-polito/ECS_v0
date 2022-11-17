@@ -40,8 +40,6 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
->
-src/Account.js,7\6\76e8440647f6201e04477c9fce831d701656f6c5
 A
 src/GrafanaAPI.js,1\6\1614cbab01b6fae2a465297f0c9d6ba0cbbbcef3
 U
@@ -78,11 +76,9 @@ H
 src/resources/hints.json,1\d\1dc6f0d5f8bc68b8d5045a7333c2337ad92efee8
 G
 src/resources/more.json,0\1\0103cc019f733b4b974b96f944014b96d2a25876
-<
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
-<
-src/Hello.js,e\a\ea30b28efd53d806019f25904b5b56d635bd6260
 A
 src/CSS/Login.css,d\9\d9b7763989aa871118fb429f5727a865679d932f
 I
 src/CSS/CreateAccount.css,d\9\d947dd59f81f6dfb7d4cdba814e096d619d5426b
+C
+src/Verification.js,8\4\8457e8204391fcfe37573b8a051bd62ff1e815d8
