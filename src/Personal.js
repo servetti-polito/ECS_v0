@@ -20,7 +20,14 @@ function Personal(props) {
         if((user===null || user === undefined)&&props.deviceJwt===null)
             navigate("/login")
         if(user!==null) {
-            API.get("userTokenAPI", "/personal/personalID?user=" + user, null).then(resp => {
+            //API.get("userTokenAPI", "/personal/personalID?user=" + user, null).then(resp => {
+            let init={
+                headers:{
+                    Authorization : localStorage.getItem("userJwt")
+                }
+            }
+            console.log("INIT: "+ JSON.stringify(init))
+            API.get("userTokenAPI", "/personal/personalID?user=" + user, init).then(resp => {
                 console.log(JSON.stringify(resp))
                 //if(resp.length!==1)
                     resp.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))

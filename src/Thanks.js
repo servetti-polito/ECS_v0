@@ -38,7 +38,8 @@ export default function Thanks(props){
                 headers: {Authorization : props.deviceJwt}
             }
             API.post("userTokenAPI", "/survey", init).then(data=>{
-                API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : props.deviceJwt}}).then(data=>{
+                //API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : props.deviceJwt}}).then(data=>{
+                API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : localStorage.getItem("userJwt")}}).then(data=>{
                     //console.log(JSON.stringify(data)+" "+data.length)
                     if(localStorage.getItem("previousPersonal")===null)
                     {
