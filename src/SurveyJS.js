@@ -34,7 +34,7 @@ function SurveyJS(props) {
   let survey = new Model(surveyJSON);
   if(props.ita)
     survey.locale='it'
-//CSS/////////////////////////////////////////////////////////////////////////////////
+  //CSS/////////////////////////////////////////////////////////////////////////////////
   survey.onUpdateQuestionCssClasses.add((sur, options) => {
     let classes = options.cssClasses
     if(options.question.name==="Q4"||options.question.name==="Q3") {

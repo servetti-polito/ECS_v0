@@ -241,7 +241,7 @@ export default function Dashboard(props) {
                 };
                 xhttp.open("POST", "https://dev.prometeo.click/chart/api/ds/query", true);
                 xhttp.setRequestHeader("Content-Type","application/json")
-                xhttp.setRequestHeader("Host","dev.prometeo.click",)
+                //xhttp.setRequestHeader("Host","dev.prometeo.click",)
                 xhttp.send(JSON.stringify(template));
             },5000)
             return ()=>clearInterval(APIcall);
