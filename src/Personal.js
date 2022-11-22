@@ -24,7 +24,7 @@ function Personal(props) {
                 headers:{
                     Authorization : localStorage.getItem("userJwt")
                 },
-                Authorization : localStorage.getItem("userJwt")
+                //Authorization : localStorage.getItem("userJwt")
             }
             console.log("INIT: "+ JSON.stringify(init))
             API.get("userTokenAPI", "/personal/personalID?user=" + user, init).then(resp => {
