@@ -2,7 +2,7 @@ import template from './resources/GrafanaReqTemplate.json';
 
 export default function fetchData (from,to)
 {
-    console.log("in fetch data")
+    /*console.log("in fetch data")
     template.from=""+from;
     template.to=""+to;
     let xhttp = new XMLHttpRequest();
@@ -18,7 +18,7 @@ export default function fetchData (from,to)
     xhttp.setRequestHeader("Host","dev.prometeo.click",)
     xhttp.send(JSON.stringify(template));
 
-    /*let init = {
+    let init = {
         method:"POST",
         mode: 'cors',
         headers:{

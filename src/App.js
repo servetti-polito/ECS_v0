@@ -47,7 +47,8 @@ function App() {
     const location = useLocation();
     let navigate = useNavigate();
     const doLogin = async (email, token) => {
-        let jwt = await jwtGenerator(token, deviceJwt)
+        //let jwt = await jwtGenerator(token, deviceJwt)
+        let jwt = await jwtGenerator(token)
         //document.cookie = "jwt="+jwt.jwt+"; expires="+new Date(jwt.exp*1000)
         document.cookie = "jwt="+jwt.jwt+"; expires=0"
         setUserJwt(jwt);

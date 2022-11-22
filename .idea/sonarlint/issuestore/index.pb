@@ -40,12 +40,8 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 `
 0amplify/backend/function/surveyLambda/src/app.js,a\f\afccdd775966a92eb1a85b62f3bf661fcaee5c22
-A
-src/GrafanaAPI.js,1\6\1614cbab01b6fae2a465297f0c9d6ba0cbbbcef3
 U
 %src/resources/GrafanaReqTemplate.json,a\4\a49dd2c47856f58332538c398b620d7fc9fc6a8f
-D
-src/PrivacyNotice.js,2\8\287b4bc80fb91fbb58eb40567729ae625ff9b936
 I
 src/CSS/PrivacyNotice.css,2\8\2893211b7745796628647b93b45d60a9107a5a97
 A
@@ -58,8 +54,6 @@ C
 src/CSS/Profile.css,9\8\982520eaf3db0eb04aeaa8caafb04a06771ac6a3
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-G
-src/FurtherQuestions.js,8\d\8de45bc010705354eb900f4cc5ade3dc9a110f00
 >
 src/Page404.js,e\e\ee38edaf79aed907959a7bd2e161690e9cf6006d
 >
@@ -80,5 +74,3 @@ A
 src/CSS/Login.css,d\9\d9b7763989aa871118fb429f5727a865679d932f
 I
 src/CSS/CreateAccount.css,d\9\d947dd59f81f6dfb7d4cdba814e096d619d5426b
-C
-src/Verification.js,8\4\8457e8204391fcfe37573b8a051bd62ff1e815d8
