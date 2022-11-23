@@ -10,11 +10,43 @@ import emailsText from "./resources/emails.json";
 export default function Thanks(props){
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [sentence, setSentence] = useState("")
 
     const routeHome=()=>{
         navigate("/")
     }
     let navigate = useNavigate();
+    const sentenceFun = (message, ita) =>
+    {
+        let result = ""
+        console.log(JSON.stringify(message))
+        if(message["temp"]!==null)
+        {
+            result+= ita?"Il tuo Comfort Termico è "+message["temp"]+"%":"Your Thermal Comfort is "+message["temp"]+"%"
+        }
+        if(message["light"]!==null)
+        {
+            if(result==="")
+                result+=ita?"Il tuo Comfort Visivo è "+message["light"]+"%":"Your Visual Comfort is "+message["light"]+"%"
+            else
+                result+=ita?", il Comfort Visivo "+message["light"]+"%":", Visual Comfort "+message["light"]+"%"
+        }
+        if(message["sound"]!==null)
+        {
+            if(result==="")
+                result+=ita?"Il tuo Comfort Acustico è "+message["sound"]+"%":"Your Acoustic Comfort is "+message["sound"]+"%"
+            else
+                result+=ita?", il Comfort Acustico "+message["sound"]+"%":", Acoustic Comfort "+message["sound"]+"%"
+        }
+        if(message["air"]!==null)
+        {
+            if(result==="")
+                result+=ita?"La tua Qualità dell'Aria è "+message["air"]+"%":"Your Indoor Air Quality is "+message["air"]+"%"
+            else
+                result+=ita?", la Qualità dell'Aria "+message["air"]+"%":", Indoor Air Quality "+message["air"]+"%"
+        }
+        return result
+    }
 
     useEffect(()=>{
         ////////////////////////////////////////////////////////
@@ -29,6 +61,7 @@ export default function Thanks(props){
         {
             //MQTT/////////////////////////////////////////////////////////
             let message = evaluateComfort(props.answers)
+            setSentence(sentenceFun(message, props.ita))
             let QoS = {qos: 1};
             let topic = localStorage.getItem("multi")+"/questionnaire"
             props.client.publish(topic,JSON.stringify(message),QoS)
@@ -101,7 +134,11 @@ export default function Thanks(props){
                             {
                                 props.NO_DASH ? null :
                                 <div className="container" style={{height:"90%"}}>
-                                    <h5>{props.ita? "Di seguito puoi vedere i grafici sull'indagine del comfort in tempo reale" : "Below are the graphs related to the real time comfort assessment"}</h5>
+                                    {
+                                        //<h5>{props.ita? "Di seguito puoi vedere i grafici sull'indagine del comfort in tempo reale" : "Below are the graphs related to the real time comfort assessment"}</h5>
+                                    }
+                                    <h5 style={{fontSize:"100%", margin:0}}>{sentence}</h5>
+                                    <h5 style={{fontSize:"100%", margin:0}}>{props.ita?"Confronta con i dati oggettivi riportati di seguito.":"Compare with objective data below."}</h5>
                                     <div className="row h-50">
                                         <div className="col-6">{iframes["Temp"]}</div>
                                         <div className="col-6">{iframes["Light"]}</div>
@@ -140,15 +177,23 @@ export default function Thanks(props){
 
 function evaluateComfort(answers){
     let result = {
-        "temp":100,
-        "light":100,
-        "sound":100,
-        "air":100,
-        "IEQ":100,
+        "temp":null,
+        "light":null,
+        "sound":null,
+        "air":null,
+        "IEQ":null,
         "timestamp":0
     }
-    if(answers["Q1"]==="4"||answers["Q2"]==="3")
+    console.log("ANSWERS:"+JSON.stringify(answers))
+    if(answers["Q1"]==="4"||answers["Q1"]==="3")
     {
+        result["temp"]=100
+        result["light"]=100
+        result["sound"]=100
+        result["air"]=100
+        result["IEQ"]=100
+        result["timestamp"]=0
+
         if(answers["Q2"].includes("THERMAL  COMFORT"))
         {
             let q3,q4, TC;
@@ -211,14 +256,30 @@ function evaluateComfort(answers){
             IAQ=q10
             result["air"]=IAQ;
         }
+        result["IEQ"]=(result["air"]+result["light"]+result["temp"]+result["sound"])/4
     }
     if(answers["Q1"]==="2"){
-        result["air"]=75
-        result["light"]=75
-        result["temp"]=75
-        result["sound"]=75
+        if(answers["Q2.5"].includes("THERMAL  COMFORT"))
+            result["temp"]=75
+        if(answers["Q2.5"].includes("ACOUSTIC  COMFORT"))
+            result["sound"]=75
+        if(answers["Q2.5"].includes("VISUAL  COMFORT"))
+            result["light"]=75
+        if(answers["Q2.5"].includes("INDOOR AIR QUALITY"))
+            result["air"]=75
+        result["IEQ"]=75
     }
-    result["IEQ"]=(result["air"]+result["light"]+result["temp"]+result["sound"])/4
+    if(answers["Q1"]==="1"){
+        if(answers["Q2.5"].includes("THERMAL  COMFORT"))
+            result["temp"]=100
+        if(answers["Q2.5"].includes("ACOUSTIC  COMFORT"))
+            result["sound"]=100
+        if(answers["Q2.5"].includes("VISUAL  COMFORT"))
+            result["light"]=100
+        if(answers["Q2.5"].includes("INDOOR AIR QUALITY"))
+            result["air"]=100
+        result["IEQ"]=100
+    }
     result["timestamp"]=answers["timestamp"]
     console.log(JSON.stringify(result))
     return result;
