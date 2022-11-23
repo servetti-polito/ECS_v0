@@ -31,8 +31,19 @@ export default function Verification(props){
                         let init = {body: match}
                         console.log(init)
                         API.put("userTokenAPI", "/token", init).then(data => {
-                                setOutcome(props.ita?"Il tuo account è stato verificato con successo":"Your account has been verified successfully")
-                                props.doLogin(match["email"],match["token"])
+                            setOutcome(props.ita?"Il tuo account è stato verificato con successo":"Your account has been verified successfully")
+                            //props.doLogin(match["email"],match["token"])
+                            API.post("userTokenAPI", "/token", {body: {token:match["token"]}}).then(user=>{
+                                let myjwt = user["jwt"]
+                                if(user.email===null)
+                                {
+                                    setOutcome(props.ita ? "Si è verificato un errore durante il login" : "An error occourred during login");
+                                    setLoading(false)
+                                }
+                                else {
+                                    props.doLogin(user.email, user.token, myjwt)
+                                }
+                            }).catch(err=>console.log("login fail:",err))
                             }
                         ).catch(e=>
                             setOutcome(props.ita?"C'è stato un errore nella verifica del tuo account":"There has been an error while verifying your account")
