@@ -80,8 +80,6 @@ e
 5amplify/backend/function/userTokenLambda/src/index.js,d\2\d29a75c6c47cfb861d9d9835a38c8ac8afb357d1
 c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
-D
-src/CreateAccount.js,b\3\b331574096fa89add9130dcc9f70a6c9982ca581
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
