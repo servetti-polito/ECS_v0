@@ -30,6 +30,7 @@ function Login(props) {
                     <h1 id="loginTitle" className= "text-center">{props.ita ? "Accedi" : "Login"}</h1>
                 </div>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
+                {localStorage.getItem("sessionExpired")=== "true" ? <Alert variant="warning">{props.ita?"Sessione scaduta":"Session expired"}</Alert>:null}
                     <Formik
                         initialValues={{ token: '' }}
                         validate={values => {
@@ -39,9 +40,9 @@ function Login(props) {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
+                            localStorage.removeItem("sessionExpired")
                             setLoading(true)
                             setError("");
-                            //API.get("userTokenAPI", "/token/email?token="+values.token/*, headers*/, {}).then(user=>{
                             const init={
                                 body: {
                                     token:values.token

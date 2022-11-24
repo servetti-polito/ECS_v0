@@ -116,14 +116,14 @@ function App() {
                 <Route exact path="/page401" element={<Page401/>}/>
                 <Route exact path='/' element={<Hello deviceJwt={deviceJwt} doLogout={doLogout} logged={logged} ita={ita} setIta={setIta} useNavigate={useNavigate}/>}/>
                 <Route path='/login' element={<Login deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
-                <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} ita={ita} NO_DASH={NO_DASH}/>}/>
+                <Route path='/profile' element={<Profile devicejwt={deviceJwt} logged={logged} doLogout={doLogout} ita={ita} NO_DASH={NO_DASH}/>}/>
                 <Route path='/createAccount' element={<CreateAccount answers={answers} setAnswers={setAnswers} deviceJwt={deviceJwt} doLogin={doLogin} ita={ita}/>} />
                 <Route  path='/thanksEmail' element={<ThanksEmail ita={ita} logged={logged} doLogout={doLogout}/>} />
                 <Route  path='/verification' element={<Verification ita={ita} doLogin={doLogin}/>} />
                 {
                     NO_DASH ? null : <Route path='/dashboard' element={<Dashboard userJwt={userJwt} ita={ita}/>} />
                 }
-                <Route path='/personal' element={<Personal deviceJwt={deviceJwt} logged={logged} anon={anon} ita={ita}/>} />
+                <Route path='/personal' element={<Personal deviceJwt={deviceJwt} doLogout={doLogout} logged={logged} anon={anon} ita={ita}/>} />
                 <Route path='/thanks' element={<Thanks client={client} deviceJwt={deviceJwt} answers={answers} ita={ita} logged={logged} setAnswers={setAnswers} NO_DASH={NO_DASH}/>} />
                 <Route exact path='/survey' element={<ProtectedRoute logged={adminLogged}/>}>
                     <Route path='/survey' element={<SurveyJS setAnon={setAnon} setAnswers={setAnswers} ita={ita} logged={logged} doLogout={doLogout}/>} />

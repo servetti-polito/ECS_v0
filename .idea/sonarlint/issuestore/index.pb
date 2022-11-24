@@ -61,10 +61,6 @@ A
 src/CSS/Login.css,d\9\d9b7763989aa871118fb429f5727a865679d932f
 I
 src/CSS/CreateAccount.css,d\9\d947dd59f81f6dfb7d4cdba814e096d619d5426b
-?
-src/Personal.js,6\1\61cfb992fcce3d0aa625002f2b3948c4003990f8
->
-src/Profile.js,2\f\2fe10b6a7ec7966cc963870560b8f06ad7be7527
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -80,10 +76,5 @@ e
 5amplify/backend/function/userTokenLambda/src/index.js,d\2\d29a75c6c47cfb861d9d9835a38c8ac8afb357d1
 c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
-<
-src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 C
 src/jwtGenerator.js,4\f\4f57b65e354214581c0f2ee2da8134eae3278296

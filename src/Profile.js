@@ -54,7 +54,16 @@ export default function Profile(props){
                 MAXPAGES= (data.length%10===0)? data.length/10 : Math.floor(data.length/10)+1;
                 console.log("MAX PAGES",MAXPAGES);
                 setLoading(false)
-            }).catch(err=>{setError("get fail:"+err); setLoading(false)})
+            }).catch(err=>{
+                if(err["message"].includes("401"))
+                {
+                    localStorage.setItem("sessionExpired","true")
+                    props.doLogout()
+                    navigate("/login")
+                }
+                setError("get fail:"+err);
+                setLoading(false)
+            })
     },[])
 
     useEffect(()=>{
