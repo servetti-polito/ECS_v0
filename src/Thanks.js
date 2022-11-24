@@ -152,11 +152,7 @@ export default function Thanks(props){
                             {
                                 props.NO_DASH ? null :
                                 <div className="container" style={{height:"90%"}}>
-                                    {sentence
-                                        //<h5>{props.ita? "Di seguito puoi vedere i grafici sull'indagine del comfort in tempo reale" : "Below are the graphs related to the real time comfort assessment"}</h5>
-                                        //<h5 style={{fontSize:"100%", margin:0}}>{sentence}</h5>
-                                        //<h5 style={{fontSize:"100%", margin:0}}>{props.ita?"Confronta con i dati oggettivi riportati di seguito.":"Compare with objective data below."}</h5>
-                                    }
+                                    {sentence}
                                     <div className="row h-50">
                                         <div className="col-6">{iframes["Temp"]}</div>
                                         <div className="col-6">{iframes["Light"]}</div>
