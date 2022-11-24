@@ -78,3 +78,5 @@ c
 3amplify/backend/function/userTokenLambda/src/app.js,9\d\9d9e61e6b7ad5c3d5a9e00fe20473236ddf1d2ac
 C
 src/jwtGenerator.js,4\f\4f57b65e354214581c0f2ee2da8134eae3278296
+I
+src/resources/survey.json,5\2\52688ea5ed1eb3f0f08e92c7560d46418440ddce

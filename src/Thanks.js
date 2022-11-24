@@ -19,7 +19,6 @@ export default function Thanks(props){
     const sentenceFun = (message, ita) =>
     {
         let result = ""
-        console.log(JSON.stringify(message))
         if(message["temp"]!==null)
         {
             result+= ita?"Il tuo Comfort Termico è "+message["temp"]+"%":"Your Thermal Comfort is "+message["temp"]+"%"
@@ -45,7 +44,10 @@ export default function Thanks(props){
             else
                 result+=ita?", la Qualità dell'Aria "+message["air"]+"%":", Indoor Air Quality "+message["air"]+"%"
         }
-        return result
+        return <>
+            <h5 style={{fontSize:"100%", margin:0}}>{result}</h5>
+            <h5 style={{fontSize:"100%", margin:0}}>{props.ita?"Confronta con i dati oggettivi riportati di seguito.":"Compare with objective data below."}</h5>
+        </>
     }
 
     useEffect(()=>{
@@ -71,7 +73,6 @@ export default function Thanks(props){
                 headers: {Authorization : props.deviceJwt}
             }
             API.post("userTokenAPI", "/survey", init).then(data=>{
-
                 API.get("userTokenAPI","/survey/user?user="+props.logged, {headers: {Authorization : localStorage.getItem("userJwt")}}).then(data=>{
                     if(localStorage.getItem("previousPersonal")===null)
                     {
@@ -108,8 +109,25 @@ export default function Thanks(props){
                 }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
             }).catch(err=>{setLoading(false); setError(props.ita? "Si è verificato un errore: "+JSON.stringify(err.response) : "An error occourred: "+JSON.stringify(err.response))})
         }
+        else if (props.answers!==null)
+        {
+            console.log("answers to be sent: "+JSON.stringify(props.answers))
+            let init = {
+                body: props.answers,
+                headers: {authorization : props.deviceJwt}
+            }
+            API.post("userTokenAPI", "/survey", init).then(data=>{
+                console.log("answers sent")
+                props.setAnswers(null);
+                let message = evaluateComfort(props.answers)
+                setSentence(sentenceFun(message, props.ita))
+                props.setAnswers(null);
+                setLoading(false)
+            }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})
+        }
         else
         {
+            setSentence(<h5 style={{fontSize:"100%", margin:0}}>{props.ita? "Di seguito puoi vedere i grafici sull'indagine del comfort in tempo reale" : "Below are the graphs related to the real time comfort assessment"}</h5>)
             setLoading(false);
         }
     }, [])
@@ -134,11 +152,11 @@ export default function Thanks(props){
                             {
                                 props.NO_DASH ? null :
                                 <div className="container" style={{height:"90%"}}>
-                                    {
+                                    {sentence
                                         //<h5>{props.ita? "Di seguito puoi vedere i grafici sull'indagine del comfort in tempo reale" : "Below are the graphs related to the real time comfort assessment"}</h5>
+                                        //<h5 style={{fontSize:"100%", margin:0}}>{sentence}</h5>
+                                        //<h5 style={{fontSize:"100%", margin:0}}>{props.ita?"Confronta con i dati oggettivi riportati di seguito.":"Compare with objective data below."}</h5>
                                     }
-                                    <h5 style={{fontSize:"100%", margin:0}}>{sentence}</h5>
-                                    <h5 style={{fontSize:"100%", margin:0}}>{props.ita?"Confronta con i dati oggettivi riportati di seguito.":"Compare with objective data below."}</h5>
                                     <div className="row h-50">
                                         <div className="col-6">{iframes["Temp"]}</div>
                                         <div className="col-6">{iframes["Light"]}</div>

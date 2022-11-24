@@ -10,7 +10,7 @@ export default function FurtherQuestions(props){
     const [loading, setLoading] = useState(false)
 
     const notNow = () => {
-        setLoading(true)
+        /*setLoading(true)
         let init = {
             body: props.answers,
             headers: {authorization : props.deviceJwt}
@@ -20,7 +20,8 @@ export default function FurtherQuestions(props){
             props.setAnswers(null);
             setLoading(false)
             routePersonal()
-        }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})
+        }).catch(err=>{setLoading(false); setError("post failed: "+JSON.stringify(err.response))})*/
+        routePersonal()
     }
     const routePersonal=()=>{
         navigate("/personal")
