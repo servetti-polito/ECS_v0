@@ -59,7 +59,7 @@ export default function Thanks(props){
         }
         ///////////////////////////////////////////////////////
         setLoading(true)
-        if(props.logged && error===null && props.answers!==null)
+        if(props.logged && error===null && props.answers!==null && localStorage.getItem("previousPersonal")===null)
         {
             //MQTT/////////////////////////////////////////////////////////
             let message = evaluateComfort(props.answers)
