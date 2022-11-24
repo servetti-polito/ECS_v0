@@ -17,44 +17,43 @@ export default function Verification(props){
         const urlParams = new URLSearchParams(queryString).toString()
         const email = decodeURIComponent(urlParams.split("&")[0].split("=")[1])
         const code = urlParams.split("&")[1].split("=")[1]
-        //controllare se username presente e codice uguale
-        API.get("userTokenAPI", "/token/object").then(
-            emails=>{
-                const match = emails.filter(e=>e.email===email&&e.code===code)[0]
-                if(match!==undefined)
-                {
-                    if(match["active"])
-                        setOutcome(props.ita?"Il tuo account è già stato verificato":"Your account has already been verified")
-                    else
-                    {
-                        match["active"]=true;
-                        let init = {body: match}
-                        console.log(init)
-                        API.put("userTokenAPI", "/token", init).then(data => {
-                            setOutcome(props.ita?"Il tuo account è stato verificato con successo":"Your account has been verified successfully")
-                            //props.doLogin(match["email"],match["token"])
-                            API.post("userTokenAPI", "/token", {body: {token:match["token"]}}).then(user=>{
-                                let myjwt = user["jwt"]
-                                if(user.email===null)
-                                {
-                                    setOutcome(props.ita ? "Si è verificato un errore durante il login" : "An error occourred during login");
-                                    setLoading(false)
-                                }
-                                else {
-                                    props.doLogin(user.email, user.token, myjwt)
-                                }
-                            }).catch(err=>console.log("login fail:",err))
-                            }
-                        ).catch(e=>
-                            setOutcome(props.ita?"C'è stato un errore nella verifica del tuo account":"There has been an error while verifying your account")
-                        )
-                    }
-                }
-                else
-                    setOutcome(props.ita?"C'è stato un errore nella verifica del tuo account":"There has been an error while verifying your account")
-                setLoading(false)
+        let init = {
+            body:{
+                email:email,
+                code:code
             }
-        )
+        }
+        API.put("userTokenAPI", "/token", init).then(data => {
+            console.log("data: "+JSON.stringify(data))
+            console.log(data["token"])
+            let initLogin={body: {token:data["token"]}}
+            API.post("userTokenAPI", "/token", initLogin).then(user=>{
+                let myjwt = user["jwt"]
+                console.log("test: "+JSON.stringify(user))
+                console.log(user["email"]+"+"+user["token"])
+                if(user.email===null)
+                {
+                    setOutcome(props.ita ? "Si è verificato un errore" : "An error occourred");
+                    setLoading(false)
+                }
+                else {
+                    console.log("user email: " + user.email)
+                    props.doLogin(user.email, user.token, myjwt).then(()=>{
+                        setLoading(false)
+                        setOutcome(props.ita?"Il tuo account è stato verificato con successo":"Your account has been verified successfully")
+                    })
+                }
+            }).catch(err=>console.log("login fail:",err))
+        }).catch(err=>
+        {
+            console.log(JSON.stringify(err.response["data"]["error"]))
+            if(err.response["data"]["error"]==="Already verified")
+                setOutcome(props.ita?"Il tuo account è già stato verificato":"Your account has already been verified")
+            else
+                setOutcome(props.ita?"C'è stato un errore nella verifica del tuo account":"There has been an error while verifying your account")
+            setLoading(false)
+        }
+        );
     },[])
 
     return (

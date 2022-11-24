@@ -70,8 +70,6 @@ S
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-C
-src/Verification.js,8\4\8457e8204391fcfe37573b8a051bd62ff1e815d8
 e
 5amplify/backend/function/userTokenLambda/src/index.js,d\2\d29a75c6c47cfb861d9d9835a38c8ac8afb357d1
 c
