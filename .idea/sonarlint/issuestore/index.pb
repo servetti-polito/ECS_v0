@@ -1,6 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 @
 amplify/cli.json,0\8\080bae80efcd2628f1d83f2311392e4e40bda90b
 :
@@ -94,8 +92,6 @@ A
 public/robots.txt,d\a\dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
 A
 src/CSS/Hello.css,f\e\fe7046f293dd1c23dac40002dcffebcfd4739216
-<
-src/Login.js,3\0\30cee202ae0ca98e6e3c4d31e417901df055e52c
 ?
 src/CSS/App.css,b\e\be19728d10d9e7fee8e50c4f3aa8c285ed12637b
 D

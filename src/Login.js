@@ -30,6 +30,7 @@ function Login(props) {
                     <h1 id="loginTitle" className= "text-center">{props.ita ? "Accedi" : "Login"}</h1>
                 </div>
                 {error=== "" ? <></> : <Alert variant="danger">{error}</Alert>}
+                {localStorage.getItem("sessionExpired")=== "true" ? <Alert variant="warning">{props.ita?"Sessione scaduta":"Session expired"}</Alert>:null}
                     <Formik
                         initialValues={{ token: '' }}
                         validate={values => {
@@ -39,31 +40,31 @@ function Login(props) {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
+                            localStorage.removeItem("sessionExpired")
                             setLoading(true)
                             setError("");
-                            API.get("userTokenAPI", "/token/email?token="+values.token/*, headers*/, {}).then(user=>{
-                                console.log(JSON.stringify(user))
-                                    if(user.length<1)
-                                    {
-                                        setError(props.ita ? "Nessun utente corrsiponde a questo token" : "No user has this token");
-                                        setLoading(false)
-                                    }
-                                    else if (user.length>1)
-                                    {
-                                        setError(props.ita ? "Più utenti usano questo token, contatta l'amministratore" : "More than one user associated to this token, contact administration");
-                                        setLoading(false)
-                                    }
-                                    else {
-                                        console.log("user email: " + user[0].email)
-                                        props.doLogin(user[0].email, user[0].token).then(
-                                            ()=>{
-                                                setSubmitting(false);
-                                                setLoading(false)
-                                                navigate("/");
-                                            }
-                                        )
-                                    }
-                            }).catch(err=>console.log("get fail:",err))
+                            const init={
+                                body: {
+                                    token:values.token
+                                }
+                            }
+                            API.post("userTokenAPI", "/token", init).then(user=>{
+                                let myjwt = user["jwt"]
+                                console.log("test: "+JSON.stringify(user))
+                                console.log(user["email"]+"+"+user["token"])
+                                if(user.email===null)
+                                {setError(props.ita ? "Si è verificato un errore" : "An error occourred");
+                                    setLoading(false)
+                                }
+                                else {console.log("user email: " + user.email)
+                                    props.doLogin(user.email, user.token, myjwt).then(
+                                        ()=>{
+                                            setSubmitting(false);
+                                            setLoading(false)
+                                            navigate("/");
+                                        }
+                                    )
+                                }}).catch(err=>console.log("login fail:",err))
                         }}
                     >
                         {({

@@ -71,60 +71,52 @@ function CreateAccount(props) {
                     onSubmit={(values, { setSubmitting }) => {
                         setLoading(true)
                         setError("");
-                        let headers = {headers: {"Authorization" : props.deviceJwt}};
-                        API.get("userTokenAPI", "/token/object", headers).then(
-                            emails=>{
-                                if(emails.filter(e=>e.email===values.email).length!==0 || emails.filter(e=>e.token===values.token).length!==0 ) {
-                                    setError(props.ita ? "Esiste già un utente con questa mail o questo token" : "A user with this email or this token already exists")
-                                    setLoading(false)
+                        let init = {
+                            body: {
+                                email: values.email,
+                                token: values.token,
+                                code: "mock",
+                            }
+                        }
+                        API.post("userTokenAPI", "/token", init).then(data=>{
+                            console.log("post ok: "+JSON.stringify(data));
+                            setSubmitting(false);
+                            let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
+                            let message = props.ita ? emailsText["welcome"]["it"]:emailsText["welcome"]["en"]
+                            let initMail = {
+                                mode:"no-cors",
+                                method:"POST",
+                                headers: {
+                                    Accept: "application/json",
+                                    "Content-Type":"application/json",
+                                },
+                                body: JSON.stringify({"email":values.email, "object": object, "message":message})
+                            }
+                            console.log("initMail",initMail)
+                            fetch("https://822240w7r0.execute-api.eu-west-3.amazonaws.com/sampledev/sendEmail",initMail).then(dataMail=>{
+                                if(props.answers!==null && props.deviceJwt!==null) {
+                                    props.answers.user = values.email
+                                    let initAnswers = {
+                                        body: props.answers,
+                                        headers: {"Authorization": props.deviceJwt}
+                                    }
+                                    console.log(JSON.stringify(initAnswers))
+                                    API.post("userTokenAPI", "/survey", initAnswers).then(dataSurvey => {
+                                        console.log("post ok: " + JSON.stringify(dataSurvey));
+                                        props.setAnswers(null)
+                                        navigate("/thanksEmail")
+                                    }).catch(err => console.log("post SURVEY failed: " + JSON.stringify(err)))
                                 }
                                 else
-                                {
-                                    let init = {
-                                        body: {
-                                            email: values.email,
-                                            token: values.token
-                                        },
-                                        headers: {Authorization: `Bearer ${props.deviceJwt}`}
-                                    }
-                                    API.post("userTokenAPI", "/token", init).then(data=>{
-                                        console.log("post ok: "+JSON.stringify(data));
-                                        setSubmitting(false);
-                                        props.doLogin(values.email, values.token)
-                                        let object = props.ita ? "Benvenuto su Promet&o" : "Welcome to Promet&o"
-                                        console.log("NS01")
-                                        let message = props.ita ? emailsText["welcome"]["it"]:emailsText["welcome"]["en"]
-                                        let init = {
-                                            mode:"no-cors",
-                                            method:"POST",
-                                            headers: {
-                                                Accept: "application/json",
-                                                "Content-Type":"application/json",
-                                                Authorization: `Bearer ${props.deviceJwt}`
-                                            },
-                                            body: JSON.stringify({"email":values.email, "object": object, "message":message})
-                                        }
-                                        console.log("init",init)
-                                        fetch("https://822240w7r0.execute-api.eu-west-3.amazonaws.com/sampledev/sendEmail",init).then(data=>{
-                                            if(props.answers!==null) {
-                                                props.answers.user = values.email
-                                                let init = {
-                                                    body: props.answers,
-                                                    headers: {"Authorization": props.deviceJwt}
-                                                }
-                                                console.log(JSON.stringify(init))
-                                                API.post("userTokenAPI", "/survey", init).then(data => {
-                                                    console.log("post ok: " + JSON.stringify(data));
-                                                    props.setAnswers(null)
-                                                    navigate("/thanksEmail")
-                                                }).catch(err => console.log("post SURVEY failed: " + JSON.stringify(err)))
-                                            }
-                                            else
-                                                navigate("/thanksEmail")
-                                        }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
-                                    }).catch(err=>{setLoading(false); console.log("post failed: "+JSON.stringify(err))})
-                                }
-                            }).catch(err=>{setLoading(false); console.log("get failed: "+JSON.stringify(err))})
+                                    navigate("/thanksEmail")
+                            }).catch(err=>{setLoading(false); console.log("MAIL FAILED",err)})
+                        }).catch(err=>{
+                            if(err.message==="Request failed with status code 500")
+                                setError(props.ita ? "Esiste già un utente con questa mail o questo token" : "A user with this email or this token already exists")
+                            else
+                                setError(props.ita ? "Si è verificato un errore":"An error occourred")
+                            setLoading(false);
+                            console.log("post Token failed: "+JSON.stringify(err))})
                     }}
                 >
                     {({

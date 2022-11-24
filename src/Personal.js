@@ -20,7 +20,6 @@ function Personal(props) {
         if((user===null || user === undefined)&&props.deviceJwt===null)
             navigate("/login")
         if(user!==null) {
-            //API.get("userTokenAPI", "/personal/personalID?user=" + user, null).then(resp => {
             let init={
                 headers:{
                     Authorization : localStorage.getItem("userJwt")
@@ -29,12 +28,18 @@ function Personal(props) {
             console.log("INIT: "+ JSON.stringify(init))
             API.get("userTokenAPI", "/personal/personalID?user=" + user, init).then(resp => {
                 console.log(JSON.stringify(resp))
-                //if(resp.length!==1)
-                    resp.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
+                resp.sort((a,b) => (a.timestamp < b.timestamp) ? 1 : ((b.timestamp < a.timestamp) ? -1 : 0))
                 oldValues=resp[0]
                 if(oldValues!==null)
                     fillOldValues()
-            }).catch(err => console.log("get failed: " + JSON.stringify(err.response)))
+            }).catch(err => {
+                if(err["message"].includes("401"))
+                {
+                    localStorage.setItem("sessionExpired","true")
+                    props.doLogout()
+                    navigate("/login")
+                }
+            })
         }
     }, [])
     //FILL OLD VALUES///////////////////////////////////////////////////////////////////////////////////
