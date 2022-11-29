@@ -52,7 +52,8 @@ function App() {
         setLogged(email);
         localStorage.setItem("userJwt",jwt)
         localStorage.setItem("logged",email)
-        localStorage.setItem("personalUsername",token)
+        //localStorage.setItem("personalUsername",token)
+        localStorage.setItem("personalUsername",email)
     }
     const doLogout = () => {
         setLogged(null);
