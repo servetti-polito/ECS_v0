@@ -54,7 +54,8 @@ function App() {
         setLogged(email);
         localStorage.setItem("userJwt",jwt)
         localStorage.setItem("logged",email)
-        localStorage.setItem("personalUsername",token)
+        //localStorage.setItem("personalUsername",token)
+        localStorage.setItem("personalUsername",email)
     }
     const doLogout = () => {
         setLogged(null);
@@ -82,7 +83,7 @@ function App() {
             setAdminLogged(true);
             if(urlParams.get("personal")!=null&&urlParams.get("username")!=null) //localhost:3000/personal?user=admin&pass=admin2022&multi=personal&personal=true&username=
             {
-                localStorage.setItem("personalUsername",urlParams.get("username"))
+                //localStorage.setItem("personalUsername",urlParams.get("username"))
                 localStorage.setItem("noNavigation","true");
                 navigate("/personal")
             }
