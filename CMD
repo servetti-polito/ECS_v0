@@ -1,0 +1,5 @@
+# get current AppId
+cat amplify/backend/amplify-meta.json  | jq ".providers.awscloudformation.AmplifyAppId"
+
+# get current App Link
+cat amplify/backend/amplify-meta.json  | jq '.providers.awscloudformation | "https://\(.Region).console.aws.amazon.com/amplify/home?region=\(.Region)#/\(.AmplifyAppId)"'
