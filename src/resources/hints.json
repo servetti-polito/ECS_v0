@@ -77,15 +77,21 @@
       "it": ""
     }
   ],
-  "CO20": [
+  "CH2O": [
     {
       "en": "In order to reduce the concentration of formaldehyde in your indoor environment, choose products that meet the standards on formaldehyde emissions, increase the rate of ventilation and ensure a relative humidity between 40-60%.",
       "it": ""
     }
   ],
-  "IEQ": [
+  "Air": [
     {
       "en": "EPA guidelines to improve the indoor air quality of your office suggest to:\n • Do not block air vents or grilles.\n • Comply with the office and building smoking policy.\n • Water and maintain office plants properly.\n • Dispose of garbage promptly and properly.\n • Store food properly.\n • Avoid bringing products into the building that could release harmful or bothersome odors or contaminants.\n • Notify your building or facility manager immediately if you suspect an indoor air quality problem.",
+      "it": ""
+    }
+  ],
+  "IEQ": [
+    {
+      "en": "",
       "it": ""
     }
   ]
