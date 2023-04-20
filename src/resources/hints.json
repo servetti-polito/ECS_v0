@@ -1,178 +1,92 @@
 {
-  "RH": [{
-    "it": "Suggerimento su RH 1",
-    "en": "Hints on RH 1"
-  },{
-    "it": "Suggerimento su RH 2",
-    "en": "Hints on RH 2"
-  },{
-    "it": "Suggerimento su RH 3",
-    "en": "Hints on RH 3"
-  }
+  "T": [
+    {
+      "en": "Drink water in case of temperature higher than the acceptable range (about 1 glass every 15-20 minutes), and wear lightweight, breathable and comfortable cotton clothing",
+      "it": ""
+    }
   ],
-  "T":[{
-    "it": "Suggerimento su T 1",
-    "en": "Hints on T 1"
-  },{
-    "it": "Suggerimento su T 2",
-    "en": "Hints on T 2"
-  },{
-    "it": "Suggerimento su T 3",
-    "en": "Hints on T 3"
-  }
+  "RH": [
+    {
+      "en": "Try to ensure a relative humidity between 40-60%, through natural ventilation. According to the World Health Organization (WHO), this optimal range will reduce the spread of seasonal respiratory illnesses.",
+      "it": ""
+    }
   ],
-  "SPL":[{
-    "it": "Suggerimento su SPL 1",
-    "en": "Hints on SPL 1"
-  },{
-    "it": "Suggerimento su SPL 2",
-    "en": "Hints on SPL 2"
-  },{
-    "it": "Suggerimento su SPL 3",
-    "en": "Hints on SPL 3"
-  }
+  "Temp": [
+    {
+      "en": "Thermal comfort is perceived differently by each individual and depends on, among other factors, the activity you are performing and what you are wearing. To ensure your thermal comfort without compromising the perception of others, adopt a flexible dress code.",
+      "it": ""
+    }
   ],
-  "VOC": [{
-    "it": "Suggerimento su VOC 1",
-    "en": "Hints on VOC 1"
-  },{
-    "it": "Suggerimento su VOC 2",
-    "en": "Hints on VOC 2"
-  },{
-    "it": "Suggerimento su VOC 3",
-    "en": "Hints on VOC 3"
-  }
+  "E": [
+    {
+      "en": "Particularly strong shadows can cause the visual apparatus to adapt too abruptly. For example, for paper-based tasks, avoid to put objects or your arms between light direction and you.",
+      "it": ""
+    }
   ],
-  "CH2O":[{
-    "it": "Suggerimento su CH2O 1",
-    "en": "Hints on CH2O 1"
-  },{
-    "it": "Suggerimento su CH2O 2",
-    "en": "Hints on CH2O 2"
-  },{
-    "it": "Suggerimento su CH2O 3",
-    "en": "Hints on CH2O 3"
-  }
+  "Light": [
+    {
+      "en": "Use the shading system wisely to improve your visual comfort.",
+      "it": ""
+    }
   ],
-  "CO2": [{
-    "it": "Suggerimento su CO2 1",
-    "en": "Hints on CO2 1"
-  },{
-    "it": "Suggerimento su CO2 2",
-    "en": "Hints on CO2 2"
-  },{
-    "it": "Suggerimento su CO2 3",
-    "en": "Hints on CO2 3"
-  }
+  "SPL": [
+    {
+      "en": "A strategy to reduce the sound level is to move the point source away from people. As sample, moving a copy machine in another room can reduce the noise level by more than 15 dB. If you need to talk, move away from other people or choose a separate conference room.",
+      "it": ""
+    }
   ],
-  "CO":[{
-    "it": "Suggerimento su CO 1",
-    "en": "Hints on CO 1"
-  },{
-    "it": "Suggerimento su CO 2",
-    "en": "Hints on CO 2"
-  },{
-    "it": "Suggerimento su CO 3",
-    "en": "Hints on CO 3"
-  }
+  "Sound": [
+    {
+      "en": "Remember to respect other people's comfort and perception. If you need to talk, move away from other people or choose a separate conference room.",
+      "it": ""
+    }
   ],
-  "NO2":[{
-    "it": "Suggerimento su NO2 1",
-    "en": "Hints on NO2 1"
-  },{
-    "it": "Suggerimento su NO2 2",
-    "en": "Hints on NO2 2"
-  },{
-    "it": "Suggerimento su NO2 3",
-    "en": "Hints on NO2 3"
-  }
+  "CO": [
+    {
+      "en": "Overconcentration of CO can be avoided by ensuring fresh air flow into your indoor space and using in a proper way all devices running on fossil fuels.",
+      "it": ""
+    }
   ],
-  "PM10":[{
-    "it": "Suggerimento su PM10 1",
-    "en": "Hints on PM10 1"
-  },{
-    "it": "Suggerimento su PM10 2",
-    "en": "Hints on PM10 2"
-  },{
-    "it": "Suggerimento su PM10 3",
-    "en": "Hints on PM10 3"
-  }
+  "CO2": [
+    {
+      "en": "Very large increases in ventilation rates, sufficient to reduce indoor CO2 concentrations to approximately outdoor levels, would be expected to decrease prevalence of sick building syndrome (SBS) symptoms by 85%.",
+      "it": ""
+    }
   ],
-  "PM2.5":[{
-    "it": "Suggerimento su PM2.5 1",
-    "en": "Hints on PM2.5 1"
-  },{
-    "it": "Suggerimento su PM2.5 2",
-    "en": "Hints on PM2.5 2"
-  },{
-    "it": "Suggerimento su PM2.5 3",
-    "en": "Hints on PM2.5 3"
-  }
+  "NO2": [
+    {
+      "en": "Indoor concentration of NO2 strictly depends on outdoor sources, such as local traffic or other combustion sources. If you work close to a busy road, avoid to open too often the window and prefer mechanical ventilation with an efficient filtration system. You can do also more, first for your office, than for the planet: encourage public transport, biking and walking to reduce NO2 emissions.",
+      "it": ""
+    }
   ],
-  "E":[{
-    "it": "Suggerimento su E 1",
-    "en": "Hints on E 1"
-  },{
-    "it": "Suggerimento su E 2",
-    "en": "Hints on E 2"
-  },{
-    "it": "Suggerimento su E 3",
-    "en": "Hints on E 3"
-  }
+  "PM10": [
+    {
+      "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
+      "it": ""
+    }
   ],
-  "IEQ": [{
-    "it": "Suggerimento su IEQ 1",
-    "en": "Hints on IEQ 1"
-  },{
-    "it": "Suggerimento su IEQ 2",
-    "en": "Hints on IEQ 2"
-  },{
-    "it": "Suggerimento su IEQ 3",
-    "en": "Hints on IEQ 3"
-  }
+  "PM2.5": [
+    {
+      "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
+      "it": ""
+    }
   ],
-  "Temp":[{
-    "it": "Suggerimento su Temp 1",
-    "en": "Hints on Temp 1"
-  },{
-    "it": "Suggerimento su Temp 2",
-    "en": "Hints on Temp 2"
-  },{
-    "it": "Suggerimento su Temp 3",
-    "en": "Hints on Temp 3"
-  }
+  "VOC": [
+    {
+      "en": "In order to reduce the concentration of TVOCs in your indoor environment, often refresh the air and choose products with less or no TVOCs.",
+      "it": ""
+    }
   ],
-  "Air": [{
-    "it": "Suggerimento su Air 1",
-    "en": "Hints on Air 1"
-  },{
-    "it": "Suggerimento su Air 2",
-    "en": "Hints on Air 2"
-  },{
-    "it": "Suggerimento su Air 3",
-    "en": "Hints on Air 3"
-  }
+  "CO20": [
+    {
+      "en": "In order to reduce the concentration of formaldehyde in your indoor environment, choose products that meet the standards on formaldehyde emissions, increase the rate of ventilation and ensure a relative humidity between 40-60%.",
+      "it": ""
+    }
   ],
-  "Light":[{
-    "it": "Suggerimento su Light 1",
-    "en": "Hints on Light 1"
-  },{
-    "it": "Suggerimento su Light 2",
-    "en": "Hints on Light 2"
-  },{
-    "it": "Suggerimento su Light 3",
-    "en": "Hints on Light 3"
-  }
-  ],
-  "Sound":[{
-    "it": "Suggerimento su Sound 1",
-    "en": "Hints on Sound 1"
-  },{
-    "it": "Suggerimento su Sound 2",
-    "en": "Hints on Sound 2"
-  },{
-    "it": "Suggerimento su Sound 3",
-    "en": "Hints on Sound 3"
-  }
+  "IEQ": [
+    {
+      "en": "EPA guidelines to improve the indoor air quality of your office suggest to:\n • Do not block air vents or grilles.\n • Comply with the office and building smoking policy.\n • Water and maintain office plants properly.\n • Dispose of garbage promptly and properly.\n • Store food properly.\n • Avoid bringing products into the building that could release harmful or bothersome odors or contaminants.\n • Notify your building or facility manager immediately if you suspect an indoor air quality problem.",
+      "it": ""
+    }
   ]
 }
