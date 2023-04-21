@@ -1,66 +1,66 @@
 {
-  "T": {
-    "en": "To be at the peak of their productivity, workers have to operate in a thermally comfortable environment. It has shown that the best thermal setting for an office ranges between 20°C and 26°C. \n If the temperature exceeds the former limit, the productivity decreases of 2% for each 1°C more.",
-    "it": ""
-  },
-  "RH": {
-    "en": "Low indoor air humidity (<30%) causes vulnerable airways and dry and tired eyes, affecting the overall work performance. Increasing the indoor air humidity may be a treatment of the risk of infection and transport of virus. In fact, at lower relative humidity, exhaled droplets stay longer in the air and, due to their progressive shrinkage, they tend to reach easier the lower airways.",
-    "it": ""
-  },
-  "Temp": {
-    "en": "Thermal comfort is related to occupants' health, well-being and productivity and is appraised as one of the highest contributing factors to overall human comfort in buildings. Thermal comfort is interconnected with integumentary, endocrine and respiratory body systems and it may impact multiple health outcomes. For example asthma in adults can be caused by exposure to cold air and sudden temperature change.",
-    "it": ""
-  },
-  "E": {
-    "en": "An higher illuminance improves subjective alertness and vitality of the employees, who as a consequence feel less tired, more energic and have shorter reaction times on the psychomotor vigilance tasks.",
-    "it": ""
-  },
-  "Light": {
-    "en": "Visual comfort is defined as “a subjective condition of visual well-being induced by the visual environment”. The physiology of human eye, the spectral emission of the light source, the amount of light and its distribution on surfaces are the main aspects that may affect visual comfort. \n Moreover, daylight should be preferred, as it is the main regulator system for the human body. It controls people circadian rhythm, providing physical and mental energy for the day. This is the reason why a well-designed illumination system can really improve people quality of life.",
-    "it": ""
-  },
-  "SPL": {
-    "en": "Human ear is limited to the perception of sound pressure levels from 0 dB to 120 dB, that is considered the threshold of pain. Nevertheless, these limits depend on individual’s sensitivity. Human perception of sound frequency (known as “pitch”), ranges from approximately 20 to 20000 Hz, with augmented perception within the frequency range of human voice, that is between 1000 Hz and 6000 Hz.",
-    "it": ""
-  },
-  "Sound": {
-    "en": "Acoustic comfort is a satisfactory status with acoustical condition in an environment. A lack in acoustic comfort has evident psychological consequences on humans, including stress and de-concentration. Some studies have shown how higher blood pressure, higher production of stress hormones and anxiety, reduction of the ability to remember and to focus on, are linked to elevated levels of noise",
-    "it": ""
-  },
-  "CO": {
-    "en": "Carbon monoxide is an odorless, colorless, and tasteless gas caused by incomplete combustion. It is poisonous and potentially letal.",
-    "it": ""
-  },
-  "CO2": {
-    "en": "Indoor CO2 concentration depends on many factors such as number of people in the space, activity carried out, time spent by the users in the indoor space, air exchange and outer air volume flow. Indoor concentration of CO2 greater than 1000 ppm, together with other air contaminant factors, could be associated to sick building syndrome (SBS) symptoms. These terms refer to an acute discomfort that can lead to headaches, irritation of nose, eyes and throat, coughing, nausea, difficulty concentrating, fatigue.",
-    "it": ""
-  },
-  "NO2": {
-    "en": "Most nitrogen dioxide in the environment comes from burning fuel in vehicles and power plants, but also by natural activity such as lightning strikes, volcanoes, oceans, biological decay. Reacting with water, it turns into nitric acid, contributing to lake acidification and acid rain. Exposure to indoor NO2 can lead to allergic deseases like asthma.",
-    "it": ""
-  },
-  "PM10": {
-    "en": "Particulate matter are suspended particles, found in dust, sort, dirt and smoke. The major sources of PM are anthropical (power plant combustion, vehicle combustion, wildfires). PM2.5 particles measure 2.5 microns or less in diameter. They causes 7 million preventable deaths every year, as they can be suspended in the air for longer and be absorbed into the bloodstream through inhalation. PM 10, instead measure 10 micrometers in diameter or less, and can cause tissues damage and asthma, in the long term.",
-    "it": ""
-  },
-  "PM2.5": {
-    "en": "Particulate matter are suspended particles, found in dust, sort, dirt and smoke. The major sources of PM are anthropical (power plant combustion, vehicle combustion, wildfires). PM2.5 particles measure 2.5 microns or less in diameter. They causes 7 million preventable deaths every year, as they can be suspended in the air for longer and be absorbed into the bloodstream through inhalation. PM 10, instead measure 10 micrometers in diameter or less, and can cause tissues damage and asthma, in the long term.",
-    "it": ""
-  },
-  "VOC": {
-    "en": "TVOCs are totally volatile organic compounds, with potential health effects depending on the level and the time of exposure. Short term effects could be headache, eyes, skin and respiratory tract irritation, bronchitis, central nervous system symptoms, cardiovascular and respiratory diseases, impacts on livers and cancer. TVOCs can be found in everyday products, such as paints, varnishes, detergents, cleaning products, but also photocopiers and printers.",
-    "it": ""
-  },
-  "CH2O": {
-    "en": "Formaldehyde is a colorless, flammable gas with a strong smell, highly reactive at room temperature. This compound can be found in building materials and insulating, most composite wood products, glues, paints and coatings, detergent, soaps and electronic equipment. Materials and products emit formaldehyde for several months, mainly in indoor environment with high relative humidity and high indoor temperature. Formaldehyde represents a risk to human health, causing irritation of the skin, eyes, nose throat, and with high levels of exposure may cause some types of cancers.",
-    "it": ""
-  },
-  "Air": {
-    "en": "We spend most of our time in closed spaces (homes, offices, schools, or other building environments) in which we are exposed to innumerable air contaminants, including biological agents and chemical pollutants that easily enter our body through inhalation. \n In the recent global burden of disease study, indoor air pollution was rated as the third most important source of ill health for the world’s population. Health effects due to exposure to indoor air pollutants can be short and long term and of different severity. Furthermore has been found out a relationship between indoor air quality and occupants' productivity in buildings: on average, 10% productivity loss is recorded in office buildings in the USA. About 35% of total absenteeism can be attributed to insufficient provision of fresh air in buildings. On the other hand, productivity can be improved up to 29% providing adequate ventilation in buildings.",
-    "it": ""
-  },
-  "IEQ": {
-    "en": "",
-    "it": ""
-  }
+    "T": {
+        "en": "To be at the peak of their productivity, workers have to operate in a thermally comfortable environment. It has shown that the best thermal setting for an office ranges between 20°C and 26°C. \n If the temperature exceeds the former limit, the productivity decreases of 2% for each 1°C more.",
+        "it": "Per essere al massimo della loro produttività, i lavoratori devono operare in un ambiente termicamente confortevole. È stato dimostrato che l'ambiente termico migliore per un ufficio è compreso tra 20°C e 26°C. \n Se la temperatura supera questo limite, la produttività diminuisce del 2% per ogni grado centigrado in più."
+    },
+    "RH": {
+        "en": "Low indoor air humidity (<30%) causes vulnerable airways and dry and tired eyes, affecting the overall work performance. Increasing the indoor air humidity may be a treatment of the risk of infection and transport of virus. In fact, at lower relative humidity, exhaled droplets stay longer in the air and, due to their progressive shrinkage, they tend to reach easier the lower airways.",
+        "it": "Una bassa umidità dell'aria interna (<30%) provoca difficoltà respiratorie e occhi secchi e stanchi, influendo sulle prestazioni lavorative complessive. L'aumento dell'umidità dell'aria interna può rappresentare un rimedio al rischio di infezione e di trasporto dei virus. Infatti, con un'umidità relativa più bassa, le goccioline espirate rimangono più a lungo nell'aria e, a causa del loro progressivo restringimento, tendono a raggiungere più facilmente le vie aeree inferiori."
+    },
+    "Temp": {
+        "en": "Thermal comfort is related to occupants' health, well-being and productivity and is appraised as one of the highest contributing factors to overall human comfort in buildings. Thermal comfort is interconnected with integumentary, endocrine and respiratory body systems and it may impact multiple health outcomes. For example asthma in adults can be caused by exposure to cold air and sudden temperature change.",
+        "it": "Il comfort termico è legato alla salute, al benessere e alla produttività degli occupanti ed è considerato uno dei fattori che maggiormente contribuiscono alla percezione del comfort complessivo negli edifici. Il comfort termico è interconnesso con i sistemi tegumentario, endocrino e respiratorio e può avere ripercussioni su molteplici aspetti sanitari. Ad esempio, l'asma negli adulti può essere causata dall'esposizione all'aria fredda e agli sbalzi di temperatura."
+    },
+    "E": {
+        "en": "An higher illuminance improves subjective alertness and vitality of the employees, who as a consequence feel less tired, more energic and have shorter reaction times on the psychomotor vigilance tasks.",
+        "it": "Un'illuminazione più elevata migliora la prontezza soggettiva e la vitalità dei dipendenti, che di conseguenza si sentono meno stanchi, più energici e hanno tempi di reazione più brevi nei compiti di prontezza psicomotoria."
+    },
+    "Light": {
+        "en": "Visual comfort is defined as “a subjective condition of visual well-being induced by the visual environment”. The physiology of human eye, the spectral emission of the light source, the amount of light and its distribution on surfaces are the main aspects that may affect visual comfort. \n Moreover, daylight should be preferred, as it is the main regulator system for the human body. It controls people circadian rhythm, providing physical and mental energy for the day. This is the reason why a well-designed illumination system can really improve people quality of life.",
+        "it": "Il comfort visivo è definito come \"una condizione soggettiva di benessere visivo indotta dall'ambiente luminoso\". La fisiologia dell'occhio umano, l'emissione spettrale della sorgente luminosa, la quantità di luce e la sua distribuzione sulle superfici sono i principali aspetti che possono influenzare il comfort visivo. \n Inoltre, la luce diurna sarebbe da preferire in quanto principale sistema di regolazione del corpo umano. Essa controlla il ritmo circadiano delle persone, fornendo energia fisica e mentale per la giornata. Per questo motivo un sistema di illuminazione ben progettato può davvero migliorare la qualità della vita delle persone!"
+    },
+    "SPL": {
+        "en": "Human ear is limited to the perception of sound pressure levels from 0 dB to 120 dB, that is considered the threshold of pain. Nevertheless, these limits depend on individual’s sensitivity. Human perception of sound frequency (known as “pitch”), ranges from approximately 20 to 20000 Hz, with augmented perception within the frequency range of human voice, that is between 1000 Hz and 6000 Hz.",
+        "it": "L'orecchio umano è in grado di percepire livelli di pressione sonora compresi tra 0 dB e 120 dB, considerata la soglia del dolore. Tuttavia, questi limiti dipendono dalla sensibilità individuale. La percezione umana della frequenza sonora (nota come \"pitch\") va da circa 20 a 20000 Hz, con un aumento della percezione nell'intervallo di frequenza della voce umana, cioè tra 1000 Hz e 6000 Hz."
+    },
+    "Sound": {
+        "en": "Acoustic comfort is a satisfactory status with acoustical condition in an environment. A lack in acoustic comfort has evident psychological consequences on humans, including stress and de-concentration. Some studies have shown how higher blood pressure, higher production of stress hormones and anxiety, reduction of the ability to remember and to focus on, are linked to elevated levels of noise",
+        "it": "Il comfort acustico è uno stato di soddisfazione verso le condizioni acustiche di un ambiente. La mancanza di comfort acustico ha evidenti conseguenze psicologiche sull'uomo, tra cui stress e deconcentrazione. Alcuni studi hanno dimostrato come l'aumento della pressione sanguigna, la maggiore produzione di ormoni dello stress e dell'ansia, la riduzione della capacità di ricordare e di concentrarsi siano legati a elevati livelli di pressione sonora."
+    },
+    "CO": {
+        "en": "Carbon monoxide is an odorless, colorless, and tasteless gas caused by incomplete combustion. It is poisonous and potentially letal.",
+        "it": "Il monossido di carbonio è un gas inodore, incolore e insapore causato da un processo di combustione incompleta. È velenoso e potenzialmente letale."
+    },
+    "CO2": {
+        "en": "Indoor CO2 concentration depends on many factors such as number of people in the space, activity carried out, time spent by the users in the indoor space, air exchange and outer air volume flow. Indoor concentration of CO2 greater than 1000 ppm, together with other air contaminant factors, could be associated to sick building syndrome (SBS) symptoms. These terms refer to an acute discomfort that can lead to headaches, irritation of nose, eyes and throat, coughing, nausea, difficulty concentrating, fatigue.",
+        "it": "La concentrazione di CO2 negli ambienti interni dipende da molti fattori come il numero di persone presenti nello spazio, l'attività svolta, il tempo trascorso dagli utenti nello spazio interno, il ricambio d'aria e il flusso di aria esterna. Una concentrazione interna di CO2 superiore a 1000 ppm, insieme ad altri fattori di contaminazione dell'aria, potrebbe essere associata ai sintomi della sindrome da edificio malato (Sick building syndrome - SBS). Questi termini si riferiscono a un disagio acuto che può provocare mal di testa, irritazione di naso, occhi e gola, tosse, nausea, difficoltà di concentrazione, affaticamento."
+    },
+    "NO2": {
+        "en": "Most nitrogen dioxide in the environment comes from burning fuel in vehicles and power plants, but also by natural activity such as lightning strikes, volcanoes, oceans, biological decay. Reacting with water, it turns into nitric acid, contributing to lake acidification and acid rain. Exposure to indoor NO2 can lead to allergic deseases like asthma.",
+        "it": "La maggior parte del biossido di azoto presente nell'ambiente proviene dalla combustione di carburante nei veicoli e nelle centrali elettriche, ma anche da attività naturali come fulmini, vulcani, oceani e decadimento biologico. Reagendo con l'acqua, si trasforma in acido nitrico, contribuendo all'acidificazione dei laghi e alle piogge acide. L'esposizione all'NO2 in ambienti chiusi può portare a malattie di tipo allergico come l'asma."
+    },
+    "PM10": {
+        "en": "Particulate matter are suspended particles, found in dust, sort, dirt and smoke. The major sources of PM are anthropical (power plant combustion, vehicle combustion, wildfires). PM2.5 particles measure 2.5 microns or less in diameter. They causes 7 million preventable deaths every year, as they can be suspended in the air for longer and be absorbed into the bloodstream through inhalation. PM 10, instead measure 10 micrometers in diameter or less, and can cause tissues damage and asthma, in the long term.",
+        "it": "Il particolato è costituito da particelle in sospensione che si trovano nella polvere, nella sabbia e nel fumo. Le principali fonti di PM sono di origine antropica (combustione di centrali elettriche, combustione di veicoli, incendi). Le particelle PM2.5 misurano 2.5 micron o meno di diametro. Causano 7 milioni di morti evitabili ogni anno, poiché possono rimanere sospese nell'aria più a lungo ed essere assorbite nel flusso sanguigno attraverso l'inalazione. Le particelle di PM10, invece, misurano 10 micrometri di diametro o meno e possono causare danni ai tessuti e asma, a lungo termine."
+    },
+    "PM2.5": {
+        "en": "Particulate matter are suspended particles, found in dust, sort, dirt and smoke. The major sources of PM are anthropical (power plant combustion, vehicle combustion, wildfires). PM2.5 particles measure 2.5 microns or less in diameter. They causes 7 million preventable deaths every year, as they can be suspended in the air for longer and be absorbed into the bloodstream through inhalation. PM 10, instead measure 10 micrometers in diameter or less, and can cause tissues damage and asthma, in the long term.",
+        "it": "Il particolato è costituito da particelle in sospensione che si trovano nella polvere, nella sabbia e nel fumo. Le principali fonti di PM sono di origine antropica (combustione di centrali elettriche, combustione di veicoli, incendi). Le particelle PM2.5 misurano 2.5 micron o meno di diametro. Causano 7 milioni di morti evitabili ogni anno, poiché possono rimanere sospese nell'aria più a lungo ed essere assorbite nel flusso sanguigno attraverso l'inalazione. Le particelle di PM10, invece, misurano 10 micrometri di diametro o meno e possono causare danni ai tessuti e asma, a lungo termine."
+    },
+    "VOC": {
+        "en": "TVOCs are totally volatile organic compounds, with potential health effects depending on the level and the time of exposure. Short term effects could be headache, eyes, skin and respiratory tract irritation, bronchitis, central nervous system symptoms, cardiovascular and respiratory diseases, impacts on livers and cancer. TVOCs can be found in everyday products, such as paints, varnishes, detergents, cleaning products, but also photocopiers and printers.",
+        "it": "I TVOC sono composti organici volatili totali, con potenziali effetti sulla salute a seconda del livello e del tempo di esposizione. Gli effetti a breve termine possono comprendere mal di testa, irritazione degli occhi, della pelle e delle vie respiratorie, bronchite, disturbi del sistema nervoso centrale, malattie cardiovascolari e respiratorie, impatto sul fegato e cancro. I TVOC si trovano nei prodotti di uso quotidiano, come pitture, vernici, detergenti, prodotti per la pulizia, ma anche fotocopiatrici e stampanti."
+    },
+    "CH2O": {
+        "en": "Formaldehyde is a colorless, flammable gas with a strong smell, highly reactive at room temperature. This compound can be found in building materials and insulating, most composite wood products, glues, paints and coatings, detergent, soaps and electronic equipment. Materials and products emit formaldehyde for several months, mainly in indoor environment with high relative humidity and high indoor temperature. Formaldehyde represents a risk to human health, causing irritation of the skin, eyes, nose throat, and with high levels of exposure may cause some types of cancers.",
+        "it": "La formaldeide è un gas incolore, infiammabile e dall'odore forte, altamente reattivo a temperatura ambiente. Questo composto si trova nei materiali da costruzione e isolanti, nella maggior parte dei prodotti in legno composito, nelle colle, nelle vernici, nei rivestimenti, nei detergenti, nei saponi e nelle apparecchiature elettroniche. I materiali e i prodotti emettono formaldeide per diversi mesi, soprattutto in ambienti interni con elevata umidità relativa e alta temperatura interna. La formaldeide rappresenta un rischio per la salute umana, in quanto provoca irritazione della pelle, degli occhi, del naso e della gola e un'esposizione prolungata può causare alcuni tipi di cancro."
+    },
+    "Air": {
+        "en": "We spend most of our time in closed spaces (homes, offices, schools, or other building environments) in which we are exposed to innumerable air contaminants, including biological agents and chemical pollutants that easily enter our body through inhalation. \n In the recent global burden of disease study, indoor air pollution was rated as the third most important source of ill health for the world’s population. Health effects due to exposure to indoor air pollutants can be short and long term and of different severity. Furthermore has been found out a relationship between indoor air quality and occupants' productivity in buildings: on average, 10% productivity loss is recorded in office buildings in the USA. About 35% of total absenteeism can be attributed to insufficient provision of fresh air in buildings. On the other hand, productivity can be improved up to 29% providing adequate ventilation in buildings.",
+        "it": "Trascorriamo la maggior parte del nostro tempo in spazi chiusi (case, uffici, scuole o altri ambienti) in cui siamo esposti a innumerevoli contaminanti dell'aria, tra cui agenti biologici e inquinanti chimici che entrano facilmente nel nostro corpo attraverso l'inalazione. \n Nel recente studio sul bilancio globale delle malattie, l'inquinamento dell'aria interna è stato classificato come la terza più importante fonte di patologie per la popolazione mondiale. Gli effetti sulla salute dovuti all'esposizione agli inquinanti dell'aria interna possono essere a breve e a lungo termine e di diversa entità. È stata inoltre rilevata una relazione tra la qualità dell'aria interna e la produttività degli occupanti degli edifici: in media, negli Stati Uniti si registra una perdita di produttività del 10% negli edifici adibiti a ufficio. Circa il 35% dell'assenteismo totale può essere attribuito all'insufficiente fornitura di aria fresca negli edifici. D'altra parte, la produttività può essere migliorata fino al 29% fornendo una ventilazione adeguata negli edifici."
+    },
+    "IEQ": {
+        "en": "",
+        "it": ""
+    }
 }

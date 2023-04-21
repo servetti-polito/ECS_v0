@@ -1,98 +1,98 @@
 {
-  "T": [
-    {
-      "en": "Drink water in case of temperature higher than the acceptable range (about 1 glass every 15-20 minutes), and wear lightweight, breathable and comfortable cotton clothing",
-      "it": ""
-    }
-  ],
-  "RH": [
-    {
-      "en": "Try to ensure a relative humidity between 40-60%, through natural ventilation. According to the World Health Organization (WHO), this optimal range will reduce the spread of seasonal respiratory illnesses.",
-      "it": ""
-    }
-  ],
-  "Temp": [
-    {
-      "en": "Thermal comfort is perceived differently by each individual and depends on, among other factors, the activity you are performing and what you are wearing. To ensure your thermal comfort without compromising the perception of others, adopt a flexible dress code.",
-      "it": ""
-    }
-  ],
-  "E": [
-    {
-      "en": "Particularly strong shadows can cause the visual apparatus to adapt too abruptly. For example, for paper-based tasks, avoid to put objects or your arms between light direction and you.",
-      "it": ""
-    }
-  ],
-  "Light": [
-    {
-      "en": "Use the shading system wisely to improve your visual comfort.",
-      "it": ""
-    }
-  ],
-  "SPL": [
-    {
-      "en": "A strategy to reduce the sound level is to move the point source away from people. As sample, moving a copy machine in another room can reduce the noise level by more than 15 dB. If you need to talk, move away from other people or choose a separate conference room.",
-      "it": ""
-    }
-  ],
-  "Sound": [
-    {
-      "en": "Remember to respect other people's comfort and perception. If you need to talk, move away from other people or choose a separate conference room.",
-      "it": ""
-    }
-  ],
-  "CO": [
-    {
-      "en": "Overconcentration of CO can be avoided by ensuring fresh air flow into your indoor space and using in a proper way all devices running on fossil fuels.",
-      "it": ""
-    }
-  ],
-  "CO2": [
-    {
-      "en": "Very large increases in ventilation rates, sufficient to reduce indoor CO2 concentrations to approximately outdoor levels, would be expected to decrease prevalence of sick building syndrome (SBS) symptoms by 85%.",
-      "it": ""
-    }
-  ],
-  "NO2": [
-    {
-      "en": "Indoor concentration of NO2 strictly depends on outdoor sources, such as local traffic or other combustion sources. If you work close to a busy road, avoid to open too often the window and prefer mechanical ventilation with an efficient filtration system. You can do also more, first for your office, than for the planet: encourage public transport, biking and walking to reduce NO2 emissions.",
-      "it": ""
-    }
-  ],
-  "PM10": [
-    {
-      "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
-      "it": ""
-    }
-  ],
-  "PM2.5": [
-    {
-      "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
-      "it": ""
-    }
-  ],
-  "VOC": [
-    {
-      "en": "In order to reduce the concentration of TVOCs in your indoor environment, often refresh the air and choose products with less or no TVOCs.",
-      "it": ""
-    }
-  ],
-  "CH2O": [
-    {
-      "en": "In order to reduce the concentration of formaldehyde in your indoor environment, choose products that meet the standards on formaldehyde emissions, increase the rate of ventilation and ensure a relative humidity between 40-60%.",
-      "it": ""
-    }
-  ],
-  "Air": [
-    {
-      "en": "EPA guidelines to improve the indoor air quality of your office suggest to:\n • Do not block air vents or grilles.\n • Comply with the office and building smoking policy.\n • Water and maintain office plants properly.\n • Dispose of garbage promptly and properly.\n • Store food properly.\n • Avoid bringing products into the building that could release harmful or bothersome odors or contaminants.\n • Notify your building or facility manager immediately if you suspect an indoor air quality problem.",
-      "it": ""
-    }
-  ],
-  "IEQ": [
-    {
-      "en": "",
-      "it": ""
-    }
-  ]
+    "T": [
+        {
+            "en": "Drink water in case of temperature higher than the acceptable range (about 1 glass every 15-20 minutes), and wear lightweight, breathable and comfortable cotton clothing",
+            "it": "Bevi acqua in caso di temperatura superiore all'intervallo di accettabilità (circa 1 bicchiere ogni 15-20 minuti) e indossa indumenti di cotone leggeri, traspiranti e confortevoli."
+        }
+    ],
+    "RH": [
+        {
+            "en": "Try to ensure a relative humidity between 40-60%, through natural ventilation. According to the World Health Organization (WHO), this optimal range will reduce the spread of seasonal respiratory illnesses.",
+            "it": "Cerca di garantire un'umidità relativa tra il 40-60%, attraverso la ventilazione naturale. Secondo l'Organizzazione Mondiale della Sanità (OMS), questo intervallo è ottimale per ridurre la diffusione delle malattie respiratorie stagionali."
+        }
+    ],
+    "Temp": [
+        {
+            "en": "Thermal comfort is perceived differently by each individual and depends on, among other factors, the activity you are performing and what you are wearing. To ensure your thermal comfort without compromising the perception of others, adopt a flexible dress code.",
+            "it": "Il comfort termico è percepito in modo diverso da ogni individuo e dipende, tra gli altri fattori, dall'attività che si sta svolgendo e da ciò che si indossa. Per garantire il tuo comfort termico, senza compromettere la percezione degli altri, adotta un abbigliamento flessibile."
+        }
+    ],
+    "E": [
+        {
+            "en": "Particularly strong shadows can cause the visual apparatus to adapt too abruptly. For example, for paper-based tasks, avoid to put objects or your arms between light direction and you.",
+            "it": "Ombre particolarmente marcate possono causare un adattamento troppo brusco dell'apparato visivo. Ad esempio, per i compiti su carta, evita di interporre oggetti o posizionare le braccia tra la direzione della luce e te."
+        }
+    ],
+    "Light": [
+        {
+            "en": "Use the shading system wisely to improve your visual comfort.",
+            "it": "Usa il sistema di schermatura con criterio per migliorare il tuo comfort visivo."
+        }
+    ],
+    "SPL": [
+        {
+            "en": "A strategy to reduce the sound level is to move the point source away from people. As sample, moving a copy machine in another room can reduce the noise level by more than 15 dB. If you need to talk, move away from other people or choose a separate conference room.",
+            "it": "Una strategia per ridurre il livello di pressione sonora consiste nell'allontanare la sorgente dalle persone. Ad esempio, spostare una fotocopiatrice in un'altra stanza può ridurre il livello di pressione sonora di oltre 15 dB. Se devi parlare, allontanati dalle altre persone o scegli una sala conferenze apposita."
+        }
+    ],
+    "Sound": [
+        {
+            "en": "Remember to respect other people's comfort and perception. If you need to talk, move away from other people or choose a separate conference room.",
+            "it": "Ricorda di rispettare il comfort e la percezione degli altri. Se hai bisogno di parlare, allontanati dalle altre persone o scegli una sala conferenze separata."
+        }
+    ],
+    "CO": [
+        {
+            "en": "Overconcentration of CO can be avoided by ensuring fresh air flow into your indoor space and using in a proper way all devices running on fossil fuels.",
+            "it": "La concentrazione eccessiva di CO può essere evitata garantendo un flusso d'aria fresca negli ambienti interni e utilizzando opportunamente tutti i dispositivi che funzionano con combistibili fossili."
+        }
+    ],
+    "CO2": [
+        {
+            "en": "Very large increases in ventilation rates, sufficient to reduce indoor CO2 concentrations to approximately outdoor levels, would be expected to decrease prevalence of sick building syndrome (SBS) symptoms by 85%.",
+            "it": "Aumentando sensibilmente i tassi di ventilazione, in modo da rendere la concentrazione di CO2 negli ambienti interni pari a quella dell'aria esterna, la prevalenza dei sintomi della sindrome dell'edificio malato (Sick building syndrome - SBS) diminuirebbe dell'85%."
+        }
+    ],
+    "NO2": [
+        {
+            "en": "Indoor concentration of NO2 strictly depends on outdoor sources, such as local traffic or other combustion sources. If you work close to a busy road, avoid to open too often the window and prefer mechanical ventilation with an efficient filtration system. You can do also more, first for your office, than for the planet: encourage public transport, biking and walking to reduce NO2 emissions.",
+            "it": "La concentrazione interna di NO2 dipende strettamente dalle fonti esterne, come il traffico locale o altre fonti di combustione. Se lavori vicino a una strada trafficata, evita di aprire troppo spesso le finestre e preferisci una ventilazione meccanica con un sistema di filtraggio efficiente. Si può fare anche di più, prima per il proprio ufficio, poi per il pianeta: incoraggiare il trasporto pubblico, la bicicletta e gli spostamenti a piedi per ridurre le emissioni di NO2."
+        }
+    ],
+    "PM10": [
+        {
+            "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
+            "it": "Non fumare mai in ambienti chiusi, utilizza un purificatore d'ambiente e non dimenticare di monitorare la qualità dell'aria interna ed esterna."
+        }
+    ],
+    "PM2.5": [
+        {
+            "en": "Remember to never smoke indoor, run a room purifier and don’t forget to monitor your air quality indoor and outdoor.",
+            "it": "Non fumare mai in ambienti chiusi, utilizza un purificatore d'ambiente e non dimenticare di monitorare la qualità dell'aria interna ed esterna."
+        }
+    ],
+    "VOC": [
+        {
+            "en": "In order to reduce the concentration of TVOCs in your indoor environment, often refresh the air and choose products with less or no TVOCs.",
+            "it": "Per ridurre la concentrazione di TVOC nell'ambiente interno rinfresca spesso l'aria e scegli prodotti contenenti meno o nessun TVOC."
+        }
+    ],
+    "CH2O": [
+        {
+            "en": "In order to reduce the concentration of formaldehyde in your indoor environment, choose products that meet the standards on formaldehyde emissions, increase the rate of ventilation and ensure a relative humidity between 40-60%.",
+            "it": "Per ridurre la concentrazione di formaldeide nell'ambiente interno, scegli prodotti conformi agli standard sulle emissioni di formaldeide, aumenta il tasso di ventilazione e garantisci un'umidità relativa tra il 40-60%."
+        }
+    ],
+    "Air": [
+        {
+            "en": "EPA guidelines to improve the indoor air quality of your office suggest to:\n • Do not block air vents or grilles.\n • Comply with the office and building smoking policy.\n • Water and maintain office plants properly.\n • Dispose of garbage promptly and properly.\n • Store food properly.\n • Avoid bringing products into the building that could release harmful or bothersome odors or contaminants.\n • Notify your building or facility manager immediately if you suspect an indoor air quality problem.",
+            "it": "Le linee guida dell'EPA per migliorare la qualità dell'aria interna dell'ufficio suggeriscono di:\n - Non ostruire le prese d'aria o le griglie.\n - Rispettare la politica sul fumo dell'ufficio e dell'edificio.\n - Innaffiare e mantenere correttamente le piante dell'ufficio.\n - Smaltire i rifiuti in modo tempestivo e corretto.\n - Conservare correttamente gli alimenti.\n - Evitare di introdurre nell'edificio prodotti che potrebbero rilasciare odori nocivi o fastidiosi o contaminanti.\n - Avvisare immediatamente il responsabile dell'edificio o della struttura se si sospetta un problema di qualità dell'aria interna."
+        }
+    ],
+    "IEQ": [
+        {
+            "en": "",
+            "it": ""
+        }
+    ]
 }
